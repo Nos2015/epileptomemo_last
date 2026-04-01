@@ -1,0 +1,128 @@
+{
+    "home":{
+        "title":"Mieux vivre<br/>avec l'épilepsie",
+        "subtitle":"Suivez vos crises, stimulez votre mémoire,<br/>restez à jour dans votre traitement."
+    },
+    "memoryExercices":"Exercices de mémoire",
+    "simpleCognitiveGames":"Jeux de réflexion simples",
+    "seizureJournal":"Journal des crises",
+    "logSeizureEasily":"Enregistrez facilement vos crises",
+    "neurologistReports":"Rapport des neurologues",
+    "exportHealthData":"Exportez vos données de santé",
+    "statistics":"Statistiques",
+    "medicalCare":"Améliorez vos soins médicaux",
+    "familySupport": "Aide à la famille",
+    "keepLoveOneInformed":"Tenez vos proches informés",
+    "footer":{
+        "title":"Soyez parmi les premiers à essayer EpileptoMemo !",
+        "subTitle":"Inscrivez-vous sur notre liste d'attente pour bénéficier d'un accès anticipé"
+    },
+    "enterEmail":"Entrez votre adresse e-mail",
+    "joinWaitList":"Inscrivez-vous sur la liste d'attente",
+    "currentlyDev":"En cours de développement - Aidez-nous à créer la meilleure solution pour les personnes atteintes d'épilepsie",
+    "exercices":"Exercices",
+    "journal":"Journal",
+    "reports":"Rapports",
+    "stats":"Stats",
+    "family":"Famille",
+    "join":"Rejoignez-nous",
+    "joinFirst":"Soyez parmi les premiers à essayer EpileptoMemo",
+    "easy":"Facile",
+    "medium":"Moyen",
+    "hard":"Difficile",
+    "comingSoon":"À venir",
+    "green":"Vert",
+    "red":"Rouge",
+    "blue":"Bleu",
+    "yellow":"Jaune",
+    "pages":{
+        "title":"Fonctionnalités en cours de développement",
+        "journal":{
+            "title":"Journal des crises",
+            "first":"Ajouter des crises",
+            "second":"Historique des crises",
+            "third":"Traitement",
+            "fourth":"Historique des prise(s) de médicament(s)",
+            "five":"Notification de prise de médicament(s)",
+            "conclusion":"Cette fonctionnalité vous permettra de savoir la chronologie de vos crises et de créer un rapport claire et détaillé qui sera partagé avec votre neurologue si vous le souhaitez dans Rapports"
+        },
+        "reports":{
+            "title":"Rapports de neurologues",
+            "subtitle":"Exportez votre historique des crises d'épilepsie sous forme de rapport claire et détaillé, prêt à partager avec votre neurologue",
+            "first":"Rapport PDF détaillé",
+            "second":"Partage facile avec le médecin",
+            "conclusion":"Cette fonctionnalité permettra à votre neurologue de mieux comprendre vos crises et de mieux ajuster votre traitement"
+        },
+        "statistics":{
+            "title":"Statistiques",
+            "first":"Identification de déclencheurs",
+            "second":"Sommeil et stress",
+            "third":"Évolutions des crises d'épilepsie",
+            "fourth":"Nombre de crises par mois",
+            "five":"Sommeil et crises"
+        },
+        "family":{
+            "title":"Soutien familial",
+            "subtitle":"Permettez à vos proches d'être informés de vos crises importantes et restez connectés pour un soutien accru",
+            "first":"Alerte de crise pour la famille",
+            "second":"Historique partagé sécurisé",
+            "conclusion":"Cette fonctionnalité facilitera la communication avec vos proches et vous apportera un soutien supplémentaire en cas de besoin"
+        },
+        "exercices":{
+            "title":"Exercices de Mémoire",
+            "subtitle":"Entraîner votre mémoire pour mieux gérer l'épilepsie",
+            "other": "Autres exercices",
+            "games":{
+                "1":{
+                    "title":"Memory Sequence",
+                    "subtitle":"Répétez la séquence de couleurs",
+                    "explanations":"Mémorise la séquence qui t'ai donnée. Cliques alors sur les boutons de couleur pour nous dire si tu l'as bien retenue.<br/>Appuies sur <strong>'Start'</strong> pour jouer !",
+                    "message1":"Mémorise la séquence de couleurs demandée",
+                    "message1new":"Mémorise la nouvelle séquence de couleurs demandée",
+                    "message2":"A toi",
+                    "messageSuccess":"Correct! 🎉 ",
+                    "messageWrong":"Perdu ❌ . Tu peux voir le score de séquences réussies en bas à droite. Appuies sur Start si tu veux ré-essayer.",
+                    "level":"Facile"
+                },
+                "2":{
+                    "title":"Visual Pattern",
+                    "subtitle":"Souvenez-vous des cases surlignées",
+                    "explanations":"Mémorise les cases surlignées dans le carré. Cliques alors sur les cases pour nous dire lesquelles selon toi l'ont été.<br/>Appuies sur <strong>'Start'</strong> pour jouer !",
+                    "message1":"Mémorise la séquence de cases surlignées",
+                    "message1new":"Mémorise la nouvelle séquence de cases surlignées",
+                    "message2":"A toi",
+                    "messageSuccess":"Correct! 🎉 ",
+                    "messageWrong":"Perdu ❌ . Tu peux voir le score de séquences réussies en bas à droite. Appuies sur Start si tu veux ré-essayer.",
+                    "level":"Moyen"
+                },
+                "3":{
+                    "title":"Common Name",
+                    "subtitle":"Trouvez un nom commun à partir d'une définition",
+                    "level":"Dur"
+                },
+                "4":{
+                    "title":"Quick Brain",
+                    "subtitle":"Trouvez rapidement les mots",
+                    "explanations":"Choisis la bonne réponse suivant la question posée. Tu as plusieurs niveaux avec un temps décompté pour répondre. Bonne chance. <br/>Appuies sur <strong>'Start'</strong> pour jouer !",
+                    "message1":"Choisis ton niveau",
+                    "level":"Facile"
+                },
+                "5":{
+                    "title":"Pattern Builder",
+                    "subtitle":"Créez un motif complexe",
+                    "level":"Moyen"
+                },
+                "6":{
+                    "title":"N-Back Training",
+                    "subtitle":"Améliorez votre mémoire",
+                    "level":"Moyen"
+                },
+                "7":{
+                    "title":"Scattergories",
+                    "subtitle":"Trouvez différents noms commençant et finissant par les mêmes lettres",
+                    "level":"Dur"
+                }
+            }
+        }
+    }
+}

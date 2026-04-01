@@ -1,0 +1,39 @@
+
+app-home{
+    min-height: 100%;
+    position: relative;
+}
+
+app-sidebar{
+  display: none;
+  width: 400px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: 99;
+}
+
+.sidebarActive{
+    transform: translateX(0);
+    display: flex;
+    overflow: auto;
+}
+
+#content{
+    position:relative;
+}
+
+@media only screen and (max-width: 1000px){
+    #content{
+        background: none !important;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    app-sidebar{
+        width:100vw;
+    }
+}

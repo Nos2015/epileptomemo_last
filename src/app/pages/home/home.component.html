@@ -1,0 +1,90 @@
+<div id="introduction">
+    <div>
+        <p class="title-indrodution" [innerHTML]="homeTitle"></p>
+        <p class="title-indrodution title-introduction-small" [innerHTML]="homeSubTitle"></p>
+    </div>
+    <div class="mobile">
+        <img *ngIf="language=='fr'" src="/assets/mobile_fr.png" alt="Epileptomemo Mobile" />
+        <img *ngIf="language=='en'" src="/assets/mobile.png" alt="Epileptomemo Mobile" />
+    </div>
+</div>
+<div class="cta-slider">
+    <div class="cta-slider-bloc" (click)="goTo('exercices')">
+        <img class="cta-slider-bloc-image cta-shadow" src="/assets/memoryexercices.png"/>
+        <p class="title-cta-slider">{{memoryExercices}}</p>
+        <p class="title-cta-slider-under">{{simpleCognitiveGames}}</p>
+    </div>
+    <div class="cta-slider-bloc" (click)="goTo('journal')">
+        <img class="cta-slider-bloc-image cta-shadow" src="/assets/seizurejournal.png"/>
+        <p class="title-cta-slider">{{seizureJournal}}</p>
+        <p class="title-cta-slider-under">{{logSeizureEasily}}</p>
+    </div>
+    <div class="cta-slider-bloc" (click)="goTo('reports')">
+        <img class="cta-slider-bloc-image cta-shadow" src="/assets/neurologistexports.png"/>
+        <p class="title-cta-slider">{{neurologistReports}}</p>
+        <p class="title-cta-slider-under">{{exportHealthData}}</p>
+    </div>
+    <div class="cta-slider-bloc" (click)="goTo('stats')">
+        <img class="cta-slider-bloc-image cta-shadow" src="/assets/stats.png"/>
+        <p class="title-cta-slider">{{statistics}}</p>
+        <p class="title-cta-slider-under">{{medicalCare}}</p>
+    </div>
+    <div class="cta-slider-bloc" (click)="goTo('family')">
+        <img class="cta-slider-bloc-image cta-shadow" src="/assets/familysupport.png"/>
+        <p class="title-cta-slider">{{familySupport}}</p>
+        <p class="title-cta-slider-under">{{keepLoveOneInformed}}</p>
+    </div>
+</div>
+<div id="mobileHome">
+    <div id="menu">
+        <div class="cta-title-mobile">
+            <div class="cta-title cta-title-text-mobile" [innerHTML]="homeTitle"></div>
+            <img src="/assets/homemobile.png" alt="MeilleurEpilepsie" />
+        </div>
+        <div class="elementMenu" (click)="goTo('exercices')">
+            <div class="elementMenuContent">
+                <div class="elementMenuContentElementsText">
+                    <p class="title-cta-slider elementMenuContentText">{{memoryExercices}}</p>
+                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{simpleCognitiveGames}}</p>
+                </div>
+            </div>
+            <img class="cta-slider-bloc-image cta-shadow" src="/assets/memoryexercicesmobile.png"/>
+        </div>
+        <div class="elementMenu" (click)="goTo('journal')">
+            <div class="elementMenuContent">
+                <div class="elementMenuContentElementsText">
+                    <p class="title-cta-slider elementMenuContentText">{{seizureJournal}}</p>
+                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{logSeizureEasily}}</p>
+                </div>
+            </div>
+            <img class="cta-slider-bloc-image cta-shadow" src="/assets/seizurejournalmobile.png"/>
+        </div>
+        <div class="elementMenu" (click)="goTo('reports')">
+            <div class="elementMenuContent">
+                <div class="elementMenuContentElementsText">
+                    <p class="title-cta-slider elementMenuContentText">{{neurologistReports}}</p>
+                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{exportHealthData}}</p>
+                </div>
+            </div>
+            <img class="cta-slider-bloc-image cta-shadow" src="/assets/neurologistexportsmobile.png"/>
+        </div>
+        <div class="elementMenu" (click)="goTo('stats')">
+            <div class="elementMenuContent">
+                <div class="elementMenuContentElementsText">
+                    <p class="title-cta-slider elementMenuContentText">{{statistics}}</p>
+                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{medicalCare}}</p>
+                </div>
+            </div>
+            <img class="cta-slider-bloc-image cta-shadow" src="/assets/statsmobile.png"/>
+        </div>
+        <div class="elementMenu" (click)="goTo('family')">
+            <div class="elementMenuContent">
+                <div class="elementMenuContentElementsText">
+                    <p class="title-cta-slider elementMenuContentText">{{familySupport}}</p>
+                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{keepLoveOneInformed}}</p>
+                </div>
+            </div>
+            <img class="cta-slider-bloc-image cta-shadow" src="/assets/familysupportmobile.png"/>
+        </div>
+    </div>
+</div>

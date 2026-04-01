@@ -1,0 +1,184 @@
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AppComponent } from '../../../app.component';
+import { TranslateappService } from '../../../services/translateapp.service';
+
+@Component({
+  selector: 'app-memorysequence',
+  standalone: false,
+  templateUrl: './memorysequence.component.html',
+  styleUrl: './memorysequence.component.scss'
+})
+
+export class MemorysequenceComponent implements OnInit{
+
+  title = "";
+  subTitle = "";
+  explaination = "";
+  green = "";
+  red = "";
+  blue = "";
+  yellow = "";
+
+  colors = ["green","red","blue","yellow"];
+  sequence:string[] = [];
+  playerSequence:string[] = [];
+  level = 3;
+  playing = false;
+  message = "";
+  score = 0;
+  start = false;
+  win = false;
+
+  message1 = "";
+  message1new = "";
+  message2 = "";
+  messageWrong = "";
+  messageSuccess = "";
+
+  @ViewChild('game') gameElement!: ElementRef;
+
+  constructor(public appComponent: AppComponent,
+              public translate: TranslateappService,
+              private elementRef: ElementRef,
+  ){}
+
+  ngOnInit(): void {
+     window.scroll(0,0);
+    this.appComponent.setHome(false);
+    this.translate.comp$.subscribe(
+      () => {
+          this.changeLanguage();
+      }
+    );
+    this.changeLanguage();
+  }
+
+  changeLanguage(){
+    //changeLanguage when page is on front
+    if(this.elementRef.nativeElement.offsetParent != null) {
+      this.translate.translate.get(
+        [
+          'pages.exercices.games.1.title',
+          'pages.exercices.games.1.subtitle',
+          'pages.exercices.games.1.explanations',
+          'pages.exercices.games.1.message1',
+          'pages.exercices.games.1.message1new',
+          'pages.exercices.games.1.message2',
+          'pages.exercices.games.1.messageWrong',
+          'pages.exercices.games.1.messageSuccess',
+          'green',
+          'red',
+          'blue',
+          'yellow'
+        ]
+      )
+      .subscribe(translations => {
+        this.title = translations['pages.exercices.games.1.title'];
+        this.subTitle = translations['pages.exercices.games.1.subtitle'];
+        this.explaination = translations['pages.exercices.games.1.explanations'];
+        this.green = translations['green'];
+        this.blue = translations['blue'];
+        this.red = translations['red'];
+        this.yellow = translations['yellow'];
+        this.colors = [translations['green'], translations['blue'], translations['red'], translations['yellow']];
+        this.message1 = translations['pages.exercices.games.1.message1'];
+        this.message1new = translations['pages.exercices.games.1.message1new'];
+        this.message2 = translations['pages.exercices.games.1.message2'];
+        this.messageWrong = translations['pages.exercices.games.1.messageWrong'];
+         this.messageSuccess = translations['pages.exercices.games.1.messageSuccess'];
+      });
+    }
+  }
+
+
+  addButtonClass(){
+    if(!this.start){
+      return 'button-width50';
+    }
+    else{
+      return 'button-width50 grey';
+    }
+  }
+
+  addClass(color:string){
+    if(!this.start){
+      return 'color grey';
+    }
+    else{
+      return 'color '+color;
+    }
+  }
+
+  startGame(){
+    if(!this.win){
+      this.score = 0;
+    }
+    this.scrollToGameElement();
+    this.sequence = [];
+    this.playerSequence = [];
+    if(this.score == 0  || this.score < 0){
+      this.message = this.message1;
+    }
+    else{
+      this.message = this.message1new;
+    }
+    
+    for(let i=0;i<this.level;i++){
+      const random = this.colors[Math.floor(Math.random()*this.colors.length)];
+      this.sequence.push(random);
+    }
+
+    this.showSequence();
+  }
+
+  async showSequence(){
+    await this.sleep(3000);
+    this.start = true;
+    this.playing = false;
+
+    for( let i=0;i<this.sequence.length;i++){
+      this.message = this.sequence[i];
+      await this.sleep(1000);
+      this.message = '';
+      await this.sleep(500);
+    }
+
+    this.message = this.message2;
+    await this.sleep(1000);
+    this.message = '';
+    this.playing = true;
+  }
+
+  selectColor(color:string){
+    if(!this.playing) return;
+    this.playerSequence.push(color);
+
+    if(this.playerSequence[this.playerSequence.length -1] !== this.sequence[this.playerSequence.length -1]){
+      this.message = this.messageWrong;
+      this.playing = false;
+      this.start = false;
+      this.level = 3;
+      this.win = false;
+      return;
+    }
+
+    if(this.playerSequence.length == this.sequence.length){
+      this.message = this.messageSuccess;
+      this.level++;
+      this.score++;
+      this.win = true;
+      setTimeout(() => this.startGame(), 1000);
+    }
+  }
+
+  sleep(ms:number){
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  scrollToGameElement(){
+    if (this.gameElement != null) {
+      let el = this.gameElement.nativeElement as HTMLElement
+      el.scrollIntoView();
+    }
+  }
+}

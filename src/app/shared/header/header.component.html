@@ -1,0 +1,42 @@
+<div id="header">
+  <div id="logoem" routerLink="">
+    <img src="/assets/epileptomemo_logo.png" alt="Epileptomemo" />
+    <img src="/assets/epileptomemo_logo_hover.png" alt="Epileptomemo" />
+  </div>
+  <div id="menu">
+    <div (click)="goTo('exercices')">
+        <p class="menuItem">{{exercices}}</p>
+    </div>
+    <div (click)="goTo('journal')">
+        <p class="menuItem">{{journal}}</p>
+    </div>
+    <div (click)="goTo('reports')">
+        <p class="menuItem">{{reports}}</p>
+    </div>
+    <div (click)="goTo('stats')">
+        <p class="menuItem">{{stats}}</p>
+    </div>
+    <div (click)="goTo('family')">
+        <p class="menuItem">{{family}}</p>
+    </div>
+    <button class="button-widthHeader" (click)="goTo('footerComponent')">
+        <span>{{join}}</span>
+    </button>
+    <div class="languageBox">
+        <input type="checkbox" id="toggle-button-checkbox" (change)="setLanguage($event)" [checked]="isChecked">
+        <label class="toggle-button-switch"  
+        for="toggle-button-checkbox"></label>
+        <div class="toggle-button-text">
+            <img class="toggle-button-text-on" src="/assets/english.jpg" alt="French" />
+            <img class="toggle-button-text-off" src="/assets/french.jpg" alt="English">
+        </div>
+    </div>
+  </div>
+  <div id="accessMenu" (click)="toggleSidebar.emit()" [ngClass]="{ sidebarActive: sidebarActive }">
+      <img src="/assets/button_menu.png">
+      <img src="/assets/button_menu_hover.png">
+      <img src="/assets/button_menu_close.png"/>
+      <img src="/assets/button_menu_close_hover.png"/>
+    </div>
+</div>
+<div id="separate" style="background: url('/assets/under_header.png') no-repeat center / cover;height:6px;width: 100%;">

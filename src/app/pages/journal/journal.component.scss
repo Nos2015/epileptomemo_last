@@ -1,0 +1,95 @@
+.elementMenu{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius: 20px;
+    contain-intrinsic-size: auto 300px;
+    background-color: #f7f8fe;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    margin: 40px;
+}
+
+.elementMenuContent{
+    width: 100%;
+    padding: 20px;
+}
+
+.elementMenuContentText{
+    font-size: 20px;
+}
+
+.elementMenuContentSubtileText{
+    font-size: 18px;
+}
+
+.elementMenuContentTextUnderPage{
+    text-align: left;
+    font-size: 18px;
+}
+
+.cta-pages{
+    width: 100%;
+    height: auto;
+    background-color: #f8f7fd;
+}
+
+.cta-pages-img{
+    width: 100%;
+}
+
+.cta-pages-img-middle{
+    position: absolute;
+    left: 35%;
+    width: 30%;
+}
+
+.elementMenuContentElementsTextFlex{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.elementMenuContentTextUnderPageFlex{
+    padding-bottom: 0px;
+    padding-left: 10px;
+}
+
+.elementMenuContentAlignFlex{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.elementMenuContentText100{
+    width: 100%;
+    position: relative;
+}
+
+.elementMenuContentText100:before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    bottom: -15px;
+    left: 50%;
+    border-bottom: 1px solid #dde0e8;
+    transform: translateX(-50%);
+}
+
+.cta-pages-journal{
+    width: auto;
+}
+
+.cta-img-max{
+    max-width: 200px;
+}
+
+.elementMenuContentAlignFlexBottom{
+    padding-bottom: 20px;
+}
+
+.title-cta-slider{
+    text-align: left;
+}

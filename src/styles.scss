@@ -1,0 +1,165 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'InterBold';
+    src: url('assets/fonts/Inter/static/Inter_28pt-SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('assets/fonts/Inter/static/Inter_18pt-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body{
+    width: 100%;
+    min-height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    background-color: #f1f4fc;
+}
+
+*:focus {
+    outline: none;
+}
+
+#content{
+    //position: absolute;
+    //top: 100px;
+    width: 100%;
+    height: 100%;
+}
+
+.cta-slider{
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    margin-top: -12em;
+    padding-top: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-slider-bloc{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-right: 10px;
+    padding-left: 10px;
+    flex-direction: column;
+    border-radius: 20px;
+    contain-intrinsic-size: auto 300px;
+    background-color: #f7f8fe;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 150px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+
+.cta-slider-bloc img{
+  width: auto; 
+  margin-top: 20px;
+  max-height: 100px;
+}
+
+.cta-slider-bloc:hover .title-cta-slider{
+    color:#2675d4;
+}
+
+.title-cta-slider{
+    font-family: 'InterBold';
+    color: #07387b;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.title-cta-slider-under{
+    font-family: 'Inter';
+    color: #07387b;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.form-control{
+    background-color: transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-image: none;
+    border: .0625rem solid #dce0ec;
+    min-width: 450px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.10);
+    border-radius: 10px;
+    height: 50px;
+}
+
+.button-width50{
+    border:none;
+    color:white;
+    padding:12px 22px;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    margin: 20px;
+    width: 400px;
+    background: linear-gradient(180deg, #3283dc, #1d65bf);
+}
+
+.button-width50:hover{
+    background: linear-gradient(180deg, #3484e0, #2a78d8);
+}
+
+#pagesBackground{
+    width: 100%;
+    height: 100%;
+    background-color: #f1f4fc;
+}
+
+.pagesTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+}
+
+.pageTitle, .pageSubTitle{
+    font-family: "InterBold";
+    
+    color: #213161;
+}
+
+.pageTitle{
+    font-size: 30px;
+    padding-right: 10px;
+}
+
+.pageSubTitle{
+    font-size: 25px;
+}
+
+.comingSoon{
+    background-color: #f8cf90;
+    border-radius: 20px;
+    color: #180f05;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-family: "InterBold";
+}
+

@@ -1,0 +1,124 @@
+{
+    "home":{
+        "title":"Living Better<br/>with Epilepsy",
+        "subtitle":"Track your seizures, boost your memory,<br/>stay on top of your treatment."
+    },
+    "memoryExercices":"Memory Exercices",
+    "simpleCognitiveGames":"Simple cognitive games",
+    "seizureJournal":"Seizure Journal",
+    "logSeizureEasily":"Log your seizures easily",
+    "neurologistReports":"Neurologist Reports",
+    "exportHealthData":"Export your health data",
+    "statistics":"Statistics",
+    "medicalCare":"Improve your medical care",
+    "familySupport": "Family Support",
+    "keepLoveOneInformed":"Keep loved one informed",
+    "footer":{
+        "title":"Be the first to try EpileptoMemo !",
+        "subTitle":"Join our waitlist for early access"
+    },
+    "enterEmail":"Enter your email",
+    "joinWaitList":"Join the Waitlist",
+    "currentlyDev":"Currently in development - Help us build the best for epilepsy patients",
+    "exercices":"Exercices",
+    "journal":"Journal",
+    "reports":"Reports",
+    "stats":"Stats",
+    "family":"Family",
+    "join":"Join Us",
+    "joinFirst":"First to try EpileptoMemo",
+    "easy":"Easy",
+    "medium":"Medium",
+    "hard":"Hard",
+    "comingSoon":"Coming soon",
+    "green":"Green",
+    "red":"Red",
+    "blue":"Blue",
+    "yellow":"Yellow",
+    "pages":{
+        "title":"Features currently in development",
+        "journal":{
+            "title":"Seizures Journal",
+            "first":"Add Seizures",
+            "second":"History of Seizures",
+            "third":"Treatment",
+            "fourth":"History of medication use",
+            "five":"Notification of Medication Use",
+            "conclusion":"This feature will help you track the timeline of your seizures and create a clear, detailed report that you can share with your neurologist if you wish in Reports"
+        },
+        "reports":{
+            "title":"Neurologist Reports",
+            "subtitle":"Export your seizure history as a clear, detailed report, ready to share with your neurologist",
+            "first":"Detailed PDF report",
+            "second":"Easy to share with your doctor",
+            "conclusion":"This feature will help your neurologist better understand your seizures and tailor your treatment accordingly"
+        },
+        "statistics":{
+            "title":"Statistics",
+            "first":"Identifying Triggers",
+            "second":"Sleep and Stress",
+            "third":"Changes in Epileptic Seizures",
+            "fourth":"Number of seizures per month",
+            "five":"Sleep and Seizures"
+        },
+        "family":{
+            "title":"Family Support",
+            "subtitle":"Let your loved ones know about your major episodes and stay connected for greater support",
+            "first":"Crisis Alert for the Family",
+            "second":"Secure Shared History",
+            "conclusion":"This feature will make it easier to stay in touch with your loved ones and provide you with extra support when you need it"
+        },
+        "exercices":{
+            "title":"Memory Exercices",
+            "subtitle":"Train your memory to help manage epilepsy",
+            "other": "Other exercices",
+            "games":{
+                "1":{
+                    "title":"Memory Sequence",
+                    "subtitle":"Repeat the sequence of colors",
+                    "explanations":"Memorize the sequence I gave you. Then click on the colored buttons to let us know if you remembered it correctly.<br/>Click <strong>'Start'</strong> to play!",
+                    "message1":"Memorize the sequence",
+                    "message1new":"Memorize the new color sequence requested",
+                    "message2":"Your turn",
+                    "messageSuccess":"Correct! 🎉 ",
+                    "messageWrong":"Wrong sequence ❌ . You can see the number of successful sequences in the bottom right corner. Press Start again to restart if you want.",
+                    "level":"Easy"
+                },
+                "2":{
+                    "title":"Visual Pattern",
+                    "subtitle":"Remember the highlited quares",
+                    "level":"Medium"
+                },
+                "3":{
+                    "title":"Common Name",
+                    "subtitle":"Find a common name based on a definition",
+                    "level":"Hard"
+                },
+                "4":{
+                    "title":"Quick Brain",
+                    "subtitle":"Find words quickly",
+                    "explanations":"Choose the correct answer based on the question asked. There are several levels, and you have a limited amount of time to answer. Good luck. <br/>Click <strong>‘Start’</strong> to play!",
+                    "message1":"Choose your level",
+                    "level":"Easy"
+                    
+                },
+                "5":{
+                    "title":"Pattern Builder",
+                    "subtitle":"Build complex pattern",
+                    "level":"Medium"
+                },
+                "6":{
+                    "title":"N-Back Training",
+                    "subtitle":"Improve working memory",
+                    "level":"Medium"
+                    
+                },
+                "7":{
+                    "title":"Scattergories",
+                    "subtitle":"Find differents nouns that start and end with the same letters",
+                    "level":"Hard"
+                }
+            }
+        }
+    }
+}

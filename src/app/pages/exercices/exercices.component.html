@@ -1,0 +1,171 @@
+<div id="introduction">
+    <div>
+        <p class="title-indrodution">{{exercicesTitle}}</p>
+        <p class="title-indrodution title-introduction-small">{{exercicesSubTitle}}</p>
+    </div>
+    <div class="mobile">
+        <img src="/assets/exercices_page.png" alt="Memory Exercices" />
+    </div>
+</div>
+<div class="cta-slider">
+    <div class="cta-slider-bloc" (click)="goTo('journal')">
+        <img class="cta-slider-bloc-image cta-shadow" src="/assets/memorysequence.png"/>
+        <p class="title-cta-slider">{{firstGameTitle}}</p>
+        <p class="title-cta-slider-under">{{firstGameSubTitle}}</p>
+         <div class="button_level">
+            <button class="button-width50" (click)="goTo('exercices/memorysequence')">
+                <span>Start</span>
+            </button>
+            <!--p  [ngClass]="(quickSearchTypeOptionConfigId && isGridReady)?'col-md-8 m-auto':'col-md-12 m-auto'" class="title-cta-slider-under">Medium</p-->
+            <p class="title-cta-slider-under level_easy">{{levelEasy}}</p>
+        </div>
+    </div>
+    <div class="cta-slider-bloc" (click)="goTo('exercices')">
+        <img class="cta-slider-bloc-image cta-shadow" src="/assets/visualpattern.png"/>
+        <p class="title-cta-slider">{{secondGameTitle}}</p>
+        <p class="title-cta-slider-under">{{secondGameSubTitle}}</p>
+        <div class="button_level">
+            <button class="button-width50" (click)="goTo('exercices/visualpattern')">
+                <span>Start</span>
+            </button>
+             <p class="title-cta-slider-under level_medium">{{levelMedium}}</p>
+        </div>
+    </div>
+    <div class="cta-slider-bloc" (click)="goTo('reports')">
+        <img class="cta-slider-bloc-image cta-shadow" src="/assets/findnamedefinition.png"/>
+        <p class="title-cta-slider">{{thirdGameTitle}}</p>
+        <p class="title-cta-slider-under">{{thirdGameSubTitle}}</p>
+        <div class="button_level">
+            <button class="button-width50">
+                <span>Start</span>
+            </button>
+            <p class="title-cta-slider-under level_hard">{{levelHard}}</p>
+        </div>
+    </div>
+</div>
+<div class="cta-other-bloc">
+    <div class="cta-title-mobile">
+        <div class="cta-title cta-title-text-mobile">{{exercicesTitle}}</div>
+        <img src="/assets/exercices_page.png" alt="Memory Exercices" />
+    </div>
+    <div class="cta-title">{{exercicesOtherExercices}}</div>
+    <div class="elementMenuContent elementMenuContentMobile">
+        <div class="elementMenuContentElements">
+            <div class="elementMenuContentElementsText">
+                <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/memorysequence.png"/>
+                <div class="elementMenuContentTexts">
+                    <p class="title-cta-slider elementMenuContentText">{{firstGameTitle}}</p>
+                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{firstGameSubTitle}}</p>
+                </div>
+            </div>
+            <div class="elementMenuContentElementsTextRight">
+                <button class="button-width50 button-width50Right" (click)="goTo('exercices/memorysequence')">
+                    <span>Start</span>
+                </button>
+                <p class="title-cta-slider-under title-cta-slider-right level_easy">{{levelEasy}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="elementMenuContent elementMenuContentMobile">
+        <div class="elementMenuContentElements">
+            <div class="elementMenuContentElementsText">
+                <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/visualpattern.png"/>
+                <div class="elementMenuContentTexts">
+                    <p class="title-cta-slider elementMenuContentText">{{secondGameTitle}}</p>
+                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{secondGameSubTitle}}</p>
+                </div>
+            </div>
+            <div class="elementMenuContentElementsTextRight">
+                <button class="button-width50 button-width50Right" (click)="goTo('exercices/visualpattern')">
+                    <span>Start</span>
+                </button>
+                <p class="title-cta-slider-under title-cta-slider-right level_medium">{{levelMedium}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="elementMenuContent elementMenuContentMobile">
+        <div class="elementMenuContentElements">
+            <div class="elementMenuContentElementsText">
+                <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/findnamedefinition.png"/>
+                <div class="elementMenuContentTexts">
+                    <p class="title-cta-slider elementMenuContentText">{{thirdGameTitle}}</p>
+                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{thirdGameSubTitle}}</p>
+                </div>
+            </div>
+            <div class="elementMenuContentElementsTextRight">
+                <button class="button-width50 button-width50Right">
+                    <span>Start</span>
+                </button>
+                <p class="title-cta-slider-under title-cta-slider-right level_hard">{{levelHard}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="elementMenuContent">
+        <div class="elementMenuContentElements">
+            <div class="elementMenuContentElementsText">
+                <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/quickbrain.png"/>
+                <div class="elementMenuContentTexts">
+                    <p class="title-cta-slider elementMenuContentText elementMenuContentTextOther">{{fourthGameTitle}}</p>
+                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{fourthGameSubTitle}}</p>
+                </div>
+            </div>
+            <div class="elementMenuContentElementsTextRight">
+                <button class="button-width50 button-width50Right" (click)="goTo('exercices/quickbrain')">
+                    <span>Start</span>
+                </button>
+                <p class="title-cta-slider-under title-cta-slider-right level_easy">{{levelEasy}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="elementMenuContent">
+        <div class="elementMenuContentElements">
+            <div class="elementMenuContentElementsText">
+                <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/patternbuilder.png"/>
+                <div class="elementMenuContentTexts">
+                    <p class="title-cta-slider elementMenuContentText elementMenuContentTextOther">{{fiveGameTitle}}</p>
+                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{fiveGameSubTitle}}</p>
+                </div>
+            </div>
+            <div class="elementMenuContentElementsTextRight">
+                <button class="button-width50 button-width50Right">
+                    <span>Start</span>
+                </button>
+                <p class="title-cta-slider-under title-cta-slider-right level_medium">{{levelMedium}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="elementMenuContent">
+        <div class="elementMenuContentElements">
+            <div class="elementMenuContentElementsText">
+                <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/nbacktraining.png"/>
+                <div class="elementMenuContentTexts">
+                    <p class="title-cta-slider elementMenuContentText elementMenuContentTextOther">{{sixGameTitle}}</p>
+                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{sixGameSubTitle}}</p>
+                </div>
+            </div>
+            <div class="elementMenuContentElementsTextRight">
+                <button class="button-width50 button-width50Right">
+                    <span>Start</span>
+                </button>
+                <p class="title-cta-slider-under title-cta-slider-right level_medium">{{levelMedium}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="elementMenuContent">
+        <div class="elementMenuContentElements">
+        <div class="elementMenuContentElementsText">
+                <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/findnamedefinitionwithletters.png"/>
+                <div class="elementMenuContentTexts">
+                    <p class="title-cta-slider elementMenuContentText elementMenuContentTextOther">{{sevenGameTitle}}</p>
+                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{sevenGameSubTitle}}</p>
+                </div>
+            </div>
+            <div class="elementMenuContentElementsTextRight">
+                <button class="button-width50 button-width50Right">
+                    <span>Start</span>
+                </button>
+                <p class="title-cta-slider-under title-cta-slider-right level_hard">{{levelHard}}</p>
+            </div>
+        </div>
+    </div>
+</div>

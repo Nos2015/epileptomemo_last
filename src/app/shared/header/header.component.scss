@@ -1,0 +1,189 @@
+#header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    background: linear-gradient(-90deg, #3283dc, #1d65bf);    
+}
+
+.imgback{
+    visibility: hidden;
+}
+
+#logoem{
+    display: flex;
+    cursor: pointer;
+    justify-content: flex-start;
+}
+
+#menu{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.menuItem{
+    padding-right:50px;
+    color: #f3f3f3;
+    cursor:pointer;
+    font-family: 'Inter';
+}
+
+.button-widthHeader{
+    color: #f3f3f3;
+    padding:12px 22px;
+    border-radius:8px;
+    font-family: 'Inter';
+    font-size: 15px;
+    cursor:pointer;
+    width: 200px;
+    background: transparent;
+    border: 2px solid #cdebfd;
+    margin-right: 50px;
+}
+
+.menuItem:hover, .button-widthHeader:hover{
+    color:#ffffff;
+}
+
+#logoem img{
+    height: 60px;
+    width: auto;
+}
+
+#logoem img:nth-child(2){
+    display: none;
+}
+
+#logoem:hover img:nth-child(1){
+    display: none;
+}
+
+#logoem:hover img:nth-child(2){
+    display: block;
+}
+
+#accessMenu{
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    height: 100px;
+
+    img:nth-child(2), img:nth-child(3), img:nth-child(4){
+        display: none;
+      }
+      &:hover img:nth-child(1), &:hover img:nth-child(3), &:hover img:nth-child(4)  {
+        display: none;
+      }
+      &:hover img:nth-child(2) {
+        display: block;
+      }
+      &.sidebarActive{
+        img:nth-child(3) {
+          display: block;
+        }
+
+        img:nth-child(1), img:nth-child(2), img:nth-child(4) {
+          display: none;
+        }
+
+        &:hover img:nth-child(1), &:hover img:nth-child(2), &:hover img:nth-child(3)  {
+          display: none;
+        }
+
+        &:hover img:nth-child(4) {
+          display: block;
+        }
+      }
+}
+
+input[type="checkbox"] {
+      display: none; 
+}
+
+.toggle-button-switch {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 100;
+    transition: left 0.3s;
+}
+
+.toggle-button-text {
+    overflow: hidden;
+    background-color: #162f72;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px 0 rgba(50, 50, 50, 0.75);
+    transition: background-color 0.3s;
+}
+.toggle-button-text-on,
+.toggle-button-text-off{
+    float: left;
+    width: 50%;
+    height: 35px;
+    line-height: 50px;
+    font-family: Lato, sans-serif;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+}
+
+input[type="checkbox"]:checked ~ .toggle-button-switch {
+    left: 38px;
+}
+
+input[type="checkbox"]:checked ~ .toggle-button-text .toggle-button-text-off {
+    visibility: hidden;
+}
+
+input[type="checkbox"]:checked ~ .toggle-button-text .toggle-button-text-on {
+    visibility: visible;
+}
+
+input[type="checkbox"] ~ .toggle-button-text .toggle-button-text-on {
+    visibility: hidden;
+}
+
+input[type="checkbox"] ~ .toggle-button-text .toggle-button-text-off {
+    visibility: visible;
+}
+
+
+.languageBox{
+    position: relative;
+    width: 70px;
+    height: 40px;
+}
+
+@media only screen and (max-width: 1199px){
+    #menu{
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    #accessMenu{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    #header{
+        padding-left: 10px;
+        padding-right: 10px;   
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    #accessMenu{
+        height: 60px;
+    }
+}

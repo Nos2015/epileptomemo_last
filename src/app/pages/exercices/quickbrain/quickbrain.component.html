@@ -1,0 +1,34 @@
+<div id="pagesBackground">
+    <div class="pagesTitle">
+        <div>
+            <div class="pageTitle">{{title}}</div>
+            <p class="pageSubTitle">{{subTitle}}</p>
+        </div>
+        <img class="cta-slider-bloc-image cta-shadow" src="/assets/quickbrain.png"/>
+    </div>
+</div>
+ <div class="elementMenu">
+    <div class="elementMenuContent">
+        <div class="elementMenuContentElementsText">
+            <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage" [innerHTML]="explaination"></p>
+        </div>
+    </div>
+    <div #game class="game">
+        <button [ngClass]="addButtonClass('button-width50',false)" (click)="startGame()" [disabled]="start">Start</button>
+         <p class="message">{{ message }}</p>
+    </div>
+    <div class="level" id="levelGame">
+        <button [ngClass]="start ? 'leveleasy':'leveleasy grey'" (click)="chooseLevel('easy')">Facile</button>
+        <button [ngClass]="start ? 'levelmedium':'levelmedium grey'" (click)="chooseLevel('medium')">Moyen</button>
+        <button [ngClass]="start ? 'levelhard':'levelhard grey'" (click)="chooseLevel('hard')">Dur</button>
+    </div>
+    <div [ngClass]="start && startChooseLevel ? 'question':'question questionhidden'">
+        <img *ngIf="typeQuestion != 'written'" class="cta-slider-bloc-image cta-shadow" src="/assets/quickbrain.png">
+        <div class="response">
+            <div class="responseAnswer" (click)="response('Question','Response 1')">Response 1</div>
+            <div class="responseAnswer" (click)="response('Question','Response 2')">Response 2</div>
+            <div class="responseAnswer" (click)="response('Question','Response 3')">Response 3</div>
+        </div>
+    </div>
+    <div class="pageSubTitle bottomRightPage">Score : {{score}}</div>
+ </div>

@@ -1,0 +1,67 @@
+<div id="sidebar">
+  <div id="menu">
+    <div class="languageBox">
+        <input type="checkbox" id="toggle-button-checkbox" (change)="setLanguage($event)" [checked]="isChecked">
+        <label class="toggle-button-switch"  
+        for="toggle-button-checkbox"></label>
+        <div class="toggle-button-text">
+            <img class="toggle-button-text-on" src="/assets/english.jpg" alt="French" />
+            <img class="toggle-button-text-off" src="/assets/french.jpg" alt="English">
+        </div>
+    </div>
+    <div class="elementMenu" (click)="goTo('exercices')">
+        <div class="elementMenuContent">
+            <div class="elementMenuContentElementsText">
+                <p class="title-cta-slider elementMenuContentText elementMenuContentTextSideBar">{{memoryExercices}}</p>
+                <p class="title-cta-slider-under elementMenuContentTextUnder">{{simpleCognitiveGames}}</p>
+            </div>
+            <img class="cta-slider-bloc-image cta-shadow" src="/assets/memoryexercicesmobile.png"/>
+        </div>
+    </div>
+    <div class="elementMenu" (click)="goTo('journal')">
+        <div class="elementMenuContent">
+            <div class="elementMenuContentElementsText">
+                <p class="title-cta-slider elementMenuContentText elementMenuContentTextSideBar">{{seizureJournal}}</p>
+                <p class="title-cta-slider-under elementMenuContentTextUnder">{{logSeizureEasily}}</p>
+            </div>
+            <img class="cta-slider-bloc-image cta-shadow" src="/assets/seizurejournalmobile.png"/>
+        </div>
+    </div>
+    <div class="elementMenu" (click)="goTo('reports')">
+        <div class="elementMenuContent">
+            <div class="elementMenuContentElementsText">
+                <p class="title-cta-slider elementMenuContentText elementMenuContentTextSideBar">{{neurologistReports}}</p>
+                <p class="title-cta-slider-under elementMenuContentTextUnder">{{exportHealthData}}</p>
+            </div>
+            <img class="cta-slider-bloc-image cta-shadow" src="/assets/neurologistexportsmobile.png"/>
+        </div>
+    </div>
+    <div class="elementMenu" (click)="goTo('stats')">
+        <div class="elementMenuContent">
+            <div class="elementMenuContentElementsText">
+                <p class="title-cta-slider elementMenuContentText elementMenuContentTextSideBar">{{statistics}}</p>
+                <p class="title-cta-slider-under elementMenuContentTextUnder">{{medicalCare}}</p>
+            </div>
+            <img class="cta-slider-bloc-image cta-shadow" src="/assets/statsmobile.png"/>
+        </div>
+    </div>
+    <div class="elementMenu" (click)="goTo('family')">
+        <div class="elementMenuContent">
+            <div class="elementMenuContentElementsText">
+                <p class="title-cta-slider elementMenuContentText elementMenuContentTextSideBar">{{familySupport}}</p>
+                <p class="title-cta-slider-under elementMenuContentTextUnder">{{keepLoveOneInformed}}</p>
+            </div>
+            <img class="cta-slider-bloc-image cta-shadow" src="/assets/familysupportmobile.png"/>
+        </div>
+    </div>
+    <div class="elementMenu">
+        <div class="elementMenuContent" (click)="goTo('footerComponent')">
+            <div class="elementMenuContentElementsText">
+                <p class="title-cta-slider elementMenuContentText elementMenuContentTextSideBar">{{joinWaitList}}</p>
+                <p class="title-cta-slider-under elementMenuContentTextUnder">{{joinFirst}}</p>
+            </div>
+            <img class="cta-slider-bloc-image cta-shadow" src="/assets/waitlistmobile.png"/>
+        </div>
+    </div>
+  </div>
+</div>

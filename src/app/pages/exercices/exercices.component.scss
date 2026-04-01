@@ -1,0 +1,216 @@
+#introduction{
+    margin-block-start:-1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-indrodution{
+    padding-top: 60px;
+    padding-left: 60px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    font-family: "InterBold";
+    font-size: 60px;
+    color: white;
+    margin-bottom: 0px;
+}
+
+.title-introduction-small{
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+.mobile{
+    margin-left: auto;
+    padding-right: 0px;
+    padding-top: 60px;
+}
+
+.mobile img{
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+}
+
+.cta-slider{
+    margin-top: -7em;
+    padding-bottom: 100px;
+}
+
+.cta-slider-bloc{
+    width:230px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.cta-other-bloc{
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: -7em;
+    padding-bottom: 30px;
+}
+
+.cta-title{
+    font-size: 30px;
+    font-family: "InterBold";
+    color: #0a4089;;
+    margin: 40px;
+}
+
+.elementMenuContent{
+    display: flex;
+    border-radius: 20px;
+    background-color: #f7f8fe;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    margin: 40px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.elementMenuContent:hover{
+    .title-cta-slider{
+        color:#2675d4;
+    }
+}
+
+.elementMenuContentElementsText{
+    display: flex;
+    padding: 20px;
+    padding-left: 0px;
+}
+
+.elementMenuContentElementsTextRight{
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 100%;
+    justify-content: space-around;
+    padding-right: 20px;
+}
+
+.elementMenuContentElementsText img{
+    width: 100%;
+    height: auto;
+    max-width: 100px;
+    object-fit: contain;
+}
+
+.elementMenuContentTexts{
+    padding-left: 20px;
+}
+
+.button_level{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.button-width50{
+    width: 100%;
+    margin: 0px;
+}
+
+.level_easy{
+    color:#e4933e;
+}
+
+.level_medium{
+    color:#287fd6;
+}
+
+.level_hard{
+    color:#0c0f1f;
+}
+
+.elementMenuContentElements{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.button-width50Right{
+    max-width: 80px;
+    //margin-top: 20px;
+}
+
+.title-cta-slider-right{
+    padding-bottom: 0px;
+}
+
+.title-cta-slider-under{
+    text-align: left;
+}
+
+.elementMenuContentTextOther{
+    text-align: left;
+}
+
+@media only screen and (max-width: 1400px){
+    .cta-slider{
+        margin: 0px;
+    }
+}
+
+@media only screen and (min-width: 1001px){
+    .elementMenuContentMobile{
+        display: none;
+    }
+
+    .cta-title-mobile{
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 1000px){
+    #introduction{
+        display: none;
+    }
+
+    .cta-slider{
+        display: none;
+    }
+
+    .cta-other-bloc .cta-title{
+        display: none;
+    }
+
+    .cta-other-bloc .cta-title-text-mobile{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .cta-other-bloc{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .elementMenuContent{
+        margin: 0;
+        margin-bottom: 40px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .cta-title-mobile{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .cta-title-mobile img{
+        max-width: 300px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .elementMenuContentElementsTextRight{
+        display: none;
+    }
+}

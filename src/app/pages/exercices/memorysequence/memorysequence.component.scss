@@ -1,0 +1,104 @@
+.elementMenu{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius: 20px;
+    contain-intrinsic-size: auto 300px;
+    background-color: #f7f8fe;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    margin: 40px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.elementMenuContent{
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+}
+
+.elementMenuContentTextUnder{
+    text-align: left;
+}
+
+.pagesTitle{
+    padding-bottom: 0px;
+}
+
+.game {
+  text-align: center;
+  max-width: 400px;
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.message {
+    font-size: 20px;
+    margin: 30px 0;
+    min-height: 30px;
+    font-family: "InterBold";
+    color: #07387b;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.color {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.green:hover, .red:hover, .blue:hover, .yellow:hover{
+  transform: scale(1.1);
+}
+
+.grey { background: #c1c1c1;}
+.green { background: #4CAF50; }
+.red { background: #FF5252; }
+.blue { background: #3F8CFF; }
+.yellow { background: #FFC107; }
+
+
+.button-width50{
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.pageSubTitle{
+    font-size: 18px;
+}
+
+.cta-slider-bloc-image{
+    max-width: 150px;
+}
+
+.bottomRightPage{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-right: 30px;
+}
+
+.elementMenu{
+    margin-top: 0;
+}

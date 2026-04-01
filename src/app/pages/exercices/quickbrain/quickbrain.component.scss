@@ -1,0 +1,165 @@
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,80px);
+  gap:10px;
+  justify-content:center;
+}
+
+.leveleasy{
+    background: linear-gradient(180deg, #e4933e, #f0810c);
+}
+
+.levelmedium{
+    background: linear-gradient(180deg, #0a74dd, #2382e1);
+}
+
+.levelhard{
+    background: linear-gradient(180deg, #141b43, #0c0f1f);
+}
+
+.grey { background: #c1c1c1;}
+
+.cell {
+  width:80px;
+  height:80px;
+  background:#e0e6f0;
+  border-radius:10px;
+}
+
+.cell.active {
+  background:#4da3ff;
+}
+
+.elementMenu{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius: 20px;
+    contain-intrinsic-size: auto 300px;
+    background-color: #f7f8fe;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    margin: 40px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.elementMenuContent{
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+}
+
+.elementMenuContentTextUnder{
+    text-align: left;
+}
+
+.pagesTitle{
+    padding-bottom: 0px;
+}
+
+.game {
+  text-align: center;
+  max-width: 400px;
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  //padding-bottom: 40px;
+}
+
+.button-width50{
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 100%;
+}
+
+.pageSubTitle{
+    font-size: 18px;
+}
+
+.cta-slider-bloc-image{
+    max-width: 150px;
+}
+
+.bottomRightPage{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-right: 30px;
+}
+
+.elementMenu{
+    margin-top: 0;
+}
+
+.message {
+    font-size: 20px;
+    margin: 30px 0;
+    min-height: 30px;
+    font-family: "InterBold";
+    color: #07387b;
+}
+
+.cell:hover{
+    cursor: pointer;
+}
+
+.game button{
+    min-width: 325px;
+}
+
+.level{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.level button{
+    min-width: 200px;
+    border: none;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    flex: 1 1 auto;
+    max-width: 200px;
+}
+
+.question {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.questionhidden{
+    display: none;
+}
+
+.response{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.responseAnswer{
+    font-size: 20px;
+    margin: 30px;
+    min-height: 30px;
+    font-family: "InterBold";
+    color: #0c0f1f;
+}
+
+.responseAnswer:hover{
+    cursor: pointer;
+    color: #07387b;
+}
