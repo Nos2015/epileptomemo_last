@@ -16,19 +16,36 @@
     <div #game class="game">
         <button [ngClass]="addButtonClass('button-width50',false)" (click)="startGame()" [disabled]="start">Start</button>
          <p class="message">{{ message }}</p>
+         <div class="timer-bar" *ngIf="start && startChooseLevel">
+            <div
+                class="timer-fill"
+                [style.width.%]="(timeGame / timeChoose) * 100"
+                [ngStyle]="{
+                    background: timeGame <= 2 ? '#ff4b4b' : '#58cc02'
+                }"
+            ></div>
+         </div>
     </div>
-    <div class="level" id="levelGame">
-        <button [ngClass]="start ? 'leveleasy':'leveleasy grey'" (click)="chooseLevel('easy')">Facile</button>
-        <button [ngClass]="start ? 'levelmedium':'levelmedium grey'" (click)="chooseLevel('medium')">Moyen</button>
-        <button [ngClass]="start ? 'levelhard':'levelhard grey'" (click)="chooseLevel('hard')">Dur</button>
-    </div>
-    <div [ngClass]="start && startChooseLevel ? 'question':'question questionhidden'">
-        <img *ngIf="typeQuestion != 'written'" class="cta-slider-bloc-image cta-shadow" src="/assets/quickbrain.png">
-        <div class="response">
-            <div class="responseAnswer" (click)="response('Question','Response 1')">Response 1</div>
-            <div class="responseAnswer" (click)="response('Question','Response 2')">Response 2</div>
-            <div class="responseAnswer" (click)="response('Question','Response 3')">Response 3</div>
+    <div #insertremovelevel>
+        <div class="level" id="levelGame">
+            <button [ngClass]="start ? 'leveleasy':'leveleasy grey'" (click)="chooseLevel('easy')">Facile</button>
+            <button [ngClass]="start ? 'levelmedium':'levelmedium grey'" (click)="chooseLevel('medium')">Moyen</button>
+            <button [ngClass]="start ? 'levelhard':'levelhard grey'" (click)="chooseLevel('hard')">Dur</button>
         </div>
     </div>
-    <div class="pageSubTitle bottomRightPage">Score : {{score}}</div>
+    <div [ngClass]="start && startChooseLevel ? 'question':'question questionhidden'">
+        <img *ngIf="typeQuestion != 'written'" class="" src="/assets/quickbrain/{{this.questionAsk.image}}">
+        <div class="responses">
+             <div class="response" *ngFor="let response of this.questionAsk.choices; let index = index;">
+                <div class="responseAnswer" (click)="responseanswer(response)">{{response}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="elementMenuContent">
+        <div class="elementMenuContentElementsText">
+            <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage">{{message2}}</p>
+        </div>
+    </div>
+     <div class="pageSubTitle bottomRightPage">Score : {{score}}</div>
  </div>
+

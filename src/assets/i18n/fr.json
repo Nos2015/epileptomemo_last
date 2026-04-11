@@ -98,28 +98,44 @@
                 "3":{
                     "title":"Common Name",
                     "subtitle":"Trouvez un nom commun à partir d'une définition",
+                    "explanations":"À partir d'une définition de mot, trouves le. Tu as bien sûr la lettre de début de mot. <br/>Appuies sur <strong>'Start'</strong> pour jouer !",
                     "level":"Dur"
                 },
                 "4":{
                     "title":"Quick Brain",
                     "subtitle":"Trouvez rapidement les mots",
-                    "explanations":"Choisis la bonne réponse suivant la question posée. Tu as plusieurs niveaux avec un temps décompté pour répondre. Bonne chance. <br/>Appuies sur <strong>'Start'</strong> pour jouer !",
+                    "explanations":"Choisis la bonne réponse suivant la question posée. Tu as plusieurs niveaux avec un temps décompté pour répondre. Bonne chance. <br/>Appuies sur <strong>'Start'</strong> pour jouer ! *",
                     "message1":"Choisis ton niveau",
+                    "message2":"*Bien évidemment, le jeu n'aura que quelques exemples. Il en aura bien évidemment toujours plus grâce à l'IA. Si jamais cela vous intéresse d'y accéder, inscrivez-vous pour bénéficier d'un accès anticipé.",
+                    "messageSuccess":"Correct! 🎉 ",
+                    "messageWrong":"Perdu ❌ . Tu peux voir le score de séquences réussies en bas à droite. Appuies sur Start si tu veux ré-essayer.",
                     "level":"Facile"
                 },
                 "5":{
                     "title":"Pattern Builder",
-                    "subtitle":"Créez un motif complexe",
+                    "subtitle":"Reproduire un motif demandé",
+                    "explanations":"Mémorise les cases colorées. Cliques alors sur les cases pour nous dire lesquelles selon toi l'ont été.<br/>Appuies sur <strong>'Start'</strong> pour jouer !",
+                    "message":"Niveau ",
+                    "message2":"A toi",
+                    "message3":"Fais bien attention",
+                    "messageSuccess":"Correct! 🎉 ",
+                    "messageWrong":"Perdu ❌ . Tu peux voir le score de séquences réussies en bas à droite. Appuies sur Start si tu veux ré-essayer.",
                     "level":"Moyen"
                 },
                 "6":{
                     "title":"N-Back Training",
                     "subtitle":"Améliorez votre mémoire",
+                    "explanations":"Mémorise les cases colorées. Cliques alors sur les cases pour nous dire lesquelles selon toi l'ont été.<br/>Appuies sur <strong>'Start'</strong> pour jouer !",
+                    "messageSuccess":"Correct! 🎉 ",
+                    "messageWrong":"Perdu ❌ . Tu peux voir le score de séquences réussies en bas à droite. Appuies sur Start si tu veux ré-essayer.",
                     "level":"Moyen"
                 },
                 "7":{
                     "title":"Scattergories",
                     "subtitle":"Trouvez différents noms commençant et finissant par les mêmes lettres",
+                    "explanations":"Mémorise les cases colorées. Cliques alors sur les cases pour nous dire lesquelles selon toi l'ont été.<br/>Appuies sur <strong>'Start'</strong> pour jouer !",
+                    "messageSuccess":"Correct! 🎉 ",
+                    "messageWrong":"Perdu ❌ . Tu peux voir le score de séquences réussies en bas à droite. Appuies sur Start si tu veux ré-essayer.",
                     "level":"Dur"
                 }
             }

@@ -3,7 +3,9 @@
         <p class="titleFooter">{{titleFooter}}</p>
         <p class="underTitleFooter">{{subTitleFooter}}</p>
         <div class="inputbuttonwaitlist">
-            <input class="form-control" matInput placeholder="{{enterEmail}}" formControlName="email">
+            <form [formGroup]="emailForm">
+                <input class="form-control" matInput placeholder="{{enterEmail}}" formControlName="email">
+            </form>
             <button class="button-width50">
                 <span>{{joinWaitList}}</span>
             </button>

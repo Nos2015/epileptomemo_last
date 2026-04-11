@@ -31,7 +31,7 @@
              <p class="title-cta-slider-under level_medium">{{levelMedium}}</p>
         </div>
     </div>
-    <div class="cta-slider-bloc" (click)="goTo('reports')">
+    <div class="cta-slider-bloc" (click)="goTo('exercices/commonname')">
         <img class="cta-slider-bloc-image cta-shadow" src="/assets/findnamedefinition.png"/>
         <p class="title-cta-slider">{{thirdGameTitle}}</p>
         <p class="title-cta-slider-under">{{thirdGameSubTitle}}</p>
@@ -92,7 +92,7 @@
                     <p class="title-cta-slider-under elementMenuContentTextUnder">{{thirdGameSubTitle}}</p>
                 </div>
             </div>
-            <div class="elementMenuContentElementsTextRight">
+            <div class="elementMenuContentElementsTextRight" (click)="goTo('exercices/commonname')">
                 <button class="button-width50 button-width50Right">
                     <span>Start</span>
                 </button>
@@ -127,7 +127,7 @@
                 </div>
             </div>
             <div class="elementMenuContentElementsTextRight">
-                <button class="button-width50 button-width50Right">
+                <button class="button-width50 button-width50Right" (click)="goTo('exercices/patternbuilder')">
                     <span>Start</span>
                 </button>
                 <p class="title-cta-slider-under title-cta-slider-right level_medium">{{levelMedium}}</p>

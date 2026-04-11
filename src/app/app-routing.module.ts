@@ -9,6 +9,8 @@ import { FamilyComponent } from './pages/family/family.component';
 import { MemorysequenceComponent } from './pages/exercices/memorysequence/memorysequence.component';
 import { VisualpatternComponent } from './pages/exercices/visualpattern/visualpattern.component';
 import { QuickbrainComponent } from './pages/exercices/quickbrain/quickbrain.component';
+import { PatternbuilderComponent } from './pages/exercices/patternbuilder/patternbuilder.component';
+import { CommonnameComponent } from './pages/exercices/commonname/commonname.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path:"exercices/memorysequence", component:MemorysequenceComponent},
   {path:"exercices/visualpattern", component:VisualpatternComponent},
   {path:"exercices/quickbrain", component:QuickbrainComponent},
+  {path:"exercices/patternbuilder", component:PatternbuilderComponent},
+  {path:"exercices/commonname", component:CommonnameComponent},
   {path:"journal", component:JournalComponent},
   {path:"stats", component:StatsComponent},
   {path:"reports", component:ReportsComponent},

@@ -1,0 +1,91 @@
+.elementMenu{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius: 20px;
+    contain-intrinsic-size: auto 300px;
+    background-color: #f7f8fe;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    margin: 40px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.elementMenuContent{
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+}
+
+.elementMenuContentTextUnder{
+    text-align: left;
+}
+
+.pagesTitle{
+    padding-bottom: 0px;
+}
+
+.cta-slider-bloc-image {
+    max-width: 150px;
+}
+
+.screen {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.letter {
+  font-size: 50px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.definition {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 10px;
+  padding: 15px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #3283dc, #1d65bf);
+  font-size:16px;
+  cursor: pointer;
+}
+
+.white{
+    color: white;
+}
+
+.feedback {
+  margin-top: 10px;
+}
+
+.bottomRightPage{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-right: 30px;
+    margin-top: 20px;
+}

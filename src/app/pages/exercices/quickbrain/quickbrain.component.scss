@@ -145,11 +145,12 @@
     display: none;
 }
 
-.response{
+.responses{
     display: flex;
     align-items: center;
     flex-direction: row;
 }
+
 
 .responseAnswer{
     font-size: 20px;
@@ -162,4 +163,25 @@
 .responseAnswer:hover{
     cursor: pointer;
     color: #07387b;
+}
+
+.timer-bar {
+  height: 6px;
+  background: #eee;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.timer-fill {
+  height: 100%;
+  background: #ff4b4b;
+  transition: width 1s linear;
+}
+
+.bottomRightPage{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-right: 30px;
 }

@@ -43,7 +43,7 @@ export class MemorysequenceComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-     window.scroll(0,0);
+    window.scroll(0,0);
     this.appComponent.setHome(false);
     this.translate.comp$.subscribe(
       () => {
@@ -89,7 +89,6 @@ export class MemorysequenceComponent implements OnInit{
       });
     }
   }
-
 
   addButtonClass(){
     if(!this.start){

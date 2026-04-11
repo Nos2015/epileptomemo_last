@@ -18,6 +18,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { provideHttpClient } from '@angular/common/http';
 import { QuickbrainComponent } from './pages/exercices/quickbrain/quickbrain.component';
+import { PatternbuilderComponent } from './pages/exercices/patternbuilder/patternbuilder.component';
+import { CommonnameComponent } from './pages/exercices/commonname/commonname.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,14 +36,18 @@ import { QuickbrainComponent } from './pages/exercices/quickbrain/quickbrain.com
     StatsComponent,
     MemorysequenceComponent,
     VisualpatternComponent,
-    QuickbrainComponent
+    QuickbrainComponent,
+    PatternbuilderComponent,
+    CommonnameComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TranslateModule.forRoot({
       loader: provideTranslateHttpLoader({prefix:"./assets/i18n/", suffix:".json"}),
-    })
+    }),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideHttpClient(),

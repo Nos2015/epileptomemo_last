@@ -1,0 +1,110 @@
+.elementMenu{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius: 20px;
+    contain-intrinsic-size: auto 300px;
+    background-color: #f7f8fe;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    margin: 40px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 0;
+}
+
+.elementMenuContent{
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+}
+
+.simon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //height: 100vh;
+  color: #4da3ff;
+}
+
+.cta-slider-bloc-image {
+    max-width: 150px;
+}
+
+.top {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(2, 120px);
+  gap: 15px;
+}
+
+.pad {
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  //opacity: 0.6;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* COLORS */
+.red { background: #fe4824; }
+.yellow { background: #ffdd0f; }
+.green { background: #5fbe2a; }
+.blue { background: #118bf5; }
+
+/* ACTIVE GLOW 🔥 */
+.pad.active {
+  opacity: 1;
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(255,255,255,0.8);
+}
+
+/* PRESS EFFECT */
+.pad:active {
+  transform: scale(0.95);
+}
+
+/* MESSAGE */
+.message {
+  margin-top: 25px;
+  font-size: 18px;
+}
+
+.red.active { box-shadow: 0 0 30px #ff4b4b; }
+.green.active { box-shadow: 0 0 30px #51cf66; }
+.blue.active { box-shadow: 0 0 30px #4dabf7; }
+.yellow.active { box-shadow: 0 0 30px #ffd93d; }
+
+.elementMenuContentTextUnder {
+    text-align: left;
+}
+
+.pageSubTitle{
+    font-size: 18px;
+}
+
+.bottomRightPage{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-right: 30px;
+}
+
+.top{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.grey { background: #c1c1c166;}

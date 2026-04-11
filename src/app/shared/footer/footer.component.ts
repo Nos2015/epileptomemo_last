@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { TranslateappService } from '../../services/translateapp.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +9,13 @@ import { TranslateappService } from '../../services/translateapp.service';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent implements OnInit{
-
+  emailForm = new FormGroup({
+    email: new FormControl<string>('', [
+      Validators.email,
+      Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+      Validators.required
+    ]),
+  });
   titleFooter = "";
   subTitleFooter = "";
   enterEmail = "";

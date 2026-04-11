@@ -87,25 +87,40 @@
                 "2":{
                     "title":"Visual Pattern",
                     "subtitle":"Remember the highlited quares",
+                    "explanations":"Remember which squares in the grid are highlighted. Then click on the squares to tell us which ones you think were highlighted.<br/>Click <strong>'Start'</strong> to play!",
+                    "message1":"Saves the sequence of highlighted cells",
+                    "message1new":"Save the new sequence of highlighted cells",
+                    "message2":"To you",
+                    "messageSuccess":"Correct! 🎉 ",
+                    "messageWrong":"Wrong sequence ❌ . You can see the number of successful sequences in the bottom right corner. Press Start again to restart if you want.",
                     "level":"Medium"
                 },
                 "3":{
                     "title":"Common Name",
                     "subtitle":"Find a common name based on a definition",
+                    "explanations":"Given a definition of a word, find the word. Of course, you know the first letter of the word you're looking for. <br/>Click <strong>'Start'</strong> to play!",
                     "level":"Hard"
                 },
                 "4":{
                     "title":"Quick Brain",
                     "subtitle":"Find words quickly",
-                    "explanations":"Choose the correct answer based on the question asked. There are several levels, and you have a limited amount of time to answer. Good luck. <br/>Click <strong>‘Start’</strong> to play!",
+                    "explanations":"Choose the correct answer based on the question asked. There are several levels, and you have a limited amount of time to answer. Good luck. <br/>Click <strong>‘Start’</strong> to play ! *",
                     "message1":"Choose your level",
+                    "message2":"*Of course, the game will only include a few examples. Thanks to the AI, there will always be more. If you're interested in trying it out, sign up for early access.",
+                    "messageSuccess":"Correct! 🎉 ",
+                    "messageWrong":"Wrong sequence ❌ . You can see the number of successful sequences in the bottom right corner. Press Start again to restart if you want.",
                     "level":"Easy"
-                    
                 },
                 "5":{
                     "title":"Pattern Builder",
-                    "subtitle":"Build complex pattern",
-                    "level":"Medium"
+                    "subtitle":"Reproduce a specified pattern",
+                    "explanations":"Memorize the colored squares. Then click on the squares to tell us which ones you think are colored. Good luck. <br/>Click <strong>‘Start’</strong> to play ! *",
+                    "message":"Level ",
+                    "message2":"Your turn",
+                    "message3":"Watch carefully",
+                    "messageSuccess":"Correct! 🎉 ",
+                    "messageWrong":"Wrong sequence ❌ . You can see the number of successful sequences in the bottom right corner. Press Start again to restart if you want.",
+                   "level":"Medium"
                 },
                 "6":{
                     "title":"N-Back Training",
