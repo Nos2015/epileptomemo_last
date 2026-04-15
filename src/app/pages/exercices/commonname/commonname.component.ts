@@ -594,7 +594,6 @@ constructor(public appComponent: AppComponent,
   changeLanguage(){
     //changeLanguage when page is on front
     if(this.elementRef.nativeElement.offsetParent != null) {
-      console.log("changeLanguage youhou !!!");
       this.translate.translate.get(
         [
           'pages.exercices.games.3.title',
@@ -637,7 +636,6 @@ constructor(public appComponent: AppComponent,
   }
 
   initializeQuestions(letter:string){
-    console.log("letter = "+letter);
     for (const questions of this.questionsToAnswer) {
       if(letter == questions.letter){
         this.words = questions.values;
