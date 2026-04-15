@@ -48,6 +48,7 @@ export class ExercicesComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    window.scroll(0,0);
     this.appComponent.setHome(true);
     this.translate.comp$.subscribe(
       () => {
@@ -104,7 +105,6 @@ export class ExercicesComponent implements OnInit{
   }
 
   goTo(route:string){
-    console.log("route = "+route);
     this.router.navigate([route]);
   }
 

@@ -35,6 +35,9 @@
     "red":"Rouge",
     "blue":"Bleu",
     "yellow":"Jaune",
+    "validate":"Valider",
+    "startover":"Recommencer",
+    "exit":"Quitter",
     "pages":{
         "title":"Fonctionnalités en cours de développement",
         "journal":{
@@ -98,7 +101,11 @@
                 "3":{
                     "title":"Common Name",
                     "subtitle":"Trouvez un nom commun à partir d'une définition",
-                    "explanations":"À partir d'une définition de mot, trouves le. Tu as bien sûr la lettre de début de mot. <br/>Appuies sur <strong>'Start'</strong> pour jouer !",
+                    "message2":"*Bien évidemment, le jeu n'aura que quelques exemples. Il en aura bien évidemment toujours plus grâce à l'IA. Si jamais cela vous intéresse d'y accéder, inscrivez-vous pour bénéficier d'un accès anticipé.",
+                    "explanations":"À partir d'une définition de mot, trouves le. Tu as bien sûr la lettre de début de mot. Tu as 3 vies pour trouver 5 mots commençant par cette lettre. <br/>Choisis ta  <strong>'Lettre'</strong> pour jouer ! *",
+                    "victory":"Bravo ! 🎉",
+                    "loose":"Game Over ! 💀",
+                    "answer":"Ta réponse...",
                     "level":"Dur"
                 },
                 "4":{

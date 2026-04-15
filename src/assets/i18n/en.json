@@ -35,6 +35,9 @@
     "red":"Red",
     "blue":"Blue",
     "yellow":"Yellow",
+    "validate":"Submit",
+    "startover":"Start over",
+    "exit":"Exit",
     "pages":{
         "title":"Features currently in development",
         "journal":{
@@ -98,7 +101,11 @@
                 "3":{
                     "title":"Common Name",
                     "subtitle":"Find a common name based on a definition",
-                    "explanations":"Given a definition of a word, find the word. Of course, you know the first letter of the word you're looking for. <br/>Click <strong>'Start'</strong> to play!",
+                    "explanations":"Given a definition of a word, find the word. Of course, you know the first letter of the word you're looking for. You have 3 lives to find 5 words that start with this letter. <br/>Choose a <strong>'Letter'</strong> to play ! *",
+                    "message2":"*Of course, the game will only include a few examples. Thanks to the AI, there will always be more. If you're interested in trying it out, sign up for early access.",
+                    "victory":"Congratulations ! 🎉",
+                    "loose":"Game Over ! 💀",
+                    "answer":"Your answer..",
                     "level":"Hard"
                 },
                 "4":{

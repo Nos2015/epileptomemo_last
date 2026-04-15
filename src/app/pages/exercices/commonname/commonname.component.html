@@ -9,10 +9,20 @@
 </div>
  <div class="elementMenu">
     <div class="elementMenuContent">
-        <div class="elementMenuContentElementsText">
+        <div *ngIf="!chooseLetter" class="elementMenuContentElementsText">
             <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage" [innerHTML]="explaination"></p>
         </div>
-        <div class="screen">
+        <div *ngIf="!chooseLetter" class="letters-grid">
+            <div 
+                *ngFor="let letter of letters"
+                class="letter-card"
+                (click)="selectLetter(letter)"
+            >
+                {{ letter }}
+            </div>
+        </div>
+
+        <div *ngIf="chooseLetter" class="screen">
 
             <!-- HEADER -->
             <div class="header">
@@ -38,18 +48,33 @@
             <!-- INPUT -->
             <input 
                 [(ngModel)]="userAnswer"
-                placeholder="Ta réponse..."
+                placeholder={{answer}}
             />
 
             <!-- BUTTON -->
-            <button class="pageElements white" (click)="submit()">Valider</button>
+            <button class="pageElements white" (click)="submit()">{{validate}}</button>
 
             <!-- FEEDBACK -->
             <div class="feedback" *ngIf="feedback">
                 {{ feedback }}
             </div>
+            <div class="elementMenuContentElementsText">
+                <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage">{{message2}}</p>
+            </div>
             <div class="pageSubTitle bottomRightPage">Score : {{score}}</div>
         </div>
-        
     </div>
  </div>
+ <div class="overlay" *ngIf="showResult">
+  <div class="modal">
+    <div class="end icon" [innerHTML]="victory ? victoryText : looseText">
+    </div>
+    <p class="score">
+      Score : {{ score }}/{{ total }}
+    </p>
+    <div class="actions">
+      <button class=" retry" (click)="restart()">{{startover}}</button>
+      <button class="quit" (click)="quit()">{{exit}}</button>
+    </div>
+  </div>
+</div>

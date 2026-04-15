@@ -35,6 +35,31 @@
     max-width: 150px;
 }
 
+.letters-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  padding: 20px;
+}
+
+.letter-card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: "InterBold";
+}
+
+.letter-card:hover {
+  background: #2a78d8;
+  color: white;
+  transform: scale(1.05);
+}
+
 .screen {
   padding: 20px;
   display: flex;
@@ -78,8 +103,14 @@ button {
     color: white;
 }
 
+.white:hover{
+    background: linear-gradient(180deg, #3484e0, #2a78d8);
+}
+
 .feedback {
   margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: "InterBold";
 }
 
 .bottomRightPage{
@@ -88,4 +119,95 @@ button {
     justify-content: flex-end;
     margin-right: 30px;
     margin-top: 20px;
+}
+
+.pageSubTitle{
+    font-size: 18px;
+}
+
+.elementMenuContentTextUnder{
+    text-align: left;
+}
+
+/* OVERLAY */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* MODAL */
+.modal {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 350px;
+  text-align: center;
+
+  border: 3px solid #1cb0f6; /* bleu Duolingo */
+  animation: pop 0.3s ease;
+}
+
+/* ANIMATION */
+@keyframes pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ICON */
+.icon {
+    margin-bottom: 10px;
+    font-family: 'InterBold';
+    font-size: 30px;
+}
+
+/* TITRE */
+.endh2 {
+  margin-bottom: 10px;
+}
+
+/* SCORE */
+.score {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-family: 'InterBold';
+}
+
+/* BOUTONS */
+.actions button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* RESTART */
+.retry {
+     background: linear-gradient(180deg, #3484e0, #2a78d8);
+    color: white;
+    cursor: pointer;
+}
+
+.retry:hover{
+    background: linear-gradient(180deg, #3283dc, #1d65bf);
+}
+
+/* QUIT */
+.quit {
+  background: #eee;
+}
+
+.quit:hover {
+  background: #2a78d8;
+  color: white;
 }

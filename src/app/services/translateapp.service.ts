@@ -27,8 +27,6 @@ export class TranslateappService {
 
   setTransLanguage(language: string){
     this.translate.use(language).subscribe((translations) => {
-        console.log('Current language is now '+language);
-        console.log('translations:', translations);
         this.compInstance.next("language");
     });
   }

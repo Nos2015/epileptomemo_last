@@ -43,7 +43,6 @@ export class HeaderComponent implements OnInit{
   }
 
   changeLanguage(){
-    console.log("changeLanguage");
     //changeLanguage when page is on front
     if(this.elementRef.nativeElement.offsetParent != null) {
       this.translate.translate.get(
