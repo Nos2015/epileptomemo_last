@@ -306,10 +306,277 @@ export class CommonnameComponent implements OnInit{
     }
 ];
 
+ WORDS_EN = [
+    { 
+        letter:"A",
+        values:[
+          { definition: "A fruit that keeps the doctor away", answer: "apple" },
+          { definition: "A flying vehicle", answer: "airplane" },
+          { definition: "A small insect that works in groups", answer: "ant" },
+          { definition: "A place where art is created", answer: "artstudio" },
+          { definition: "A sea creature with eight arms", answer: "anemone" }
+        ]
+    },
+    {
+
+      letter:"B",
+      values: [
+        { definition: "A yellow fruit", answer: "banana" },
+        { definition: "An animal that flies at night", answer: "bat" },
+        { definition: "A vehicle with two wheels", answer: "bike" },
+        { definition: "A container for liquids", answer: "bottle" },
+        { definition: "A place where you borrow books", answer: "bookstore" }
+      ]
+    },
+    {
+        letter:"C",
+        values:[
+          { definition: "An animal that says meow", answer: "cat" },
+          { definition: "A vehicle with four wheels", answer: "car" },
+          { definition: "A place to cook food", answer: "cookingroom" },
+          { definition: "A frozen dessert", answer: "cake" },
+          { definition: "A round object used in games", answer: "circle" }
+      ]
+    },
+    {
+      letter:"D",
+      values: [
+        { definition: "An animal that barks", answer: "dog" },
+        { definition: "A sweet food", answer: "donut" },
+        { definition: "Something you wear", answer: "dress" },
+        { definition: "A place in the desert", answer: "dune" },
+        { definition: "A tool for drilling", answer: "drill" }
+      ]
+    },
+    {
+      letter: "E",
+      values: [
+        { definition: "A large animal with a trunk", answer: "elephant" },
+        { definition: "Something you eat for breakfast", answer: "egg" },
+        { definition: "Energy that powers devices", answer: "electricity" },
+        { definition: "Energy-producing machine", answer: "engine" },
+        { definition: "A place to learn", answer: "education" }
+      ]
+    },
+    {
+      letter:"F",
+      values:[
+        { definition: "A sweet red fruit", answer: "fig" },
+        { definition: "An animal that swims", answer: "fish" },
+        { definition: "A flower plant", answer: "flower" },
+        { definition: "A place with fire", answer: "fireplace" },
+        { definition: "Something you eat", answer: "food" }
+      ]
+    },
+    {
+      letter:"G",
+      values:[
+        { definition: "A place to park a car", answer: "garage" },
+        { definition: "A musical instrument", answer: "guitar" },
+        { definition: "A piece of land", answer: "ground" },
+        { definition: "Something you wear on hands", answer: "glove" },
+        { definition: "A green vegetable", answer: "greens" }
+      ]
+    },
+    {
+      letter:"H",
+      values:[
+        { definition: "A place where people live", answer: "house" },
+        { definition: "A place for sick people", answer: "hospital" },
+        { definition: "A head covering", answer: "hat" },
+        { definition: "A tool to hit nails", answer: "hammer" },
+        { definition: "A hot drink", answer: "hotchocolate" }
+      ]
+    },
+    {
+      letter:"I",
+      values:[
+        { definition: "Frozen water", answer: "ice" },
+        { definition: "A piece of land surrounded by water", answer: "island" },
+        { definition: "A frozen dessert", answer: "icecream" },
+        { definition: "A global network", answer: "internet" },
+        { definition: "A tool to remove wrinkles from clothes", answer: "iron" }
+      ]
+    },
+    {
+      letter:"J",
+      values:[
+        { definition: "A fruit drink", answer: "juice" },
+        { definition: "A sweet spread", answer: "jam" },
+        { definition: "A piece of clothing", answer: "jacket" },
+        { definition: "A gemstone", answer: "jade" },
+        { definition: "A container for drinks", answer: "jar" }
+      ]
+    },
+    {
+      letter:"K",
+      values:[
+        { definition: "A place to cook", answer: "kitchen" },
+        { definition: "An animal that jumps", answer: "kangaroo" },
+        { definition: "A musical instrument", answer: "keyboard" },
+        { definition: "A unit of temperature", answer: "kelvin" },
+        { definition: "A small key on keyboard", answer: "key" }
+      ]
+    },
+    {
+      letter:"L",
+      values:[
+        { definition: "A big cat", answer: "lion" },
+        { definition: "A source of light", answer: "lamp" },
+        { definition: "A drink", answer: "lemonade" },
+        { definition: "A green vegetable", answer: "lettuce" },
+        { definition: "A place to stay", answer: "lodge" }
+      ]
+    },
+    {
+      letter:"M",
+      values:[
+        { definition: "A fruit", answer: "mango" },
+        { definition: "Food eaten at a time", answer: "meal" },
+        { definition: "A place to buy things", answer: "market" },
+        { definition: "Sounds organized", answer: "music" },
+        { definition: "A vehicle", answer: "motorbike" }
+      ]
+    },
+    {
+      letter:"N",
+      values:[
+        { definition: "Time when it's dark", answer: "night" },
+        { definition: "A number", answer: "nine" },
+        { definition: "A sea animal", answer: "narwhal" },
+        { definition: "A small tool", answer: "needle" },
+        { definition: "A printed news source", answer: "newspaper" }
+      ]
+    },
+    {
+      letter:"O",
+      values:[
+        { definition: "A large body of water", answer: "ocean" },
+        { definition: "A fruit", answer: "orange" },
+        { definition: "A shape", answer: "oval" },
+        { definition: "A cooking oil", answer: "oliveoil" },
+        { definition: "A musical instrument", answer: "organ" }
+      ]
+    },
+    {
+      letter:"P",
+      values:[
+        { definition: "A tropical fruit", answer: "pineapple" },
+        { definition: "A device to call", answer: "phone" },
+        { definition: "An animal", answer: "penguin" },
+        { definition: "Something you write with", answer: "pen" },
+        { definition: "A place for cars", answer: "parking" }
+      ]
+    },
+    {
+      letter:"Q",
+      values:[
+        { definition: "A question game", answer: "quiz" },
+        { definition: "A female ruler", answer: "queen" },
+        { definition: "A line of people", answer: "queue" },
+        { definition: "Silent or calm", answer: "quiet" },
+        { definition: "Fast action", answer: "quick" }
+      ]
+    },
+    {
+      letter:"R",
+      values:[
+        { definition: "A color", answer: "red" },
+        { definition: "A flower", answer: "rose" },
+        { definition: "A path for cars", answer: "road" },
+        { definition: "A small animal", answer: "rabbit" },
+        { definition: "Clothing for rain", answer: "raincoat" }
+      ]
+    },
+    {
+      letter:"S",
+      values:[
+        { definition: "A star", answer: "sun" },
+        { definition: "A place to sit", answer: "seat" },
+        { definition: "A long reptile", answer: "snake" },
+        { definition: "A cutting tool", answer: "scissors" },
+        { definition: "A fizzy drink", answer: "soda" }
+      ]
+    },
+    {
+      letter:"T",
+      values:[
+        { definition: "A hot drink", answer: "tea" },
+        { definition: "A communication device", answer: "telephone" },
+        { definition: "Furniture for eating", answer: "table" },
+        { definition: "A wild animal", answer: "tiger" },
+        { definition: "A measurement of duration", answer: "time" }
+      ]
+    },
+    {
+      letter:"U",
+      values:[
+        { definition: "A kitchen tool", answer: "utensil" },
+        { definition: "A musical instrument", answer: "ukulele" },
+        { definition: "A group united", answer: "union" },
+        { definition: "Something you use", answer: "usage" },
+        { definition: "A higher education place", answer: "university" }
+      ]
+    },
+    {
+      letter:"V",
+      values:[
+        { definition: "A transport machine", answer: "vehicle" },
+        { definition: "A bird that eats dead animals", answer: "vulture" },
+        { definition: "A plant that climbs", answer: "vine" },
+        { definition: "A human sound", answer: "voice" },
+        { definition: "A place to vote", answer: "votingbooth" }
+      ]
+    },
+    {
+      letter:"W",
+      values:[
+        { definition: "A liquid we drink", answer: "water" },
+        { definition: "A place online", answer: "website" },
+        { definition: "A person who works", answer: "worker" },
+        { definition: "A wild animal", answer: "wolf" },
+        { definition: "A sport", answer: "wrestling" }
+      ]
+    },
+    {
+      letter:"X",
+      values:[
+        { definition: "A musical instrument", answer: "xylophone" },
+        { definition: "A chemical element", answer: "xenon" },
+        { definition: "A medical image", answer: "xray" },
+        { definition: "Fear of foreigners", answer: "xenophobia" },
+        { definition: "Study of wood", answer: "xylology" }
+      ]
+    },
+    {
+      letter:"Y",
+      values:[
+        { definition: "A physical activity", answer: "yoga" },
+        { definition: "A toy", answer: "yoyo" },
+        { definition: "An animal", answer: "yak" },
+        { definition: "A color", answer: "yellow" },
+        { definition: "A boat", answer: "yacht" }
+      ]
+    },
+    {
+      letter:"Z",
+      values:[
+        { definition: "A striped animal", answer: "zebra" },
+        { definition: "A place with animals", answer: "zoo" },
+        { definition: "A dance workout", answer: "zumba" },
+        { definition: "A zigzag line", answer: "zigzag" },
+        { definition: "A sleep sound", answer: "zzz" }
+      ]
+    }
+];
+
+questionsToAnswer:any;
+language = "";
+
 constructor(public appComponent: AppComponent,
                 public translate: TranslateappService,
                 private elementRef: ElementRef,
-                private router : Router,
+                private router : Router
 
     ){}
 
@@ -327,6 +594,7 @@ constructor(public appComponent: AppComponent,
   changeLanguage(){
     //changeLanguage when page is on front
     if(this.elementRef.nativeElement.offsetParent != null) {
+      console.log("changeLanguage youhou !!!");
       this.translate.translate.get(
         [
           'pages.exercices.games.3.title',
@@ -353,18 +621,35 @@ constructor(public appComponent: AppComponent,
         this.exit = translations['exit'];
         this.answer = translations['pages.exercices.games.3.answer'];
       });
+      let lang = localStorage.getItem("language");
+      if (lang == null || lang == "fr"){
+        this.language = "fr";
+        this.questionsToAnswer = this.WORDS;
+      }
+      else{
+        this.language = lang;
+        this.questionsToAnswer = this.WORDS_EN;
+      }
+      if(this.selectedLetter != ""){
+        this.initializeQuestions(this.selectedLetter);
+      }
+    }
+  }
+
+  initializeQuestions(letter:string){
+    console.log("letter = "+letter);
+    for (const questions of this.questionsToAnswer) {
+      if(letter == questions.letter){
+        this.words = questions.values;
+      }
     }
   }
 
   selectLetter(letter: string) {
     this.currentIndex = 0;
-    for (const questions of this.WORDS) {
-      if(letter == questions.letter){
-        this.selectedLetter = letter;
-        this.words = questions.values;
-        this.chooseLetter = true;
-      }
-    }
+    this.selectedLetter = letter;
+    this.initializeQuestions(this.selectedLetter);
+    this.chooseLetter = true;
     window.scroll(0,0);
   }
 
