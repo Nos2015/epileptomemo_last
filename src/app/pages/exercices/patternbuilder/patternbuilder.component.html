@@ -29,24 +29,24 @@
 
         <div
         class="pad yellow"
-        [ngClass]="{'grey': !start, 'yellow': start, 'active' : start && activePad==='yellow' }"
+        [ngClass]="{'grey': !start, 'yellow': start, 'active' : start && activePad==='yellow', 'cursor': start && isPlaying  }"
         (click)="handleClick('yellow')"
         ></div>
         <div 
         class="pad blue"
-        [ngClass]="{'grey': !start, 'blue': start, 'active' : start && activePad==='blue' }"
+        [ngClass]="{'grey': !start, 'blue': start, 'active' : start && activePad==='blue', 'cursor': start && isPlaying}"
         (click)="handleClick('blue')"
         ></div>
 
         <div 
         class="pad red"
-        [ngClass]="{'grey': !start, 'red': start, 'active' : start && activePad==='red' }"
+        [ngClass]="{'grey': !start, 'red': start, 'active' : start && activePad==='red', 'cursor': start && isPlaying }"
         (click)="handleClick('red')"
         ></div>
 
         <div 
         class="pad green"
-        [ngClass]="{'grey': !start, 'green': start, 'active' : start && activePad==='green' }"
+        [ngClass]="{'grey': !start, 'green': start, 'active' : start && activePad==='green', 'cursor': start && isPlaying }"
         (click)="handleClick('green')"
         ></div>
 
