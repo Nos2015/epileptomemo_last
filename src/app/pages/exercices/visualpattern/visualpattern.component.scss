@@ -14,7 +14,12 @@
   border-radius:10px;
 }
 
-.cell.active {
+.cell.active{
+  background:#4da3ff;
+}
+
+.activeColor:hover{
+  cursor: pointer;
   background:#4da3ff;
 }
 
@@ -59,6 +64,7 @@
   padding-right: 20px;
   padding-top: 20px;
   padding-bottom: 40px;
+  width: 400px;
 }
 
 .button-width50{
@@ -94,9 +100,5 @@
     min-height: 30px;
     font-family: "InterBold";
     color: #07387b;
-}
-
-.cell:hover{
-    cursor: pointer;
 }
 

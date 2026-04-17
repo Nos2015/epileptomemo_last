@@ -21,7 +21,9 @@
                 *ngFor="let cell of grid; let i = index"
                 (click)="clickCell(i)"
                 [class.active]="cell"
-                class="cell">
+                [ngClass]="playing ? 'activeColor' : 'inactiveColor'"
+                class="cell"
+                >
             </div>
         </div>
     </div>
