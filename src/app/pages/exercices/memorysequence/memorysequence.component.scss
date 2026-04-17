@@ -61,12 +61,12 @@
   height: 70px;
   border-radius: 50%;
   border: none;
-  cursor: pointer;
   transition: 0.2s;
 }
 
 .green:hover, .red:hover, .blue:hover, .yellow:hover{
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 .grey { background: #c1c1c1;}
