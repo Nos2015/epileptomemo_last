@@ -1,0 +1,114 @@
+.elementMenu{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius: 20px;
+    contain-intrinsic-size: auto 300px;
+    background-color: #f7f8fe;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    margin: 40px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.elementMenuContent{
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+}
+
+.elementMenuContentTextUnder{
+    text-align: left;
+}
+
+.pagesTitle{
+    padding-bottom: 0px;
+}
+
+.cta-slider-bloc-image {
+    max-width: 150px;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Progress bar */
+.progress {
+  height: 10px;
+  background: #eee;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.bar {
+  height: 100%;
+  background: #58cc02;
+  border-radius: 10px;
+  transition: width 0.3s;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.cell {
+  width: 80px;
+  height: 80px;
+  background: #ddd;
+  border-radius: 12px;
+  transition: 0.2s;
+}
+
+.cell.active {
+  background: #1cb0f6;
+  transform: scale(1.1);
+}
+
+/* Buttons */
+.actions button {
+  width: 120px;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+}
+
+.match {
+  background: #58cc02;
+  color: white;
+}
+
+.no-match {
+  background: #ff4b4b;
+  color: white;
+}
+
+/* Feedback */
+.feedback {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.button-width50{
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 100%;
+}
+
+.grey { background: #c1c1c166;}

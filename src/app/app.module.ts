@@ -21,6 +21,7 @@ import { QuickbrainComponent } from './pages/exercices/quickbrain/quickbrain.com
 import { PatternbuilderComponent } from './pages/exercices/patternbuilder/patternbuilder.component';
 import { CommonnameComponent } from './pages/exercices/commonname/commonname.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NbacktrainingComponent } from './pages/exercices/nbacktraining/nbacktraining.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     VisualpatternComponent,
     QuickbrainComponent,
     PatternbuilderComponent,
-    CommonnameComponent
+    CommonnameComponent,
+    NbacktrainingComponent
   ],
   imports: [
     BrowserModule,

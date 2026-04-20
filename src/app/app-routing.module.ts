@@ -11,6 +11,7 @@ import { VisualpatternComponent } from './pages/exercices/visualpattern/visualpa
 import { QuickbrainComponent } from './pages/exercices/quickbrain/quickbrain.component';
 import { PatternbuilderComponent } from './pages/exercices/patternbuilder/patternbuilder.component';
 import { CommonnameComponent } from './pages/exercices/commonname/commonname.component';
+import { NbacktrainingComponent } from './pages/exercices/nbacktraining/nbacktraining.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:"exercices/quickbrain", component:QuickbrainComponent},
   {path:"exercices/patternbuilder", component:PatternbuilderComponent},
   {path:"exercices/commonname", component:CommonnameComponent},
+  {path:"exercices/nbacktraining", component:NbacktrainingComponent},
   {path:"journal", component:JournalComponent},
   {path:"stats", component:StatsComponent},
   {path:"reports", component:ReportsComponent},
