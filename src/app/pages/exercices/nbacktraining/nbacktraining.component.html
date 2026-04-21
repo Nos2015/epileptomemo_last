@@ -13,24 +13,46 @@
             <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage" [innerHTML]="explaination"></p>
         </div>
     </div>
-    <div class="container">
+    <div #game class="container">
         <button [ngClass]="addButtonClass()" (click)="startGame()" [disabled]="start">Start</button>
-        <div class="progress">
+        <p class="message" [innerHTML]="message"></p>
+        <div *ngIf="typeLevel ==''" #insertremovelevel>
+            <div class="level" id="levelGame">
+                <button [ngClass]="start ? 'levelcolor':'levelcolor grey'" (click)="chooseLevel('levelcolor')">{{color}}</button>
+                <button [ngClass]="start ? 'levelletters':'levelletters grey'" (click)="chooseLevel('levelletters')">{{letters}}</button>
+            </div>
+        </div>
+        
+        <div *ngIf="start && typeLevel!=''" class="progress">
             <div class="bar" [style.width.%]="progress"></div>
         </div>
-        <div class="grid">
-            <div 
-            *ngFor="let cell of grid; let i = index"
-            class="cell"
-            [class.active]="i === activeIndex"
-            ></div>
+        <div *ngIf="start && typeLevel!=''">
+            <div class="grid" *ngIf="typeLevel === 'levelcolor'">
+                <div 
+                    *ngFor="let cell of grid; let i = index"
+                    class="cell"
+                    [class.active]="i === activeIndex"
+                ></div>
+            </div>
+            <div class="grid" *ngIf="typeLevel === 'levelletters'">
+                <div
+                    *ngFor="let cell of grid; let i = index"
+                    class="cell"
+                    >
+                    <div 
+                        class="tile"
+                        *ngIf="i === activeIndex"
+                        [class.show]="showTile"
+                    >
+                        {{ currentLetter }}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="actions">
-            <button (click)="answer(true)" class="match">MATCH</button>
-            <button (click)="answer(false)" class="no-match">NO MATCH</button>
-        </div>
-        <div class="feedback" *ngIf="feedback">
-            {{ feedback }}
+        <div *ngIf="start && typeLevel!=''" class="actions">
+            <button (click)="answer(true)" class="match">{{match}}</button>
+            <button (click)="answer(false)" class="no-match">{{nomatch}}</button>
         </div>
     </div>
+     <div *ngIf="showScore" class="pageSubTitle bottomRightPage">Score : {{score}}/{{totalSteps}}</div>
 </div>

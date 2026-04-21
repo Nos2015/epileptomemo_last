@@ -132,8 +132,18 @@
                 "6":{
                     "title":"N-Back Training",
                     "subtitle":"Improve working memory",
+                    "explanations":"Mémorise les cases colorées. Then click the “Same” or “Other” boxes to let us know if the same ones were colored<br/>Click <strong>'Start'</strong> to play !",
+                    "message1":"Choose your N-Back Type",
+                    "message2":"Watch carefully",
+                    "message3":"Your turn",
+                    "messageError":"Faux ! ❌ ",
+                    "messageSuccess":"Correct! 🎉 ",
+                    "messageEnd":"End Game !<br/>You can see the number of successful sequences in the bottom right corner.<br/>Press Start again to restart if you want.",
+                    "match":"MATCH",
+                    "nomatch":"NO MATCH",
+                    "color":"Color",
+                    "letters":"Letters",
                     "level":"Medium"
-                    
                 },
                 "7":{
                     "title":"Scattergories",

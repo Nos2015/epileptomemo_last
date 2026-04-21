@@ -132,9 +132,17 @@
                 "6":{
                     "title":"N-Back Training",
                     "subtitle":"Améliorez votre mémoire",
-                    "explanations":"Mémorise les cases colorées. Cliques alors sur les cases pour nous dire lesquelles selon toi l'ont été.<br/>Appuies sur <strong>'Start'</strong> pour jouer !",
+                    "explanations":"Deux types d'exercice :<br/>- Couleur : Mémorise les cases colorées. Cliques alors sur les cases 'PAREIL' ou 'PAS PAREIL' pour nous dire si cela a été les mêmes qui ont été colorées<br/>- Lettres : Mémorise la lettre de l'alphabet montrée.  Appuies sur 'PAREIL' ou 'PAS PAREIL' si la lettre montrée est la même que la précédente.<br/><br/>Appuies sur <strong>'Start'</strong> pour jouer !",
+                    "message1":"Choisis ton type de N-Back",
+                    "message2":"Fais bien attention",
+                    "message3":"A toi",
+                    "messageError":"Faux ! ❌ ",
                     "messageSuccess":"Correct! 🎉 ",
-                    "messageWrong":"Perdu ❌ . Tu peux voir le score de séquences réussies en bas à droite. Appuies sur Start si tu veux ré-essayer.",
+                    "messageEnd":"Fin du jeu !<br/>Tu peux voir le score de séquences réussies en bas à droite.<br/>Appuies sur Start si tu veux ré-essayer.",
+                    "match":"PAREIL",
+                    "nomatch":"PAS PAREIL",
+                    "color":"Couleur",
+                    "letters":"Lettres",
                     "level":"Moyen"
                 },
                 "7":{

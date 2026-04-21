@@ -21,40 +21,25 @@
                 {{ letter }}
             </div>
         </div>
-
         <div *ngIf="chooseLetter" class="screen">
-
-            <!-- HEADER -->
             <div class="header">
-                <!--div>🔥 {{ streak }}</div-->
-
                 <div class="progress pageElements">
                 {{ currentIndex + 1 }} / {{ words.length }}
                 </div>
 
                 <div class="pageElements">❤️ {{ lives }}</div>
             </div>
-
-            <!-- LETTRE -->
             <div class="letter pageElements">
                 {{ selectedLetter }}
             </div>
-
-            <!-- DEFINITION -->
             <div class="definition pageElements">
                 {{ currentWord.definition }}
             </div>
-
-            <!-- INPUT -->
             <input 
                 [(ngModel)]="userAnswer"
                 placeholder={{answer}}
             />
-
-            <!-- BUTTON -->
             <button class="pageElements white" (click)="submit()">{{validate}}</button>
-
-            <!-- FEEDBACK -->
             <div class="feedback" *ngIf="feedback">
                 {{ feedback }}
             </div>

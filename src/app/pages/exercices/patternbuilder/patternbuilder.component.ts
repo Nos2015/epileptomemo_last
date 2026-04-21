@@ -8,6 +8,7 @@ import { TranslateappService } from '../../../services/translateapp.service';
   templateUrl: './patternbuilder.component.html',
   styleUrl: './patternbuilder.component.scss'
 })
+
 export class PatternbuilderComponent implements OnInit{
   title = "";
   subTitle = "";
@@ -171,10 +172,6 @@ export class PatternbuilderComponent implements OnInit{
     this.level = 1;
     this.pattern = [];
     navigator.vibrate(200);
-
-    /*setTimeout(() => {
-      this.startGame();
-    }, 2000);*/
   }
 
 
