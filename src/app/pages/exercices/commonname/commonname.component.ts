@@ -572,6 +572,7 @@ export class CommonnameComponent implements OnInit{
 
 questionsToAnswer:any;
 language = "";
+finalText = "";
 
 constructor(public appComponent: AppComponent,
                 public translate: TranslateappService,
@@ -706,6 +707,7 @@ constructor(public appComponent: AppComponent,
     this.endOfGame = true;
     this.feedback = null;
     this.streak = 0;
+    this.finalText = "Score : "+ this.score + "/" + this.total;
     this.showResult = true;
   }
 

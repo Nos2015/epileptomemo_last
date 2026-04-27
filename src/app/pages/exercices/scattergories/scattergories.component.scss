@@ -52,12 +52,51 @@
   cursor: pointer;
   transition: all 0.2s;
   font-family: "InterBold";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .letter-card:hover {
   background: #2a78d8;
   color: white;
   transform: scale(1.05);
+}
+
+.letter-card-no{
+    background: #c1c1c166;
+    color: white;
+}
+
+.letter-card-no:hover {
+  background: #c1c1c166;
+  color: white;
+  transform:none;
+}
+
+.containerLetter{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  position: relative;      
+}
+
+.toast {
+  position: absolute;
+  bottom: 5px;
+  right: 1px;
+  margin: 0;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+}
+
+.letter-card-no:hover .tooltiptext {
+  visibility: visible;
+  transition-delay: 0.3s;
 }
 
 .screen {
@@ -143,7 +182,7 @@ button {
   align-items: center;
 }
 
-/*
+/* MODAL */
 .modal {
   background: white;
   border-radius: 20px;
@@ -152,31 +191,36 @@ button {
   max-width: 350px;
   text-align: center;
 
-  border: 3px solid #1cb0f6;
+  border: 3px solid #1cb0f6; /* bleu Duolingo */
   animation: pop 0.3s ease;
 }
 
+/* ANIMATION */
 @keyframes pop {
   0% { transform: scale(0.8); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
 }
 
+/* ICON */
 .icon {
     margin-bottom: 10px;
     font-family: 'InterBold';
     font-size: 30px;
 }
 
+/* TITRE */
 .endh2 {
   margin-bottom: 10px;
 }
 
+/* SCORE */
 .score {
   font-size: 20px;
   margin-bottom: 20px;
   font-family: 'InterBold';
 }
 
+/* BOUTONS */
 .actions button {
   width: 100%;
   padding: 15px;
@@ -186,6 +230,7 @@ button {
   font-weight: bold;
 }
 
+/* RESTART */
 .retry {
      background: linear-gradient(180deg, #3484e0, #2a78d8);
     color: white;
@@ -196,6 +241,7 @@ button {
     background: linear-gradient(180deg, #3283dc, #1d65bf);
 }
 
+/* QUIT */
 .quit {
   background: #eee;
 }
@@ -203,4 +249,38 @@ button {
 .quit:hover {
   background: #2a78d8;
   color: white;
-}*/
+}
+
+.wordfind{
+  font-family: "InterBold";
+  background: linear-gradient(#d6ecff, #b8dbff);
+  border: 1px solid #7fb4e5;
+  color: #2a5d8f;
+  box-shadow: inset 0 -2px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.2);
+  height: 48px;
+  min-width: 48px;
+  position: relative;
+  align-content: center;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.wordtofind{
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.selectedLetter{
+  margin-right: 10px;
+}
+
+.endingWord{
+  margin-left: 10px;
+}
+
+.inputuser{
+  width: 100%;
+  font-family: "InterBold";
+  text-transform: uppercase;
+}

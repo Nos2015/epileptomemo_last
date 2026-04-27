@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AppComponent } from '../../../app.component';
 import { TranslateappService } from '../../../services/translateapp.service';
 
@@ -31,6 +31,7 @@ export class PatternbuilderComponent implements OnInit{
   success = '';
   wrong = "";
 
+  @ViewChild('game') gameElement!: ElementRef;
 
   constructor(public appComponent: AppComponent,
               public translate: TranslateappService,
@@ -92,7 +93,15 @@ export class PatternbuilderComponent implements OnInit{
     this.nextRound();
   }
 
+  scrollToGameElement(){
+    if (this.gameElement != null) {
+      let el = this.gameElement.nativeElement as HTMLElement
+      el.scrollIntoView();
+    }
+  }
+
   nextRound() {
+    this.scrollToGameElement();
     this.playerInput = [];
     this.isPlaying = false;
     this.message = this.watch;

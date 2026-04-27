@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AppComponent } from '../../../app.component';
 import { TranslateappService } from '../../../services/translateapp.service';
+import { Router } from '@angular/router';
+import { LocalstorageService } from '../../../services/localstorage.service';
 
 @Component({
   selector: 'app-memorysequence',
@@ -35,11 +37,20 @@ export class MemorysequenceComponent implements OnInit{
   messageWrong = "";
   messageSuccess = "";
 
+  numbertimesplayed = 0;
+  showEnd = false;
+  joinus = "";
+  endgaming = "";
+  finalText = "";
+  okText = "OK";
+
   @ViewChild('game') gameElement!: ElementRef;
 
   constructor(public appComponent: AppComponent,
               public translate: TranslateappService,
               private elementRef: ElementRef,
+               private router : Router,
+              public localStorageService: LocalstorageService
   ){}
 
   ngOnInit(): void {
@@ -51,6 +62,18 @@ export class MemorysequenceComponent implements OnInit{
       }
     );
     this.changeLanguage();
+
+    this.checkLocaleStorage();
+    if(this.numbertimesplayed == 3){
+      this.showEnd = true;
+    }
+  }
+
+  checkLocaleStorage(){
+    let times = this.localStorageService.getNumberExercicePlayed("memorysequence");
+    if(times != null){
+        this.numbertimesplayed = Number(times);
+    }
   }
 
   changeLanguage(){
@@ -69,7 +92,9 @@ export class MemorysequenceComponent implements OnInit{
           'green',
           'red',
           'blue',
-          'yellow'
+          'yellow',
+          'join',
+          'endgaming'
         ]
       )
       .subscribe(translations => {
@@ -85,7 +110,9 @@ export class MemorysequenceComponent implements OnInit{
         this.message1new = translations['pages.exercices.games.1.message1new'];
         this.message2 = translations['pages.exercices.games.1.message2'];
         this.messageWrong = translations['pages.exercices.games.1.messageWrong'];
-         this.messageSuccess = translations['pages.exercices.games.1.messageSuccess'];
+        this.messageSuccess = translations['pages.exercices.games.1.messageSuccess'];
+        this.joinus = translations['join'];
+        this.endgaming = translations['endgaming'];
       });
     }
   }
@@ -109,25 +136,32 @@ export class MemorysequenceComponent implements OnInit{
   }
 
   startGame(){
-    if(!this.win){
-      this.score = 0;
-    }
-    this.scrollToGameElement();
-    this.sequence = [];
-    this.playerSequence = [];
-    if(this.score == 0  || this.score < 0){
-      this.message = this.message1;
+    this.checkLocaleStorage();
+    if(this.numbertimesplayed == 3){
+      this.showEnd = true;
     }
     else{
-      this.message = this.message1new;
+      if(!this.win){
+        this.score = 0;
+      }
+      this.scrollToGameElement();
+      this.sequence = [];
+      this.playerSequence = [];
+      if(this.score == 0  || this.score < 0){
+        this.message = this.message1;
+      }
+      else{
+        this.message = this.message1new;
+      }
+      
+      for(let i=0;i<this.level;i++){
+        const random = this.colors[Math.floor(Math.random()*this.colors.length)];
+        this.sequence.push(random);
+      }
+
+      this.showSequence();
     }
     
-    for(let i=0;i<this.level;i++){
-      const random = this.colors[Math.floor(Math.random()*this.colors.length)];
-      this.sequence.push(random);
-    }
-
-    this.showSequence();
   }
 
   async showSequence(){
@@ -153,11 +187,15 @@ export class MemorysequenceComponent implements OnInit{
     this.playerSequence.push(color);
 
     if(this.playerSequence[this.playerSequence.length -1] !== this.sequence[this.playerSequence.length -1]){
+      this.setTimesPlayed();
       this.message = this.messageWrong;
       this.playing = false;
       this.start = false;
       this.level = 3;
       this.win = false;
+      if(!this.checkUserCanPlay()){
+        this.showEnd = true;
+      }
       return;
     }
 
@@ -179,5 +217,33 @@ export class MemorysequenceComponent implements OnInit{
       let el = this.gameElement.nativeElement as HTMLElement
       el.scrollIntoView();
     }
+  }
+
+  getTimesPlayed(){
+    return this.numbertimesplayed;
+  }
+
+  setTimesPlayed(){
+    this.numbertimesplayed++;
+    this.localStorageService.setNumberExercicePlayed("memorysequence", this.numbertimesplayed);
+  }
+
+  checkUserCanPlay():boolean{
+    let timesplayed = this.getTimesPlayed();
+    if(timesplayed <= 3){
+        return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  join(){
+    this.showEnd = false;
+    this.appComponent.scrollToFooterElement();
+  }
+
+  quit(){
+    this.router.navigate(["exercices"]);
   }
 }

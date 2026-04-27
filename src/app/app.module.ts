@@ -22,6 +22,8 @@ import { PatternbuilderComponent } from './pages/exercices/patternbuilder/patter
 import { CommonnameComponent } from './pages/exercices/commonname/commonname.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NbacktrainingComponent } from './pages/exercices/nbacktraining/nbacktraining.component';
+import { ScattergoriesComponent } from './pages/exercices/scattergories/scattergories.component';
+import { PopupComponent } from './shared/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { NbacktrainingComponent } from './pages/exercices/nbacktraining/nbacktra
     QuickbrainComponent,
     PatternbuilderComponent,
     CommonnameComponent,
-    NbacktrainingComponent
+    NbacktrainingComponent,
+    ScattergoriesComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@
             <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage" [innerHTML]="explaination"></p>
         </div>
     </div>
-    <div class="simon-container">
+    <div  #game class="simon-container">
         <button [ngClass]="addButtonClass('button-width50')" (click)="startGame()" [disabled]="start">Start</button>
         <div class="top">
             <div class="level pageSubTitle">{{ levelText }} {{ level }}</div>

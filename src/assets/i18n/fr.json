@@ -38,6 +38,7 @@
     "validate":"Valider",
     "startover":"Recommencer",
     "exit":"Quitter",
+    "endgaming":"Désolé mais pour le moment, vous ne pouvez jouer que 3 fois par exercice. Mais rejoignez-nous et vous pourrez y jouer autant que vous le souhaitez",
     "pages":{
         "title":"Fonctionnalités en cours de développement",
         "journal":{
@@ -47,11 +48,11 @@
             "third":"Traitement",
             "fourth":"Historique des prise(s) de médicament(s)",
             "five":"Notification de prise de médicament(s)",
-            "conclusion":"Cette fonctionnalité vous permettra de savoir la chronologie de vos crises et de créer un rapport claire et détaillé qui sera partagé avec votre neurologue si vous le souhaitez dans Rapports"
+            "conclusion":"Cette fonctionnalité vous permettra de savoir la chronologie de vos crises et de créer un rapport clair et détaillé qui sera partagé avec votre neurologue si vous le souhaitez dans Rapports"
         },
         "reports":{
             "title":"Rapports de neurologues",
-            "subtitle":"Exportez votre historique des crises d'épilepsie sous forme de rapport claire et détaillé, prêt à partager avec votre neurologue",
+            "subtitle":"Exportez votre historique des crises d'épilepsie sous forme de rapport clair et détaillé, prêt à partager avec votre neurologue",
             "first":"Rapport PDF détaillé",
             "second":"Partage facile avec le médecin",
             "conclusion":"Cette fonctionnalité permettra à votre neurologue de mieux comprendre vos crises et de mieux ajuster votre traitement"
@@ -101,7 +102,7 @@
                 "3":{
                     "title":"Common Name",
                     "subtitle":"Trouvez un nom commun à partir d'une définition",
-                    "message2":"*Bien évidemment, le jeu n'aura que quelques exemples. Il en aura bien évidemment toujours plus grâce à l'IA. Si jamais cela vous intéresse d'y accéder, inscrivez-vous pour bénéficier d'un accès anticipé.",
+                    "message2":"*Bien évidemment, le jeu n'aura que quelques exemples. Il y'en aura bien évidemment toujours plus grâce à l'IA. Si jamais cela vous intéresse d'y accéder, inscrivez-vous pour bénéficier d'un accès anticipé.",
                     "explanations":"À partir d'une définition de mot, trouves le. Tu as bien sûr la lettre de début de mot. Tu as 3 vies pour trouver 5 mots commençant par cette lettre. <br/>Choisis ta  <strong>'Lettre'</strong> pour jouer ! *",
                     "victory":"Bravo ! 🎉",
                     "loose":"Game Over ! 💀",
@@ -113,7 +114,7 @@
                     "subtitle":"Trouvez rapidement les mots",
                     "explanations":"Choisis la bonne réponse suivant la question posée. Tu as plusieurs niveaux avec un temps décompté pour répondre. Bonne chance. <br/>Appuies sur <strong>'Start'</strong> pour jouer ! *",
                     "message1":"Choisis ton niveau",
-                    "message2":"*Bien évidemment, le jeu n'aura que quelques exemples. Il en aura bien évidemment toujours plus grâce à l'IA. Si jamais cela vous intéresse d'y accéder, inscrivez-vous pour bénéficier d'un accès anticipé.",
+                    "message2":"*Bien évidemment, le jeu n'aura que quelques exemples. Il y'en aura bien évidemment toujours plus grâce à l'IA. Si jamais cela vous intéresse d'y accéder, inscrivez-vous pour bénéficier d'un accès anticipé.",
                     "messageSuccess":"Correct! 🎉 ",
                     "messageWrong":"Perdu ❌ . Tu peux voir le score de séquences réussies en bas à droite. Appuies sur Start si tu veux ré-essayer.",
                     "level":"Facile"
@@ -147,10 +148,13 @@
                 },
                 "7":{
                     "title":"Scattergories",
-                    "subtitle":"Trouvez différents noms commençant et finissant par les mêmes lettres",
-                    "explanations":"Mémorise les cases colorées. Cliques alors sur les cases pour nous dire lesquelles selon toi l'ont été.<br/>Appuies sur <strong>'Start'</strong> pour jouer !",
-                    "messageSuccess":"Correct! 🎉 ",
-                    "messageWrong":"Perdu ❌ . Tu peux voir le score de séquences réussies en bas à droite. Appuies sur Start si tu veux ré-essayer.",
+                    "subtitle":"Trouvez différents noms commençant par la lettre choisie et finissant par les mêmes lettres",
+                    "message2":"*Bien évidemment, le jeu n'aura que quelques exemples et vous pourrez accéder aux 4 meilleures lettres les plus faciles pour l'instant. Il y'en aura bien évidemment toujours plus grâce à l'IA. Si jamais cela vous intéresse d'y accéder, inscrivez-vous pour bénéficier d'un accès anticipé.",
+                    "explanations":"Choisis une lettre. Celle-ci correspond à la lettre du début du mot à trouver. Tous les mots de la lettre choisie finiront par les mêmes lettres. Tu as 3 vies pour trouver 5 mots.<br/>Choisis ta  <strong>'Lettre'</strong> pour jouer ! *",
+                    "victory":"Bravo ! 🎉",
+                    "loose":"Game Over ! 💀",
+                    "answer":"Ta réponse...",
+                    "lettercomingsoon": "Letter bientôt disponible",
                     "level":"Dur"
                 }
             }

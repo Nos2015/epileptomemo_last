@@ -12,6 +12,7 @@ import { QuickbrainComponent } from './pages/exercices/quickbrain/quickbrain.com
 import { PatternbuilderComponent } from './pages/exercices/patternbuilder/patternbuilder.component';
 import { CommonnameComponent } from './pages/exercices/commonname/commonname.component';
 import { NbacktrainingComponent } from './pages/exercices/nbacktraining/nbacktraining.component';
+import { ScattergoriesComponent } from './pages/exercices/scattergories/scattergories.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:"exercices/patternbuilder", component:PatternbuilderComponent},
   {path:"exercices/commonname", component:CommonnameComponent},
   {path:"exercices/nbacktraining", component:NbacktrainingComponent},
+  {path:"exercices/scattergories", component:ScattergoriesComponent},
   {path:"journal", component:JournalComponent},
   {path:"stats", component:StatsComponent},
   {path:"reports", component:ReportsComponent},

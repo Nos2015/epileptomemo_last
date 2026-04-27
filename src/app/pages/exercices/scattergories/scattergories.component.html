@@ -1,0 +1,92 @@
+<div id="pagesBackground">
+    <div class="pagesTitle">
+        <div>
+            <div class="pageTitle">{{title}}</div>
+            <p class="pageSubTitle">{{subTitle}}</p>
+        </div>
+        <img class="cta-slider-bloc-image cta-shadow" src="/assets/findnamedefinitionwithletters.png"/>
+    </div>
+</div>
+<div #game class="elementMenu">
+    <div class="elementMenuContent">
+        <div *ngIf="!chooseLetter" class="elementMenuContentElementsText">
+            <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage" [innerHTML]="explaination"></p>
+        </div>
+        <div *ngIf="!chooseLetter" class="letters-grid">
+            <div 
+                *ngFor="let letter of letters;let index = index;"
+                class="letter-card"
+                [ngClass]="WORDS[index].play ? 'letter-card':'letter-card letter-card-no'"
+                (click)="selectLetter(letter, index)"
+            >
+                <div class="containerLetter">
+                        <p>{{ letter }}</p>
+                        <p class="toast" *ngIf="!WORDS[index].play ">
+                        🔒
+                        </p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="chooseLetter" class="screen">
+            <div class="header">
+                <div class="progress pageElements">
+                {{ currentIndex + 1 }} / {{ words.length }}
+                </div>
+
+                <div class="pageElements">❤️ {{ lives }}</div>
+            </div>
+            <div class="letter pageElements">
+                {{ selectedLetter }}
+            </div>
+            <div class="definition pageElements">
+                {{ currentWord.definition }}
+            </div>
+            <diV class="wordtofind">
+                <div class="selectedLetter wordfind">
+                    {{selectedLetter}}
+                </div>
+                <input 
+                    [(ngModel)]="userAnswer"
+                    placeholder={{answer}}
+                    class="inputuser"
+                />
+                <div class="endingWord wordfind">
+                    {{endingWord}}
+                </div>
+            </diV>
+            
+            <button class="pageElements white" (click)="submit()">{{validate}}</button>
+            <div class="feedback" *ngIf="feedback">
+                {{ feedback }}
+            </div>
+            <div class="elementMenuContentElementsText">
+                <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage">{{message2}}</p>
+            </div>
+            <div class="pageSubTitle bottomRightPage">Score : {{score}}</div>
+        </div>
+    </div>
+ </div>
+ <div class="overlay" *ngIf="showResult">
+  <div class="modal">
+    <div class="end icon" [innerHTML]="victory ? victoryText : looseText">
+    </div>
+    <p class="score">
+      Score : {{ score }}/{{ total }}
+    </p>
+    <div class="actions">
+      <button class=" retry" (click)="restart()">{{startover}}</button>
+      <button class="quit" (click)="quit()">{{exit}}</button>
+    </div>
+  </div>
+</div>
+<div class="overlay" *ngIf="showNoLetter">
+  <div class="modal">
+    <p class="score">
+      {{lettercomingsoon}}
+    </p>
+    <div class="actions">
+      <button class=" retry" (click)="joinUs()">{{join}}</button>
+      <button class="quit" (click)="ok()">OK</button>
+    </div>
+  </div>
+</div>

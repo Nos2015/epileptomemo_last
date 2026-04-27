@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AppComponent } from '../../../app.component';
 import { TranslateappService } from '../../../services/translateapp.service';
+import { Router } from '@angular/router';
+import { LocalstorageService } from '../../../services/localstorage.service';
 
 @Component({
   selector: 'app-visualpattern',
@@ -29,12 +31,19 @@ export class VisualpatternComponent implements OnInit{
   messageSuccess = "";
 
   win = false;
+  numbertimesplayed = 0;
+
+  showEnd = false;
+  joinus = "";
+  endgaming = "";
 
   @ViewChild('game') gameElement!: ElementRef;
 
   constructor(public appComponent: AppComponent,
               public translate: TranslateappService,
               private elementRef: ElementRef,
+              private router : Router,
+              public localStorageService: LocalstorageService
   ){}
 
   ngOnInit(): void {
@@ -46,6 +55,20 @@ export class VisualpatternComponent implements OnInit{
       }
     );
     this.changeLanguage();
+
+    this.checkLocaleStorage();
+
+    if(!this.checkUserCanPlay()){
+        this.showEnd = true;
+    }
+  }
+
+  checkLocaleStorage(){
+    //this.localStorageService.setNumberExercicePlayed("visualpattern", 0);
+    let times = this.localStorageService.getNumberExercicePlayed("visualpattern");
+    if(times != null){
+        this.numbertimesplayed = Number(times);
+    }
   }
 
   changeLanguage(){
@@ -61,6 +84,8 @@ export class VisualpatternComponent implements OnInit{
           'pages.exercices.games.2.message2',
           'pages.exercices.games.2.messageWrong',
           'pages.exercices.games.2.messageSuccess',
+          'join',
+          'endgaming'
         ]
       )
       .subscribe(translations => {
@@ -71,7 +96,9 @@ export class VisualpatternComponent implements OnInit{
         this.message1new = translations['pages.exercices.games.2.message1new'];
         this.message2 = translations['pages.exercices.games.2.message2'];
         this.messageWrong = translations['pages.exercices.games.2.messageWrong'];
-         this.messageSuccess = translations['pages.exercices.games.2.messageSuccess'];
+        this.messageSuccess = translations['pages.exercices.games.2.messageSuccess'];
+        this.joinus = translations['join'];
+        this.endgaming = translations['endgaming'];
       });
     }
   }
@@ -85,26 +112,41 @@ export class VisualpatternComponent implements OnInit{
     }
   }
 
+  getTimesPlayed(){
+    return this.numbertimesplayed;
+  }
+
+  setTimesPlayed(){
+    this.numbertimesplayed++;
+    this.localStorageService.setNumberExercicePlayed("visualpattern", this.numbertimesplayed);
+  }
+
   startGame() {
-    if(!this.win){
-      this.score = 0;
-    }
-    this.start = true;
-    this.scrollToGameElement();
-    this.pattern = [];
-    this.player = [];
-    if(this.score == 0  || this.score < 0){
-      this.message = this.message1;
+    let visualpatternlocalstorage = this.localStorageService.getNumberExercicePlayed("visualpattern");
+    if(visualpatternlocalstorage != null && visualpatternlocalstorage == "3"){
+        this.showEnd = true;
     }
     else{
-      this.message = this.message1new;
-    }
+      if(!this.win){
+        this.score = 0;
+      }
+      this.start = true;
+      this.scrollToGameElement();
+      this.pattern = [];
+      this.player = [];
+      if(this.score == 0  || this.score < 0){
+        this.message = this.message1;
+      }
+      else{
+        this.message = this.message1new;
+      }
 
-    for (let i = 0; i < this.level; i++) {
-      this.pattern.push(Math.floor(Math.random() * 9));
+      for (let i = 0; i < this.level; i++) {
+        this.pattern.push(Math.floor(Math.random() * 9));
+      }
+      this.showPattern();
     }
-
-    this.showPattern();
+    
   }
 
   async showPattern() {
@@ -133,10 +175,14 @@ export class VisualpatternComponent implements OnInit{
     this.player.push(index);
 
     if (this.player[this.player.length - 1] !== this.pattern[this.player.length - 1]) {
-      this.message = this.messageWrong;
+      this.setTimesPlayed();
       this.level = 3;
       this.start = false;
       this.win = false;
+      this.message = this.messageWrong;
+      if(!this.checkUserCanPlay()){
+        this.showEnd = true;
+      }
       return;
     }
 
@@ -158,5 +204,24 @@ export class VisualpatternComponent implements OnInit{
       let el = this.gameElement.nativeElement as HTMLElement
       el.scrollIntoView();
     }
+  }
+
+  checkUserCanPlay():boolean{
+    let timesplayed = this.getTimesPlayed();
+    if(timesplayed <= 3){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  join(){
+    this.showEnd = false;
+    this.appComponent.scrollToFooterElement();
+  }
+
+  quit(){
+    this.router.navigate(["exercices"]);
   }
 }

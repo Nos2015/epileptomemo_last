@@ -102,3 +102,85 @@
     color: #07387b;
 }
 
+/* OVERLAY */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* MODAL */
+.modal {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 350px;
+  text-align: center;
+
+  border: 3px solid #1cb0f6; /* bleu Duolingo */
+  animation: pop 0.3s ease;
+}
+
+/* ANIMATION */
+@keyframes pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ICON */
+.icon {
+    margin-bottom: 10px;
+    font-family: 'InterBold';
+    font-size: 20px;
+}
+
+/* TITRE */
+.endh2 {
+  margin-bottom: 10px;
+}
+
+/* SCORE */
+.score {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-family: 'InterBold';
+}
+
+/* BOUTONS */
+.actions button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* RESTART */
+.retry {
+     background: linear-gradient(180deg, #3484e0, #2a78d8);
+    color: white;
+    cursor: pointer;
+}
+
+.retry:hover{
+    background: linear-gradient(180deg, #3283dc, #1d65bf);
+}
+
+/* QUIT */
+.quit {
+  background: #eee;
+}
+
+.quit:hover {
+  background: #2a78d8;
+  color: white;
+}
