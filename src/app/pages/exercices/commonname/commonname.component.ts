@@ -79,7 +79,7 @@ export class CommonnameComponent implements OnInit{
       values: [
         { definition: "Animal qui nage", answer: "dauphin" },
         { definition: "Lieu désertique", answer: "désert" },
-        { definition: "Partie du corps pour voir", answer: "doigt" },
+        { definition: "Partie du corps", answer: "doigt" },
         { definition: "Boisson", answer: "diabolo" },
         { definition: "Moment de la journée", answer: "déjeuner" }
       ]

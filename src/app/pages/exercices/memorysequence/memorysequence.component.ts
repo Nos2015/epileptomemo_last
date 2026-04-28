@@ -43,6 +43,8 @@ export class MemorysequenceComponent implements OnInit{
   endgaming = "";
   finalText = "";
   okText = "OK";
+  bestScore = 0;
+  bestScoreText = "";
 
   @ViewChild('game') gameElement!: ElementRef;
 
@@ -65,6 +67,7 @@ export class MemorysequenceComponent implements OnInit{
 
     this.checkLocaleStorage();
     if(this.numbertimesplayed == 3){
+      this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("memorysequencescore");
       this.showEnd = true;
     }
   }
@@ -73,6 +76,18 @@ export class MemorysequenceComponent implements OnInit{
     let times = this.localStorageService.getNumberExercicePlayed("memorysequence");
     if(times != null){
         this.numbertimesplayed = Number(times);
+    }
+  }
+
+  checkBestScore(){
+    let score = this.localStorageService.getBestScoreExercicePlayed("memorysequencescore");
+    if(score == null || score == undefined){
+      this.localStorageService.setBestScoreExercicePlayed("memorysequencescore",this.bestScore);
+    }
+    else if(score != null || score != undefined){
+      if( this.bestScore > Number(score)){
+         this.localStorageService.setBestScoreExercicePlayed("memorysequencescore",this.bestScore);
+      }  
     }
   }
 
@@ -94,7 +109,8 @@ export class MemorysequenceComponent implements OnInit{
           'blue',
           'yellow',
           'join',
-          'endgaming'
+          'endgaming',
+          'highest'
         ]
       )
       .subscribe(translations => {
@@ -113,6 +129,7 @@ export class MemorysequenceComponent implements OnInit{
         this.messageSuccess = translations['pages.exercices.games.1.messageSuccess'];
         this.joinus = translations['join'];
         this.endgaming = translations['endgaming'];
+        this.bestScoreText = translations['highest'];
       });
     }
   }
@@ -138,6 +155,7 @@ export class MemorysequenceComponent implements OnInit{
   startGame(){
     this.checkLocaleStorage();
     if(this.numbertimesplayed == 3){
+      this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("memorysequencescore");
       this.showEnd = true;
     }
     else{
@@ -182,6 +200,13 @@ export class MemorysequenceComponent implements OnInit{
     this.playing = true;
   }
 
+  setOrNotSetBestScore(){
+    if(this.score >= this.bestScore){
+        this.bestScore = this.score;
+        this.checkBestScore();
+    }
+  }
+
   selectColor(color:string){
     if(!this.playing) return;
     this.playerSequence.push(color);
@@ -193,7 +218,9 @@ export class MemorysequenceComponent implements OnInit{
       this.start = false;
       this.level = 3;
       this.win = false;
+      this.setOrNotSetBestScore();
       if(!this.checkUserCanPlay()){
+        this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("memorysequencescore");
         this.showEnd = true;
       }
       return;
@@ -203,6 +230,7 @@ export class MemorysequenceComponent implements OnInit{
       this.message = this.messageSuccess;
       this.level++;
       this.score++;
+      this.setOrNotSetBestScore();
       this.win = true;
       setTimeout(() => this.startGame(), 1000);
     }

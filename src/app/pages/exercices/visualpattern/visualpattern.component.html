@@ -29,15 +29,12 @@
     </div>
     <div class="pageSubTitle bottomRightPage">Score : {{score}}</div>
  </div>
- <div class="overlay" *ngIf="showEnd">
-  <div class="modal">
-    <div class="end icon" [innerHTML]="endgaming"></div>
-    <p class="score">
-      Score : {{ score }}
-    </p>
-    <div class="actions">
-      <button class=" retry" (click)="join()">{{joinus}}</button>
-      <button class="quit" (click)="quit()">OK</button>
-    </div>
-  </div>
-</div>
+ <app-popup *ngIf="showEnd"
+    (parentFirstMethod)="join()" 
+    (parentSecondMethod)="quit()" 
+    [titleContent]="endgaming"
+    [content]="finalText"
+    [titleButton1]="joinus"
+    [titleButton2]="okText"
+ >
+ </app-popup>

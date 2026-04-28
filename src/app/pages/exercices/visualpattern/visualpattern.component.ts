@@ -36,6 +36,10 @@ export class VisualpatternComponent implements OnInit{
   showEnd = false;
   joinus = "";
   endgaming = "";
+  finalText = "";
+  okText = "OK";
+  bestScore = 0;
+  bestScoreText = "";
 
   @ViewChild('game') gameElement!: ElementRef;
 
@@ -57,17 +61,28 @@ export class VisualpatternComponent implements OnInit{
     this.changeLanguage();
 
     this.checkLocaleStorage();
-
-    if(!this.checkUserCanPlay()){
-        this.showEnd = true;
+    if(this.numbertimesplayed == 3){
+      this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("visualpatternscore");
+      this.showEnd = true;
     }
   }
 
   checkLocaleStorage(){
-    //this.localStorageService.setNumberExercicePlayed("visualpattern", 0);
     let times = this.localStorageService.getNumberExercicePlayed("visualpattern");
     if(times != null){
         this.numbertimesplayed = Number(times);
+    }
+  }
+
+  checkBestScore(){
+    let score = this.localStorageService.getBestScoreExercicePlayed("visualpatternscore");
+    if(score == null || score == undefined){
+      this.localStorageService.setBestScoreExercicePlayed("visualpatternscore",this.bestScore);
+    }
+    else if(score != null || score != undefined){
+      if( this.bestScore > Number(score)){
+         this.localStorageService.setBestScoreExercicePlayed("visualpatternscore",this.bestScore);
+      }  
     }
   }
 
@@ -85,7 +100,8 @@ export class VisualpatternComponent implements OnInit{
           'pages.exercices.games.2.messageWrong',
           'pages.exercices.games.2.messageSuccess',
           'join',
-          'endgaming'
+          'endgaming',
+          'highest'
         ]
       )
       .subscribe(translations => {
@@ -99,6 +115,7 @@ export class VisualpatternComponent implements OnInit{
         this.messageSuccess = translations['pages.exercices.games.2.messageSuccess'];
         this.joinus = translations['join'];
         this.endgaming = translations['endgaming'];
+        this.bestScoreText = translations['highest'];
       });
     }
   }
@@ -122,9 +139,10 @@ export class VisualpatternComponent implements OnInit{
   }
 
   startGame() {
-    let visualpatternlocalstorage = this.localStorageService.getNumberExercicePlayed("visualpattern");
-    if(visualpatternlocalstorage != null && visualpatternlocalstorage == "3"){
-        this.showEnd = true;
+    this.checkLocaleStorage();
+    if(this.numbertimesplayed == 3){
+      this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("visualpatternscore");
+      this.showEnd = true;
     }
     else{
       if(!this.win){
@@ -169,6 +187,13 @@ export class VisualpatternComponent implements OnInit{
     this.playing = true;
   }
 
+  setOrNotSetBestScore(){
+    if(this.score >= this.bestScore){
+        this.bestScore = this.score;
+        this.checkBestScore();
+    }
+  }
+
   clickCell(index: number) {
     if (!this.playing) return;
 
@@ -180,7 +205,9 @@ export class VisualpatternComponent implements OnInit{
       this.start = false;
       this.win = false;
       this.message = this.messageWrong;
+      this.setOrNotSetBestScore();
       if(!this.checkUserCanPlay()){
+        this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("visualpatternscore");
         this.showEnd = true;
       }
       return;
@@ -190,6 +217,7 @@ export class VisualpatternComponent implements OnInit{
       this.message = this.messageSuccess;
       this.level++;
       this.score++;
+      this.setOrNotSetBestScore();
       this.win = true;
       setTimeout(() => this.startGame(), 1000);
     }
