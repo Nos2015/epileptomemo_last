@@ -58,3 +58,11 @@
     [titleButton1]="startover"
     [titleButton2]="exit"
     ></app-popup>
+<app-popup *ngIf="showEnd" 
+    (parentFirstMethod)="join()" 
+    (parentSecondMethod)="quit()" 
+    [titleContent]="endgaming"
+    [content]="finalPlayedText"
+    [titleButton1]="joinus"
+    [titleButton2]="okText"
+    ></app-popup>

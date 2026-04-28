@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit} from '@angular/core';
 import { AppComponent } from '../../../app.component';
 import { TranslateappService } from '../../../services/translateapp.service';
 import { Router } from '@angular/router';
+import { LocalstorageService } from '../../../services/localstorage.service';
 
 @Component({
   selector: 'app-commonname',
@@ -35,6 +36,7 @@ export class CommonnameComponent implements OnInit{
   loose = false;
   looseText = "";
   showResult = false;
+  showEnd = false;
   total = 5;
 
   validate = "";
@@ -572,12 +574,20 @@ export class CommonnameComponent implements OnInit{
 
 questionsToAnswer:any;
 language = "";
+numbertimesplayed = 0;
 finalText = "";
+endgaming = "";
+finalPlayedText = "";
+joinus = "";
+okText = "OK";
+bestScore = 0;
+bestScoreText = "";
 
 constructor(public appComponent: AppComponent,
                 public translate: TranslateappService,
                 private elementRef: ElementRef,
-                private router : Router
+                private router : Router,
+                public localStorageService: LocalstorageService
 
     ){}
 
@@ -590,6 +600,39 @@ constructor(public appComponent: AppComponent,
       }
     );
     this.changeLanguage();
+
+    this.checkLocaleStorage();
+    if(this.numbertimesplayed == 3){
+      this.finalPlayedText = this.bestScoreText + " Score max : " + this.localStorageService.getBestScoreExercicePlayed("commonnamescore") + " / " + this.total;
+      this.showEnd = true;
+    }
+  }
+
+  setOrNotSetBestScore(){
+    if(this.score >= this.bestScore){
+        this.bestScore = this.score;
+        this.checkBestScore();
+    }
+  }
+
+  checkLocaleStorage(){
+    let times = this.localStorageService.getNumberExercicePlayed("commonname");
+    console.log("times played = "+times);
+    if(times != null){
+        this.numbertimesplayed = Number(times);
+    }
+  }
+
+  checkBestScore(){
+    let score = this.localStorageService.getBestScoreExercicePlayed("commonnamescore");
+    if(score == null || score == undefined){
+      this.localStorageService.setBestScoreExercicePlayed("commonnamescore",this.bestScore);
+    }
+    else if(score != null || score != undefined){
+      if( this.bestScore > Number(score)){
+         this.localStorageService.setBestScoreExercicePlayed("commonnamescore",this.bestScore);
+      }  
+    }
   }
 
   changeLanguage(){
@@ -606,6 +649,8 @@ constructor(public appComponent: AppComponent,
           'validate',
           'startover',
           'exit',
+          'join',
+          'endgaming',
           'pages.exercices.games.3.answer',
         ]
       )
@@ -619,7 +664,10 @@ constructor(public appComponent: AppComponent,
         this.validate = translations['validate'];
         this.startover = translations['startover'];
         this.exit = translations['exit'];
+        this.endgaming = translations['endgaming'];
+        this.joinus = translations['join'];
         this.answer = translations['pages.exercices.games.3.answer'];
+        
       });
       let lang = localStorage.getItem("language");
       if (lang == null || lang == "fr"){
@@ -645,11 +693,18 @@ constructor(public appComponent: AppComponent,
   }
 
   selectLetter(letter: string) {
-    this.currentIndex = 0;
-    this.selectedLetter = letter;
-    this.initializeQuestions(this.selectedLetter);
-    this.chooseLetter = true;
-    window.scroll(0,0);
+    this.checkLocaleStorage();
+    if(this.numbertimesplayed == 3){
+      this.finalText = this.bestScoreText + " Score max : " + this.localStorageService.getBestScoreExercicePlayed("commonnamescore");
+      this.showEnd = true;
+    }
+    else{
+      this.currentIndex = 0;
+      this.selectedLetter = letter;
+      this.initializeQuestions(this.selectedLetter);
+      this.chooseLetter = true;
+      window.scroll(0,0);
+    }
   }
 
   get currentWord() {
@@ -704,6 +759,8 @@ constructor(public appComponent: AppComponent,
   }
 
   reset() {
+    this.numbertimesplayed++;
+    this.localStorageService.setNumberExercicePlayed("commonname",this.numbertimesplayed);
     this.endOfGame = true;
     this.feedback = null;
     this.streak = 0;
@@ -713,12 +770,18 @@ constructor(public appComponent: AppComponent,
 
   restart(){
     window.scroll(0,0);
+    this.setOrNotSetBestScore();
     this.score = 0;
     this.victory = false;
     this.loose = false;
     this.showResult = false;
     this.chooseLetter = false;
     this.lives = 3;
+  }
+
+  join(){
+    this.showEnd = false;
+    this.appComponent.scrollToFooterElement();
   }
 
   quit(){
