@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, viewChild, ViewChild } from '@angular/core';
 import { AppComponent } from '../../../app.component';
 import { TranslateappService } from '../../../services/translateapp.service';
+import { LocalstorageService } from '../../../services/localstorage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quickbrain',
@@ -42,6 +44,8 @@ export class QuickbrainComponent implements OnInit{
   constructor(public appComponent: AppComponent,
               public translate: TranslateappService,
               private elementRef: ElementRef,
+              private router : Router,
+              public localStorageService: LocalstorageService
   ){}
 
   lastQuestions: number[] = [];
@@ -138,7 +142,16 @@ export class QuickbrainComponent implements OnInit{
 
   ];
 
-ngOnInit(): void {
+  numbertimesplayed = 0;
+  showEnd = false;
+  joinus = "";
+  endgaming = "";
+  finalText = "";
+  okText = "OK";
+  bestScore = 0;
+  bestScoreText = "";
+
+  ngOnInit(): void {
     window.scroll(0,0);
     this.appComponent.setHome(false);
     this.translate.comp$.subscribe(
@@ -147,6 +160,12 @@ ngOnInit(): void {
       }
     );
     this.changeLanguage();
+
+    this.checkLocaleStorage();
+    if(this.numbertimesplayed == 3){
+      this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("quickbrainscore");
+      this.showEnd = true;
+    }
   }
 
   changeLanguage(){
@@ -163,7 +182,10 @@ ngOnInit(): void {
           'pages.exercices.games.4.messageSuccess',
           'easy',
           'medium',
-          'hard'
+          'hard',
+          'join',
+          'endgaming',
+          'highest'
         ]
       )
       .subscribe(translations => {
@@ -177,9 +199,31 @@ ngOnInit(): void {
         this.easy = translations['easy'];
         this.medium = translations['medium'];
         this.hard = translations['hard'];
+        this.joinus = translations['join'];
+        this.endgaming = translations['endgaming'];
+        this.bestScoreText = translations['highest'];
       });
     }
     this.changeLanguageQuestionsIfStart();
+  }
+
+  checkLocaleStorage(){
+    let times = this.localStorageService.getNumberExercicePlayed("quickbrain");
+    if(times != null){
+        this.numbertimesplayed = Number(times);
+    }
+  }
+
+  checkBestScore(){
+    let score = this.localStorageService.getBestScoreExercicePlayed("quickbrainscore");
+    if(score == null || score == undefined){
+      this.localStorageService.setBestScoreExercicePlayed("quickbrainscore",this.bestScore);
+    }
+    else if(score != null || score != undefined){
+      if( this.bestScore > Number(score)){
+         this.localStorageService.setBestScoreExercicePlayed("quickbrainscore",this.bestScore);
+      }  
+    }
   }
 
   changeLanguageQuestionsIfStart(){
@@ -219,10 +263,23 @@ ngOnInit(): void {
     }
   }
 
+  setTimesPlayed(){
+    this.numbertimesplayed++;
+    this.localStorageService.setNumberExercicePlayed("quickbrain", this.numbertimesplayed);
+    console.log("localStorageService quickbrain = "+this.localStorageService.getNumberExercicePlayed("quickbrain"));
+  }
+
   startGame() {
-    this.start = true;
-    this.message = this.message1;
-    this.score = 0;
+    this.checkLocaleStorage();
+    if(this.numbertimesplayed == 3){
+      this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("quickbrainscore");
+      this.showEnd = true;
+    }
+    else{
+      this.start = true;
+      this.message = this.message1;
+      this.score = 0;
+    }
   }
   
   chooseLevel(level:string){
@@ -297,12 +354,21 @@ ngOnInit(): void {
       return this.questions[index];
   }
 
+  setOrNotSetBestScore(){
+    if(this.score >= this.bestScore){
+        this.bestScore = this.score;
+        this.checkBestScore();
+    }
+  }
+
   end(message:string){
+    this.setTimesPlayed();
+    this.setOrNotSetBestScore();
     this.message = message;
     this.start = false;
     this.win = false;
     this.startChooseLevel = false;
-      const element = this.levelsElement();
+    const element = this.levelsElement();
     if (element) {
       element.nativeElement.style.visibility = 'visible';
       element.nativeElement.style.height = 'auto';
@@ -347,5 +413,28 @@ ngOnInit(): void {
         this.end(this.messageWrong);
       }
     }, 1000);
+  }
+
+  getTimesPlayed(){
+    return this.numbertimesplayed;
+  }
+
+  checkUserCanPlay():boolean{
+    let timesplayed = this.getTimesPlayed();
+    if(timesplayed <= 3){
+        return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  join(){
+    this.showEnd = false;
+    this.appComponent.scrollToFooterElement();
+  }
+
+  quit(){
+    this.router.navigate(["exercices"]);
   }
 }

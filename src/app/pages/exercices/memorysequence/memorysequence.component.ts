@@ -51,7 +51,7 @@ export class MemorysequenceComponent implements OnInit{
   constructor(public appComponent: AppComponent,
               public translate: TranslateappService,
               private elementRef: ElementRef,
-               private router : Router,
+              private router : Router,
               public localStorageService: LocalstorageService
   ){}
 
