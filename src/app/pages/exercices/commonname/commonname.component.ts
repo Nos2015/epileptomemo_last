@@ -61,7 +61,7 @@ export class CommonnameComponent implements OnInit{
       values: [
         { definition: "Fruit jaune", answer: "banane" },
         { definition: "Objet pour lire", answer: "bouquin" },
-        { definition: "Animal qui aboie", answer: "berger" },
+        { definition: "Chien qui aboie", answer: "berger" },
         { definition: "Lieu où l'on dort", answer: "bungalow" },
         { definition: "Transport à deux roues", answer: "bicyclette" }
       ]
@@ -695,7 +695,7 @@ constructor(public appComponent: AppComponent,
   selectLetter(letter: string) {
     this.checkLocaleStorage();
     if(this.numbertimesplayed == 3){
-      this.finalText = this.bestScoreText + " Score max : " + this.localStorageService.getBestScoreExercicePlayed("commonnamescore");
+      this.finalPlayedText = this.bestScoreText + " Score max : " + this.localStorageService.getBestScoreExercicePlayed("commonnamescore") + " / " + this.total;
       this.showEnd = true;
     }
     else{
