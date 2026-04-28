@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AppComponent } from '../../../app.component';
 import { TranslateappService } from '../../../services/translateapp.service';
+import { LocalstorageService } from '../../../services/localstorage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patternbuilder',
@@ -31,11 +33,22 @@ export class PatternbuilderComponent implements OnInit{
   success = '';
   wrong = "";
 
+  numbertimesplayed = 0;
+  showEnd = false;
+  joinus = "";
+  endgaming = "";
+  finalText = "";
+  okText = "OK";
+  bestScore = 0;
+  bestScoreText = "";
+
   @ViewChild('game') gameElement!: ElementRef;
 
   constructor(public appComponent: AppComponent,
               public translate: TranslateappService,
               private elementRef: ElementRef,
+              private router : Router,
+              public localStorageService: LocalstorageService
   ){}
 
   ngOnInit() {
@@ -49,6 +62,31 @@ export class PatternbuilderComponent implements OnInit{
     this.changeLanguage();
     this.pattern = [];
     this.level = 1;
+
+    this.checkLocaleStorage();
+    if(this.numbertimesplayed == 3){
+      this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("patternbuilderscore");
+      this.showEnd = true;
+    }
+  }
+
+  checkLocaleStorage(){
+    let times = this.localStorageService.getNumberExercicePlayed("patternbuilder");
+    if(times != null){
+        this.numbertimesplayed = Number(times);
+    }
+  }
+
+  checkBestScore(){
+    let score = this.localStorageService.getBestScoreExercicePlayed("patternbuilderscore");
+    if(score == null || score == undefined){
+      this.localStorageService.setBestScoreExercicePlayed("patternbuilderscore",this.bestScore);
+    }
+    else if(score != null || score != undefined){
+      if( this.bestScore > Number(score)){
+         this.localStorageService.setBestScoreExercicePlayed("patternbuilderscore",this.bestScore);
+      }  
+    }
   }
 
   changeLanguage(){
@@ -64,6 +102,9 @@ export class PatternbuilderComponent implements OnInit{
           'pages.exercices.games.5.message3',
           'pages.exercices.games.5.messageSuccess',
           'pages.exercices.games.5.messageWrong',
+          'join',
+          'endgaming',
+          'highest'
         ]
       )
       .subscribe(translations => {
@@ -75,6 +116,9 @@ export class PatternbuilderComponent implements OnInit{
         this.watch = translations['pages.exercices.games.5.message3'];
         this.success = translations['pages.exercices.games.5.messageSuccess'];
         this.wrong = translations['pages.exercices.games.5.messageWrong'];
+        this.joinus = translations['join'];
+        this.endgaming = translations['endgaming'];
+        this.bestScoreText = translations['highest'];
       });
     }
   }
@@ -89,8 +133,16 @@ export class PatternbuilderComponent implements OnInit{
   }
 
   startGame() {
-    this.start = true;
-    this.nextRound();
+    this.checkLocaleStorage();
+    if(this.numbertimesplayed == 3){
+      this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("patternbuilderscore");
+      this.showEnd = true;
+    }
+    else{
+      this.start = true;
+      this.score = 0;
+      this.nextRound();
+    }
   }
 
   scrollToGameElement(){
@@ -139,10 +191,10 @@ export class PatternbuilderComponent implements OnInit{
 
   playSound(color: string) {
     const sounds: any = {
-      red: new Audio('assets/sounds/red.mp3'),
-      yellow: new Audio('assets/sounds/yellow.mp3'),
-      green: new Audio('assets/sounds/green.mp3'),
-      blue: new Audio('assets/sounds/blue.mp3')
+      red: new Audio('assets/sounds/red.wav'),
+      yellow: new Audio('assets/sounds/yellow.wav'),
+      green: new Audio('assets/sounds/green.wav'),
+      blue: new Audio('assets/sounds/blue.wav')
     };
 
     sounds[color].play();
@@ -159,6 +211,7 @@ export class PatternbuilderComponent implements OnInit{
     const index = this.playerInput.length - 1;
 
     if (this.playerInput[index] !== this.pattern[index]) {
+      this.setTimesPlayed();
       this.gameOver();
       return;
     }
@@ -174,7 +227,31 @@ export class PatternbuilderComponent implements OnInit{
     }
   }
 
+  getTimesPlayed(){
+    return this.numbertimesplayed;
+  }
+
+  checkUserCanPlay():boolean{
+    let timesplayed = this.getTimesPlayed();
+    if(timesplayed <= 3){
+        return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+   setTimesPlayed(){
+    this.numbertimesplayed++;
+    this.localStorageService.setNumberExercicePlayed("patternbuilder", this.numbertimesplayed);
+  }
+
   gameOver() {
+    this.setOrNotSetBestScore();
+    if(!this.checkUserCanPlay()){
+      this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("patternbuilderscore");
+      this.showEnd = true;
+    }
     this.message = this.wrong;
     this.isPlaying = false;
     this.start = false;
@@ -183,5 +260,19 @@ export class PatternbuilderComponent implements OnInit{
     navigator.vibrate(200);
   }
 
+  setOrNotSetBestScore(){
+    if(this.score >= this.bestScore){
+        this.bestScore = this.score;
+        this.checkBestScore();
+    }
+  }
 
+  join(){
+    this.showEnd = false;
+    this.appComponent.scrollToFooterElement();
+  }
+
+  quit(){
+    this.router.navigate(["exercices"]);
+  }
 }
