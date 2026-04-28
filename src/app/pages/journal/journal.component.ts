@@ -35,6 +35,10 @@ export class JournalComponent implements OnInit{
     this.changeLanguage();
   }
 
+  ngAfterViewInit(){
+    this.appComponent.changeTitleMobileHeader();
+  }
+  
   changeLanguage(){
     //changeLanguage when page is on front
     if(this.elementRef.nativeElement.offsetParent != null) {

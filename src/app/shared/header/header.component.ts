@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { TranslateappService } from '../../services/translateapp.service';
@@ -21,6 +21,13 @@ export class HeaderComponent implements OnInit{
   join = "";
   isChecked = false;
 
+  titleMobile = "";
+  titleMobileExercices = "";
+  titleMobileJournal = "";
+  titleMobileStatistics = "";
+  titleMobileReports = "";
+  titleMobileFamily = "";
+
   constructor(
       private router : Router,
       public appComponent: AppComponent,
@@ -40,6 +47,28 @@ export class HeaderComponent implements OnInit{
     );
     this.changeLanguage();
     this.manageLanguage();
+    this.setTitleHeader();
+  }
+  
+  setTitleHeader(){
+    if (this.router.url === '/'){
+      this.titleMobile = "EpileptoMemo";
+    }
+    else if (this.router.url === '/exercices'){
+      this.titleMobile = this.titleMobileExercices;
+    }
+    else if (this.router.url === '/stats'){
+      this.titleMobile = this.titleMobileStatistics;
+    }
+    else if (this.router.url === '/family'){
+      this.titleMobile = this.titleMobileFamily;
+    }
+    else if (this.router.url === '/reports'){
+      this.titleMobile = this.titleMobileReports;
+    }
+    else if (this.router.url === '/journal'){
+      this.titleMobile = this.titleMobileJournal;
+    }
   }
 
   changeLanguage(){
@@ -52,7 +81,12 @@ export class HeaderComponent implements OnInit{
           'reports',
           'stats',
           'family',
-          'join'
+          'join',
+          'pages.exercices.titleMobile',
+          'pages.family.titleMobile',
+          'pages.statistics.titleMobile',
+          'pages.reports.titleMobile',
+          'pages.journal.titleMobile',
         ]
       )
       .subscribe(translations => {
@@ -62,6 +96,12 @@ export class HeaderComponent implements OnInit{
         this.stats = translations['stats'];
         this.family = translations['family'];
         this.join = translations['join'];
+        this.titleMobileFamily = translations['pages.family.titleMobile'];
+        this.titleMobileExercices = translations['pages.exercices.titleMobile'];
+        this.titleMobileJournal = translations['pages.journal.titleMobile'];
+        this.titleMobileReports = translations['pages.reports.titleMobile'];
+        this.titleMobileStatistics = translations['pages.statistics.titleMobile'];
+        this.setTitleHeader();
       });
     }
   }
@@ -89,14 +129,11 @@ export class HeaderComponent implements OnInit{
 
   setLanguage(event:Event){
     const isChecked = (event.target as HTMLInputElement).checked;
-    console.log("isChecked = "+isChecked);
     if(isChecked){
-      console.log("isChecked true");
       localStorage.setItem("language", "en");
       this.translate.setTransLanguage("en");
     }
     else{
-      console.log("isChecked not true");
       localStorage.setItem("language", "fr");
       this.translate.setTransLanguage("fr");
     }

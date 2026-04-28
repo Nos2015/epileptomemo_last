@@ -44,6 +44,7 @@
         "title":"Fonctionnalités en cours de développement",
         "journal":{
             "title":"Journal des crises",
+            "titleMobile":"Journal",
             "first":"Ajouter des crises",
             "second":"Historique des crises",
             "third":"Traitement",
@@ -53,6 +54,7 @@
         },
         "reports":{
             "title":"Rapports de neurologues",
+            "titleMobile":"Rapports",
             "subtitle":"Exportez votre historique des crises d'épilepsie sous forme de rapport clair et détaillé, prêt à partager avec votre neurologue",
             "first":"Rapport PDF détaillé",
             "second":"Partage facile avec le médecin",
@@ -60,6 +62,7 @@
         },
         "statistics":{
             "title":"Statistiques",
+            "titleMobile":"Statistiques",
             "first":"Identification de déclencheurs",
             "second":"Sommeil et stress",
             "third":"Évolutions des crises d'épilepsie",
@@ -68,6 +71,7 @@
         },
         "family":{
             "title":"Soutien familial",
+            "titleMobile":"Famille",
             "subtitle":"Permettez à vos proches d'être informés de vos crises importantes et restez connectés pour un soutien accru",
             "first":"Alerte de crise pour la famille",
             "second":"Historique partagé sécurisé",
@@ -75,6 +79,7 @@
         },
         "exercices":{
             "title":"Exercices de Mémoire",
+            "titleMobile":"Exercices",
             "subtitle":"Entraîner votre mémoire pour mieux gérer l'épilepsie",
             "other": "Autres exercices",
             "games":{

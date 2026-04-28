@@ -49,20 +49,20 @@
     color:#ffffff;
 }
 
-#logoem img{
+#logoem img, #logoemmobile img{
     height: 60px;
     width: auto;
 }
 
-#logoem img:nth-child(2){
+#logoem img:nth-child(2), #logoemmobile img:nth-child(2){
     display: none;
 }
 
-#logoem:hover img:nth-child(1){
+#logoem:hover img:nth-child(1), #logoemmobile:hover img:nth-child(1){
     display: none;
 }
 
-#logoem:hover img:nth-child(2){
+#logoem:hover img:nth-child(2), #logoemmobile:hover img:nth-child(2){
     display: block;
 }
 
@@ -163,6 +163,36 @@ input[type="checkbox"] ~ .toggle-button-text .toggle-button-text-off {
     height: 40px;
 }
 
+.titleMobile{
+    font-family: 'InterBoldItalic';
+    font-size: 28px;
+    color: #f3f3f3;
+    margin-left: 5px;
+}
+
+.titleMobile:hover{
+    color:#f3f3f3
+}
+
+@media only screen and (min-width:1001px){
+    #logoemmobile{
+        display: none;
+    }
+}
+
+@media only screen and (max-width:1000px){
+    #logoem{
+        display: none;
+    }
+
+    #logoemmobile{
+        display: flex;
+        cursor: pointer;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
 @media only screen and (max-width: 1199px){
     #menu{
         display: none;
@@ -179,6 +209,12 @@ input[type="checkbox"] ~ .toggle-button-text .toggle-button-text-off {
     #header{
         padding-left: 10px;
         padding-right: 10px;   
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .titleMobile{
+        font-size: 20px;
     }
 }
 

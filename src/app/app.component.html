@@ -1,6 +1,6 @@
 <!-- ui-select files -->
 <script src="select.js"></script>
-<app-header (toggleSidebar)="sidebarActive = !sidebarActive" [sidebarActive]="sidebarActive"></app-header>
+<app-header #headerCmp (toggleSidebar)="sidebarActive = !sidebarActive" [sidebarActive]="sidebarActive"></app-header>
 <div id="content" *ngIf="home" style="background-image: url('assets/background.png'); background-size: cover;margin-top: 13px;">
   <router-outlet></router-outlet>
   <app-sidebar [ngClass]="{ sidebarActive: sidebarActive }" (toggleSidebar)="chooseElementOnSideBar($event)"></app-sidebar>

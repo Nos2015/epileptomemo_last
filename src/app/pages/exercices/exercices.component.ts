@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { Router } from '@angular/router';
 import { TranslateappService } from '../../services/translateapp.service';
+import { HeaderComponent } from '../../shared/header/header.component';
 
 @Component({
   selector: 'app-exercices',
@@ -44,7 +45,7 @@ export class ExercicesComponent implements OnInit{
   constructor(public appComponent: AppComponent,
               private router : Router,
               public translate: TranslateappService,
-              private elementRef: ElementRef,
+              private elementRef: ElementRef
   ){}
 
   ngOnInit(): void {
@@ -56,6 +57,12 @@ export class ExercicesComponent implements OnInit{
       }
     );
     this.changeLanguage();
+  }
+
+  ngAfterViewInit(){
+    setTimeout(() => {
+      this.appComponent.changeTitleMobileHeader();
+    }, 100);
   }
 
   changeLanguage(){

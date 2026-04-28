@@ -77,6 +77,7 @@ export class NbacktrainingComponent implements OnInit{
     this.changeLanguage();
   }
 
+  
   changeLanguage(){
     //changeLanguage when page is on front
     if(this.elementRef.nativeElement.offsetParent != null) {

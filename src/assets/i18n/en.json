@@ -44,6 +44,7 @@
         "title":"Features currently in development",
         "journal":{
             "title":"Seizures Journal",
+            "titleMobile":"Seizures Journal",
             "first":"Add Seizures",
             "second":"History of Seizures",
             "third":"Treatment",
@@ -53,6 +54,7 @@
         },
         "reports":{
             "title":"Neurologist Reports",
+            "titleMobile":"Neurologist Reports",
             "subtitle":"Export your seizure history as a clear, detailed report, ready to share with your neurologist",
             "first":"Detailed PDF report",
             "second":"Easy to share with your doctor",
@@ -60,6 +62,7 @@
         },
         "statistics":{
             "title":"Statistics",
+            "titleMobile":"Statistics",
             "first":"Identifying Triggers",
             "second":"Sleep and Stress",
             "third":"Changes in Epileptic Seizures",
@@ -68,6 +71,7 @@
         },
         "family":{
             "title":"Family Support",
+            "titleMobile":"Family Support",
             "subtitle":"Let your loved ones know about your major episodes and stay connected for greater support",
             "first":"Crisis Alert for the Family",
             "second":"Secure Shared History",
@@ -75,6 +79,7 @@
         },
         "exercices":{
             "title":"Memory Exercices",
+            "titleMobile":"Memory Exercices",
             "subtitle":"Train your memory to help manage epilepsy",
             "other": "Other exercices",
             "games":{

@@ -34,7 +34,11 @@ export class StatsComponent implements OnInit{
     this.changeLanguage();
   }
 
-   changeLanguage(){
+  ngAfterViewInit(){
+    this.appComponent.changeTitleMobileHeader();
+  }
+  
+  changeLanguage(){
     //changeLanguage when page is on front
     if(this.elementRef.nativeElement.offsetParent != null) {
       this.translate.translate.get(
