@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AppComponent } from '../../../app.component';
 import { TranslateappService } from '../../../services/translateapp.service';
 import { Router } from '@angular/router';
+import { LocalstorageService } from '../../../services/localstorage.service';
 
 @Component({
   selector: 'app-scattergories',
@@ -37,6 +38,7 @@ export class ScattergoriesComponent implements OnInit{
   loose = false;
   looseText = "";
   showResult = false;
+  showEnd = false;
   total = 5;
 
   validate = "";
@@ -333,12 +335,21 @@ export class ScattergoriesComponent implements OnInit{
   lettercomingsoon = "";
 
   indexInWords = 0;
+  numbertimesplayed = 0;
+  finalText = "";
+  endgaming = "";
+  finalPlayedText = "";
+  joinus = "";
+  okText = "OK";
+  bestScore = 0;
+  bestScoreText = "";
 
   
   constructor(public appComponent: AppComponent,
                   public translate: TranslateappService,
                   private elementRef: ElementRef,
-                  private router : Router
+                  private router : Router,
+                  public localStorageService: LocalstorageService
 
       ){}
 
@@ -351,6 +362,37 @@ export class ScattergoriesComponent implements OnInit{
         }
       );
       this.changeLanguage();
+      this.checkLocaleStorage();
+      if(this.numbertimesplayed == 3){
+        this.finalPlayedText = this.bestScoreText + " Score max : " + this.localStorageService.getBestScoreExercicePlayed("scattergoriesscore") + " / " + this.total;
+        this.showEnd = true;
+      }
+  }
+
+  setOrNotSetBestScore(){
+    if(this.score >= this.bestScore){
+        this.bestScore = this.score;
+        this.checkBestScore();
+    }
+  }
+
+  checkLocaleStorage(){
+    let times = this.localStorageService.getNumberExercicePlayed("scattergories");
+    if(times != null){
+        this.numbertimesplayed = Number(times);
+    }
+  }
+
+  checkBestScore(){
+    let score = this.localStorageService.getBestScoreExercicePlayed("scattergoriesscore");
+    if(score == null || score == undefined){
+      this.localStorageService.setBestScoreExercicePlayed("scattergoriesscore",this.bestScore);
+    }
+    else if(score != null || score != undefined){
+      if( this.bestScore > Number(score)){
+         this.localStorageService.setBestScoreExercicePlayed("scattergoriesscore",this.bestScore);
+      }  
+    }
   }
 
   changeLanguage(){
@@ -369,6 +411,7 @@ export class ScattergoriesComponent implements OnInit{
           'exit',
           'pages.exercices.games.7.answer',
           'join',
+          'endgaming',
           'pages.exercices.games.7.lettercomingsoon'
         ]
       )
@@ -384,6 +427,7 @@ export class ScattergoriesComponent implements OnInit{
         this.exit = translations['exit'];
         this.answer = translations['pages.exercices.games.7.answer'];
         this.join = translations['join'];
+        this.endgaming = translations['endgaming'];
         this.lettercomingsoon = translations['pages.exercices.games.7.lettercomingsoon'];
       });
       
@@ -417,21 +461,28 @@ export class ScattergoriesComponent implements OnInit{
   }
 
   selectLetter(letter: string, index:number) {
-    if(this.WORDS[index].play){
-      this.indexInWords = index;
-      this.currentIndex = 0;
-      this.selectedLetter = letter;
-      let ending = this.WORDS[index].ending;
-      if(ending != undefined){
-        this.endingWord = ending;
-      }
-      this.initializeQuestions(this.selectedLetter);
-      this.chooseLetter = true;
-     // window.scroll(0,0);
-     this.scrollToGameElement();
-    } 
+    this.checkLocaleStorage();
+    if(this.numbertimesplayed == 3){
+      this.finalPlayedText = this.bestScoreText + " Score max : " + this.localStorageService.getBestScoreExercicePlayed("scattergoriesscore") + " / " + this.total;
+      this.showEnd = true;
+    }
     else{
-      this.showNoLetter = true;
+      if(this.WORDS[index].play){
+        this.indexInWords = index;
+        this.currentIndex = 0;
+        this.selectedLetter = letter;
+        let ending = this.WORDS[index].ending;
+        if(ending != undefined){
+          this.endingWord = ending;
+        }
+        this.initializeQuestions(this.selectedLetter);
+        this.chooseLetter = true;
+      // window.scroll(0,0);
+      this.scrollToGameElement();
+      } 
+      else{
+        this.showNoLetter = true;
+      }
     }
   }
   
@@ -505,14 +556,18 @@ export class ScattergoriesComponent implements OnInit{
   }
 
   reset() {
+    this.numbertimesplayed++;
+    this.localStorageService.setNumberExercicePlayed("scattergories",this.numbertimesplayed);
     this.endOfGame = true;
     this.feedback = null;
     this.streak = 0;
+    this.finalText = "Score : "+ this.score + "/" + this.total;
     this.showResult = true;
   }
 
   restart(){
     window.scroll(0,0);
+    this.setOrNotSetBestScore();
     this.score = 0;
     this.victory = false;
     this.loose = false;
@@ -525,12 +580,12 @@ export class ScattergoriesComponent implements OnInit{
     this.router.navigate(["exercices"]);
   }
 
-   joinUs(){
+  joinUs(){
     this.showNoLetter = false;
     this.appComponent.scrollToFooterElement();
-   }
+  }
 
-   ok(){
+  ok(){
     this.showNoLetter = false;
-   }
+  }
 };

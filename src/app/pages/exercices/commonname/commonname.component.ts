@@ -617,7 +617,6 @@ constructor(public appComponent: AppComponent,
 
   checkLocaleStorage(){
     let times = this.localStorageService.getNumberExercicePlayed("commonname");
-    console.log("times played = "+times);
     if(times != null){
         this.numbertimesplayed = Number(times);
     }
