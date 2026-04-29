@@ -217,7 +217,6 @@ export class NbacktrainingComponent implements OnInit{
 
   chooseLevel(level:string) {
     this.typeLevel = level;
-    this.showScore = true;
     this.activeIndex = Math.floor(Math.random() * 9);
     if(this.typeLevel === 'levelcolor'){
       this.checkLocaleStorageColor();
@@ -225,6 +224,7 @@ export class NbacktrainingComponent implements OnInit{
         this.checkLocaStorage();
       }
       else{
+        this.showScore = true;
         this.history.push(this.activeIndex);
         this.message = this.message2;
         setTimeout(() => this.next(), 800);
@@ -236,6 +236,7 @@ export class NbacktrainingComponent implements OnInit{
         this.checkLocaStorage();
       }
       else{
+        this.showScore = true;
         this.currentLetter = this.randomLetter();
         this.showTile = true;
         this.message = this.message2;
