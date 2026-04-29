@@ -2,8 +2,7 @@
   <div class="modal">
     <div class="title" [innerHTML]="titleContent">
     </div>
-    <p class="content">
-      {{content}}
+    <p class="content" [innerHTML]="content">
     </p>
     <div class="actions">
       <button class="firstMethodButton" (click)="methodPopup1()">{{titleButton1}}</button>

@@ -272,6 +272,10 @@ export class PatternbuilderComponent implements OnInit{
     this.appComponent.scrollToFooterElement();
   }
 
+  close(){
+    this.showEnd =false;
+  }
+  
   quit(){
     this.router.navigate(["exercices"]);
   }

@@ -146,6 +146,8 @@
                     "messageError":"Faux ! ❌ ",
                     "messageSuccess":"Correct! 🎉 ",
                     "messageEnd":"Fin du jeu !<br/>Tu peux voir le score de séquences réussies en bas à droite.<br/>Appuies sur Start si tu veux ré-essayer.",
+                    "messageEndNotColor":"Mais vous pouvez encore jouer avec les couleurs !",
+                    "messageEndNotLetters":"Mais vous pouvez encore jouer avec les lettres !",
                     "match":"PAREIL",
                     "nomatch":"PAS PAREIL",
                     "color":"Couleur",

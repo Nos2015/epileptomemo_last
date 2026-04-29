@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit, viewChild, ViewChild } from '@angular/co
 import { AppComponent } from '../../../app.component';
 import { TranslateappService } from '../../../services/translateapp.service';
 import { SoundserviceService } from '../../../services/soundservice.service';
+import { LocalstorageService } from '../../../services/localstorage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nbacktraining',
@@ -60,10 +62,27 @@ export class NbacktrainingComponent implements OnInit{
 
   @ViewChild('game') gameElement!: ElementRef;
 
+  numbertimesplayedColor = 0;
+  numbertimesplayedLetter = 0;
+  showEnd = false;
+  notShowEndColor = true;
+  notShowEndLetters = true;
+  joinus = "";
+  endgaming = "";
+  finalText = "";
+  okText = "OK";
+  bestScoreColor = 0;
+  bestScoreLetter = 0;
+  bestScoreText = "";
+  messageNotColor = "";
+  messageNotLetters = "";
+
    constructor(public appComponent: AppComponent,
               public translate: TranslateappService,
               private elementRef: ElementRef,
-              private sound: SoundserviceService
+              private sound: SoundserviceService,
+              private router : Router,
+              public localStorageService: LocalstorageService
   ){}
 
   ngOnInit(): void {
@@ -77,7 +96,56 @@ export class NbacktrainingComponent implements OnInit{
     this.changeLanguage();
   }
 
-  
+  checkLocaStorage(){
+    this.checkLocaleStorageColor();
+    this.checkLocaleStorageLetter();
+    let scoreColor = this.localStorageService.getBestScoreExercicePlayed("nbacktrainingscorecolor");
+    let scoreLetters = this.localStorageService.getBestScoreExercicePlayed("nbacktrainingscoreletters");
+    if (scoreColor == undefined || scoreColor == null){
+      scoreColor = "0";
+    }
+     if (scoreLetters == undefined || scoreLetters == null){
+      scoreLetters = "0";
+    }
+    if(this.numbertimesplayedColor == 3 && this.numbertimesplayedLetter == 3){
+      this.typeLevel = '';
+      this.finalText = this.bestScoreText + " Score "+ this.color + " : " + scoreColor + "<br/>" + this.bestScoreText + " Score "+ this.letters + " : " + scoreLetters;
+      this.showEnd = true;
+      this.notShowEndColor = false;
+      this.notShowEndLetters = false;
+    }
+    else if(this.numbertimesplayedColor == 3 && this.numbertimesplayedLetter != 3){
+      this.typeLevel = '';
+      this.finalText = this.bestScoreText + " Score "+ this.color + " : " + scoreColor + "<br/>" + this.bestScoreText + " Score "+ this.letters + " : " + scoreLetters;
+      this.finalText += "<br/><br/>"+this.messageNotLetters;
+      this.showEnd = true;
+      this.notShowEndColor = false;
+      this.notShowEndLetters = true;
+    }
+    else if (this.numbertimesplayedColor != 3 && this.numbertimesplayedLetter == 3){
+      this.typeLevel = '';
+      this.finalText = this.bestScoreText + " Score "+ this.color + " : " + scoreColor + "<br/>" + this.bestScoreText + " Score "+ this.letters + " : " + scoreLetters;
+      this.finalText += "<br/><br/>"+this.messageNotColor;
+      this.showEnd = true;
+      this.notShowEndColor = true;
+      this.notShowEndLetters = false;
+    }
+  }
+
+  checkLocaleStorageColor(){
+    let times = this.localStorageService.getNumberExercicePlayed("nbacktrainingcolor");
+    if(times != null){
+        this.numbertimesplayedColor = Number(times);
+    }
+  }
+
+  checkLocaleStorageLetter(){
+    let times = this.localStorageService.getNumberExercicePlayed("nbacktrainingletters");
+    if(times != null){
+        this.numbertimesplayedLetter = Number(times);
+    }
+  }
+
   changeLanguage(){
     //changeLanguage when page is on front
     if(this.elementRef.nativeElement.offsetParent != null) {
@@ -95,7 +163,12 @@ export class NbacktrainingComponent implements OnInit{
           'pages.exercices.games.6.match',
           'pages.exercices.games.6.nomatch',
           'pages.exercices.games.6.color',
-          'pages.exercices.games.6.letters'
+          'pages.exercices.games.6.letters',
+          'pages.exercices.games.6.messageEndNotColor',
+          'pages.exercices.games.6.messageEndNotLetters',
+          'join',
+          'endgaming',
+          'highest'
         ]
       )
       .subscribe(translations => {
@@ -112,6 +185,11 @@ export class NbacktrainingComponent implements OnInit{
         this.nomatch =  translations['pages.exercices.games.6.nomatch'];
         this.color =  translations['pages.exercices.games.6.color'],
         this.letters =  translations['pages.exercices.games.6.letters'];
+        this.messageNotColor = translations['pages.exercices.games.6.messageEndNotColor'];
+        this.messageNotLetters = translations['pages.exercices.games.6.messageEndNotLetters'];
+        this.joinus = translations['join'];
+        this.endgaming = translations['endgaming'];
+        this.bestScoreText = translations['highest'];
       });
     }
   }
@@ -126,28 +204,44 @@ export class NbacktrainingComponent implements OnInit{
   }
 
   startGame() {
-    this.start = true;
-     this.showScore = false;
-    this.message = this.message1;
-    if(!this.win){
-      this.score = 0;
+    if(!this.showEnd || this.notShowEndColor || this.notShowEndLetters){
+      this.start = true;
+      this.showScore = false;
+      this.message = this.message1;
+      if(!this.win){
+        this.score = 0;
+      }
+      this.scrollToGameElement();
     }
-    this.scrollToGameElement();
   }
 
   chooseLevel(level:string) {
     this.typeLevel = level;
     this.showScore = true;
-     this.activeIndex = Math.floor(Math.random() * 9);
+    this.activeIndex = Math.floor(Math.random() * 9);
     if(this.typeLevel === 'levelcolor'){
-      this.history.push(this.activeIndex);
+      this.checkLocaleStorageColor();
+      if(this.numbertimesplayedColor == 3){
+        this.checkLocaStorage();
+      }
+      else{
+        this.history.push(this.activeIndex);
+        this.message = this.message2;
+        setTimeout(() => this.next(), 800);
+      }
     }
     else{
-      this.currentLetter = this.randomLetter();
-      this.showTile = true;
+      this.checkLocaleStorageLetter();
+      if(this.numbertimesplayedLetter == 3){
+        this.checkLocaStorage();
+      }
+      else{
+        this.currentLetter = this.randomLetter();
+        this.showTile = true;
+        this.message = this.message2;
+        setTimeout(() => this.next(), 800);
+      }
     }
-    this.message = this.message2;
-    setTimeout(() => this.next(), 800);
   }
 
   wait(){
@@ -239,7 +333,38 @@ export class NbacktrainingComponent implements OnInit{
     }
   }
 
+  setNBackTrainScore(){
+
+  }
+
   endGame() {
+    if(this.typeLevel === 'levelcolor'){
+      this.numbertimesplayedColor++;
+      this.localStorageService.setBestScoreExercicePlayed("nbacktrainingcolor",this.numbertimesplayedColor);
+      let score = this.localStorageService.getBestScoreExercicePlayed("nbacktrainingscorecolor");
+      if(score !=undefined && score != null){
+        if(Number(score)<this.score){
+          this.localStorageService.setBestScoreExercicePlayed("nbacktrainingscorecolor",this.score);
+        }
+      }
+      if(this.numbertimesplayedColor == 3){
+        this.checkLocaStorage();
+      }
+    }
+    else{
+      this.numbertimesplayedLetter++;
+      this.localStorageService.setBestScoreExercicePlayed("nbacktrainingletters",this.numbertimesplayedLetter);
+      let score = this.localStorageService.getBestScoreExercicePlayed("nbacktrainingscoreletters");
+      if(score !=undefined && score != null){
+        if(Number(score)<this.score){
+          this.localStorageService.setBestScoreExercicePlayed("nbacktrainingscoreletters",this.score);
+        }
+      }
+      if(this.numbertimesplayedLetter == 3){
+        this.checkLocaStorage();
+      }
+    }
+
     this.start = false;
     this.history= [];
     this.n = 1;
@@ -255,6 +380,20 @@ export class NbacktrainingComponent implements OnInit{
     if (this.gameElement != null) {
       let el = this.gameElement.nativeElement as HTMLElement
       el.scrollIntoView();
+    }
+  }
+
+  join(){
+    this.showEnd = false;
+    this.appComponent.scrollToFooterElement();
+  }
+
+  quit(){
+    if(this.numbertimesplayedColor != 3 || this.numbertimesplayedLetter !=3){
+      this.showEnd = false;
+    }
+    else{
+      this.router.navigate(["exercices"]);
     }
   }
 }

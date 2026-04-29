@@ -46,10 +46,12 @@
 </div>
  <div class="pageSubTitle bottomRightPage">Score : {{score}}</div>
   <app-popup *ngIf="showEnd"
-    (parentFirstMethod)="join()" 
+    (parentFirstMethod)="join()"
+    (parentStayMethod)="close()" 
     (parentSecondMethod)="quit()" 
     [titleContent]="endgaming"
     [content]="finalText"
+    [stay]="true"
     [titleButton1]="joinus"
     [titleButton2]="okText"
  >

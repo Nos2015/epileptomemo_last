@@ -146,6 +146,8 @@
                     "messageError":"Faux ! ❌ ",
                     "messageSuccess":"Correct! 🎉 ",
                     "messageEnd":"End Game !<br/>You can see the number of successful sequences in the bottom right corner.<br/>Press Start again to restart if you want.",
+                    "messageEndNotColor":"But here you can still play around with the colors !",
+                    "messageEndNotLetters":"But here you can still play around with the letters !",
                     "match":"MATCH",
                     "nomatch":"NO MATCH",
                     "color":"Color",

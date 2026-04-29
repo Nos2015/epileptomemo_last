@@ -9,14 +9,21 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class PopupComponent {
   @Input("titleContent")titleContent :string= "";
   @Input("content")content:string = "";
+  @Input("stay")stay:boolean = false;
+  @Input("titleButtonStay")titleButtonStay:string = "OK";
   @Input("titleButton1")titleButton1:string = "";
   @Input("titleButton2")titleButton2:string = "";
 
   @Output("parentFirstMethod") parentFirstMethod: EventEmitter<any> = new EventEmitter();
   @Output("parentSecondMethod") parentSecondMethod: EventEmitter<any> = new EventEmitter();
+  @Output("parentStayMethod") parentStayMethod: EventEmitter<any> = new EventEmitter();
 
   methodPopup1(){
     this.parentFirstMethod.emit();
+  }
+
+  methodPopupStay(){
+    this.parentStayMethod.emit();
   }
 
   methodPopup2(){
@@ -27,8 +34,12 @@ export class PopupComponent {
     this.titleContent = title;
   }
 
+  setStay(stayValue:boolean){
+    this.stay = stayValue;
+  }
+  
   setContent(content:string){
-    this.content;
+    this.content = content;
   }
 
   setTitleButton1(titlebutton:string){
