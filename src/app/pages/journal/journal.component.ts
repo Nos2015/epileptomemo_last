@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { TranslateappService } from '../../services/translateapp.service';
+import { LocalstorageService } from '../../services/localstorage.service';
 
 @Component({
   selector: 'app-journal',
@@ -19,10 +20,12 @@ export class JournalComponent implements OnInit{
   fourth = "";
   five = "";
   conclusion = "";
+  source = "journal";
 
   constructor(public appComponent: AppComponent,
               public translate: TranslateappService,
               private elementRef: ElementRef,
+              public localStorage: LocalstorageService
   ){}
 
   ngOnInit(): void {
@@ -33,12 +36,17 @@ export class JournalComponent implements OnInit{
       }
     );
     this.changeLanguage();
+    this.setSourcePage();
+  }
+
+  setSourcePage(){
+    this.localStorage.setSourcePage(this.source);
   }
 
   ngAfterViewInit(){
     this.appComponent.changeTitleMobileHeader();
   }
-  
+
   changeLanguage(){
     //changeLanguage when page is on front
     if(this.elementRef.nativeElement.offsetParent != null) {

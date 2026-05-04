@@ -3,10 +3,12 @@
         <p class="titleFooter">{{titleFooter}}</p>
         <p class="underTitleFooter">{{subTitleFooter}}</p>
         <div class="inputbuttonwaitlist">
-            <form [formGroup]="emailForm">
-                <input class="form-control" matInput placeholder="{{enterEmail}}" formControlName="email">
-            </form>
-            <button class="button-width50">
+            <!--form [formGroup]="emailForm"-->
+            <div>
+                <input class="form-control" matInput placeholder="{{enterEmail}}" [(ngModel)]="email">
+            <!--/form-->
+            </div>
+            <button class="button-width50" (click)="submitEmail()">
                 <span>{{joinWaitList}}</span>
             </button>
             <div id="footline"></div>
@@ -14,4 +16,10 @@
         </div>
     </div>
 </div>
+<app-popup *ngIf="showPopup" 
+    (parentFirstMethod)="ok()"
+    [titleContent]="''"
+    [content]="errorMessage!=''? errorMessage : successMessage"
+    [titleButton1]="'OK'"
+    ></app-popup>
 

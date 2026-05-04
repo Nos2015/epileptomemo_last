@@ -40,6 +40,10 @@
     "exit":"Exit",
     "highest":"Highest",
     "endgaming":"Sorry, but for now, you can only play each exercise three times. But join us and you’ll be able to play as much as you like",
+    "errorSendMessage":"Please enter a valid email",
+    "errorSendMessage2":"Sorry but email already registered",
+    "errorSendMessage3":"Sorry, we're experiencing a temporary issue with registration. Please try again later.",
+    "successSendMessage":"You're now on the list. Thank you 🎉",
     "pages":{
         "title":"Features currently in development",
         "journal":{

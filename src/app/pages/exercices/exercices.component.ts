@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { Router } from '@angular/router';
 import { TranslateappService } from '../../services/translateapp.service';
-import { HeaderComponent } from '../../shared/header/header.component';
+import { LocalstorageService } from '../../services/localstorage.service';
 
 @Component({
   selector: 'app-exercices',
@@ -42,10 +42,13 @@ export class ExercicesComponent implements OnInit{
   levelMedium = "";
   levelHard = "";
 
+  source = "exercices";
+
   constructor(public appComponent: AppComponent,
               private router : Router,
               public translate: TranslateappService,
-              private elementRef: ElementRef
+              private elementRef: ElementRef,
+              public localStorage: LocalstorageService
   ){}
 
   ngOnInit(): void {
@@ -57,6 +60,11 @@ export class ExercicesComponent implements OnInit{
       }
     );
     this.changeLanguage();
+    this.setSourcePage();
+  }
+
+  setSourcePage(){
+    this.localStorage.setSourcePage(this.source);
   }
 
   ngAfterViewInit(){

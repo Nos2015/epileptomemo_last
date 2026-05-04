@@ -1,12 +1,13 @@
 <div class="overlay">
   <div class="modal">
-    <div class="title" [innerHTML]="titleContent">
+    <div *ngIf="titleContent!=''" class="title" [innerHTML]="titleContent">
     </div>
     <p class="content" [innerHTML]="content">
     </p>
     <div class="actions">
       <button class="firstMethodButton" (click)="methodPopup1()">{{titleButton1}}</button>
-      <button class="secondMethodButton" (click)="methodPopup2()">{{titleButton2}}</button>
+      <button *ngIf="stay" class="secondMethodButton" (click)="methodPopupStay()">{{titleButtonStay}}</button>
+      <button *ngIf="titleButton2!=''" class="secondMethodButton" (click)="methodPopup2()">{{titleButton2}}</button>
     </div>
   </div>
 </div>

@@ -7,6 +7,14 @@ export class LocalstorageService {
 
   constructor() { }
 
+  setSourcePage(sourcePage:string){
+    localStorage.setItem("source", sourcePage);
+  }
+
+  getSourcePage(){
+    return localStorage.getItem("source");
+  }
+
   setNumberExercicePlayed(exercice:string, times:number){
     localStorage.setItem(exercice,times.toString());
   }

@@ -1,6 +1,9 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { TranslateappService } from '../../services/translateapp.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { LocalstorageService } from '../../services/localstorage.service';
+import { environment } from '../../../../environments/environments';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +12,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent implements OnInit{
+
+  private url = `${environment.apiUrl}`;
   emailForm = new FormGroup({
     email: new FormControl<string>('', [
       Validators.email,
@@ -21,10 +26,25 @@ export class FooterComponent implements OnInit{
   enterEmail = "";
   joinWaitList = "";
   currentlyDev = "";
+  email = "";
+  errorMessage = "";
+  successMessage = "";
+  currentLang = "";
+  errorSendMessage = "";
+  errorSendMessage2= "";
+  errorSendMessage3 = "";
+  showPopup = false;
+
+  httpOptions: { headers: HttpHeaders } = {
+    headers: new HttpHeaders({ 
+      "Content-Type": "application/json"}),
+  }
 
   constructor(
       public translate: TranslateappService,
       private elementRef: ElementRef,
+      private http: HttpClient,
+      public localStorageService:LocalstorageService
   ){
 
   }
@@ -36,6 +56,7 @@ export class FooterComponent implements OnInit{
       }
     );
     this.changeLanguage();
+    this.checkLanguage();
   }
 
   changeLanguage(){
@@ -47,7 +68,11 @@ export class FooterComponent implements OnInit{
           'footer.subTitle',
           'enterEmail',
           'joinWaitList',
-          'currentlyDev'
+          'currentlyDev',
+          "errorSendMessage",
+          "errorSendMessage2",
+          "errorSendMessage3",
+          "successSendMessage",
         ]
       )
       .subscribe(translations => {
@@ -56,8 +81,70 @@ export class FooterComponent implements OnInit{
         this.enterEmail = translations['enterEmail'];
         this.joinWaitList = translations['joinWaitList'];
         this.currentlyDev = translations['currentlyDev'];
+        this.errorSendMessage = translations['errorSendMessage'];
+        this.errorSendMessage2 = translations['errorSendMessage2'];
+        this.errorSendMessage3 = translations['errorSendMessage3'];
+        this.successMessage = translations['successSendMessage'];
       });
     }
   }
 
+  isValidEmail(email: string): boolean {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+
+  checkLanguage(){
+    let lang = localStorage.getItem("language");
+    if (lang == null || lang == "fr"){
+      this.currentLang = "fr";
+    }
+    else{
+      this.currentLang = "en";
+    }
+  }
+
+  submitEmail() {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!this.email || !regex.test(this.email)) {
+      this.errorMessage = this.errorSendMessage;
+      console.log("error = "+this.errorMessage);
+      this.successMessage = "";
+      return;
+
+    }
+
+    this.checkLanguage();
+
+    this.http.post(`${this.url}/api/waitlist`, {
+      email: this.email,
+      source: this.localStorageService.getSourcePage(),
+      language: this.currentLang
+    }, this.httpOptions).subscribe({
+      next: (res: any) => {
+
+        if (res.success) {
+          console.log("success");
+          this.successMessage = this.successMessage;
+          this.errorMessage = "";
+          this.showPopup = true;
+          this.email = "";
+        } else {
+          this.errorMessage = this.errorSendMessage2;
+          this.showPopup = true;
+        }
+
+      },
+      error: () => {
+        this.errorMessage = this.errorSendMessage3;
+        this.showPopup = true;
+      }
+    });
+  }
+
+  ok(){
+    this.showPopup = false;
+  }
 }
+

@@ -41,6 +41,8 @@ export class VisualpatternComponent implements OnInit{
   bestScore = 0;
   bestScoreText = "";
 
+  source = "visualpattern";
+
   @ViewChild('game') gameElement!: ElementRef;
 
   constructor(public appComponent: AppComponent,
@@ -60,11 +62,17 @@ export class VisualpatternComponent implements OnInit{
     );
     this.changeLanguage();
 
+    this.setSourcePage();
+    
     this.checkLocaleStorage();
     if(this.numbertimesplayed == 3){
       this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("visualpatternscore");
       this.showEnd = true;
     }
+  }
+
+  setSourcePage(){
+    this.localStorageService.setSourcePage(this.source);
   }
 
   checkLocaleStorage(){

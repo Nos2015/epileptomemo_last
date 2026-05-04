@@ -44,6 +44,8 @@ export class PatternbuilderComponent implements OnInit{
 
   @ViewChild('game') gameElement!: ElementRef;
 
+  source = "patternbuilder";
+
   constructor(public appComponent: AppComponent,
               public translate: TranslateappService,
               private elementRef: ElementRef,
@@ -60,6 +62,9 @@ export class PatternbuilderComponent implements OnInit{
       }
     );
     this.changeLanguage();
+
+    this.setSourcePage();
+    
     this.pattern = [];
     this.level = 1;
 
@@ -68,6 +73,10 @@ export class PatternbuilderComponent implements OnInit{
       this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("patternbuilderscore");
       this.showEnd = true;
     }
+  }
+
+  setSourcePage(){
+    this.localStorageService.setSourcePage(this.source);
   }
 
   checkLocaleStorage(){
@@ -275,7 +284,7 @@ export class PatternbuilderComponent implements OnInit{
   close(){
     this.showEnd =false;
   }
-  
+
   quit(){
     this.router.navigate(["exercices"]);
   }

@@ -40,6 +40,10 @@
     "exit":"Quitter",
     "highest":"Meilleur",
     "endgaming":"Désolé mais pour le moment, vous ne pouvez jouer que 3 fois par exercice. Mais rejoignez-nous et vous pourrez y jouer autant que vous le souhaitez",
+    "errorSendMessage":"Veuillez saisir une adresse e-mail valide",
+    "errorSendMessage2":"Désolé mais adresse e-mail déjà enregistrée",
+    "errorSendMessage3":"Désolé nous avons un problème temporaire pour les inscriptions. N'hésitez pas plus tard.",
+    "successSendMessage":"Vous faites désormais partie de la liste. Merci 🎉",
     "pages":{
         "title":"Fonctionnalités en cours de développement",
         "journal":{

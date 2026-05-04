@@ -77,6 +77,8 @@ export class NbacktrainingComponent implements OnInit{
   messageNotColor = "";
   messageNotLetters = "";
 
+  source = "nbacktraining";
+
    constructor(public appComponent: AppComponent,
               public translate: TranslateappService,
               private elementRef: ElementRef,
@@ -94,6 +96,11 @@ export class NbacktrainingComponent implements OnInit{
       }
     );
     this.changeLanguage();
+    this.setSourcePage();
+  }
+
+  setSourcePage(){
+    this.localStorageService.setSourcePage(this.source);
   }
 
   checkLocaStorage(){

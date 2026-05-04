@@ -344,7 +344,8 @@ export class ScattergoriesComponent implements OnInit{
   bestScore = 0;
   bestScoreText = "";
 
-  
+  source = "scattergories";
+
   constructor(public appComponent: AppComponent,
                   public translate: TranslateappService,
                   private elementRef: ElementRef,
@@ -362,6 +363,9 @@ export class ScattergoriesComponent implements OnInit{
         }
       );
       this.changeLanguage();
+
+      this.setSourcePage();
+      
       this.checkLocaleStorage();
       if(this.numbertimesplayed == 3){
         this.finalPlayedText = this.bestScoreText + " Score max : " + this.localStorageService.getBestScoreExercicePlayed("scattergoriesscore") + " / " + this.total;
@@ -369,6 +373,10 @@ export class ScattergoriesComponent implements OnInit{
       }
   }
 
+  setSourcePage(){
+    this.localStorageService.setSourcePage(this.source);
+  }
+  
   setOrNotSetBestScore(){
     if(this.score >= this.bestScore){
         this.bestScore = this.score;

@@ -583,6 +583,8 @@ okText = "OK";
 bestScore = 0;
 bestScoreText = "";
 
+source = "commonname";
+
 constructor(public appComponent: AppComponent,
                 public translate: TranslateappService,
                 private elementRef: ElementRef,
@@ -601,11 +603,17 @@ constructor(public appComponent: AppComponent,
     );
     this.changeLanguage();
 
+    this.setSourcePage();
+    
     this.checkLocaleStorage();
     if(this.numbertimesplayed == 3){
       this.finalPlayedText = this.bestScoreText + " Score max : " + this.localStorageService.getBestScoreExercicePlayed("commonnamescore") + " / " + this.total;
       this.showEnd = true;
     }
+  }
+
+  setSourcePage(){
+    this.localStorageService.setSourcePage(this.source);
   }
 
   setOrNotSetBestScore(){

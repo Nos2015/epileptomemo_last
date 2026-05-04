@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { Router } from '@angular/router';
 import { TranslateappService } from '../../services/translateapp.service';
+import { LocalstorageService } from '../../services/localstorage.service';
 
 @Component({
   selector: 'app-home',
@@ -24,12 +25,14 @@ export class HomeComponent implements OnInit{
   familySupport = "";
   keepLoveOneInformed = "";
   language = "fr";
+  source = "home";
 
   constructor(
       public appComponent : AppComponent,
       private router : Router,
       public translate: TranslateappService,
       private elementRef: ElementRef,
+      public localStorage: LocalstorageService
   ){
 
   }
@@ -47,7 +50,7 @@ export class HomeComponent implements OnInit{
   ngAfterViewInit(){
     this.appComponent.changeTitleMobileHeader();
   }
-  
+
   changeLanguage(){
     //changeLanguage when page is on front
     if(this.elementRef.nativeElement.offsetParent != null) {
@@ -83,7 +86,12 @@ export class HomeComponent implements OnInit{
       });
 
       this.manageLanguage();
+      this.setSourcePage();
     }
+  }
+
+  setSourcePage(){
+    this.localStorage.setSourcePage(this.source);
   }
 
   manageLanguage(){

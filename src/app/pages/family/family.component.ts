@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { TranslateappService } from '../../services/translateapp.service';
+import { LocalstorageService } from '../../services/localstorage.service';
 
 @Component({
   selector: 'app-family',
@@ -17,10 +18,12 @@ export class FamilyComponent implements OnInit{
   first = "";
   second = "";
   conclusion = "";
+  source = "family";
 
   constructor(public appComponent: AppComponent,
               public translate: TranslateappService,
               private elementRef: ElementRef,
+              public localStorage: LocalstorageService
   ){}
 
   ngOnInit(): void {
@@ -31,6 +34,11 @@ export class FamilyComponent implements OnInit{
       }
     );
     this.changeLanguage();
+    this.setSourcePage();
+  }
+
+  setSourcePage(){
+    this.localStorage.setSourcePage(this.source);
   }
 
   ngAfterViewInit(){

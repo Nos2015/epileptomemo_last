@@ -46,6 +46,8 @@ export class MemorysequenceComponent implements OnInit{
   bestScore = 0;
   bestScoreText = "";
 
+  source = "memorysequence";
+
   @ViewChild('game') gameElement!: ElementRef;
 
   constructor(public appComponent: AppComponent,
@@ -65,11 +67,17 @@ export class MemorysequenceComponent implements OnInit{
     );
     this.changeLanguage();
 
+    this.setSourcePage();
+    
     this.checkLocaleStorage();
     if(this.numbertimesplayed == 3){
       this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("memorysequencescore");
       this.showEnd = true;
     }
+  }
+
+  setSourcePage(){
+    this.localStorageService.setSourcePage(this.source);
   }
 
   checkLocaleStorage(){
