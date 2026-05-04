@@ -8,7 +8,7 @@
     </div>
 </div>
 <div class="cta-slider">
-    <div class="cta-slider-bloc" (click)="goTo('journal')">
+    <div class="cta-slider-bloc" (click)="goTo('exercices/memorysequence')">
         <img class="cta-slider-bloc-image cta-shadow" src="/assets/memorysequence.png"/>
         <p class="title-cta-slider">{{firstGameTitle}}</p>
         <p class="title-cta-slider-under">{{firstGameSubTitle}}</p>
@@ -19,7 +19,7 @@
             <p class="title-cta-slider-under level_easy">{{levelEasy}}</p>
         </div>
     </div>
-    <div class="cta-slider-bloc" (click)="goTo('exercices')">
+    <div class="cta-slider-bloc" (click)="goTo('exercices/visualpattern')">
         <img class="cta-slider-bloc-image cta-shadow" src="/assets/visualpattern.png"/>
         <p class="title-cta-slider">{{secondGameTitle}}</p>
         <p class="title-cta-slider-under">{{secondGameSubTitle}}</p>
@@ -35,7 +35,7 @@
         <p class="title-cta-slider">{{thirdGameTitle}}</p>
         <p class="title-cta-slider-under">{{thirdGameSubTitle}}</p>
         <div class="button_level">
-            <button class="button-width50">
+            <button class="button-width50" (click)="goTo('exercices/commonname')">
                 <span>Start</span>
             </button>
             <p class="title-cta-slider-under level_hard">{{levelHard}}</p>
@@ -43,12 +43,8 @@
     </div>
 </div>
 <div class="cta-other-bloc">
-    <!--div class="cta-title-mobile">
-        <div class="cta-title cta-title-text-mobile">{{exercicesTitle}}</div>
-        <img src="/assets/exercices_page.png" alt="Memory Exercices" />
-    </div-->
     <div class="cta-title">{{exercicesOtherExercices}}</div>
-    <div class="elementMenuContent elementMenuContentMobile elemenFirsttMenuContentMobile">
+    <div class="elementMenuContent elementMenuContentMobile elemenFirsttMenuContentMobile" (click)="goTo('exercices/memorysequence')">
         <div class="elementMenuContentElements">
             <div class="elementMenuContentElementsText">
                 <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/memorysequence.png"/>
@@ -65,7 +61,7 @@
             </div>
         </div>
     </div>
-    <div class="elementMenuContent elementMenuContentMobile">
+    <div class="elementMenuContent elementMenuContentMobile" (click)="goTo('exercices/visualpattern')">
         <div class="elementMenuContentElements">
             <div class="elementMenuContentElementsText">
                 <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/visualpattern.png"/>
@@ -82,7 +78,7 @@
             </div>
         </div>
     </div>
-    <div class="elementMenuContent elementMenuContentMobile">
+    <div class="elementMenuContent elementMenuContentMobile" (click)="goTo('exercices/commonname')">
         <div class="elementMenuContentElements">
             <div class="elementMenuContentElementsText">
                 <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/findnamedefinition.png"/>
@@ -99,7 +95,7 @@
             </div>
         </div>
     </div>
-    <div class="elementMenuContent">
+    <div class="elementMenuContent" (click)="goTo('exercices/quickbrain')">
         <div class="elementMenuContentElements">
             <div class="elementMenuContentElementsText">
                 <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/quickbrain.png"/>
@@ -116,7 +112,7 @@
             </div>
         </div>
     </div>
-    <div class="elementMenuContent">
+    <div class="elementMenuContent" (click)="goTo('exercices/patternbuilder')">
         <div class="elementMenuContentElements">
             <div class="elementMenuContentElementsText">
                 <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/patternbuilder.png"/>
@@ -133,7 +129,7 @@
             </div>
         </div>
     </div>
-    <div class="elementMenuContent">
+    <div class="elementMenuContent" (click)="goTo('exercices/nbacktraining')">
         <div class="elementMenuContentElements">
             <div class="elementMenuContentElementsText">
                 <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/nbacktraining.png"/>
@@ -150,7 +146,7 @@
             </div>
         </div>
     </div>
-    <div class="elementMenuContent">
+    <div class="elementMenuContent" (click)="goTo('exercices/scattergories')">
         <div class="elementMenuContentElements">
         <div class="elementMenuContentElementsText">
                 <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/findnamedefinitionwithletters.png"/>
