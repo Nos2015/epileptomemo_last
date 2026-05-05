@@ -58,12 +58,17 @@
 }
 
 .color {
-  width: 70px;
-  height: 70px;
+  width: calc((100% - 45px) / 4); /* 4 boutons + 3 gaps de 15px */
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: none;
   transition: 0.2s;
 }
+
+/*.color {
+  width: min(70px, calc((100% - 45px) / 4));
+  aspect-ratio: 1 / 1;
+}*/
 
 .green:hover, .red:hover, .blue:hover, .yellow:hover{
   transform: scale(1.1);
