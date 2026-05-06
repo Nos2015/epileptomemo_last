@@ -37,18 +37,24 @@
 
 .letters-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+  gap: 8px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .letter-card {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background: #ffffff;
-  border-radius: 15px;
-  padding: 20px;
-  text-align: center;
-  font-size: 24px;
+  border-radius: 12px;
+
+  font-size: clamp(14px, 4vw, 24px);
   font-weight: bold;
+
   cursor: pointer;
   transition: all 0.2s;
   font-family: "InterBold";
