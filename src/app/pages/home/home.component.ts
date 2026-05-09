@@ -14,6 +14,9 @@ export class HomeComponent implements OnInit{
 
   homeTitle = "";
   homeSubTitle = "";
+  homeTitleMobile = "";
+  homePartnerMobile = "";
+  homePartnerMobile2 = "";
   memoryExercices = "";
   simpleCognitiveGames = "";
   seizureJournal = "";
@@ -57,7 +60,10 @@ export class HomeComponent implements OnInit{
       this.translate.translate.get(
         [
           'home.title',
+          'home.titleMobile',
           'home.subtitle',
+          'home.partnerMobile',
+          'home.partnerMobile2',
           'memoryExercices',
           'simpleCognitiveGames',
           'seizureJournal',
@@ -72,7 +78,10 @@ export class HomeComponent implements OnInit{
       )
       .subscribe(translations => {
         this.homeTitle = translations['home.title'];
+        this.homeTitleMobile = translations['home.titleMobile'];
         this.homeSubTitle = translations['home.subtitle'];
+        this.homePartnerMobile = translations['home.partnerMobile'];
+        this.homePartnerMobile2 = translations['home.partnerMobile2'];
         this.memoryExercices = translations['memoryExercices'];
         this.simpleCognitiveGames = translations['simpleCognitiveGames'];
         this.seizureJournal = translations['seizureJournal'];
@@ -99,8 +108,13 @@ export class HomeComponent implements OnInit{
   }
 
   goTo(route:string){
-    window.scroll(0,0);
-    this.router.navigate([route]);
+    if(route === "footerComponent"){
+      this.appComponent.scrollToFooterElement();
+    }
+    else{
+      window.scroll(0,0);
+      this.router.navigate([route]);
+    }
   }
   
 }

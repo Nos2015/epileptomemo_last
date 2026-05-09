@@ -1,7 +1,10 @@
 {
     "home":{
         "title":"Mieux vivre<br/>avec l'épilepsie",
-        "subtitle":"Suivez vos crises, stimulez votre mémoire,<br/>restez à jour dans votre traitement."
+        "subtitle":"Suivez vos crises, stimulez votre mémoire<br/>et restez à jour dans votre traitement.",
+        "titleMobile":"Mieux vivre avec l'épilepsie",
+        "partnerMobile":"Votre allié",
+        "partnerMobile2": "au quotidien"
     },
     "memoryExercices":"Exercices de mémoire",
     "simpleCognitiveGames":"Jeux de réflexion simples",

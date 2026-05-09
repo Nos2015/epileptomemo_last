@@ -1,7 +1,10 @@
 {
     "home":{
         "title":"Living Better<br/>with Epilepsy",
-        "subtitle":"Track your seizures, boost your memory,<br/>stay on top of your treatment."
+        "subtitle":"Track your seizures, boost your memory<br/>and stay on top of your treatment.",
+        "titleMobile":"Living Better with Epilepsy",
+        "partnerMobile":"Your everyday",
+         "partnerMobile2": "partner"
     },
     "memoryExercices":"Memory Exercices",
     "simpleCognitiveGames":"Simple cognitive games",

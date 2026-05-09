@@ -40,25 +40,16 @@
         <div class="hero-wrapper">
             <section class="hero-section">
                 <div class="hero-left">
-                    <div class="hero-badge">
-                    💙 Mieux vivre avec l’épilepsie
+                    <div class="hero-badge" (click)="goTo('footerComponent')">
+                    💙 <span class="partnerMobile">{{homeTitleMobile}}</span>
                     </div>
                     <h1 class="hero-title">
-                        Votre allié
-                        <span>au quotidien</span>
+                        {{homePartnerMobile}}
+                        <span>{{homePartnerMobile2}}</span>
                     </h1>
-                    <p class="hero-subtitle">
-                        Suivez vos crises, stimulez votre mémoire
-                        et restez à jour dans votre traitement.
+                    <p class="hero-subtitle" [innerHTML]="homeSubTitle">
                     </p>
                 </div>
-                <!--div class="hero-right">
-                    <img
-                    src="assets/background_mobile_2.png"
-                    alt="EpileptoMemo App"
-                    class="hero-phone"
-                    >
-                </div-->
                 <svg
                     class="hero-svg-wave"
                     viewBox="0 0 1440 320"
@@ -67,13 +58,13 @@
                     <path 
                     fill="#f1f4fc"
                     d="
-M0,220
-C360,120 720,320 1080,220
-C1260,170 1380,180 1440,220
-L1440,320
-L0,320
-Z
-">
+                    M0,240
+                    C400,180 800,300 1200,220
+                    C1320,200 1400,210 1440,240
+                    L1440,320
+                    L0,320
+                    Z
+                    ">
                     </path>
                 </svg>
             </section>

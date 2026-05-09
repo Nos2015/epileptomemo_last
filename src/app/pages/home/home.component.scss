@@ -110,7 +110,6 @@
   z-index:2;
   font-family: 'InterBold';
   flex:1;
-  //padding-left: 20px;
   max-width:620px;
   text-align: center;
 }
@@ -139,6 +138,23 @@
 
   box-shadow:
     0 8px 24px rgba(0,0,0,.08);
+
+  cursor: pointer;
+}
+
+.hero-badge:hover{
+  background:rgba(255,255,255,.38);
+
+  color:#0057e7;
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 12px 28px rgba(27,105,237,.16);
+}
+
+.partnerMobile{
+    padding-left: 10px;
 }
 
 /* TITRE */
@@ -264,31 +280,31 @@
 @media(max-width:600px){
 
     .hero-section{
-    padding:
-        42px
-        20px
-        90px;
+        padding:
+            42px
+            20px
+            90px;
     }
 
     .hero-title{
-    font-size:58px;
+        font-size:58px;
     }
 
     .hero-subtitle{
-    font-size:18px;
+        font-size:18px;
     }
 
     .hero-badge{
-    font-size:15px;
+        font-size:15px;
     }
 
     .hero-btn{
-    width:100%;
+        width:100%;
     }
 
     .hero-phone{
-    width:88vw;
-    max-width:360px;
+        width:88vw;
+        max-width:360px;
     }
 
 }
