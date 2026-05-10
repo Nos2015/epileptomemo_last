@@ -94,17 +94,12 @@ export class HomeComponent implements OnInit{
         this.keepLoveOneInformed = translations['keepLoveOneInformed'];
       });
 
-      this.manageLanguage();
       this.setSourcePage();
     }
   }
 
   setSourcePage(){
     this.localStorage.setSourcePage(this.source);
-  }
-
-  manageLanguage(){
-    console.log("language = "+this.translate.getLanguageUsed());
   }
 
   goTo(route:string){

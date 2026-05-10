@@ -109,7 +109,6 @@ export class FooterComponent implements OnInit{
 
     if (!this.email || !regex.test(this.email)) {
       this.errorMessage = this.errorSendMessage;
-      console.log("error = "+this.errorMessage);
       this.successMessage = "";
       return;
 
@@ -125,7 +124,6 @@ export class FooterComponent implements OnInit{
       next: (res: any) => {
 
         if (res.success) {
-          console.log("success");
           this.successMessage = this.successMessage;
           this.errorMessage = "";
           this.showPopup = true;

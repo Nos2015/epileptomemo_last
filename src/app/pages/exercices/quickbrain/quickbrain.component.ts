@@ -164,7 +164,7 @@ export class QuickbrainComponent implements OnInit{
     this.changeLanguage();
 
     this.setSourcePage();
-    
+
     this.checkLocaleStorage();
     if(this.numbertimesplayed == 3){
       this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("quickbrainscore");
@@ -274,7 +274,6 @@ export class QuickbrainComponent implements OnInit{
   setTimesPlayed(){
     this.numbertimesplayed++;
     this.localStorageService.setNumberExercicePlayed("quickbrain", this.numbertimesplayed);
-    console.log("localStorageService quickbrain = "+this.localStorageService.getNumberExercicePlayed("quickbrain"));
   }
 
   startGame() {
