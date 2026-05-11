@@ -142,7 +142,7 @@ app.post('/api/waitlist', (req, res) => {
                 from: '"EpileptoMemo', // sender address
                 to: email, // list of receivers
                 subject: "Wellcome to EpiletoMemo 💙", // Subject line
-                proxy:"http://localhost:4200",
+                proxy:"https://www.epileptomemo.com",
                 attachments: [
                 {
                     filename: "epileptomemo.png",
@@ -190,7 +190,7 @@ app.post('/api/waitlist', (req, res) => {
         </p>
 
         <div style="text-align:center;margin:30px 0;">
-        <a href="http://localhost:4200"
+        <a href="https://www.epileptomemo.com"
         style="
         background: linear-gradient(180deg, #3484e0, #2a78d8);
         color:white;
