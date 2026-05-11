@@ -109,6 +109,7 @@ export class FooterComponent implements OnInit{
 
     if (!this.email || !regex.test(this.email)) {
       this.errorMessage = this.errorSendMessage;
+      this.showPopup = true;
       this.successMessage = "";
       return;
 
