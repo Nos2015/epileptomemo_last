@@ -9,7 +9,8 @@
             <img class="toggle-button-text-off" src="/assets/french.jpg" alt="English">
         </div>
     </div>
-    <div class="elementMenu" (click)="goTo('exercices')">
+    <div class="elementMenu" (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event)" (click)="goTo('exercices')">
         <div class="elementMenuContent">
             <div class="elementMenuContentElementsText">
                 <p class="title-cta-slider elementMenuContentText elementMenuContentTextSideBar">{{memoryExercices}}</p>

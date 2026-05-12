@@ -56,11 +56,20 @@ export class ExercicesComponent implements OnInit{
     this.appComponent.setHome(true);
     this.translate.comp$.subscribe(
       () => {
+         this.initElementMenu();
           this.changeLanguage();
       }
     );
+    this.initElementMenu();
     this.changeLanguage();
     this.setSourcePage();
+  }
+
+  initElementMenu(){
+    document.querySelectorAll('.elementMenu').forEach(el => {
+        el.classList.remove('hovered');
+        (el as HTMLElement).style.background = '';
+    });
   }
 
   setSourcePage(){
@@ -123,4 +132,13 @@ export class ExercicesComponent implements OnInit{
     this.router.navigate([route]);
   }
 
+   onTouchStart(event: TouchEvent) {
+    (event.currentTarget as HTMLElement).classList.add('hovered');
+  }
+
+  onTouchEnd(event: TouchEvent) {
+      setTimeout(() => {
+          (event.currentTarget as HTMLElement).classList.remove('hovered');
+      }, 2000);
+  }
 }

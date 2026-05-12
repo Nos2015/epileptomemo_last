@@ -36,12 +36,21 @@ export class SidebarComponent implements OnInit{
   ngOnInit(): void {
     this.translate.comp$.subscribe(
       () => {
+          this.initElementMenu();
           this.changeLanguage();
           this.manageLanguage();
       }
     );
+    this.initElementMenu();
     this.changeLanguage();
     this.manageLanguage();
+  }
+
+  initElementMenu(){
+    document.querySelectorAll('.elementMenu').forEach(el => {
+        el.classList.remove('hovered');
+        (el as HTMLElement).style.background = '';
+    });
   }
 
   changeLanguage(){
@@ -109,5 +118,15 @@ export class SidebarComponent implements OnInit{
       this.translate.setTransLanguage("fr");
     }
     this.changeLanguage();
+  }
+
+  onTouchStart(event: TouchEvent) {
+    (event.currentTarget as HTMLElement).classList.add('hovered');
+  }
+
+  onTouchEnd(event: TouchEvent) {
+      setTimeout(() => {
+          (event.currentTarget as HTMLElement).classList.remove('hovered');
+      }, 2000);
   }
 }

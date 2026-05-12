@@ -45,14 +45,23 @@ el: any;
     this.appComponent.setHome(true);
     this.translate.comp$.subscribe(
       () => {
+          this.initElementMenu();
           this.changeLanguage();
       }
     );
+    this.initElementMenu();
     this.changeLanguage();
   }
 
   ngAfterViewInit(){
     this.appComponent.changeTitleMobileHeader();
+  }
+
+  initElementMenu(){
+    document.querySelectorAll('.elementMenu').forEach(el => {
+        el.classList.remove('hovered');
+        (el as HTMLElement).style.background = '';
+    });
   }
 
   changeLanguage(){
@@ -126,9 +135,11 @@ el: any;
 
   onTouchStart(event: TouchEvent) {
     (event.currentTarget as HTMLElement).classList.add('hovered');
-}
+  }
 
   onTouchEnd(event: TouchEvent) {
-      (event.currentTarget as HTMLElement).classList.remove('hovered');
+      setTimeout(() => {
+          (event.currentTarget as HTMLElement).classList.remove('hovered');
+      }, 2000);
   }
 }

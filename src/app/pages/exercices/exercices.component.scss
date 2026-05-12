@@ -222,13 +222,3 @@
         display: none;
     }
 }
-
-@media (hover: hover) {
-    .elementMenu:hover {
-        background: linear-gradient(-90deg, #3283dc, #1d65bf);
-
-        .elementMenuContentText, .elementMenuContentTextUnder {
-            color: #fefefe;
-        }
-    }
-}

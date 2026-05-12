@@ -72,6 +72,8 @@
     </div>
     <div id="menu">
         <div class="elementMenu" 
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event)"
             (click)="goTo('exercices')">
             <div class="elementMenuContent">
                 <div class="elementMenuContentElementsText">
