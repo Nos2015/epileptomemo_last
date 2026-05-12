@@ -128,6 +128,7 @@ el: any;
       this.appComponent.scrollToFooterElement();
     }
     else{
+      this.initElementMenu();
       window.scroll(0,0);
       this.router.navigate([route]);
     }
