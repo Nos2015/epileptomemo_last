@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit{
   keepLoveOneInformed = "";
   language = "fr";
   source = "home";
+el: any;
 
   constructor(
       public appComponent : AppComponent,
@@ -122,5 +123,12 @@ export class HomeComponent implements OnInit{
       this.router.navigate([route]);
     }
   }
-  
+
+  onTouchStart(event: TouchEvent) {
+    (event.currentTarget as HTMLElement).classList.add('hovered');
+}
+
+  onTouchEnd(event: TouchEvent) {
+      (event.currentTarget as HTMLElement).classList.remove('hovered');
+  }
 }
