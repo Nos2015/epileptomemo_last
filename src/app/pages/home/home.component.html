@@ -71,7 +71,9 @@
         </div>
     </div>
     <div id="menu">
-        <div class="elementMenu" (click)="goTo('exercices')">
+        <div class="elementMenu" 
+            (touchstart)="el.classList.add('hovered')" (touchend)="el.classList.remove('hovered')" 
+            (click)="goTo('exercices')">
             <div class="elementMenuContent">
                 <div class="elementMenuContentElementsText">
                     <p class="title-cta-slider elementMenuContentText">{{memoryExercices}}</p>
