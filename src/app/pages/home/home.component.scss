@@ -457,13 +457,12 @@
     }
 }
 
-@media (hover: hover) {
-    .elementMenu:hover {
-        background: linear-gradient(-90deg, #3283dc, #1d65bf);
+.elementMenu:hover,
+.elementMenu.hovered {
+    background: linear-gradient(-90deg, #3283dc, #1d65bf);
 
-        .elementMenuContentText, .elementMenuContentTextUnder {
-            color: #fefefe;
-        }
+    .elementMenuContentText, .elementMenuContentTextUnder {
+        color: #fefefe;
     }
 }
 
