@@ -92,9 +92,20 @@ export class HomeComponent implements OnInit{
         this.medicalCare = translations['medicalCare'];
         this.familySupport = translations['familySupport'];
         this.keepLoveOneInformed = translations['keepLoveOneInformed'];
+        this.changeLanguageQuestionsIfStart();
       });
 
       this.setSourcePage();
+    }
+  }
+
+  changeLanguageQuestionsIfStart(){
+    let lang = localStorage.getItem("language");
+    if (lang == null){
+      this.language = "fr";
+    }
+    else{
+      this.language = lang;
     }
   }
 
