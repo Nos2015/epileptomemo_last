@@ -411,14 +411,6 @@
             -webkit-tap-highlight-color: transparent;
             transition:transform .15s ease,background .15s ease;
 
-           /* &:hover{
-                background: linear-gradient(-90deg, #3283dc, #1d65bf);
-
-                .elementMenuContentText, .elementMenuContentTextUnder{
-                    color:#fefefe;
-                }
-            }*/
-
             &.hovered{
                 background:
                 linear-gradient(-90deg,#3283dc,#1d65bf);
@@ -477,8 +469,4 @@
     .cta-title-mobile img{
         max-width: 300px;
     }
-}
-
-
-
-        
+}        
