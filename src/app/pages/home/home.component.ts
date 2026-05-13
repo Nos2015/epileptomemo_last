@@ -45,11 +45,10 @@ el: any;
     this.appComponent.setHome(true);
     this.translate.comp$.subscribe(
       () => {
-          this.initElementMenu();
           this.changeLanguage();
       }
     );
-    this.initElementMenu();
+    //this.initElementMenu();
     this.changeLanguage();
   }
 
@@ -57,12 +56,14 @@ el: any;
     this.appComponent.changeTitleMobileHeader();
   }
 
-  initElementMenu(){
+  /*initElementMenu(){
+    console.log("initElementMenu");
     document.querySelectorAll('.elementMenu').forEach(el => {
+        console.log("ici");
         el.classList.remove('hovered');
         (el as HTMLElement).style.background = '';
     });
-  }
+  }*/
 
   changeLanguage(){
     //changeLanguage when page is on front
@@ -128,19 +129,34 @@ el: any;
       this.appComponent.scrollToFooterElement();
     }
     else{
-      this.initElementMenu();
+      //this.initElementMenu();
       window.scroll(0,0);
       this.router.navigate([route]);
     }
   }
 
   onTouchStart(event: TouchEvent) {
-    (event.currentTarget as HTMLElement).classList.add('hovered');
+
+    (event.currentTarget as HTMLElement)
+      .classList.add('hovered');
+
   }
 
   onTouchEnd(event: TouchEvent) {
-      setTimeout(() => {
-          (event.currentTarget as HTMLElement).classList.remove('hovered');
-      }, 2000);
+
+    const target =
+      event.currentTarget as HTMLElement;
+
+    setTimeout(() => {
+      target.classList.remove('hovered');
+    }, 120);
+
+  }
+
+  onTouchCancel(event: TouchEvent) {
+
+    (event.currentTarget as HTMLElement)
+      .classList.remove('hovered');
+
   }
 }

@@ -56,7 +56,6 @@ export class ExercicesComponent implements OnInit{
     this.appComponent.setHome(true);
     this.translate.comp$.subscribe(
       () => {
-         this.initElementMenu();
           this.changeLanguage();
       }
     );

@@ -361,6 +361,16 @@
         display: none;
     }
     
+    .elementMenu:hover{
+
+        background:
+        linear-gradient(-90deg,#3283dc,#1d65bf);
+
+        .elementMenuContentText,
+        .elementMenuContentTextUnder{
+            color:#fefefe;
+        }
+    }
 }
 
 @media only screen and (max-width: 1000px){
@@ -398,11 +408,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            -webkit-tap-highlight-color: transparent;
 
-            &:hover{
+           /* &:hover{
                 background: linear-gradient(-90deg, #3283dc, #1d65bf);
 
                 .elementMenuContentText, .elementMenuContentTextUnder{
+                    color:#fefefe;
+                }
+            }*/
+
+            .elementMenu.hovered{
+                background:
+                linear-gradient(-90deg,#3283dc,#1d65bf);
+
+                .elementMenuContentText,
+                .elementMenuContentTextUnder{
                     color:#fefefe;
                 }
             }

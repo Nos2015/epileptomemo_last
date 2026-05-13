@@ -36,7 +36,6 @@ export class SidebarComponent implements OnInit{
   ngOnInit(): void {
     this.translate.comp$.subscribe(
       () => {
-          this.initElementMenu();
           this.changeLanguage();
           this.manageLanguage();
       }
