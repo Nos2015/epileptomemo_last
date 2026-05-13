@@ -409,6 +409,7 @@
             justify-content: space-between;
             align-items: center;
             -webkit-tap-highlight-color: transparent;
+            transition:transform .15s ease,background .15s ease;
 
            /* &:hover{
                 background: linear-gradient(-90deg, #3283dc, #1d65bf);

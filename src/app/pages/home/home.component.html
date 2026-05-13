@@ -73,9 +73,8 @@
     <div id="menu">
         <div class="elementMenu" 
         (touchstart)="onTouchStart($event)"
-        (touchend)="onTouchEnd($event)"
-        (touchcancel)="onTouchCancel($event)"
-            (click)="goTo('exercices')">
+        (touchend)="onTouchEnd($event,'exercices')"
+        >
             <div class="elementMenuContent">
                 <div class="elementMenuContentElementsText">
                     <p class="title-cta-slider elementMenuContentText">{{memoryExercices}}</p>

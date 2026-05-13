@@ -142,7 +142,7 @@ el: any;
 
   }
 
-  onTouchEnd(event: TouchEvent) {
+  /*onTouchEnd(event: TouchEvent) {
 
     const target =
       event.currentTarget as HTMLElement;
@@ -151,12 +151,30 @@ el: any;
       target.classList.remove('hovered');
     }, 120);
 
-  }
+  }*/
 
-  onTouchCancel(event: TouchEvent) {
+  /*onTouchCancel(event: TouchEvent) {
 
     (event.currentTarget as HTMLElement)
       .classList.remove('hovered');
+
+  }*/
+
+  onTouchEnd(
+    event: TouchEvent,
+    page: string
+  ) {
+
+    const target =
+      event.currentTarget as HTMLElement;
+
+    setTimeout(() => {
+
+      target.classList.remove('hovered');
+
+      this.goTo(page);
+
+    }, 140);
 
   }
 }
