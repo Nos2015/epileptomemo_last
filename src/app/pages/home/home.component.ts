@@ -142,24 +142,6 @@ el: any;
 
   }
 
-  /*onTouchEnd(event: TouchEvent) {
-
-    const target =
-      event.currentTarget as HTMLElement;
-
-    setTimeout(() => {
-      target.classList.remove('hovered');
-    }, 120);
-
-  }*/
-
-  /*onTouchCancel(event: TouchEvent) {
-
-    (event.currentTarget as HTMLElement)
-      .classList.remove('hovered');
-
-  }*/
-
   onTouchEnd(
     event: TouchEvent,
     page: string
@@ -174,7 +156,7 @@ el: any;
 
       this.goTo(page);
 
-    }, 1000);
+    }, 140);
 
   }
 }
