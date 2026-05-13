@@ -44,7 +44,9 @@
 </div>
 <div class="cta-other-bloc">
     <div class="cta-title">{{exercicesOtherExercices}}</div>
-    <div class="elementMenuContent elementMenuContentMobile elemenFirsttMenuContentMobile" (click)="goTo('exercices/memorysequence')">
+    <div class="elementMenuContent elementMenuContentMobile elemenFirsttMenuContentMobile" 
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event,'exercices/memorysequence')">
         <div class="elementMenuContentElements">
             <div class="elementMenuContentElementsText">
                 <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/memorysequence.png"/>
@@ -61,7 +63,9 @@
             </div>
         </div>
     </div>
-    <div class="elementMenuContent elementMenuContentMobile" (click)="goTo('exercices/visualpattern')">
+    <div class="elementMenuContent elementMenuContentMobile" 
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event,'exercices/visualpattern')">
         <div class="elementMenuContentElements">
             <div class="elementMenuContentElementsText">
                 <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/visualpattern.png"/>
@@ -78,7 +82,9 @@
             </div>
         </div>
     </div>
-    <div class="elementMenuContent elementMenuContentMobile" (click)="goTo('exercices/commonname')">
+    <div class="elementMenuContent elementMenuContentMobile" 
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event,'exercices/commonname')">
         <div class="elementMenuContentElements">
             <div class="elementMenuContentElementsText">
                 <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/findnamedefinition.png"/>
@@ -95,7 +101,9 @@
             </div>
         </div>
     </div>
-    <div class="elementMenuContent" (click)="goTo('exercices/quickbrain')">
+    <div class="elementMenuContent"
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event,'exercices/quickbrain')">
         <div class="elementMenuContentElements">
             <div class="elementMenuContentElementsText">
                 <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/quickbrain.png"/>
@@ -112,7 +120,9 @@
             </div>
         </div>
     </div>
-    <div class="elementMenuContent" (click)="goTo('exercices/patternbuilder')">
+    <div class="elementMenuContent" 
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event,'exercices/patternbuilder')">
         <div class="elementMenuContentElements">
             <div class="elementMenuContentElementsText">
                 <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/patternbuilder.png"/>
@@ -129,7 +139,9 @@
             </div>
         </div>
     </div>
-    <div class="elementMenuContent" (click)="goTo('exercices/nbacktraining')">
+    <div class="elementMenuContent" 
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event,'exercices/nbacktraining')">
         <div class="elementMenuContentElements">
             <div class="elementMenuContentElementsText">
                 <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/nbacktraining.png"/>
@@ -146,7 +158,9 @@
             </div>
         </div>
     </div>
-    <div class="elementMenuContent" (click)="goTo('exercices/scattergories')">
+    <div class="elementMenuContent"
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event,'exercices/scattergories')">
         <div class="elementMenuContentElements">
         <div class="elementMenuContentElementsText">
                 <img class="cta-slider-bloc-image cta-shadow cta-shadow-other" src="/assets/findnamedefinitionwithletters.png"/>

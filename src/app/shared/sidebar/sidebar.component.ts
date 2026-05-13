@@ -120,12 +120,26 @@ export class SidebarComponent implements OnInit{
   }
 
   onTouchStart(event: TouchEvent) {
-    (event.currentTarget as HTMLElement).classList.add('hovered');
+
+    (event.currentTarget as HTMLElement)
+      .classList.add('hovered');
+
   }
 
-  onTouchEnd(event: TouchEvent) {
-      setTimeout(() => {
-          (event.currentTarget as HTMLElement).classList.remove('hovered');
-      }, 2000);
+  onTouchEnd(
+    event: TouchEvent,
+    page: string
+  ) {
+
+    const target =
+      event.currentTarget as HTMLElement;
+
+    setTimeout(() => {
+
+      target.classList.remove('hovered');
+
+      this.goTo(page);
+
+    }, 140);
   }
 }

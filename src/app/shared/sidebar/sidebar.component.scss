@@ -24,13 +24,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        -webkit-tap-highlight-color: transparent;
+        transition:transform .15s ease,background .15s ease;
 
-        &:hover{
-            background: linear-gradient(-90deg, #3283dc, #1d65bf);
+        &.hovered{
+                background:
+                linear-gradient(-90deg,#3283dc,#1d65bf);
 
-            .elementMenuContentText, .elementMenuContentTextUnder{
-                color:#fefefe;
-            }
+                .elementMenuContentText,
+                .elementMenuContentTextUnder{
+                    color:#fefefe;
+                }
         }
 
         .elementMenuContent{
@@ -126,6 +130,18 @@
         height: 40px;
         margin-bottom: 20px;
     }
-
   }
+}
+
+@media only screen and (min-width: 1001px){
+    .elementMenu:hover{
+
+        background:
+        linear-gradient(-90deg,#3283dc,#1d65bf);
+
+        .elementMenuContentText,
+        .elementMenuContentTextUnder{
+            color:#fefefe;
+        }
+    }
 }

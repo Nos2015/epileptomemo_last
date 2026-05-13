@@ -9,8 +9,9 @@
             <img class="toggle-button-text-off" src="/assets/french.jpg" alt="English">
         </div>
     </div>
-    <div class="elementMenu" (touchstart)="onTouchStart($event)"
-        (touchend)="onTouchEnd($event)" (click)="goTo('exercices')">
+    <div class="elementMenu" 
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event,'exercices')">
         <div class="elementMenuContent">
             <div class="elementMenuContentElementsText">
                 <p class="title-cta-slider elementMenuContentText elementMenuContentTextSideBar">{{memoryExercices}}</p>
@@ -19,7 +20,9 @@
             <img class="cta-slider-bloc-image cta-shadow" src="/assets/memoryexercicesmobile.png"/>
         </div>
     </div>
-    <div class="elementMenu" (click)="goTo('journal')">
+    <div class="elementMenu" 
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event,'journal')">
         <div class="elementMenuContent">
             <div class="elementMenuContentElementsText">
                 <p class="title-cta-slider elementMenuContentText elementMenuContentTextSideBar">{{seizureJournal}}</p>
@@ -28,7 +31,9 @@
             <img class="cta-slider-bloc-image cta-shadow" src="/assets/seizurejournalmobile.png"/>
         </div>
     </div>
-    <div class="elementMenu" (click)="goTo('reports')">
+    <div class="elementMenu" 
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event,'reports')">
         <div class="elementMenuContent">
             <div class="elementMenuContentElementsText">
                 <p class="title-cta-slider elementMenuContentText elementMenuContentTextSideBar">{{neurologistReports}}</p>
@@ -37,7 +42,9 @@
             <img class="cta-slider-bloc-image cta-shadow" src="/assets/neurologistexportsmobile.png"/>
         </div>
     </div>
-    <div class="elementMenu" (click)="goTo('stats')">
+    <div class="elementMenu" 
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event,'stats')">
         <div class="elementMenuContent">
             <div class="elementMenuContentElementsText">
                 <p class="title-cta-slider elementMenuContentText elementMenuContentTextSideBar">{{statistics}}</p>
@@ -46,7 +53,9 @@
             <img class="cta-slider-bloc-image cta-shadow" src="/assets/statsmobile.png"/>
         </div>
     </div>
-    <div class="elementMenu" (click)="goTo('family')">
+    <div class="elementMenu" 
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event,'family')">
         <div class="elementMenuContent">
             <div class="elementMenuContentElementsText">
                 <p class="title-cta-slider elementMenuContentText elementMenuContentTextSideBar">{{familySupport}}</p>
@@ -56,7 +65,9 @@
         </div>
     </div>
     <div class="elementMenu">
-        <div class="elementMenuContent" (click)="goTo('footerComponent')">
+        <div class="elementMenuContent" 
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event,'footerComponent')">
             <div class="elementMenuContentElementsText">
                 <p class="title-cta-slider elementMenuContentText elementMenuContentTextSideBar">{{joinWaitList}}</p>
                 <p class="title-cta-slider-under elementMenuContentTextUnder">{{joinFirst}}</p>
