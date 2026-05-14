@@ -44,6 +44,8 @@ export class ExercicesComponent implements OnInit{
 
   source = "exercices";
 
+  private touchMoved = false;
+
   constructor(public appComponent: AppComponent,
               private router : Router,
               public translate: TranslateappService,
@@ -133,18 +135,35 @@ export class ExercicesComponent implements OnInit{
 
   onTouchStart(event: TouchEvent) {
 
+    this.touchMoved = false;
+
     (event.currentTarget as HTMLElement)
       .classList.add('hovered');
 
   }
 
+  onTouchMove(event: TouchEvent) {
+
+    this.touchMoved = true;
+
+    (event.currentTarget as HTMLElement)
+      .classList.remove('hovered');
+
+  }
+
   onTouchEnd(
     event: TouchEvent,
-    page: string
+    page:string
   ) {
 
     const target =
       event.currentTarget as HTMLElement;
+
+    target.classList.remove('hovered');
+
+    if(this.touchMoved){
+      return;
+    }
 
     setTimeout(() => {
 
@@ -153,5 +172,6 @@ export class ExercicesComponent implements OnInit{
       this.goTo(page);
 
     }, 140);
+
   }
 }

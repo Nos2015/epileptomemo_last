@@ -26,7 +26,8 @@
         align-items: center;
         -webkit-tap-highlight-color: transparent;
         transition:transform .15s ease,background .15s ease;
-
+        touch-action: pan-y;
+        
         &.hovered{
                 background:
                 linear-gradient(-90deg,#3283dc,#1d65bf);

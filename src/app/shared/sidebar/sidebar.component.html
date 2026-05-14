@@ -11,6 +11,7 @@
     </div>
     <div class="elementMenu" 
         (touchstart)="onTouchStart($event)"
+        (touchmove)="onTouchMove($event)"
         (touchend)="onTouchEnd($event,'exercices')">
         <div class="elementMenuContent">
             <div class="elementMenuContentElementsText">
@@ -22,6 +23,7 @@
     </div>
     <div class="elementMenu" 
         (touchstart)="onTouchStart($event)"
+        (touchmove)="onTouchMove($event)"
         (touchend)="onTouchEnd($event,'journal')">
         <div class="elementMenuContent">
             <div class="elementMenuContentElementsText">
@@ -33,6 +35,7 @@
     </div>
     <div class="elementMenu" 
         (touchstart)="onTouchStart($event)"
+        (touchmove)="onTouchMove($event)"
         (touchend)="onTouchEnd($event,'reports')">
         <div class="elementMenuContent">
             <div class="elementMenuContentElementsText">
@@ -44,6 +47,7 @@
     </div>
     <div class="elementMenu" 
         (touchstart)="onTouchStart($event)"
+        (touchmove)="onTouchMove($event)"
         (touchend)="onTouchEnd($event,'stats')">
         <div class="elementMenuContent">
             <div class="elementMenuContentElementsText">
@@ -55,6 +59,7 @@
     </div>
     <div class="elementMenu" 
         (touchstart)="onTouchStart($event)"
+        (touchmove)="onTouchMove($event)"
         (touchend)="onTouchEnd($event,'family')">
         <div class="elementMenuContent">
             <div class="elementMenuContentElementsText">
@@ -67,6 +72,7 @@
     <div class="elementMenu">
         <div class="elementMenuContent" 
         (touchstart)="onTouchStart($event)"
+        (touchmove)="onTouchMove($event)"
         (touchend)="onTouchEnd($event,'footerComponent')">
             <div class="elementMenuContentElementsText">
                 <p class="title-cta-slider elementMenuContentText elementMenuContentTextSideBar">{{joinWaitList}}</p>

@@ -10,6 +10,7 @@ import { LocalstorageService } from '../../services/localstorage.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
+
 export class HomeComponent implements OnInit{
 
   homeTitle = "";
@@ -29,7 +30,8 @@ export class HomeComponent implements OnInit{
   keepLoveOneInformed = "";
   language = "fr";
   source = "home";
-el: any;
+  el: any;
+  private touchMoved = false;
 
   constructor(
       public appComponent : AppComponent,
@@ -137,18 +139,35 @@ el: any;
 
   onTouchStart(event: TouchEvent) {
 
+    this.touchMoved = false;
+
     (event.currentTarget as HTMLElement)
       .classList.add('hovered');
 
   }
 
+  onTouchMove(event: TouchEvent) {
+
+    this.touchMoved = true;
+
+    (event.currentTarget as HTMLElement)
+      .classList.remove('hovered');
+
+  }
+
   onTouchEnd(
     event: TouchEvent,
-    page: string
+    page:string
   ) {
 
     const target =
       event.currentTarget as HTMLElement;
+
+    target.classList.remove('hovered');
+
+    if(this.touchMoved){
+      return;
+    }
 
     setTimeout(() => {
 
