@@ -15,7 +15,7 @@ export class AppComponent {
 
   @ViewChild('footerElement') footerElement!: ElementRef;
   @ViewChild('headerCmp') headerComponent!:HeaderComponent;
-
+  
   chooseElementOnSideBar($event:boolean){
     this.sidebarActive = $event;
   }

@@ -50,22 +50,12 @@ export class HomeComponent implements OnInit{
           this.changeLanguage();
       }
     );
-    //this.initElementMenu();
     this.changeLanguage();
   }
 
   ngAfterViewInit(){
     this.appComponent.changeTitleMobileHeader();
   }
-
-  /*initElementMenu(){
-    console.log("initElementMenu");
-    document.querySelectorAll('.elementMenu').forEach(el => {
-        console.log("ici");
-        el.classList.remove('hovered');
-        (el as HTMLElement).style.background = '';
-    });
-  }*/
 
   changeLanguage(){
     //changeLanguage when page is on front

@@ -14,10 +14,36 @@ export class TranslateappService {
   comp$ = this.compInstance.asObservable();
 
   constructor(public translate: TranslateService){
-    const language = localStorage.getItem("language");
+    let language = localStorage.getItem("language");
     translate.setFallbackLang('fr');
     translate.addLangs(['fr', 'en']);
-    if (!language || language=="fr"){
+    const browserLang = navigator.language.toLowerCase();
+    const beginWithLangFr = browserLang.startsWith('fr');
+    let lang = "";
+    if(!language){
+      if(browserLang){
+        lang =  browserLang.startsWith('fr') ? 'fr': 'en';
+      }
+      else{
+        lang = "fr";
+      }
+      localStorage.setItem("language",lang);
+    }
+    else{
+      if(beginWithLangFr && language != 'fr'){
+        lang = "fr";
+      }
+      else if(!beginWithLangFr && language == 'fr'){
+        lang = "en";
+      }
+      else{
+        lang = language;
+      }
+    }
+    localStorage.setItem("language",lang);
+    let newlanguage = localStorage.getItem("language");
+
+    if (!newlanguage || newlanguage=="fr"){
       translate.use('fr');
     }
     else{
