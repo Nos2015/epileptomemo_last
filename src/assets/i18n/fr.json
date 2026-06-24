@@ -93,7 +93,7 @@
                 "1":{
                     "title":"Memory Sequence",
                     "subtitle":"Répétez la séquence de couleurs",
-                    "explanations":"Mémorise la séquence qui t'ai donnée. Cliques alors sur les boutons de couleur pour nous dire si tu l'as bien retenue.<br/>Appuies sur <strong>'Start'</strong> pour jouer !",
+                    "explanations":"Mémorise la séquence qui t'est donnée. Cliques alors sur les boutons de couleur pour nous dire si tu l'as bien retenue.<br/>Appuies sur <strong>'Start'</strong> pour jouer !",
                     "message1":"Mémorise la séquence de couleurs demandée",
                     "message1new":"Mémorise la nouvelle séquence de couleurs demandée",
                     "message2":"A toi",
