@@ -345,6 +345,7 @@ export class ScattergoriesComponent implements OnInit{
   bestScoreText = "";
 
   source = "scattergories";
+  dontforget = "";
 
   constructor(public appComponent: AppComponent,
                   public translate: TranslateappService,
@@ -420,7 +421,8 @@ export class ScattergoriesComponent implements OnInit{
           'pages.exercices.games.7.answer',
           'join',
           'endgaming',
-          'pages.exercices.games.7.lettercomingsoon'
+          'pages.exercices.games.7.lettercomingsoon',
+          'pages.exercices.games.7.dontforget'
         ]
       )
       .subscribe(translations => {
@@ -437,6 +439,7 @@ export class ScattergoriesComponent implements OnInit{
         this.join = translations['join'];
         this.endgaming = translations['endgaming'];
         this.lettercomingsoon = translations['pages.exercices.games.7.lettercomingsoon'];
+        this.dontforget = translations['pages.exercices.games.7.dontforget'];
       });
       
       let lang = localStorage.getItem("language");
