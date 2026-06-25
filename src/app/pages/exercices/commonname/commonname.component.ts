@@ -69,7 +69,7 @@ export class CommonnameComponent implements OnInit{
     {
         letter:"C",
         values:[
-        { definition: "Organe qui pompe le sang", answer: "coeur" },
+        { definition: "Organe qui pompe le sang", answer: "coeur cœur" },
         { definition: "Animal qui miaule", answer: "chat" },
         { definition: "Véhicule à 4 roues", answer: "car" },
         { definition: "Couleur du ciel", answer: "cyan" },
@@ -721,7 +721,7 @@ constructor(public appComponent: AppComponent,
   submit() {
     const correct = this.userAnswer.toLowerCase().trim();
 
-    if (correct === this.currentWord.answer) {
+    if (correct === this.currentWord.answer || this.currentWord.answer.split(' ').includes(correct)) {
       this.feedback = "✅ Correct";
       this.streak++;
       this.score++;
