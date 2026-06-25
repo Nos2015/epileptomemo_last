@@ -165,7 +165,7 @@
                     "title":"Scattergories",
                     "subtitle":"Find different names that start with the chosen letter and end with the same letters",
                     "message2":"*Of course, the game will only have a few simple examples for now, and you’ll be able to access the four easiest letters. There will, of course, be more added over time thanks to the AI. If you’re interested in accessing them, sign up to get early access.",
-                    "explanations":"Choose a letter. This letter corresponds to the first letter of the word you're looking for. All words starting with the chosen letter will end with the same letters. You have 3 lives to find 5 words.<br/>Choose your  <strong>‘Letter’</strong> to play! *",
+                    "explanations":"Choose a letter. This letter corresponds to the first letter of the word you're looking for. All words starting with the chosen letter will end with the same letters.<br/>You just need to fill in the missing letters.<br/> You have 3 lives to find 5 words.<br/>Choose your  <strong>‘Letter’</strong> to play! *",
                     "victory":"Congratulations ! 🎉",
                     "loose":"Game Over ! 💀",
                     "answer":"Your answer..",

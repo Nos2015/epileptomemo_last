@@ -165,7 +165,7 @@
                     "title":"Scattergories",
                     "subtitle":"Trouvez différents noms commençant par la lettre choisie et finissant par les mêmes lettres",
                     "message2":"*Bien évidemment, le jeu n'aura que quelques exemples simples et vous pourrez accéder aux 4 meilleures lettres les plus faciles pour l'instant. Il y'en aura bien évidemment toujours plus grâce à l'IA. Si jamais cela vous intéresse d'y accéder, inscrivez-vous pour bénéficier d'un accès anticipé.",
-                    "explanations":"Choisis une lettre. Celle-ci correspond à la lettre du début du mot à trouver. Tous les mots de la lettre choisie finiront par les mêmes lettres. Tu as 3 vies pour trouver 5 mots.<br/>Choisis ta  <strong>'Lettre'</strong> pour jouer ! *",
+                    "explanations":"Choisis une lettre. Celle-ci correspond à la lettre du début du mot à trouver. Tous les mots de la lettre choisie finiront par les mêmes lettres.<br/>Tu dois juste mettre les lettres qui manquent.</br>Tu as 3 vies pour trouver 5 mots.<br/>Choisis ta  <strong>'Lettre'</strong> pour jouer ! *",
                     "victory":"Bravo ! 🎉",
                     "loose":"Game Over ! 💀",
                     "answer":"Ta réponse...",
