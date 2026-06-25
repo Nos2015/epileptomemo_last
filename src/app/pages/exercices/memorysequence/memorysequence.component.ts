@@ -173,6 +173,7 @@ export class MemorysequenceComponent implements OnInit{
 
   launchGame(){
     this.showPopup =false;
+    this.start = true;
     if(this.firstPopup){
       this.firstPopup = false;
       for(let i=0;i<this.level;i++){
@@ -184,7 +185,6 @@ export class MemorysequenceComponent implements OnInit{
     }
     else if(this.secondPopup){
       this.secondPopup = false;
-      this.start = true;
     }
   }
 
