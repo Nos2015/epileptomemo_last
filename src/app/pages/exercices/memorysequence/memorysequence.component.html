@@ -14,9 +14,9 @@
         </div>
     </div>
     <div #game class="game">
-        <button [ngClass]="addButtonClass()" (click)="startGame()" [disabled]="start">Start</button>
+        <button [ngClass]="addButtonClass('start')" (click)="startGame()" [disabled]="start">Start</button>
         <p class="message">{{ message }}</p>
-        <div class="buttons">
+        <div class="buttons" [ngClass]="addButtonClass('buttons')">
             <button [ngClass]="addClass('green')" (click)="selectColor(green)"></button>
             <button [ngClass]="addClass('red')" (click)="selectColor(red)"></button>
             <button [ngClass]="addClass('blue')" (click)="selectColor(blue)"></button>
@@ -32,5 +32,11 @@
     [content]="finalText"
     [titleButton1]="joinus"
     [titleButton2]="okText"
+ >
+ </app-popup>
+ <app-popup *ngIf="showPopup"
+    (parentFirstMethod)="launchGame()"
+    [content]="messagePopup"
+    [titleButton1]="okText"
  >
  </app-popup>

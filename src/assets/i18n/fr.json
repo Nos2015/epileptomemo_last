@@ -96,7 +96,7 @@
                     "explanations":"Mémorise la séquence qui t'est donnée. Cliques alors sur les boutons de couleur pour nous dire si tu l'as bien retenue.<br/>Appuie sur <strong>'Start'</strong> pour jouer !",
                     "message1":"Mémorise la séquence de couleurs demandée",
                     "message1new":"Mémorise la nouvelle séquence de couleurs demandée",
-                    "message2":"A toi",
+                    "message2":"A toi maintenant de cliquer sur les boules de couleurs liées à la séquence mémorisée",
                     "messageSuccess":"Correct! 🎉 ",
                     "messageWrong":"Perdu ❌ . Tu peux voir le score de séquences réussies en bas à droite. Appuie sur Start si tu veux ré-essayer.",
                     "level":"Facile"

@@ -31,6 +31,10 @@ export class MemorysequenceComponent implements OnInit{
   start = false;
   win = false;
 
+  messagePopup="";
+  firstPopup= true;
+  secondPopup = false
+  showPopup = false;
   message1 = "";
   message1new = "";
   message2 = "";
@@ -142,13 +146,20 @@ export class MemorysequenceComponent implements OnInit{
     }
   }
 
-  addButtonClass(){
+  addButtonClass(type:string){
+    let css = 'button-width50';
+    if(type == 'buttons'){
+      css += ' nobackground';
+    }
+
     if(!this.start){
-      return 'button-width50';
+      return css;
     }
     else{
-      return 'button-width50 grey';
+      css += ' grey';
+      return css;
     }
+    
   }
 
   addClass(color:string){
@@ -160,6 +171,40 @@ export class MemorysequenceComponent implements OnInit{
     }
   }
 
+  launchGame(){
+    this.showPopup =false;
+    if(this.firstPopup){
+      this.firstPopup = false;
+      for(let i=0;i<this.level;i++){
+          const random = this.colors[Math.floor(Math.random()*this.colors.length)];
+          this.sequence.push(random);
+      }
+
+      this.showSequence();
+    }
+    else if(this.secondPopup){
+      this.secondPopup = false;
+      this.start = true;
+    }
+  }
+
+  newOrEndGame(){
+    if(!this.win){
+      this.score = 0;
+    }
+    this.scrollToGameElement();
+    this.sequence = [];
+    this.playerSequence = [];
+    if(this.score == 0  || this.score < 0){
+      this.messagePopup = this.message1;
+    }
+    else{
+      this.messagePopup = this.message1new;
+    }
+    this.showPopup = true;
+    this.firstPopup = true;
+  }
+
   startGame(){
     this.checkLocaleStorage();
     if(this.numbertimesplayed == 3){
@@ -167,32 +212,13 @@ export class MemorysequenceComponent implements OnInit{
       this.showEnd = true;
     }
     else{
-      if(!this.win){
-        this.score = 0;
-      }
-      this.start = true;
-      this.scrollToGameElement();
-      this.sequence = [];
-      this.playerSequence = [];
-      if(this.score == 0  || this.score < 0){
-        this.message = this.message1;
-      }
-      else{
-        this.message = this.message1new;
-      }
-      
-      for(let i=0;i<this.level;i++){
-        const random = this.colors[Math.floor(Math.random()*this.colors.length)];
-        this.sequence.push(random);
-      }
-
-      this.showSequence();
+      this.newOrEndGame();
     }
     
   }
 
   async showSequence(){
-    await this.sleep(3000);
+    await this.sleep(1000);
     this.playing = false;
 
     for( let i=0;i<this.sequence.length;i++){
@@ -202,7 +228,9 @@ export class MemorysequenceComponent implements OnInit{
       await this.sleep(500);
     }
 
-    this.message = this.message2;
+    this.messagePopup = this.message2;
+    this.secondPopup = true;
+    this.showPopup = true;
     await this.sleep(1000);
     this.message = '';
     this.playing = true;
@@ -235,6 +263,7 @@ export class MemorysequenceComponent implements OnInit{
     }
 
     if(this.playerSequence.length == this.sequence.length){
+      this.start = false;
       this.message = this.messageSuccess;
       this.level++;
       this.score++;
