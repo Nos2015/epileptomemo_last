@@ -248,7 +248,7 @@ export class MemorysequenceComponent implements OnInit{
   selectColor(color:string){
     if(!this.playing) return;
     this.playerSequence.push(color);
-
+    this.message = this.playerSequence[this.playerSequence.length -1];
     if(this.playerSequence[this.playerSequence.length -1] !== this.sequence[this.playerSequence.length -1]){
       this.setTimesPlayed();
       this.message = this.messageWrong;
