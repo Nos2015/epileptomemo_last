@@ -20,6 +20,7 @@ export class MemorysequenceComponent implements OnInit{
   red = "";
   blue = "";
   yellow = "";
+  addColor=false;
 
   colors = ["green","red","blue","yellow"];
   sequence:string[] = [];
@@ -163,17 +164,16 @@ export class MemorysequenceComponent implements OnInit{
   }
 
   addClass(color:string){
-    if(!this.start){
-      return 'color grey';
+    if(this.start && this.addColor){
+        return 'color '+color;
     }
-    else{
-      return 'color '+color;
+    else {
+      return 'color grey';
     }
   }
 
   launchGame(){
     this.showPopup =false;
-    this.start = true;
     if(this.firstPopup){
       this.firstPopup = false;
       for(let i=0;i<this.level;i++){
@@ -185,6 +185,7 @@ export class MemorysequenceComponent implements OnInit{
     }
     else if(this.secondPopup){
       this.secondPopup = false;
+      this.addColor = true;
     }
   }
 
@@ -207,6 +208,7 @@ export class MemorysequenceComponent implements OnInit{
 
   startGame(){
     this.checkLocaleStorage();
+    this.start = true;
     if(this.numbertimesplayed == 3){
       this.finalText = this.bestScoreText + " Score : " + this.localStorageService.getBestScoreExercicePlayed("memorysequencescore");
       this.showEnd = true;
@@ -252,6 +254,7 @@ export class MemorysequenceComponent implements OnInit{
       this.message = this.messageWrong;
       this.playing = false;
       this.start = false;
+      this.addColor = false;
       this.level = 3;
       this.win = false;
       this.setOrNotSetBestScore();
@@ -263,7 +266,7 @@ export class MemorysequenceComponent implements OnInit{
     }
 
     if(this.playerSequence.length == this.sequence.length){
-      this.start = false;
+      this.addColor = false;
       this.message = this.messageSuccess;
       this.level++;
       this.score++;
