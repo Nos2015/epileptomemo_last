@@ -170,6 +170,7 @@ export class MemorysequenceComponent implements OnInit{
       if(!this.win){
         this.score = 0;
       }
+      this.start = true;
       this.scrollToGameElement();
       this.sequence = [];
       this.playerSequence = [];
@@ -192,7 +193,6 @@ export class MemorysequenceComponent implements OnInit{
 
   async showSequence(){
     await this.sleep(3000);
-    this.start = true;
     this.playing = false;
 
     for( let i=0;i<this.sequence.length;i++){
