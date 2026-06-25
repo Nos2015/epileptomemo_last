@@ -45,6 +45,10 @@ export class VisualpatternComponent implements OnInit{
 
   @ViewChild('game') gameElement!: ElementRef;
 
+  showPopup = false;
+  messagePopup = "";
+  firstPopup = false;
+
   constructor(public appComponent: AppComponent,
               public translate: TranslateappService,
               private elementRef: ElementRef,
@@ -146,6 +150,34 @@ export class VisualpatternComponent implements OnInit{
     this.localStorageService.setNumberExercicePlayed("visualpattern", this.numbertimesplayed);
   }
 
+  launchGame(){
+    this.showPopup =false;
+    if(this.firstPopup){
+      for (let i = 0; i < this.level; i++) {
+        this.pattern.push(Math.floor(Math.random() * 9));
+      }
+      this.showPattern();
+    }
+  }
+
+  newOrEndGame(){
+    if(!this.win){
+      this.score = 0;
+    }
+    this.start = true;
+    this.scrollToGameElement();
+    this.pattern = [];
+    this.player = [];
+    if(this.score == 0  || this.score < 0){
+      this.messagePopup = this.message1;
+    }
+    else{
+      this.messagePopup = this.message1new;
+    }
+    this.showPopup = true;
+    this.firstPopup = true;
+  }
+
   startGame() {
     this.checkLocaleStorage();
     if(this.numbertimesplayed == 3){
@@ -153,30 +185,13 @@ export class VisualpatternComponent implements OnInit{
       this.showEnd = true;
     }
     else{
-      if(!this.win){
-        this.score = 0;
-      }
-      this.start = true;
-      this.scrollToGameElement();
-      this.pattern = [];
-      this.player = [];
-      if(this.score == 0  || this.score < 0){
-        this.message = this.message1;
-      }
-      else{
-        this.message = this.message1new;
-      }
-
-      for (let i = 0; i < this.level; i++) {
-        this.pattern.push(Math.floor(Math.random() * 9));
-      }
-      this.showPattern();
+      this.newOrEndGame();
     }
     
   }
 
   async showPattern() {
-    await this.sleep(3000);
+    await this.sleep(1000);
     this.message = '';
     this.playing = false;
     
@@ -208,6 +223,7 @@ export class VisualpatternComponent implements OnInit{
     this.player.push(index);
 
     if (this.player[this.player.length - 1] !== this.pattern[this.player.length - 1]) {
+      this.playing = false;
       this.setTimesPlayed();
       this.level = 3;
       this.start = false;
@@ -222,6 +238,7 @@ export class VisualpatternComponent implements OnInit{
     }
 
     if (this.player.length === this.pattern.length) {
+      this.playing = false;
       this.message = this.messageSuccess;
       this.level++;
       this.score++;

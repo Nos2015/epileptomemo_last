@@ -38,3 +38,9 @@
     [titleButton2]="okText"
  >
  </app-popup>
+ <app-popup *ngIf="showPopup"
+    (parentFirstMethod)="launchGame()"
+    [content]="messagePopup"
+    [titleButton1]="okText"
+ >
+ </app-popup>

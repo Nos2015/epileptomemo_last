@@ -96,7 +96,7 @@
                     "explanations":"Memorize the sequence I gave you. Then click on the colored buttons to let us know if you remembered it correctly.<br/>Click <strong>'Start'</strong> to play!",
                     "message1":"Memorize the sequence",
                     "message1new":"Memorize the new color sequence requested",
-                    "message2":"Your turn",
+                    "message2":"Now it's your turn to click on the colored balls that correspond to the sequence you memorized",
                     "messageSuccess":"Correct! 🎉 ",
                     "messageWrong":"Wrong sequence ❌ . You can see the number of successful sequences in the bottom right corner. Press Start again to restart if you want.",
                     "level":"Easy"
