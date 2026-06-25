@@ -135,10 +135,10 @@
                 "5":{
                     "title":"Pattern Builder",
                     "subtitle":"Reproduire un motif demandé",
-                    "explanations":"Mémorise les cases colorées. Cliques alors sur les cases pour nous dire lesquelles selon toi l'ont été.<br/>Appuie sur <strong>'Start'</strong> pour jouer !",
+                    "explanations":"Mémorise les cases colorées qui ont été cliquées. Cliques alors sur les cases pour nous dire lesquelles selon toi l'ont été.<br/>Appuie sur <strong>'Start'</strong> pour jouer !",
                     "message":"Niveau ",
-                    "message2":"A toi",
-                    "message3":"Fais bien attention",
+                    "message2":"A toi de nous reproduire dans l'ordre les cases colorées qui ont été cliquées",
+                    "message3":"Fais bien attention aux cases colorées qui vont être cliquées",
                     "messageSuccess":"Correct! 🎉 ",
                     "messageWrong":"Perdu ❌ . Tu peux voir le score de séquences réussies en bas à droite. Appuie sur Start si tu veux ré-essayer.",
                     "level":"Moyen"

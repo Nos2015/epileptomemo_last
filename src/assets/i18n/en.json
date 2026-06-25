@@ -135,10 +135,10 @@
                 "5":{
                     "title":"Pattern Builder",
                     "subtitle":"Reproduce a specified pattern",
-                    "explanations":"Memorize the colored squares. Then click on the squares to tell us which ones you think are colored. Good luck. <br/>Click <strong>‘Start’</strong> to play ! *",
+                    "explanations":"Remember which colored squares have been clicked. Then click on the squares to tell us which ones you think are colored. Good luck. <br/>Click <strong>‘Start’</strong> to play ! *",
                     "message":"Level ",
-                    "message2":"Your turn",
-                    "message3":"Watch carefully",
+                    "message2":"It's your turn to reproduce the colored boxes that were clicked, in order.",
+                    "message3":"Pay close attention to the colored boxes that will be clicked",
                     "messageSuccess":"Correct! 🎉 ",
                     "messageWrong":"Wrong sequence ❌ . You can see the number of successful sequences in the bottom right corner. Press Start again to restart if you want.",
                    "level":"Medium"
@@ -146,7 +146,7 @@
                 "6":{
                     "title":"N-Back Training",
                     "subtitle":"Improve working memory",
-                    "explanations":"Mémorise les cases colorées. Then click the “Same” or “Other” boxes to let us know if the same ones were colored<br/>Click <strong>'Start'</strong> to play !",
+                    "explanations":"Two types of exercises :<br/>- Color: Memorize the colored squares. Then click on the “SAME” or “NOT SAME” squares to tell us if the same ones were colored.<br/>- Letters: Memorize the letter of the alphabet shown.  Click ‘SAME’ or ‘NOT SAME’ if the letter shown is the same as the previous one.<br/><br/>Click <strong>‘Start’</strong> to play !",
                     "message1":"Choose your N-Back Type",
                     "message2":"Watch carefully",
                     "message3":"Your turn",
