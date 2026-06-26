@@ -439,7 +439,7 @@ export class ScattergoriesComponent implements OnInit{
         this.join = translations['join'];
         this.endgaming = translations['endgaming'];
         this.lettercomingsoon = translations['pages.exercices.games.7.lettercomingsoon'];
-        this.dontforget = translations['pages.exercices.games.7.dontforget'];
+        this.dontforget = "⚠️  " + translations['pages.exercices.games.7.dontforget'] + " ⚠️" ;
       });
       
       let lang = localStorage.getItem("language");
