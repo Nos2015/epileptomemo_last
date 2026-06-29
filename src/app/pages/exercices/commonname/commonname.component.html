@@ -21,6 +21,9 @@
                 {{ letter }}
             </div>
         </div>
+        <div *ngIf="!chooseLetter" class="elementMenuContentElementsText">
+                <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage">{{message2}}</p>
+            </div>
         <div *ngIf="chooseLetter" class="screen">
             <div class="header">
                 <div class="progress pageElements">
@@ -42,9 +45,6 @@
             <button class="pageElements white" (click)="submit()">{{validate}}</button>
             <div class="feedback" *ngIf="feedback">
                 {{ feedback }}
-            </div>
-            <div class="elementMenuContentElementsText">
-                <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage">{{message2}}</p>
             </div>
             <div class="pageSubTitle bottomRightPage">Score : {{score}}</div>
         </div>
