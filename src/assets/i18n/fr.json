@@ -93,7 +93,7 @@
                 "1":{
                     "title":"Memory Sequence",
                     "subtitle":"Répétez la séquence de couleurs",
-                    "explanations":"Mémorise la séquence qui t'est donnée. Cliques alors sur les boutons de couleur pour nous dire si tu l'as bien retenue.<br/>Appuie sur <strong>'Start'</strong> pour jouer !",
+                    "explanations":"Mémorise la séquence qui t'est donnée. Clique alors sur les boutons de couleur pour nous dire si tu l'as bien retenue.<br/>Appuie sur <strong>'Start'</strong> pour jouer !",
                     "message1":"Mémorise la séquence de couleurs demandée",
                     "message1new":"Mémorise la nouvelle séquence de couleurs demandée",
                     "message2":"A toi maintenant de cliquer sur les boules de couleurs liées à la séquence mémorisée",
@@ -104,7 +104,7 @@
                 "2":{
                     "title":"Visual Pattern",
                     "subtitle":"Souvenez-vous des cases surlignées",
-                    "explanations":"Mémorise les cases surlignées dans le carré. Cliques alors sur les cases pour nous dire lesquelles selon toi l'ont été.<br/>Appuie sur <strong>'Start'</strong> pour jouer !",
+                    "explanations":"Mémorise les cases surlignées dans le carré. Clique alors sur les cases pour nous dire lesquelles selon toi l'ont été.<br/>Appuie sur <strong>'Start'</strong> pour jouer !",
                     "message1":"Mémorise la séquence de cases surlignées",
                     "message1new":"Mémorise la nouvelle séquence de cases surlignées",
                     "message2":"A toi",
@@ -135,7 +135,7 @@
                 "5":{
                     "title":"Pattern Builder",
                     "subtitle":"Reproduire un motif demandé",
-                    "explanations":"Mémorise les cases colorées qui ont été cliquées. Cliques alors sur les cases pour nous dire lesquelles selon toi l'ont été.<br/>Appuie sur <strong>'Start'</strong> pour jouer !",
+                    "explanations":"Mémorise les cases colorées qui ont été cliquées. Clique alors sur les cases pour nous dire lesquelles selon toi l'ont été.<br/>Appuie sur <strong>'Start'</strong> pour jouer !",
                     "message":"Niveau ",
                     "message2":"A toi de nous reproduire dans l'ordre les cases colorées qui ont été cliquées",
                     "message3":"Fais bien attention aux cases colorées qui vont être cliquées",
@@ -146,7 +146,7 @@
                 "6":{
                     "title":"N-Back Training",
                     "subtitle":"Améliorez votre mémoire",
-                    "explanations":"Deux types d'exercice :<br/>- Couleur : Mémorise les cases colorées. Cliques alors sur les cases 'PAREIL' ou 'PAS PAREIL' pour nous dire si cela a été les mêmes qui ont été colorées<br/>- Lettres : Mémorise la lettre de l'alphabet montrée.  Appuie sur 'PAREIL' ou 'PAS PAREIL' si la lettre montrée est la même que la précédente.<br/><br/>Appuie sur <strong>'Start'</strong> pour jouer !",
+                    "explanations":"Deux types d'exercice :<br/>- Couleur : Mémorise les cases colorées. Clique alors sur les cases 'PAREIL' ou 'PAS PAREIL' pour nous dire si cela a été les mêmes qui ont été colorées<br/>- Lettres : Mémorise la lettre de l'alphabet montrée.  Appuie sur 'PAREIL' ou 'PAS PAREIL' si la lettre montrée est la même que la précédente.<br/><br/>Appuie sur <strong>'Start'</strong> pour jouer !",
                     "message1":"Choisis ton type de N-Back",
                     "message2":"Fais bien attention",
                     "message3":"A toi",
