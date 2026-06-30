@@ -200,10 +200,10 @@ export class ScattergoriesComponent implements OnInit{
       ending: "AKE",
       values: [
         { definition: "A sweet dessert", answer: "cake" },
-        { definition: "A large body of water", answer: "lake" },
-        { definition: "A long reptile", answer: "snake" },
-        { definition: "To mix something quickly", answer: "shake" },
-        { definition: "To stop a vehicle", answer: "brake" }
+        { definition: "A small wading bird of the Rallidae family, closely related to the moorhen", answer: "crake"},
+        { definition: "A small individual cake baked in a cup-shaped mold, usually frosted", answer: "cupcake" },
+        { definition: "A dessert made with fresh cheese (often cream cheese) on a cookie crust", answer: "cheesecake" },
+        { definition: "A piece of toasted corn, typically eaten as breakfast cereal", answer: "cornflake" }
       ]
     },
     {
@@ -248,10 +248,10 @@ export class ScattergoriesComponent implements OnInit{
       ending: "AKE",
       values: [
         { definition: "To create something", answer: "make" },
-        { definition: "To grab something", answer: "take" },
-        { definition: "To cook in the oven", answer: "bake" },
-        { definition: "To stop sleeping", answer: "wake" },
-        { definition: "To move quickly side to side", answer: "shake" }
+        { definition: "An error made inadvertently or due to a lack of knowledge", answer: "mistake" },
+        { definition: "A creamy drink made with milk, ice, and often syrup or fruit, blended", answer: "milkshake" },
+        { definition: "A plant with roots that sometimes resemble human forms, historically used in magic and traditional medicine", answer: "mandrake" },
+        { definition: "Dig into scandals or shady dealings, particularly in investigative journalism", answer: "muckrake" }
       ]
     },
     {
@@ -265,13 +265,13 @@ export class ScattergoriesComponent implements OnInit{
     {
       letter: "P",
       play:true,
-      ending: "LAY",
+      ending: "P",
       values: [
-        { definition: "To have fun", answer: "play" },
-        { definition: "To speak to God", answer: "pray" },
-        { definition: "To show something", answer: "display" },
-        { definition: "To play again", answer: "replay" },
-        { definition: "To do something later", answer: "delay" }
+        { definition: "A quick, sharp sound, like a small explosion; also slang for a fizzy soft drink, or a term for 'father'", answer: "pop" },
+        { definition: "A young dog. It can also refer to the young of certain other animals like seals", answer: "pup" },
+        { definition: "A small seed found in fruits like apples or oranges or also a short beeping sound, like the time signal on the radio", answer: "pip" },
+        { definition: "Short for 'preparation'. The act of getting something ready, or (informally) a student at a preparatory school", answer: "prep" },
+        { definition: "Having a full, rounded shape. Somewhat fat in a pleasant or attractive way", answer: "plump" }
       ]
     },
     {
@@ -289,13 +289,13 @@ export class ScattergoriesComponent implements OnInit{
     {
       letter: "T",
       play:true,
-      ending: "IME",
+      ending: "TE",
       values: [
-        { definition: "What we measure in hours", answer: "time" },
-        { definition: "A crime or illegal act", answer: "crime" },
-        { definition: "Something sticky and soft", answer: "slime" },
-        { definition: "Of highest importance", answer: "prime" },
-        { definition: "A cooking herb", answer: "thyme" }
+        { definition: "Having died after making a valid legal will", answer: "testate" },
+        { definition: "To bring something to an end. To stop or conclude a process, contract, or action", answer: "terminate" },
+        { definition: "To cover a surface with repeated shapes (tiles) that fit together without gaps or overlaps", answer: " tessellate" },
+        { definition: "Mild or moderate, especially referring to climate, behavior, or the avoidance of extremes", answer: "temperate" },
+        { definition: "To convert words or text from one language into another while preserving the meaning", answer: "translate" }
       ]
     },
     {
@@ -328,6 +328,8 @@ export class ScattergoriesComponent implements OnInit{
   language = "";
 
   showNoLetter = false;
+
+  letterFirst = "";
 
   @ViewChild('game') gameElement!: ElementRef;
 
@@ -406,7 +408,9 @@ export class ScattergoriesComponent implements OnInit{
 
   changeLanguage(){
     //changeLanguage when page is on front
+    console.log("changeLanguage in scattergories");
     if(this.elementRef.nativeElement.offsetParent != null) {
+      console.log("changeLanguage in scattergories offset parent not null");
       this.translate.translate.get(
         [
           'pages.exercices.games.7.title',
@@ -451,11 +455,18 @@ export class ScattergoriesComponent implements OnInit{
         this.language = lang;
         this.questionsToAnswer = this.WORDS_EN;
       }
+
       if(this.selectedLetter != ""){
         this.initializeQuestions(this.selectedLetter);
       }
+
+      if(this.WORDS[this.indexInWords].play || this.WORDS_EN[this.indexInWords].play){
+        console.log("setLettersVisible in changeLanguage");
+        this.setLettersVisible();
+      }
     }
   }
+
   initializeQuestions(letter:string){
       for (const questions of this.questionsToAnswer) {
         if(letter == questions.letter){
@@ -478,18 +489,14 @@ export class ScattergoriesComponent implements OnInit{
       this.showEnd = true;
     }
     else{
-      if(this.WORDS[index].play){
+      if(this.WORDS[index].play || this.WORDS_EN[index].play){
         this.indexInWords = index;
         this.currentIndex = 0;
         this.selectedLetter = letter;
-        let ending = this.WORDS[index].ending;
-        if(ending != undefined){
-          this.endingWord = ending;
-        }
+        this.setLettersVisible();
         this.initializeQuestions(this.selectedLetter);
         this.chooseLetter = true;
-      // window.scroll(0,0);
-      this.scrollToGameElement();
+        this.scrollToGameElement();
       } 
       else{
         this.showNoLetter = true;
@@ -501,26 +508,32 @@ export class ScattergoriesComponent implements OnInit{
     return this.words[this.currentIndex];
   }
 
-  submit() {
-
-    let letterFirst = "";
-    let ending = "";
-    let correct = "";
+  setLettersVisible(){
+    console.log("setLettersVisible");
     if(this.language == "fr"){
-      letterFirst = this.WORDS[this.indexInWords ].letter;
+      console.log("language fr");
+      this.letterFirst = this.WORDS[this.indexInWords].letter;
       let letterEnding = this.WORDS[this.indexInWords].ending;
       if(letterEnding != undefined){
-        ending = letterEnding;
+        this.endingWord = letterEnding;
       }
     }
     else{
-      letterFirst = this.WORDS_EN[this.indexInWords].letter;
+      console.log("language en");
+      this.letterFirst = this.WORDS_EN[this.indexInWords].letter;
       let letterEnding = this.WORDS_EN[this.indexInWords].ending;
+      console.log("letterEnding : " + letterEnding);
       if(letterEnding != undefined){
-        ending = letterEnding;
+        this.endingWord = letterEnding;
+        console.log("ending : " + this.endingWord);
       }
     }
-    correct =  letterFirst.toLowerCase().trim() + this.userAnswer.toLowerCase().trim() + ending.toLowerCase().trim();
+  }
+
+  submit() {
+    let correct = "";
+    
+    correct =  this.letterFirst.toLowerCase().trim() + this.userAnswer.toLowerCase().trim() + this.endingWord.toLowerCase().trim();
 
     if (correct === this.currentWord.answer) {
       this.feedback = "✅ Correct";
