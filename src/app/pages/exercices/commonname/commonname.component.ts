@@ -726,7 +726,13 @@ constructor(public appComponent: AppComponent,
       this.streak++;
       this.score++;
     } else {
-      this.feedback = "❌ Mauvaise réponse";
+      let lang = localStorage.getItem("language");
+      if (lang == null || lang == "fr"){
+        this.feedback = "❌ Mauvaise réponse";
+      }
+      else{
+        this.feedback = "❌ Wrong answer";
+      }
       this.lives--;
       this.streak = 0;
     }
