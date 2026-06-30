@@ -527,7 +527,13 @@ export class ScattergoriesComponent implements OnInit{
       this.streak++;
       this.score++;
     } else {
-      this.feedback = "❌ Mauvaise réponse";
+      if(this.language = "fr"){
+        this.feedback = "❌ Mauvaise réponse";
+      }
+      else{
+        this.feedback = "❌ Wrong answer";
+      }
+      
       this.lives--;
       this.streak = 0;
     }
