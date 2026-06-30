@@ -506,7 +506,7 @@ export class ScattergoriesComponent implements OnInit{
     let letterFirst = "";
     let ending = "";
     let correct = "";
-    if(this.language = "fr"){
+    if(this.language == "fr"){
       letterFirst = this.WORDS[this.indexInWords ].letter;
       let letterEnding = this.WORDS[this.indexInWords].ending;
       if(letterEnding != undefined){
@@ -527,7 +527,7 @@ export class ScattergoriesComponent implements OnInit{
       this.streak++;
       this.score++;
     } else {
-      if(this.language = "fr"){
+      if(this.language == "fr"){
         this.feedback = "❌ Mauvaise réponse";
       }
       else{
