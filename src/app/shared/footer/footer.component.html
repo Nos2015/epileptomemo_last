@@ -11,9 +11,21 @@
             <button class="button-width50" (click)="submitEmail()">
                 <span>{{joinWaitList}}</span>
             </button>
-            <div id="footline"></div>
-            <p class="underTitleFooter underTitleFooterBottom">{{currentlyDev}}</p>
-        </div>
+            <div id="footline">
+                <p class="underTitleFooter underTitleFooterBottom">{{currentlyDev}}</p>
+                <p class="underTitleFooter underTitleFooterBottom">🌐 {{socialTitle}}</p>
+                <div id="social">
+                    <a href="https://www.linkedin.com/company/epileptomemo/" target="_blank">
+                        <img src="/assets/linkedin.png" alt="Linkedin" class="logoSocial" />
+                    </a>
+                    <a href="https://www.instagram.com/epileptomemo2026/" target="_blank">
+                        <img src="/assets/instagram.png" alt="Instagram" class="logoSocial" />
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61591554571003" target="_blank">
+                        <img src="/assets/facebook.png" alt="Facebook" class="logoSocial" />
+                    </a>
+                </div>
+            </div>
     </div>
 </div>
 <app-popup *ngIf="showPopup" 

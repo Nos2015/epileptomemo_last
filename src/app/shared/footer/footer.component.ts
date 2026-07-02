@@ -34,6 +34,7 @@ export class FooterComponent implements OnInit{
   errorSendMessage2= "";
   errorSendMessage3 = "";
   showPopup = false;
+  socialTitle = "";
 
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ 
@@ -73,6 +74,7 @@ export class FooterComponent implements OnInit{
           "errorSendMessage2",
           "errorSendMessage3",
           "successSendMessage",
+          'footer.socialtitle'
         ]
       )
       .subscribe(translations => {
@@ -85,6 +87,7 @@ export class FooterComponent implements OnInit{
         this.errorSendMessage2 = translations['errorSendMessage2'];
         this.errorSendMessage3 = translations['errorSendMessage3'];
         this.successMessage = translations['successSendMessage'];
+        this.socialTitle = translations['footer.socialtitle'];
       });
     }
   }
