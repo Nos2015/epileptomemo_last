@@ -33,6 +33,9 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { ChartCardComponent } from './shared/components/chart-card/chart-card.component';
 import { NextExerciceComponent } from './shared/components/next-exercice/next-exercice.component';
 import { CrisistimelineComponent } from './shared/components/crisistimeline/crisistimeline.component';
+import { TreatmentCardComponent } from './shared/components/treatment-card/treatment-card.component';
+import { MedicationHistoryComponent } from './shared/components/medication-history/medication-history.component';
+import { ImportantNoteComponent } from './shared/components/important-note/important-note.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,10 @@ import { CrisistimelineComponent } from './shared/components/crisistimeline/cris
     EmCardComponent,
     ChartCardComponent,
     NextExerciceComponent,
-    CrisistimelineComponent
+    CrisistimelineComponent,
+    TreatmentCardComponent,
+    MedicationHistoryComponent,
+    ImportantNoteComponent
   ],
   imports: [
     BrowserModule,

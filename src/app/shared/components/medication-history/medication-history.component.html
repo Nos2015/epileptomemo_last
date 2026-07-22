@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="header">
+        <h2>Dernières prises</h2>
+        <a href="">Voir tout</a>
+    </div>
+    <div class="rows">
+        @for(item of history;track item){
+            <div class="row">
+                <div>{{item.date}}</div>
+                <div>{{item.name}}</div>
+                <div>{{item.dose}}</div>
+                <div class="check">
+
+                    ✔
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,114 @@
+.card{
+    background:white;
+    border-radius:24px;
+    padding:28px;
+    box-shadow:0 8px 30px rgba(52,120,246,.08);
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.header h2, .header a, .medicine{
+    font-family: 'InterBold';
+}
+
+.description, .status, .percent{
+    font-family: 'Inter';
+}
+
+.header h2{
+    margin:0;
+    color:#182B57;
+    font-size:28px;
+}
+
+.header a{
+    color:#3478F6;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.treatment{
+    border:1px solid #EDF2FB;
+    border-radius:22px;
+    //padding:22px;
+    padding:26px 30px;
+    position: relative;
+}
+
+.top{
+    display:flex;
+    justify-content:space-between;
+}
+
+.medicine{
+    display: flex;
+    font-size:22px;
+    font-weight:700;
+    color:#1E2E57;
+}
+
+.medicine span{
+    margin-left:12px;
+    background:#EAF1FF;
+    color:#3478F6;
+    border-radius:999px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight:600;
+}
+
+.description{
+    margin-top:10px;
+    color:#6B7892;
+    font-size: 12px;
+}
+
+.progress{
+    margin-top:24px;
+    height:6px;
+    border-radius:999px;
+    background:#EDF1F7;
+    border-radius:999px;
+}
+
+.progress-value{
+    width:98%;
+    height:100%;
+    background:#1BB95E;
+    border-radius:999px;
+}
+
+.bottom {
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:18px;
+
+}
+
+.status {
+    color:#23B26D;
+    font-weight:600;
+    font-size:12px;
+}
+
+.percent {
+    font-size:15px;
+    font-weight:700;
+    color:#182B57;
+}
+
+.arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #64748B;
+}

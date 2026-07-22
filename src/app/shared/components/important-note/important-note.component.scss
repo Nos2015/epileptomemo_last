@@ -1,0 +1,29 @@
+.note{
+    margin-top:24px;
+    background:#FFF9EF;
+    border:1px solid #F6DFC0;
+    border-radius:24px;
+    padding:26px;
+    position:relative;
+}
+
+.edit{
+    position:absolute;
+    top:20px;
+    right:20px;
+    color:#A55A00;
+    font-size:22px;
+}
+
+.note h3{
+    margin-top:0;
+    color:#613B06;
+    font-family: 'InterBold';
+}
+
+.note p{
+    color:#6D5A46;
+    line-height:1.6;
+    font-family: 'Inter';
+    font-size: 14px;
+}
