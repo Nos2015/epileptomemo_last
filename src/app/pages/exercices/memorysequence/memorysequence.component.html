@@ -1,4 +1,4 @@
-<div id="pagesBackground">
+<div id="pagesBackground" *ngIf="!start">
     <div class="pagesTitle">
         <div>
             <div class="pageTitle">{{title}}</div>
@@ -7,7 +7,7 @@
         <img class="cta-slider-bloc-image cta-shadow" src="/assets/memorysequence.png"/>
     </div>
 </div>
- <div class="elementMenu">
+ <div class="elementMenu" *ngIf="!start">
     <div class="elementMenuContent">
         <div class="elementMenuContentElementsText">
             <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage" [innerHTML]="explaination"></p>
@@ -15,17 +15,9 @@
     </div>
     <div #game class="game">
         <button [ngClass]="addButtonClass('start')" (click)="startGame()" [disabled]="start">Start</button>
-        <p class="message">{{ message }}</p>
-        <div class="buttons" [ngClass]="addButtonClass('buttons')">
-            <button [ngClass]="addClass('green')" (click)="selectColor(green)"></button>
-            <button [ngClass]="addClass('red')" (click)="selectColor(red)"></button>
-            <button [ngClass]="addClass('blue')" (click)="selectColor(blue)"></button>
-            <button [ngClass]="addClass('yellow')" (click)="selectColor(yellow)"></button>
-        </div>
     </div>
-    <div class="pageSubTitle bottomRightPage">Score : {{score}}</div>
  </div>
- <app-popup *ngIf="showEnd"
+ <app-popup *ngIf="showEnd && !start"
     (parentFirstMethod)="join()" 
     (parentSecondMethod)="quit()" 
     [titleContent]="endgaming"
@@ -34,9 +26,4 @@
     [titleButton2]="okText"
  >
  </app-popup>
- <app-popup *ngIf="showPopup"
-    (parentFirstMethod)="launchGame()"
-    [content]="messagePopup"
-    [titleButton1]="okText"
- >
- </app-popup>
+ <app-games *ngIf="start" (onHide)="changeHide($event)" (onJoinUsExit)="join()"></app-games>

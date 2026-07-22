@@ -1,18 +1,18 @@
 <!-- ui-select files -->
  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no">
 <script src="select.js"></script>
-<app-header #headerCmp (toggleSidebar)="sidebarActive = !sidebarActive" [sidebarActive]="sidebarActive"></app-header>
+<app-header #headerCmp (toggleSidebar)="sidebarActive = !sidebarActive" [sidebarActive]="sidebarActive" *ngIf="!startGame"></app-header>
 <div id="content" *ngIf="home" style="background-image: url('assets/background.png'); background-size: cover;margin-top: 13px;">
   <router-outlet></router-outlet>
-  <app-sidebar [ngClass]="{ sidebarActive: sidebarActive }" (toggleSidebar)="chooseElementOnSideBar($event)"></app-sidebar>
-  <div #footerElement id="footerElement">
+  <app-sidebar [ngClass]="{ sidebarActive: sidebarActive }" (toggleSidebar)="chooseElementOnSideBar($event)" *ngIf="!startGame"></app-sidebar>
+  <div #footerElement id="footerElement" *ngIf="!startGame">
     <app-footer></app-footer>
   </div>
 </div>
 <div id="content" *ngIf="!home">
   <router-outlet></router-outlet>
-  <app-sidebar [ngClass]="{ sidebarActive: sidebarActive }" (toggleSidebar)="chooseElementOnSideBar($event)"></app-sidebar>
-  <div #footerElement id="footerElement">
+  <app-sidebar [ngClass]="{ sidebarActive: sidebarActive }" (toggleSidebar)="chooseElementOnSideBar($event)" *ngIf="!startGame"></app-sidebar>
+  <div #footerElement id="footerElement" *ngIf="!startGame">
     <app-footer></app-footer>
   </div>
 </div>

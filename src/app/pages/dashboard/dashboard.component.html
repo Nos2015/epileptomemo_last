@@ -1,0 +1,62 @@
+<section class="dashboard">
+
+    <div class="stats">
+
+        <app-em-stat-card
+            icon="flash"
+            value="18"
+            label="Total des crises"
+            footer="+2 cette semaine"
+            color="#e2ecfe"
+            iconFooter="increase">
+        </app-em-stat-card>
+
+        <app-em-stat-card
+            icon="calendar"
+            value="2"
+            label="Ce mois"
+            footer="Juillet 2026"
+            class="calendarClass"
+            color="#e3f7ee">
+        </app-em-stat-card>
+
+        <app-em-stat-card
+            icon="time"
+            value="1m42"
+            label="Durée moyenne"
+            footer="-12% ce mois"
+            color="#e6defe"
+            iconFooter="decrease">
+        </app-em-stat-card>
+
+        <app-em-stat-card
+            icon="medicaments"
+            value="98%"
+            label="Traitement"
+            footer="Excellent suivi"
+            color="#feefdd">
+        </app-em-stat-card>
+    </div>
+
+    <div class="grid">
+        <div class="left">
+            <app-chart-card></app-chart-card>
+        </div>
+        <div class="right">
+            <app-next-exercice
+                icon="nextstep"
+                iconSecond="statistics"
+                iconSecondHover="statistics_hover">
+            </app-next-exercice>
+        </div>
+
+    </div>
+    <div class="grid">
+        <div class="left">
+            <app-crisistimeline></app-crisistimeline>
+        </div>
+        <div class="right">
+
+        </div>
+    </div>
+</section>

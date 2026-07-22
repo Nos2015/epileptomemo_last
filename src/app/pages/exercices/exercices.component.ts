@@ -42,6 +42,8 @@ export class ExercicesComponent implements OnInit{
   levelMedium = "";
   levelHard = "";
 
+  play = "";
+
   source = "exercices";
 
   private touchMoved = false;
@@ -88,6 +90,7 @@ export class ExercicesComponent implements OnInit{
     if(this.elementRef.nativeElement.offsetParent != null) {
       this.translate.translate.get(
         [
+          'play',
           'pages.exercices.title',
           'pages.exercices.subtitle',
           'pages.exercices.other',
@@ -108,6 +111,7 @@ export class ExercicesComponent implements OnInit{
         ]
       )
       .subscribe(translations => {
+        this.play = translations['play'];
         this.exercicesTitle = translations['pages.exercices.title'];
         this.exercicesSubTitle = translations['pages.exercices.subtitle'];
         this.exercicesOtherExercices = translations['pages.exercices.other'];

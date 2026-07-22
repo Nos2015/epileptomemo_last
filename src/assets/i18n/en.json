@@ -48,6 +48,7 @@
     "errorSendMessage2":"Sorry but email already registered",
     "errorSendMessage3":"Sorry, we're experiencing a temporary issue with registration. Please try again later.",
     "successSendMessage":"You're now on the list. Thank you 🎉",
+    "play":"Play",
     "pages":{
         "title":"Features currently in development",
         "journal":{

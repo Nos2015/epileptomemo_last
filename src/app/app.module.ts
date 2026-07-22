@@ -24,6 +24,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NbacktrainingComponent } from './pages/exercices/nbacktraining/nbacktraining.component';
 import { ScattergoriesComponent } from './pages/exercices/scattergories/scattergories.component';
 import { PopupComponent } from './shared/popup/popup.component';
+import { GamesComponent } from './shared/games/games.component';
+import { MemorysequencegameComponent } from './shared/games/memorysequencegame/memorysequencegame.component';
+import { EmStatCardComponent } from './shared/components/em-stat-card/em-stat-card.component';
+import { EmCardComponent } from './shared/components/em-card/em-card.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { ChartCardComponent } from './shared/components/chart-card/chart-card.component';
+import { NextExerciceComponent } from './shared/components/next-exercice/next-exercice.component';
+import { CrisistimelineComponent } from './shared/components/crisistimeline/crisistimeline.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +47,22 @@ import { PopupComponent } from './shared/popup/popup.component';
     ReportsComponent,
     StatsComponent,
     MemorysequenceComponent,
+    MemorysequencegameComponent,
     VisualpatternComponent,
     QuickbrainComponent,
     PatternbuilderComponent,
     CommonnameComponent,
     NbacktrainingComponent,
     ScattergoriesComponent,
-    PopupComponent
+    PopupComponent,
+    GamesComponent,
+    MemorysequencegameComponent,
+    DashboardComponent,
+    EmStatCardComponent,
+    EmCardComponent,
+    ChartCardComponent,
+    NextExerciceComponent,
+    CrisistimelineComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +71,8 @@ import { PopupComponent } from './shared/popup/popup.component';
       loader: provideTranslateHttpLoader({prefix:"./assets/i18n/", suffix:".json"}),
     }),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgApexchartsModule
   ],
   providers: [
     provideHttpClient(),

@@ -1,0 +1,92 @@
+.next-card {
+    background: white;
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(52,120,246,.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-title {
+    font-family: 'InterBold';
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #182B57;
+    margin-bottom: 28px;
+}
+
+.card-content {
+    background: #F8FAFF;
+    border-radius: 22px;
+    padding: 36px 28px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+
+}
+
+.icon-circle {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: linear-gradient(
+        180deg,
+        #EDF4FF,
+        #DCEAFF
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: #3478F6;
+    font-weight: bold;
+}
+
+h3 {
+    margin: 0;
+    margin-bottom: 16px;
+    color: #182B57;
+    font-family: 'InterBold';
+    font-size: 20px;
+    font-weight: 700;
+}
+
+p {
+    font-family: 'Inter';
+    margin: 0 auto;
+    max-width: 280px;
+    color: #6B7A90;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.primary-button {
+    margin-top: 28px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon{
+    width: 60px;
+}
+
+.iconSecond{
+    width: 30px;
+}
+
+@media(min-width:1201px){
+    .next-card{
+        height:500px;
+    }
+}

@@ -1,0 +1,59 @@
+:host{
+    display:block;
+}
+
+.icon{
+    width:58px;
+    height:58px;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    margin-bottom:18px;
+    padding:10px;
+}
+
+h2{
+    font-size:20px;
+    font-weight:700;
+    margin:0;
+    color:#152A5B;
+    font-family: 'InterBold';
+}
+
+p{
+    margin:8px 0;
+    font-size:12px;
+    font-weight:600;
+    color:#28457B;
+    font-family: 'InterBold';
+}
+
+span{
+    font-size:12px;
+    color:#6B7B9F;
+    font-family: 'Inter';
+}
+
+.calendarClass{
+    background-color: #dff6ec;
+}
+
+.em-stat-card-infos{
+    display:flex;
+}
+
+.em-stat-card-infos-values{
+    margin-left: 20px;
+}
+
+.icon-stat-card-footer{
+    display: flex;
+    align-items: center;
+}
+
+.icon-footer{
+    width:28px;
+    height:28px;
+}

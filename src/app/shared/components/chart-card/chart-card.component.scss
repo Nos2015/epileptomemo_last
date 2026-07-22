@@ -1,0 +1,118 @@
+.chart-wrapper {
+  width: 100%;
+  background: white;
+  border-radius: 22px;
+  padding: 16px;
+  height: 500px;
+}
+
+.chart-card{
+    background:white;
+    border-radius:28px;
+    padding: 32px;
+    box-shadow: 0 15px 45px rgba(52,120,246,.08);
+}
+
+.chart-infos{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chart-elements{
+    display: flex;
+    align-items: center;
+}
+
+.chart-title{
+    font-family: 'InterBold';
+}
+
+
+.info-button {
+    margin-left: 10px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    color: #8A94A6;
+    font-size: 11px;
+    cursor: pointer;
+    .tooltip {
+        font-family: 'Inter';
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 1px solid #E6EBF2;
+        border-radius: 12px;
+        background: #FFFFFF;
+        color: #24324B;
+        padding: 8px 12px;
+        white-space: nowrap;
+        font-size: 12px;
+        opacity: 0;
+        visibility: hidden;
+        transition: .2s;
+        box-shadow: 0 8px 24px rgba(0,0,0,.15);
+    }
+
+    &:hover .tooltip {
+        opacity: 1;
+        visibility: visible;
+    }
+
+}
+
+.period-selector {
+
+    position: relative;
+    display: inline-block;
+
+    select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        padding: 10px 42px 10px 16px;
+        border: 1px solid #E6EBF2;
+        border-radius: 12px;
+        background: #FFFFFF;
+        color: #24324B;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: .2s ease;
+        outline: none;
+        &:hover {
+            border-color: #3478F6;
+            box-shadow: 0 4px 12px rgba(52,120,246,.12);
+        }
+
+        &:focus {
+            border-color: #3478F6;
+        }
+
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 14px;
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid #5B6B82;
+        border-bottom: 2px solid #5B6B82;
+        transform: translateY(-70%) rotate(45deg);
+        pointer-events: none;
+    }
+
+}
+
+@media(max-width:500px){
+    .info-button{
+        display: none;
+    }
+}

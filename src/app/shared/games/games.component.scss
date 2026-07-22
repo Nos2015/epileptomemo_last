@@ -1,0 +1,53 @@
+    
+   #game{
+        width: 100%;
+        height: 100%;
+        padding-top: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+   #exitgame{
+        width: 100%;
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        #exitgamebutton{
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        #exitgamebutton img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            max-width: 50px;
+            height: auto;
+
+             img:nth-child(1){
+                display: block;
+            }
+
+            img:nth-child(2){
+                display: none;
+            }
+
+            &:hover img:nth-child(1){
+                display: none;
+            }
+
+            &:hover img:nth-child(2) {
+                display: block;
+            }
+        }
+
+        .cta-slider-bloc-image{
+            max-width: 50px;
+        }
+    }
+    

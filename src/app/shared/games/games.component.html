@@ -1,0 +1,13 @@
+
+<div id="game">
+    <div id="exitgame">
+        <div id="exitgamebutton" (click)="exitGame()">
+            <img src="/assets/games/button_menu_games_close.png"/>
+            <img src="/assets/games/button_menu_games_close_hover.png"/>
+        </div>
+        <img class="cta-slider-bloc-image cta-shadow" src="/assets/memorysequence.png"/>
+    </div>
+    <div>
+        <app-memorysequencegame (joinUsExit)="joinUs()" (quitUsExit)="exitGame()"></app-memorysequencegame>
+    </div>
+</div>

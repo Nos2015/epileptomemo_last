@@ -1,0 +1,13 @@
+<app-em-card>
+    <div class="em-stat-card-infos">
+        <img class="icon" src="../../../../assets/{{icon}}.png" [style.background-color]="color"/>
+        <div class="em-stat-card-infos-values">
+            <h2>{{value}}</h2>
+            <p>{{label}}</p>
+        </div>
+    </div>
+    <div class="icon-stat-card-footer">
+        <img *ngIf="hasIconFooter" class="icon-footer" src="../../../../assets/{{iconFooter}}.png"/>
+        <span>{{footer}}</span>
+    </div>
+</app-em-card>

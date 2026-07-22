@@ -1,0 +1,32 @@
+<div class="chart-wrapper">
+    <div class="chart-infos">
+        <div class="chart-elements">
+            <h2 class="chart-title">Évolution des crises</h2>
+            <div class="info-button">
+                ⓘ
+                <div class="tooltip">
+                    Nombre de crises enregistrées sur la période sélectionnée.
+                </div>
+            </div>
+        </div>
+        <div class="period-selector">
+            <select id="period-select" [(ngModel)]="selectedPeriod">
+                <option value="7">7 derniers jours</option>
+                <option value="30">30 derniers jours</option>
+                <option value="90">3 derniers mois</option>
+                <option value="180">6 derniers mois</option>
+                <option value="365">12 derniers mois</option>
+            </select>
+        </div>
+    </div>
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [xaxis]="chartOptions.xaxis"
+    [stroke]="chartOptions.stroke"
+    [markers]="chartOptions.markers"
+    [tooltip]="chartOptions.tooltip"
+    [grid]="chartOptions.grid">
+  </apx-chart>
+
+</div>

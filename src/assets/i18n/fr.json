@@ -48,6 +48,7 @@
     "errorSendMessage2":"Désolé mais adresse e-mail déjà enregistrée",
     "errorSendMessage3":"Désolé nous avons un problème temporaire pour les inscriptions. N'hésitez pas plus tard.",
     "successSendMessage":"Vous faites désormais partie de la liste. Merci 🎉",
+    "play":"Jouer",
     "pages":{
         "title":"Fonctionnalités en cours de développement",
         "journal":{

@@ -1,0 +1,53 @@
+<div class="timeline-card">
+    <div class="card-header">
+        <h2>Dernières crises</h2>
+        <a href="">Voir tout</a>
+    </div>
+    <div class="timeline">
+        @for (crisis of crises; track crisis) {
+            <div class="timeline-row">
+                <div class="date-column">
+                    <div class="date">{{ crisis.date }}</div>
+                    <div class="hour">{{ crisis.hour }}</div>
+                </div>
+                <div class="timeline-column">
+                    <div
+                        class="icon"
+                        [ngClass]="crisis.color"
+                        (click)="toggle($index)">
+                        <img
+                            [src]="'../../../assets/' + crisis.icon"
+                            alt="">
+                    </div>
+                    <div class="line"></div>
+                </div>
+                <div class="crisis-card"
+                    [class.open]="expandedIndex === $index">
+                    <div class="top">
+                        <h3>{{ crisis.title }}</h3>
+                        <div class="tags">
+                            @for(tag of crisis.tags; track tag){
+                                <span
+                                    class="tag"
+                                    [ngClass]="tag.toLowerCase().replaceAll(' ','-')">
+                                    {{tag}}
+                                </span>
+
+                            }
+                        </div>
+                        <span class="arrow">
+
+                            ❯
+
+                        </span>
+                    </div>
+                    <div class="bottom">
+                        Durée : {{crisis.duration}}
+                        <span>•</span>
+                        Récupération : {{crisis.recovery}}
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

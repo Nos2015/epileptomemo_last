@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'epileptomemo';
   sidebarActive = false;
   home = true;
+  startGame = false;
 
   @ViewChild('footerElement') footerElement!: ElementRef;
   @ViewChild('headerCmp') headerComponent!:HeaderComponent;
@@ -35,5 +36,9 @@ export class AppComponent {
     if (this.headerComponent != null) {
       this.headerComponent.setTitleHeader();
     }
+  }
+
+  setStartGame(value:boolean){
+    this.startGame = value;
   }
 }

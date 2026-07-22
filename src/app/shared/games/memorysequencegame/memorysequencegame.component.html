@@ -1,0 +1,28 @@
+<div>
+    <div #game class="game">
+        <p class="message">{{ message }}</p>
+        <div class="buttons" [ngClass]="addButtonClass('buttons')">
+            <button [ngClass]="addClass('green')" (click)="selectColor(green)"></button>
+            <button [ngClass]="addClass('red')" (click)="selectColor(red)"></button>
+            <button [ngClass]="addClass('blue')" (click)="selectColor(blue)"></button>
+            <button [ngClass]="addClass('yellow')" (click)="selectColor(yellow)"></button>
+        </div>
+        <button *ngIf="this.visibleStartButton" [ngClass]="addButtonClass('start')" (click)="newOrEndGame()" [disabled]="start">Start</button>
+    </div>
+    <div class="pageSubTitle bottomRightPage">Score : {{score}}</div>
+</div>
+<app-popup *ngIf="showEnd && !start"
+    (parentFirstMethod)="join()" 
+    (parentSecondMethod)="quit()" 
+    [titleContent]="endgaming"
+    [content]="finalText"
+    [titleButton1]="joinus"
+    [titleButton2]="okText"
+ >
+ </app-popup>
+ <app-popup *ngIf="showPopup && !start"
+    (parentFirstMethod)="launchGame()"
+    [content]="messagePopup"
+    [titleButton1]="okText"
+ >
+ </app-popup>
