@@ -128,10 +128,21 @@
     padding-right: 5px;
 }
 
-.comingsoonbutton{
-     display: flex;
+.comingsoonbloc{
+    display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: space-between;
     padding-top: 20px;
+    padding-left: 40px;
+}
+
+.comingsoonexemple{
+    font-family: 'InterBold';
+    font-style: italic;
+}
+
+.comingsoonbutton{
+    display: flex;
+    align-items: center;
     padding-right: 20px;
 }

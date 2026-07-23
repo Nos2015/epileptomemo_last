@@ -60,6 +60,16 @@ export class CrisistimelineComponent {
       icon: "generalcrisis.png",
       color: "purple",
       tags: ["Stress"]
+    },
+    {
+      date: "5 juillet",
+      hour: "11:26",
+      title: "Crise focale",
+      duration: "30 s",
+      recovery: "10 min",
+      icon: "focalecrisis.png",
+      color: "blue",
+      tags: ["Oubli de traitement"]
     }
   ];
 
