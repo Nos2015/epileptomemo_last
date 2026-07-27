@@ -1,10 +1,10 @@
 <div class="timeline-card">
     <div class="card-header">
-        <h2>Dernières crises</h2>
-        <a href="">Voir tout</a>
+        <h2>{{lastCrisis}}</h2>
+        <a>{{seeEverything}}</a>
     </div>
     <div class="timeline">
-        @for (crisis of crises; track crisis) {
+        @for (crisis of crisesToSee; track crisis) {
             <div class="timeline-row">
                 <div class="date-column">
                     <div class="date">{{ crisis.date }}</div>
@@ -42,9 +42,9 @@
                         </span>
                     </div>
                     <div class="bottom">
-                        Durée : {{crisis.duration}}
+                        {{time}} : {{crisis.duration}}
                         <span>•</span>
-                        Récupération : {{crisis.recovery}}
+                        {{recovery}} : {{crisis.recovery}}
                     </div>
                 </div>
             </div>

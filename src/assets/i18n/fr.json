@@ -49,17 +49,71 @@
     "errorSendMessage3":"Désolé nous avons un problème temporaire pour les inscriptions. N'hésitez pas plus tard.",
     "successSendMessage":"Vous faites désormais partie de la liste. Merci 🎉",
     "play":"Jouer",
+    "seeEverything":"Voir tout",
     "pages":{
-        "title":"Fonctionnalités en cours de développement",
+        "title":"Exemple de future page d'accueil de Journal",
         "journal":{
             "title":"Journal des crises",
             "titleMobile":"Journal",
-            "first":"Ajouter des crises",
-            "second":"Historique des crises",
-            "third":"Traitement",
-            "fourth":"Historique des prise(s) de médicament(s)",
-            "five":"Notification de prise de médicament(s)",
-            "conclusion":"Cette fonctionnalité vous permettra de savoir la chronologie de vos crises et de créer un rapport clair et détaillé qui sera partagé avec votre neurologue si vous le souhaitez dans Rapports"
+            "subtitle":"Suivez et comprenez l'évolution de vos crises au quotidien",
+            "addNewCrisis":"Nouvelle crise",
+            "dashboard":{
+                "totalCrisis":"Total des crises",
+                "subtitleTotalCrisis":"cette semaine",
+                "thisMonth":"Ce mois",
+                "subtileThisMonth":"Juillet",
+                "averageDuration":"Durée moyenne",
+                "subtitleAverageDuration":"ce mois",
+                "treatment" :"Traitement",
+                "subtitleTreatment" : "Excellent suivi",
+                "crisesTitle":"Évolution des crises",
+                "nextStep": "Nouvelle étape",
+                "chart-card":{
+                    "evolutionCrisis":"Évolution des crises",
+                    "evolutionCrisisToolTip":"Nombre de crises enregistrées sur la période sélectionnée.",
+                    "categoriesCalendar":[
+                        "Jan",
+                        "Fév",
+                        "Mars",
+                        "Avr",
+                        "Mai",
+                        "Juin",
+                        "Juil",
+                        "Août",
+                        "Sept",
+                        "Oct",
+                        "Nov",
+                        "Déc"
+                    ],
+                    "lastDays":"derniers jours",
+                    "lastMonths":"derniers mois"
+                },
+                "next-exercice":{
+                    "nextStape":"Prochaine étape",
+                    "nextStapeMessage":"Continuez comme vous le faites !",
+                    "nextStapeSubtitleMessage":"Votre suivi régulier aide à mieux comprendre votre épilepsie.",
+                    "seeStatistics":"Voir les statistiques"
+                },
+                "crisistimeline":{
+                    "lastCrisis":"Dernières crises",
+                    "time":"Durée",
+                    "recovery":"Récupération"
+                },
+                "actual-treatment":{
+                    "actualTreamentTitle":"Traitement actuel",
+                    "nameFirstTreatment":"Lévétiracétam",
+                    "firtTreatmentDoseDescription":"1 tablet in the morning and evening",
+                    "compliance":"Excellente observance"
+                },
+                "latest-medication":{
+                    "latestInTake":"Dernières prises"
+                },
+                "important-note":{
+                    "noteTitle":"Note importante",
+                    "noteDescription":"Penser à noter les éléments particuliers :",
+                    "noteElements":"stress, sommeil, alimentation, activités..."
+                }
+            }
         },
         "reports":{
             "title":"Rapports de neurologues",

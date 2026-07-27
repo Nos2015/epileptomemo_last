@@ -49,17 +49,71 @@
     "errorSendMessage3":"Sorry, we're experiencing a temporary issue with registration. Please try again later.",
     "successSendMessage":"You're now on the list. Thank you 🎉",
     "play":"Play",
+    "seeEverything":"See all",
     "pages":{
-        "title":"Features currently in development",
+        "title":"Example of the future Journal homepage",
         "journal":{
             "title":"Seizures Journal",
             "titleMobile":"Seizures Journal",
-            "first":"Add Seizures",
-            "second":"History of Seizures",
-            "third":"Treatment",
-            "fourth":"History of medication use",
-            "five":"Notification of Medication Use",
-            "conclusion":"This feature will help you track the timeline of your seizures and create a clear, detailed report that you can share with your neurologist if you wish in Reports"
+            "subtitle":"Track and understand how your seizures change from day to day",
+            "addNewCrisis":"New Crisis",
+            "dashboard":{
+                "totalCrisis":"Total of crises",
+                "subtitleTotalCrisis":"this week",
+                "thisMonth":"This month",
+                "subtileThisMonth":"July",
+                "averageDuration":"Average duration",
+                "subtitleAverageDuration":"this month",
+                "treatment" :"Treatment",
+                "subtitleTreatment":"Excellent follow-up",
+                "crisesTitle":"Evolution of Crises",
+                "nextStep": "Next Step",
+                "chart-card":{
+                    "evolutionCrisis":"Evolution of Crises",
+                    "evolutionCrisisToolTip":"Number of crises recorded during the selected period.",
+                    "categoriesCalendar":[
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
+                        "May",
+                        "Jun",
+                        "Jul",
+                        "Aug",
+                        "Sept",
+                        "Oct",
+                        "Nov",
+                        "Dec"
+                    ],
+                    "lastDays":"last days",
+                    "lastMonths":"last months"
+                },
+                "next-exercice":{
+                    "nextStape":"Next Step",
+                    "nextStapeMessage":"Keep up the good work !",
+                    "nextStapeSubtitleMessage":"Regular follow-up appointments help you better understand your epilepsy.",
+                    "seeStatistics":"View Statistics"
+                },
+                "crisistimeline":{
+                    "lastCrisis":"Recent Crises",
+                    "time":"Duration",
+                    "recovery":"Recovery"
+                },
+                "actual-treatment":{
+                    "actualTreamentTitle":"Current Treatment",
+                    "nameFirstTreatment":"Lévétiracétam",
+                    "firtTreatmentDoseDescription":"1 tablet in the morning and evening",
+                    "compliance":"Excellent compliance"
+                },
+                "latest-medication":{
+                    "latestInTake":"Latest Intake"
+                },
+                "important-note":{
+                    "noteTitle":"Important Note",
+                    "noteDescription":"Be sure to note any specific details :",
+                    "noteElements":"stress, sleep, diet, activities..."
+                }
+            }
         },
         "reports":{
             "title":"Neurologist Reports",

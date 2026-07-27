@@ -5,8 +5,8 @@
         <app-em-stat-card
             icon="flash"
             value="18"
-            label="Total des crises"
-            footer="+2 cette semaine"
+            label={{totalCrisis}}
+            footer={{thisWeek}}
             color="#e2ecfe"
             iconFooter="increase">
         </app-em-stat-card>
@@ -14,8 +14,8 @@
         <app-em-stat-card
             icon="calendar"
             value="2"
-            label="Ce mois"
-            footer="Juillet 2026"
+            label="{{thisMonth}}"
+            footer="{{month}}"
             class="calendarClass"
             color="#e3f7ee">
         </app-em-stat-card>
@@ -23,8 +23,8 @@
         <app-em-stat-card
             icon="time"
             value="1m42"
-            label="Durée moyenne"
-            footer="-12% ce mois"
+            label="{{averageDuration}}"
+            footer="{{averageDurationThisMonth}}"
             color="#e6defe"
             iconFooter="decrease">
         </app-em-stat-card>
@@ -32,8 +32,8 @@
         <app-em-stat-card
             icon="medicaments"
             value="98%"
-            label="Traitement"
-            footer="Excellent suivi"
+            label="{{treatment}}"
+            footer="{{treatmentMessage}}"
             color="#feefdd">
         </app-em-stat-card>
     </div>

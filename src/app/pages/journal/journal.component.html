@@ -1,18 +1,16 @@
 <div id="pagesBackground">
     <div class="comingsoonbloc">
-        <div class="comingsoonexemple">Exemple de future page d'accueil de Journal</div>
+        <div class="comingsoonexemple">{{title}}</div>
         <div class="comingsoonbutton">
             <div class="comingSoon">{{comingSoon}}</div>
         </div>
     </div>
     <div class="pagesTitle">
         <div class="contentPageTitle">
-            <div class="pageTitle">{{title}}</div>
-            <div class="pageSubTitle">Suivez et comprenez l'évolution de vos crises au quotidien</div>
+            <div class="pageTitle">{{titlePage}}</div>
+            <div class="pageSubTitle">{{subtitlePage}}</div>
         </div>
-        <button class="button-width50 button-journal-add-crisis"><img class="cta-slider-bloc-image cta-shadow cta-add-plus" src="/assets/plus_new.png"/> Nouvelle Crise</button>
-       
+        <button class="button-width50 button-journal-add-crisis"><img class="cta-slider-bloc-image cta-shadow cta-add-plus" src="/assets/plus_new.png"/> {{newCrisis}}</button>
     </div>
-    
     <app-dashboard></app-dashboard>
 </div>

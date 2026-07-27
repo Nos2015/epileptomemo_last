@@ -14,12 +14,8 @@ export class JournalComponent implements OnInit{
   comingSoon = "";
   title = "";
   titlePage = "";
-  first = "";
-  second = "";
-  third = "";
-  fourth = "";
-  five = "";
-  conclusion = "";
+  subtitlePage ="";
+  newCrisis = "";
   source = "journal";
 
   constructor(public appComponent: AppComponent,
@@ -55,24 +51,16 @@ export class JournalComponent implements OnInit{
           'comingSoon',
           'pages.title',
           'pages.journal.title',
-          'pages.journal.first',
-          'pages.journal.second',
-          'pages.journal.third',
-          'pages.journal.fourth',
-          'pages.journal.five',
-          'pages.journal.conclusion'
+          'pages.journal.subtitle',
+          'pages.journal.addNewCrisis'
         ]
       )
       .subscribe(translations => {
         this.comingSoon = translations['comingSoon'];
-        this.titlePage = translations['pages.title'];
-        this.title = translations['pages.journal.title'];
-        this.first = translations['pages.journal.first'];
-        this.second = translations['pages.journal.second'];
-        this.third = translations['pages.journal.third'];
-        this.fourth = translations['pages.journal.fourth'];
-        this.five = translations['pages.journal.five'];
-         this.conclusion = translations['pages.journal.conclusion'];
+        this.title = translations['pages.title'];
+        this.titlePage = translations['pages.journal.title'];
+        this.subtitlePage = translations['pages.journal.subtitle'];
+        this.newCrisis = translations['pages.journal.addNewCrisis'];
       });
 
     }

@@ -1,6 +1,6 @@
 <div class="next-card">
     <div class="card-title">
-        Prochaine étape
+        {{nextStape}}
     </div>
     <div class="card-content">
         <div class="icon-wrapper">
@@ -9,17 +9,12 @@
             </div>
         </div>
         <h3>
-            Continuez comme vous le faites !
+            {{nextStapeMessage}}
         </h3>
         <p>
-            Votre suivi régulier aide à mieux comprendre
-            votre épilepsie.
+            {{nextStapeSubtitleMessage}}
         </p>
-        <!--button class="primary-button">
-            <img class="iconSecond" src="../../../../assets/{{iconSecond}}.png"/>
-            Voir les statistiques
-        </button-->
-        <button class="button-width50 primary-button"><img class="cta-slider-bloc-image cta-shadow iconSecond" src="../../../../assets/{{iconSecond}}.png"/> Voir les statistiques</button>
+        <button class="button-width50 primary-button"><img class="cta-slider-bloc-image cta-shadow iconSecond" src="../../../../assets/{{iconSecond}}.png"/> {{seeStatistics}}</button>
     </div>
 
 </div>
