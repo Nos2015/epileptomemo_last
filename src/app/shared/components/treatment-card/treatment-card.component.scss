@@ -113,3 +113,28 @@
     font-size: 18px;
     color: #64748B;
 }
+
+@media (max-width:600px){
+    .header, .medicine{
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .header h2{
+        margin-bottom: 20px;
+    }
+
+    .medicineg{
+        margin-top: 10px;
+        margin-left: 0px !important;
+    }
+
+    .arrow{
+        display: none;
+    }
+
+    .top{
+        justify-content:center;
+    }
+}

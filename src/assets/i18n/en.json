@@ -51,10 +51,9 @@
     "play":"Play",
     "seeEverything":"See all",
     "pages":{
-        "title":"Example of the future Journal homepage",
         "journal":{
-            "title":"Seizures Journal",
-            "titleMobile":"Seizures Journal",
+            "title":"Journal",
+            "titleMobile":"Journal",
             "subtitle":"Track and understand how your seizures change from day to day",
             "addNewCrisis":"New Crisis",
             "dashboard":{

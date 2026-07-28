@@ -213,7 +213,7 @@
         width: 100%;
         grid-column:1 / -1;
         margin-left:0px;
-        margin-top:15px;
+        margin-top:-50px;
     }
 
     .top, .tags{
@@ -238,4 +238,11 @@
         flex-direction: column;
     }
 
+    .card-header{
+        flex-direction: column;
+    }
+
+    .card-header h2{
+        margin-bottom: 20px;
+    }
 }

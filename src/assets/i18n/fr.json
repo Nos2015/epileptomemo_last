@@ -51,9 +51,8 @@
     "play":"Jouer",
     "seeEverything":"Voir tout",
     "pages":{
-        "title":"Exemple de future page d'accueil de Journal",
         "journal":{
-            "title":"Journal des crises",
+            "title":"Journal",
             "titleMobile":"Journal",
             "subtitle":"Suivez et comprenez l'évolution de vos crises au quotidien",
             "addNewCrisis":"Nouvelle crise",
