@@ -1,0 +1,75 @@
+<div class="share-card">
+    <h2>{{ shareReport }}</h2>
+    <div class="actions">
+        <button class="action">
+            <div class="icon">
+                <!-- PDF -->
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M7 2h7l5 5v15H7V2z"
+                          stroke="currentColor"
+                          stroke-width="1.8"
+                          stroke-linejoin="round"/>
+                    <path d="M14 2v5h5"
+                          stroke="currentColor"
+                          stroke-width="1.8"/>
+                    <text x="12"
+                          y="17"
+                          text-anchor="middle"
+                          font-size="5"
+                          font-weight="700"
+                          fill="currentColor">PDF</text>
+                </svg>
+            </div>
+            <span>PDF<br>{{ neurologue }}</span>
+        </button>
+        <button class="action">
+            <div class="icon">
+                <!-- Mail -->
+                <svg viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="5" width="18" height="14" rx="2"
+                          stroke="currentColor"
+                          stroke-width="1.8"/>
+                    <path d="M4 7l8 6 8-6"
+                          stroke="currentColor"
+                          stroke-width="1.8"/>
+                </svg>
+            </div>
+            <span>{{ send }}<br>{{ byMail }}</span>
+        </button>
+        <button class="action">
+            <div class="icon">
+                <!-- Print -->
+                <svg viewBox="0 0 24 24" fill="none">
+                    <rect x="7" y="3" width="10" height="5"
+                          stroke="currentColor"
+                          stroke-width="1.8"/>
+                    <rect x="5" y="9" width="14" height="8"
+                          rx="2"
+                          stroke="currentColor"
+                          stroke-width="1.8"/>
+                    <rect x="8" y="14" width="8" height="6"
+                          stroke="currentColor"
+                          stroke-width="1.8"/>
+                </svg>
+            </div>
+            <span>{{ print }}</span>
+        </button>
+        <button class="action">
+            <div class="icon">
+                <!-- Download -->
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 4v11"
+                          stroke="currentColor"
+                          stroke-width="1.8"/>
+                    <path d="M8 11l4 4 4-4"
+                          stroke="currentColor"
+                          stroke-width="1.8"/>
+                    <path d="M5 20h14"
+                          stroke="currentColor"
+                          stroke-width="1.8"/>
+                </svg>
+            </div>
+            <span>{{ download }}</span>
+        </button>
+    </div>
+</div>

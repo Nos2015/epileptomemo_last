@@ -116,11 +116,46 @@
         },
         "reports":{
             "title":"Neurologist Reports",
-            "titleMobile":"Neurologist Reports",
-            "subtitle":"Export your seizure history as a clear, detailed report, ready to share with your neurologist",
-            "first":"Detailed PDF report",
-            "second":"Easy to share with your doctor",
-            "conclusion":"This feature will help your neurologist better understand your seizures and tailor your treatment accordingly"
+            "titleMobile":"Reports",
+            "subtitle":"Track your progress and generate a clear report to share with your neurologist.",
+            "generatePDF":"Generate PDF",
+            "recoredSeizures":"Recorded Seizures",
+            "previous12mMonths":"vs. the previous 12 months",
+            "observance":"Adherence",
+            "excellente":"Excellent",
+            "realizedExercices":"Exercises Completed",
+            "averageSleep":"Average sleep",
+            "conclusion":"This feature will help your neurologist better understand your seizures and tailor your treatment accordingly",
+            "period":{
+                "periodOverview":"Period Overview",
+                "period":"Period :",
+                "lastMonth":"Last 12 months",
+                "recordedSeizures":"recorded seizures",
+                "compliance":"compliance",
+                "cognitiveExercicesCompleted":"cognitive exercise(s) completed"
+            },
+            "resume":{
+                "automaticSummary":"Automatic Summary",
+                "previousReport":"Since your previous report :"
+            },
+            "share":{
+                "shareReport":"Share Report",
+                "neurologue":"Neurologist",
+                "send":"Send",
+                "byMail":"by mail",
+                "print":"Print",
+                "download":"Download"
+            },
+            "triggers": {
+                "mainTriggers":"Main Triggers",
+                "lackOfSleep":"Lack of sleep",
+                "missedTreatment":"Missed treatment",
+                "stress":"Stress",
+                "fatigue":"Fatigue"
+            },
+            "distribution":{
+                "typeSeizure":"Type of Seizures"
+            }
         },
         "statistics":{
             "title":"Statistics",

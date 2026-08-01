@@ -24,6 +24,30 @@
   box-sizing: border-box;
 }
 
+:root{
+
+    --em-primary:#2F6DF6;
+    --em-secondary:#16295E;
+
+    --em-success:#21C064;
+    --em-warning:#F59E0B;
+    --em-danger:#EF4444;
+
+    --em-focal:#2F6DF6;
+    --em-absence:#43C46A;
+    --em-generalized:#7C4DFF;
+
+    --em-stress:#CC5064;
+    --em-fatigue:#D58A18;
+    --em-sleep:#7650E7;
+    --em-treatment:#F2C94C;
+
+    --em-card-radius:24px;
+
+    --em-shadow:
+        0 8px 30px rgba(22,41,94,.08);
+}
+
 html, body{
     width: 100%;
     min-height: 100%;

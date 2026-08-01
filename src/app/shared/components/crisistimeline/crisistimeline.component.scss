@@ -4,6 +4,9 @@
     padding:28px;
     box-shadow:0 8px 30px rgba(52,120,246,.08);
     width: 100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
 }
 
 .card-header, .card-header h2, .card-header a, .date, .top, .tag {
@@ -24,7 +27,6 @@
 .card-header h2{
     margin:0;
     color:#182B57;
-    font-size:28px;
 }
 
 .card-header a{
@@ -154,22 +156,22 @@
 
 .stress{
     background:#FFE8EA;
-    color:#CC5064;
+    color:var(--em-stress);
 }
 
 .fatigue, .tired{
     background:#FFF4DE;
-    color:#D58A18;
+    color:var( --em-fatigue);
 }
 
 .manque-de-sommeil, .lack-of-sleep{
     background:#EEE7FF;
-    color:#7650E7;
+    color:var(--em-sleep);
 }
 
 .oubli-de-traitement, .missed-dose{
     background:#FFF1DA;
-    color:#C98A15;
+    color:var( --em-treatment);
 }
 
 .arrow{

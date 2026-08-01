@@ -1,0 +1,18 @@
+.card{
+    background:white;
+    border-radius:24px;
+    padding:24px;
+    box-shadow:0 10px 30px rgba(20,40,90,.08);
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.card h2{
+    font-family: 'InterBold';
+}
+
+@media(max-width:800px){
+    .card{
+        margin-top: 0px;
+    }
+}

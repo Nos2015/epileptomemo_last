@@ -137,13 +137,30 @@
     padding-left: 40px;
 }
 
-.comingsoonexemple{
-    font-family: 'InterBold';
-    font-style: italic;
-}
-
 .comingsoonbutton{
     display: flex;
     align-items: center;
     padding-right: 20px;
+}
+
+
+@media(max-width:600px){
+    .pagesTitle{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contentPageTitle{
+        display: flex;
+        margin-left: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button-journal-add-crisis{
+        width: 100%;
+        max-width: 100%;
+        margin-right: 20px;
+    }
 }

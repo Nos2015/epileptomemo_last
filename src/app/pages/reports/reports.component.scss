@@ -1,66 +1,201 @@
-.elementMenu{
+
+.reports-page{
+    padding:40px;
+}
+
+.reports-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+    margin-bottom:35px;
+}
+
+.left h1{
+    margin:0;
+    font-size:30px;
+    color:#16295e;
+    font-family: 'InterBold';
+}
+
+.left p{
+
+    margin-top:12px;
+    max-width:480px;
+    color:#6d7896;
+    line-height:1.6;
+    font-family: 'Inter';
+    font-size: 12px;
+}
+
+select{
+    height:46px;
+    padding:0 20px;
+    border-radius:14px;
+    border:1px solid #dfe7f4;
+    background:white;
+    font-size:15px;
+}
+
+.pdf-btn{
+    height:46px;
+    padding:0 26px;
+    border:none;
+    border-radius:14px;
+    background:#2f6df6;
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.pdf-btn:hover{
+    background:#1e5be8;
+}
+
+.summary-grid{
+    display:grid;
+    grid-template-columns:
+        2fr
+        repeat(4,1fr);
+    gap:22px;
+}
+
+.button-report{
+    width: auto;
+    margin-right: 0px;
+}
+
+.apx-chart-card{
+    margin-top: 35px;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
     flex-direction: column;
-    border-radius: 20px;
-    contain-intrinsic-size: auto 300px;
-    background-color: #f7f8fe;
-    margin-left: 10px;
-    margin-right: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    margin: 40px;
+    height: 100%;
 }
 
-.elementMenuContent{
+apx-chart {
+    display: block;
     width: 100%;
-    padding: 20px;
+    height: 100%;
 }
 
-.elementMenuContentText{
-    font-size: 20px;
+.grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:24px;
+    align-items:start;
 }
 
-.elementMenuContentTextUnderPage{
-    text-align: left;
-    font-size: 18px;
+.gridleft{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: stretch;
 }
 
-.cta-pages{
+.left{
+    display:flex;
+}
+
+.left app-crisistimeline{
+    flex:1;
+    display:flex;
+}
+
+.left app-report-triggers{
     width: 100%;
-    height: auto;
-    background-color: #f8f7fd;
-    position: relative;
-    border-radius: 20px;
 }
 
-.cta-pages-img{
-    width: 100%;
+.right{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
 }
 
-.cta-pages-img-right{
-    position: absolute;
-    top:35%;
-    right: 5%;
-    width: 30%;
+.right app-report-resume,
+.right app-report-share{
+    display:block;
 }
 
-.elementMenuContentElementsTextFlex{
+.gridleft {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.leftheader{
+    flex-direction: column;
+}
+
+.comingsoonbloc{
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: end;
+    padding-bottom: 20px;
+    padding-right: 40px;
+    padding-top: 20px;
 }
 
-.elementMenuContentTextUnderPageFlex{
-    padding-bottom: 0px;
-    padding-left: 10px;
+.comingsoonbutton{
+    display: flex;
+    align-items: center;
 }
 
-.elementMenuContentAlignFlex{
-    padding-top: 0px;
-    padding-bottom: 0px;
+@media(max-width:1200px){
+    .summary-grid{
+        grid-template-columns: 1fr repeat(1, 1fr);
+    }
+    .gridleft {
+        grid-template-columns: 1fr;
+    }
+    
 }
 
-.title-cta-slider{
-    text-align: left;
+@media(max-width:800px){
+    .summary-grid, .gridtriggerdist{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .gridtriggerdist .left .card{
+        margin-bottom: 0px!important;
+    }
+
+    .reports-header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .leftheader{
+        align-items: center;
+    }
+
+    .reports-header .right{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .button-report{
+        width: 100%;
+        margin: 0;
+    }
+
 }
+
+@media(max-width:600px){
+    .gridtriggerdist{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .gridtriggerdist .left, .gridtriggerdist .rightdist{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+

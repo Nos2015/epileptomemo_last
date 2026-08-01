@@ -36,6 +36,12 @@ import { CrisistimelineComponent } from './shared/components/crisistimeline/cris
 import { TreatmentCardComponent } from './shared/components/treatment-card/treatment-card.component';
 import { MedicationHistoryComponent } from './shared/components/medication-history/medication-history.component';
 import { ImportantNoteComponent } from './shared/components/important-note/important-note.component';
+import { ReportPeriodCardComponent } from './pages/reports/components/report-period-card/report-period-card.component';
+import { ReportStatCardComponent } from './pages/reports/components/report-stat-card/report-stat-card.component';
+import { ReportTriggersComponent } from './pages/reports/components/report-triggers/report-triggers.component';
+import { ReportDistributionComponent } from './pages/reports/components/report-distribution/report-distribution.component';
+import { ReportResumeComponent } from './pages/reports/components/report-resume/report-resume.component';
+import { ReportShareComponent } from './pages/reports/components/report-share/report-share.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +74,13 @@ import { ImportantNoteComponent } from './shared/components/important-note/impor
     CrisistimelineComponent,
     TreatmentCardComponent,
     MedicationHistoryComponent,
-    ImportantNoteComponent
+    ImportantNoteComponent,
+    ReportPeriodCardComponent,
+    ReportStatCardComponent,
+    ReportTriggersComponent,
+    ReportDistributionComponent,
+    ReportResumeComponent,
+    ReportShareComponent
   ],
   imports: [
     BrowserModule,

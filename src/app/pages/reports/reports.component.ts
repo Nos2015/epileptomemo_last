@@ -13,10 +13,15 @@ export class ReportsComponent implements OnInit{
 
   comingSoon = "";
   title = "";
-  titlePage = "";
   subtitle = "";
-  first = "";
-  second = "";
+  generatePDF = "";
+
+  recoredSeizures = "";
+  previous12mMonths = "";
+  observance = "";
+  excellente = "";
+  realizedExercices = "";
+  averageSleep = "";
   conclusion = "";
   source = "reports"
 
@@ -51,22 +56,30 @@ export class ReportsComponent implements OnInit{
       this.translate.translate.get(
         [
           'comingSoon',
-          'pages.title',
           'pages.reports.title',
-          'pages.reports.first',
-          'pages.reports.second',
           'pages.reports.subtitle',
-          'pages.reports.conclusion'
+          'pages.reports.generatePDF',
+          'pages.reports.recoredSeizures',
+          'pages.reports.previous12mMonths',
+          'pages.reports.conclusion',
+          'pages.reports.observance',
+          'pages.reports.excellente',
+          'pages.reports.realizedExercices',
+          'pages.reports.averageSleep'
         ]
       )
       .subscribe(translations => {
         this.comingSoon = translations['comingSoon'];
-        this.titlePage = translations['pages.title'];
         this.title = translations['pages.reports.title'];
-        this.first = translations['pages.reports.first'];
-        this.second = translations['pages.reports.second'];
         this.subtitle = translations['pages.reports.subtitle'];
+        this.generatePDF = translations['pages.reports.generatePDF'];
+        this.recoredSeizures = translations['pages.reports.recoredSeizures'];
+        this.previous12mMonths = translations['pages.reports.previous12mMonths'];
+        this.observance = translations['pages.reports.observance'];
+        this.excellente = translations['pages.reports.excellente'];
         this.conclusion = translations['pages.reports.conclusion'];
+        this.realizedExercices = translations['pages.reports.realizedExercices'],
+        this.averageSleep = translations['pages.reports.averageSleep'];
       });
     }
   }

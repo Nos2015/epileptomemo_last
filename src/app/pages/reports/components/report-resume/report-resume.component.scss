@@ -1,0 +1,55 @@
+.card{
+    background:white;
+    border-radius:24px;
+    padding:28px;
+    box-shadow:0 8px 30px rgba(52,120,246,.08);
+}
+
+.header h2 {
+    font-family: 'InterBold';
+    margin:0;
+    color:#1F2E57;
+}
+
+.rows{
+    border-radius: 24px;
+    padding: 20px;
+    background-color: #f7faf8;
+    margin-top: 20px;
+}
+
+.rows p{
+    font-family: 'Inter';
+    font-size: 12px;
+}
+
+.row{
+    display:flex;
+    align-items:center;
+    padding:14px 0;
+    font-family: "Inter";
+    font-size: 12px;
+}
+
+.row:last-child{
+    border-bottom:none;
+}
+
+.check{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    border:2px solid #1BB95E;
+    color:#1BB95E;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    flex-shrink: 0;
+}
+
+.info{
+    margin-left: 10px;
+    flex: 1;
+    line-height: 1.5;
+}

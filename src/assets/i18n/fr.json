@@ -117,10 +117,45 @@
         "reports":{
             "title":"Rapports de neurologues",
             "titleMobile":"Rapports",
-            "subtitle":"Exportez votre historique des crises d'épilepsie sous forme de rapport clair et détaillé, prêt à partager avec votre neurologue",
-            "first":"Rapport PDF détaillé",
-            "second":"Partage facile avec le médecin",
-            "conclusion":"Cette fonctionnalité permettra à votre neurologue de mieux comprendre vos crises et de mieux ajuster votre traitement"
+            "subtitle":"Analysez votre évolution et générez un rapport clair à partager avec votre neurologue.",
+            "generatePDF":"Générer le PDF",
+            "recoredSeizures":"Crises enregistrées",
+            "previous12mMonths":"vs 12 mois précédents",
+            "observance":"Observance",
+            "excellente":"Excellente",
+            "realizedExercices":"Exercices réalisés",
+            "averageSleep":"Sommeil moyen",
+            "conclusion":"Cette fonctionnalité permettra à votre neurologue de mieux comprendre vos crises et de mieux ajuster votre traitement",
+            "period":{
+                "periodOverview":"Aperçu de la période",
+                "period":"Période :",
+                "lastMonth":"12 derniers mois",
+                "recordedSeizures":"crises enregistrées",
+                "compliance":"d'observance",
+                "cognitiveExercicesCompleted":"exercice(s) cognitif(s) réalisé(s)"
+            },
+            "resume":{
+                "automaticSummary":"Résumé automatique",
+                "previousReport":"Depuis votre précédent rapport :"
+            },
+            "share":{
+                "shareReport":"Partager le rapport",
+                "neurologue":"Neurologue",
+                "send":"Envoyer",
+                "byMail":"Par mail",
+                "print":"Imprimer",
+                "download":"Télécharger"
+            },
+            "triggers":{
+                "mainTriggers":"Principaux déclencheurs",
+                "lackOfSleep":"Manque de sommeil",
+                "missedTreatment":"Oubli traitement",
+                "stress":"Stress",
+                "fatigue":"Fatigue"
+            },
+            "distribution":{
+                "typeSeizure":"Types de crises"
+            }
         },
         "statistics":{
             "title":"Statistiques",

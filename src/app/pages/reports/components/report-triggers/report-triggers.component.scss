@@ -1,0 +1,42 @@
+.card{
+    background:white;
+    border-radius:24px;
+    padding:24px;
+    box-shadow:0 10px 30px rgba(20,40,90,.08);
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+h2{
+    margin-bottom:24px;
+    color:#1d2d67;
+    font-family: 'InterBold';
+}
+
+.trigger{
+    display:flex;
+    justify-content:space-between;
+    margin-top:18px;
+    font-weight:600;
+    font-family: 'InterBold';
+    margin-bottom: 20px;
+}
+
+.progress{
+    margin-top:8px;
+    height:8px;
+    border-radius:8px;
+    background:#edf2fb;
+    overflow:hidden;
+}
+
+.progress div{
+    height:100%;
+    border-radius:8px;
+}
+
+@media(max-width:800px){
+    .card{
+        margin-bottom: 0px;
+    }
+}

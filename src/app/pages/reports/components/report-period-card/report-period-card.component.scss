@@ -1,0 +1,48 @@
+.period-card{
+    background:white;
+    border-radius:26px;
+    padding:28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 8px 30px rgba(30,60,120,.08);
+}
+
+.left h2{
+    margin:0 0 18px;
+    color:#16295e;
+}
+
+.line{
+    margin-bottom:14px;
+    color:#4d5878;
+    font-size:13px;
+}
+
+.preview{
+    width:120px;
+    height:150px;
+    border-radius:18px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:64px;
+}
+
+.preview img{
+    max-width: 100px;
+}
+
+.left h2{
+    font-family: 'InterBold';
+}
+
+.line{
+    font-family: 'Inter';
+}
+
+@media(max-width:1200px){
+    .period-card{
+        height: 100%;
+    }
+}

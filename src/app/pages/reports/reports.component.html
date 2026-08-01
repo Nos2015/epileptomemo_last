@@ -1,35 +1,77 @@
-<div id="pagesBackground">
-    <div class="pagesTitle">
-        <div class="pageTitle">{{title}}</div>
+<div class="comingsoonbloc">
+    <div class="comingsoonbutton">
         <div class="comingSoon">{{comingSoon}}</div>
     </div>
-    <div class="elementMenu">
-        <div class="elementMenuContent">
-            <div class="elementMenuContentElementsText">
-                <p class="title-cta-slider elementMenuContentText">{{titlePage}}</p>
-                <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage">{{subtitle}}</p>
-            </div>
+</div>
+<div class="reports-page">
+    <div class="reports-header">
+        <div class="left leftheader">
+            <h1>{{title}}</h1>
+            <p>
+                {{subtitle}}
+            </p>
         </div>
-        <div class="elementMenuContent elementMenuContentAlign elementMenuContentAlignFlex">
-            <div class="elementMenuContentElementsText elementMenuContentElementsTextFlex">
-                <img class="cta-slider-bloc-image cta-shadow" src="/assets/check.png"/>
-                <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage elementMenuContentTextUnderPageFlex">{{first}}</p>
-            </div>
+        <div class="right">
+            <button class="button-width50 button-report">
+                📄 {{generatePDF}}
+            </button>
         </div>
-        <div class="elementMenuContent elementMenuContentAlign elementMenuContentAlignFlex">
-            <div class="elementMenuContentElementsText elementMenuContentElementsTextFlex">
-                <img class="cta-slider-bloc-image cta-shadow" src="/assets/check.png"/>
-                <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage elementMenuContentTextUnderPageFlex">{{second}}</p>
-            </div>
+    </div>
+    <div class="summary-grid">
+        <app-report-period-card></app-report-period-card>
+        <app-report-stat-card
+            icon="flash"
+            color="#e2ecfe"
+            value="18"
+            label="{{recoredSeizures}}"
+            trend="-12%"
+            trendLabel="{{previous12mMonths}}">
+        </app-report-stat-card>
+        <app-report-stat-card
+            icon="medicaments"
+            color="#feefdd"
+            value="98 %"
+            label="{{observance}}"
+            trend="{{excellente}}"
+            trendLabel="{{previous12mMonths}}">
+        </app-report-stat-card>
+        <app-report-stat-card
+            icon="brain"
+            color="#eae5fe"
+            value="7"
+            label="{{realizedExercices}}"
+            trend="+2"
+            trendLabel="{{previous12mMonths}}">
+        </app-report-stat-card>
+        <app-report-stat-card
+            icon="sommeil"
+            color="#e8f0fe"
+            value="7h18"
+            label="{{averageSleep}}"
+            trend="-23 min"
+            trendLabel="{{previous12mMonths}}">
+        </app-report-stat-card>
+    </div>
+    <div class="apx-chart-card">
+        <app-chart-card></app-chart-card>
+    </div>
+    <div class="grid gridtriggerdist">
+        <div class="left">
+            <app-report-triggers></app-report-triggers>
         </div>
-        <div class="elementMenuContent">
-            <div class="elementMenuContentElementsText">
-                <p class="title-cta-slider-under elementMenuContentTextUnder elementMenuContentTextUnderPage">{{conclusion}}</p>
-            </div>
+        <div class="rightdist">
+            <app-report-distribution></app-report-distribution>
         </div>
-        <div class="cta-pages">
-            <img class="cta-slider-bloc-image cta-shadow cta-pages-img" src="/assets/background_items_pages.png"/>
-            <img class="cta-slider-bloc-image cta-shadow cta-pages-img-right" src="/assets/neurorapports_icon.png"/>
+    </div>
+
+    <div class="grid gridleft">
+        <div class="left">
+            <app-crisistimeline></app-crisistimeline>
+        </div>
+        <div class="right">
+            <app-report-resume></app-report-resume>
+            <app-report-share></app-report-share>
         </div>
     </div>
 </div>
+

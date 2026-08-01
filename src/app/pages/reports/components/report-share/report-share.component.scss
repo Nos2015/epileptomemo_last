@@ -1,0 +1,84 @@
+.share-card{
+    background:white;
+    border-radius:30px;
+    padding:32px;
+    box-shadow:0 8px 30px rgba(22,41,94,.08);
+}
+
+h2{
+    margin:0 0 28px;
+    color:#16295E;
+    font-family: 'InterBold';
+}
+
+.actions{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+}
+
+.action{
+    background:none;
+    border:none;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+    transition:.25s;
+}
+
+.action:hover{
+    transform:translateY(-4px);
+}
+
+.icon{
+    width: 80px;
+    height: 80px;
+    border-radius:26px;
+    background:#F4F8FF;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#2F6DF6;
+    transition:.25s;
+}
+
+.action:hover .icon{
+    background:#E8F0FF;
+    box-shadow:0 10px 24px rgba(47,109,246,.18);
+}
+
+.icon svg{
+    width:48px;
+    height:48px;
+}
+
+span{
+    text-align:center;
+    color:#16295E;
+    font-weight:600;
+    font-size:1.1rem;
+    line-height:1.4;
+}
+
+@media(max-width:900px){
+
+    .actions{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:520px){
+
+    .actions{
+        grid-template-columns:1fr;
+    }
+
+    .icon{
+        width:90px;
+        height:90px;
+    }
+
+}
