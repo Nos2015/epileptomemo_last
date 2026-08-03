@@ -51,7 +51,7 @@ export class FamilyComponent implements OnInit{
       this.translate.translate.get(
         [
           'comingSoon',
-          'pages.title',
+          'pages.family.functions',
           'pages.family.title',
           'pages.family.first',
           'pages.family.second',
@@ -61,7 +61,7 @@ export class FamilyComponent implements OnInit{
       )
       .subscribe(translations => {
         this.comingSoon = translations['comingSoon'];
-        this.titlePage = translations['pages.title'];
+        this.titlePage = translations['pages.family.functions'];
         this.title = translations['pages.family.title'];
         this.first = translations['pages.family.first'];
         this.second = translations['pages.family.second'];

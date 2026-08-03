@@ -54,6 +54,7 @@ export class StatsComponent implements OnInit{
           'comingSoon',
           'pages.title',
           'pages.statistics.title',
+          'pages.statistics.functions',
           'pages.statistics.first',
           'pages.statistics.second',
           'pages.statistics.third',
@@ -63,7 +64,7 @@ export class StatsComponent implements OnInit{
       )
       .subscribe(translations => {
         this.comingSoon = translations['comingSoon'];
-        this.titlePage = translations['pages.title'];
+        this.titlePage = translations['pages.statistics.functions'];
         this.title = translations['pages.statistics.title'];
         this.first = translations['pages.statistics.first'];
         this.second = translations['pages.statistics.second'];

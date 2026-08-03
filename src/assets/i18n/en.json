@@ -160,6 +160,7 @@
         "statistics":{
             "title":"Statistics",
             "titleMobile":"Statistics",
+            "functions":"Features in Development",
             "first":"Identifying Triggers",
             "second":"Sleep and Stress",
             "third":"Changes in Epileptic Seizures",
@@ -169,6 +170,7 @@
         "family":{
             "title":"Family Support",
             "titleMobile":"Family Support",
+            "functions":"Features in Development",
             "subtitle":"Let your loved ones know about your major episodes and stay connected for greater support",
             "first":"Crisis Alert for the Family",
             "second":"Secure Shared History",

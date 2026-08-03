@@ -159,6 +159,7 @@
         },
         "statistics":{
             "title":"Statistiques",
+            "functions":"Fonctionnalités en développement",
             "titleMobile":"Statistiques",
             "first":"Identification de déclencheurs",
             "second":"Sommeil et stress",
@@ -168,6 +169,7 @@
         },
         "family":{
             "title":"Soutien familial",
+            "functions":"Fonctionnalités en développement",
             "titleMobile":"Famille",
             "subtitle":"Permettez à vos proches d'être informés de vos crises importantes et restez connectés pour un soutien accru",
             "first":"Alerte de crise pour la famille",
