@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { TranslateappService } from '../../services/translateapp.service';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ export class GamesComponent implements OnInit{
   
   @Output() onHide = new EventEmitter<boolean>();
   @Output() onJoinUsExit = new EventEmitter<boolean>();
+  @Input() iconGame = "";
   
   constructor(public appComponent: AppComponent,
               public translate: TranslateappService,

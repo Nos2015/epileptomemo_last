@@ -1,0 +1,176 @@
+<div class="landing">
+    <div class="landing-page">
+        <div class="brand">
+            <div class="brand-logo">
+                <img
+                    src="assets/logo-epileptomemo-blue.png"
+                    alt="EpileptoMemo">
+                <div class="brand-name">
+                    Epilepto
+                </div>
+                <div class="brand-name brand-name-color">
+                    Memo
+                </div>
+            </div>
+            <div class="brand brand-title">
+                <h1>
+                    Votre allié pour mieux vivre<br>
+                    avec l'épilepsie
+                </h1>
+            </div>
+            <div class="choices">
+                <article class="choice-card patient">
+                    <div class="choice-icon">
+                        <svg
+                            width="48"
+                            height="48"
+                            viewBox="0 0 48 48"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+
+                            <circle
+                                cx="24"
+                                cy="24"
+                                r="22"
+                                stroke="#3478F6"
+                                stroke-width="2"/>
+
+                            <circle
+                                cx="24"
+                                cy="18"
+                                r="6"
+                                stroke="#3478F6"
+                                stroke-width="2"/>
+
+                            <path
+                                d="M13 34C13 28.477 17.477 24 23 24H25C30.523 24 35 28.477 35 34"
+                                stroke="#3478F6"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+
+                            <path
+                                d="M9 31C9 26.582 12.582 23 17 23"
+                                stroke="#3478F6"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+
+                            <path
+                                d="M31 23C35.418 23 39 26.582 39 31"
+                                stroke="#3478F6"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+
+                        </svg>
+
+                    </div>
+                    <div class="choice-content">
+                        <h3>
+                            Je suis patient
+                        </h3>
+                        <p>
+                            Suivez vos crises, entraînez votre mémoire
+                            et améliorez votre quotidien.
+                        </p>
+                        <button
+                            class="primary-button"
+                            type="button"
+                            (click)="createPatientAccount()">
+                            Créer mon compte patient
+                        </button>
+                        <section class="account-choice-patient">
+                            <div class="login">
+                                <span>
+                                    Déjà un compte ?
+                                </span>
+                                <button
+                                    type="button"
+                                    (click)="login('patient')">
+                                    Se connecter
+                                </button>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+                <div class="or">
+                    <span>OU</span>
+                </div>
+                <article class="choice-card neurologist">
+                    <div class="choice-icon">
+                        <svg
+                            width="48"
+                            height="48"
+                            viewBox="0 0 48 48"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+
+                            <circle
+                                cx="24"
+                                cy="16"
+                                r="7"
+                                stroke="#35B875"
+                                stroke-width="2"/>
+
+                            <path
+                                d="M11 37C11 29.82 16.82 24 24 24C31.18 24 37 29.82 37 37"
+                                stroke="#35B875"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+
+                            <path
+                                d="M19 15C19 11.686 21.686 9 25 9"
+                                stroke="#35B875"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+
+                            <path
+                                d="M24 24V34"
+                                stroke="#35B875"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+
+                            <path
+                                d="M20 30H28"
+                                stroke="#35B875"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
+
+                        </svg>
+
+                    </div>
+                    <div class="choice-content">
+                        <h3>
+                            Je suis neurologue
+                        </h3>
+                        <p>
+                            Accédez à vos patients, consultez les informations
+                            partagées et générez leurs rapports.
+                        </p>
+                        <button
+                            class="professional-button"
+                            type="button"
+                            (click)="createProfessionalAccount()">
+                            Créer mon compte professionnel
+                        </button>
+                        <section class="account-choice-professional">
+                            <div class="login">
+                                <span>
+                                    Déjà un compte ?
+                                </span>
+                                <button
+                                    type="button"
+                                    (click)="login('neurologue')">
+                                    Se connecter
+                                </button>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="brand">
+            <p class="subtitle">
+                Suivez vos crises, entraînez votre mémoire et partagez facilement
+                vos informations avec vos proches et votre neurologue.
+            </p>
+        </div>
+</div>

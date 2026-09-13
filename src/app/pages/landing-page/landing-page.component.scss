@@ -1,0 +1,431 @@
+
+.landing{
+    background-image: url('/assets/landing_background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.landing-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 55px 30px 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.brand {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+}
+
+.brand-logo {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.brand-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.brand-name {
+    font-family: 'InterBold';
+    font-size: 40px;
+    color: black;
+    font-weight: 700;
+    font-style: italic;
+    margin-left: 10px;
+}
+
+.brand-name-color{
+    color: #1f5fc9;
+    margin-left: 0px;
+}
+
+.brand h1 {
+    margin: 0;
+    font-family: 'InterBold';
+    font-size: 25px;
+    line-height: 1.2;
+    color: #16295e;
+}
+
+.subtitle {
+    //margin: 18px auto 0;
+    max-width: 650px;
+    font-family: 'Inter';
+    font-size: 15px;
+    line-height: 1.7;
+    color: #657493;
+}
+
+.account-choice {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 900px);
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.account-choice h2 {
+    margin: 0;
+    font-family: 'InterBold';
+    font-size: 25px;
+    color: #182b57;
+}
+
+
+.choice-subtitle {
+    margin: 8px 0 25px;
+    font-family: 'Inter';
+    font-size: 13px;
+    color: #73809a;
+}
+
+.choices {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    align-items: center;
+    gap: 14px;
+}
+
+
+.choice-card {
+    min-height: 210px;
+    padding: 28px 26px;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, .94);
+    border-radius: 22px;
+    border: 1px solid #e3eaf6;
+    box-shadow:
+        0 10px 35px rgba(52, 120, 246, .08);
+
+    transition: .2s ease;
+}
+
+
+.choice-card:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 15px 40px rgba(52, 120, 246, .13);
+}
+
+.choice-icon {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 22px;
+}
+
+
+.patient .choice-icon {
+    background: #edf4ff;
+}
+
+
+.neurologist .choice-icon {
+    background: #edf9f2;
+}
+
+
+.choice-icon img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.choice-content {
+    flex: 1;
+    text-align: left;
+}
+
+.choice-content h3 {
+    margin: 0 0 8px;
+    font-family: 'InterBold';
+    font-size: 19px;
+    color: #1a2d56;
+}
+
+
+.choice-content p {
+    margin: 0 0 20px;
+    font-family: 'Inter';
+    font-size: 12px;
+    line-height: 1.55;
+    color: #74809a;
+}
+
+.primary-button,
+.professional-button {
+    border: none;
+    height: 42px;
+    padding: 0 22px;
+    border-radius: 11px;
+    font-family: 'InterBold';
+    font-size: 12px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.primary-button {
+    background: #3478f6;
+    color: white;
+}
+
+.primary-button:hover {
+    background: #2468e5;
+    transform: translateY(-1px);
+}
+
+
+.professional-button {
+    background: #35b875;
+    color: white;
+}
+
+.professional-button:hover {
+    background: #29a567;
+    transform: translateY(-1px);
+}
+
+.or {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.or span {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #dce5f3;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .04);
+    font-family: 'InterBold';
+    font-size: 10px;
+    color: #63718c;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 25px;
+    font-family: 'Inter';
+    font-size: 13px;
+    color: #66738e;
+}
+
+.login button {
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-family: 'InterBold';
+    font-size: 13px;
+    color: #3478f6;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.account-choice-mobile{
+    display:none;
+}
+
+.brand-title{
+    margin-bottom: 40px;
+}
+
+@media (max-width: 900px) {
+    .brand-logo img{
+        width: 64px;
+        height: 64px;
+    }
+    .brand-name{
+        font-size: 34px;
+    }
+}
+
+@media (max-width: 850px) {
+
+    .landing-page {
+        padding: 45px 20px 50px;
+    }
+
+    .brand h1 {
+        font-size: 30px;
+    }
+
+    .choices {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .or {
+        order: 2;
+    }
+
+    .patient {
+        order: 1;
+    }
+
+    .neurologist {
+        order: 3;
+    }
+
+    .or span {
+        width: 34px;
+        height: 34px;
+    }
+
+    .account-choice-desktop{
+        display:none;
+    }
+
+    .account-choice-mobile{
+        display:block;
+    }
+
+    .account-choice-mobile .login{
+        display:block;
+        text-align: justify;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .account-choice-mobile .login{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .landing-page {
+        min-height: 100dvh;
+        padding: 20px 16px 35px;
+    }
+
+    .brand {
+        margin-bottom: 30px;
+    }
+
+    .brand-logo {
+        width: 58px;
+        height: 58px;
+        margin-bottom: 40px;
+        margin-top: 20px;
+    }
+
+    .brand h1 {
+        font-size: 27px;
+        line-height: 1.2;
+    }
+
+    .subtitle {
+        font-size: 13px;
+        line-height: 1.55;
+        max-width: 360px;
+        margin-top: 14px;
+    }
+
+    .account-choice h2 {
+        font-size: 21px;
+    }
+
+
+    .choice-subtitle {
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+
+    .choice-card {
+        min-height: auto;
+        padding: 22px 18px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .choice-icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 0 15px;
+    }
+
+    .choice-icon img {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    .choice-content {
+        width: 100%;
+    }
+
+
+    .choice-content {
+        text-align: center;
+    }
+
+
+    .choice-content h3 {
+        font-size: 18px;
+    }
+
+
+    .choice-content p {
+        font-size: 11px;
+        max-width: 280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .primary-button,
+    .professional-button {
+        width: 100%;
+        max-width: 260px;
+    }
+
+    .or {
+        margin: -2px 0;
+    }
+
+
+    .or span {
+        width: 32px;
+        height: 32px;
+        font-size: 9px;
+    }
+
+    .login {
+        margin-top: 20px;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .login button {
+        font-size: 12px;
+    }
+}

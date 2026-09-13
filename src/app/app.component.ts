@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'epileptomemo';
   sidebarActive = false;
   home = true;
+  landing = false;
   startGame = false;
 
   @ViewChild('footerElement') footerElement!: ElementRef;
@@ -23,6 +24,10 @@ export class AppComponent {
 
   setHome(value:boolean){
     this.home = value;
+  }
+
+  setLanding(value:boolean){
+    this.landing = value;
   }
 
   scrollToFooterElement(){

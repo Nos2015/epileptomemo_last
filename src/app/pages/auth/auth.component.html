@@ -1,0 +1,574 @@
+<div class="auth-page">
+    <div class="auth-content">
+        <!-- ========================= -->
+        <!-- PARTIE GAUCHE              -->
+        <!-- ========================= -->
+
+        <div class="intro">
+            <div class="logo">
+                <img class="brand-logo" src="assets/logo-epileptomemo-blue.png" alt="EpileptoMemo">
+                <div class="brand-name"> Epilepto </div>
+                <div class="brand-name brand-name-color"> Memo </div>
+            </div>
+            @if (mode === 'login') {
+                <h1>
+                    Bienvenue !
+                </h1>
+
+                <p class="intro-text">
+                    Connectez-vous à votre compte pour
+                    continuer à suivre vos progrès.
+                </p>
+            } @else {
+                <h1>
+                    Créer mon compte
+                </h1>
+
+                <p class="intro-text">
+                    @if (selectedRole === 'patient') {
+                         Rejoignez EpileptoMemo et prenez le contrôle
+                         de votre bien-être au quotidien.
+                    } @else {
+                        Rejoignez EpileptoMemo et accédez à vos patients
+                        pour générer des rapports clairs.
+                    }
+                </p>
+            }
+            <div class="features">
+                 @if (selectedRole === 'patient') {
+                    <div class="feature">
+                        <div class="feature-icon purple">
+                            🧠
+                        </div>
+                        <div>
+                            <strong>
+                                Entraînez votre mémoire
+                            </strong>
+                            <span>
+                                Des exercices cognitifs adaptés
+                                à vos besoins.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon blue">
+                            📋
+                        </div>
+                        <div>
+                            <strong>
+                                Suivez vos crises
+                            </strong>
+
+                            <span>
+                                Enregistrez et analysez vos crises
+                                en toute simplicité.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon green">
+                            📄
+                        </div>
+                        <div>
+                            <strong>
+                                Rapports automatiques
+                            </strong>
+
+                            <span>
+                                Générez des rapports clairs
+                                pour vos consultations.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon orange">
+                            👥
+                        </div>
+                        <div>
+                            <strong>
+                                Partage sécurisé
+                            </strong>
+                            <span>
+                                Partagez uniquement ce que vous
+                                souhaitez avec vos proches et
+                                votre neurologue.
+                            </span>
+                        </div>
+                    </div>
+                }
+                @else {
+                    <div class="feature">
+                        <div class="feature-icon green">
+                            📄
+                        </div>
+                        <div>
+                            <strong>
+                                Suivez vos patients
+                            </strong>
+
+                            <span>
+                                Regarder des rapports clairs
+                                de vos patients et de leurs crises.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon orange">
+                            👥
+                        </div>
+                        <div>
+                            <strong>
+                                Partage sécurisé
+                            </strong>
+                            <span>
+                                Partagez uniquement ce que vous
+                                souhaitez avec vos patients et leurs proches.
+                            </span>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- Particularité neurologue -->
+
+            @if (mode === 'register') {
+                 @if (selectedRole === 'patient') {
+                     <div class="professional-info">
+                        🛡️
+                        <span>
+                            Les professionnels de santé doivent être
+                            vérifiés avant d'accéder à l'espace neurologue.
+                        </span>
+                    </div>
+                 }
+                 @else {
+                    <div class="professional-info">
+                        🛡️
+                        <span>
+                            Vous devez être un professionnel de santé pour créer un compte neurologue.
+                            Vos informations seront vérifiés avant d'accéder à votre espace professionnel.
+                        </span>
+                    </div>
+                 }
+            }
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- FORMULAIRE                 -->
+        <!-- ========================= -->
+
+        <div class="auth-card">
+            <!-- LOGIN -->
+            @if (mode === 'login') {
+                <h2>
+                    Se connecter
+                </h2>
+                <p class="switch-text">
+
+                    Vous n'avez pas encore de compte ?
+
+                    <a (click)="showRegister()">
+                        Créer mon compte
+                    </a>
+
+                </p>
+
+
+                @if (successMessage) {
+
+                    <div class="success-message">
+                        {{ successMessage }}
+                    </div>
+
+                }
+
+
+                @if (errorMessage) {
+
+                    <div class="error-message">
+                        {{ errorMessage }}
+                    </div>
+
+                }
+
+                <form (ngSubmit)="login()">
+                    <label>
+                        Adresse e-mail
+                    </label>
+
+                    <div class="input-container">
+                        <input
+                            type="email"
+                            name="email"
+                            [(ngModel)]="loginData.email"
+                            placeholder="Votre adresse e-mail"
+                            autocomplete="email">
+
+                        <span>
+                            ✉
+                        </span>
+
+                    </div>
+
+
+                    <label>
+                        Mot de passe
+                    </label>
+
+                    <div class="input-container">
+
+                        <input
+                            type="password"
+                            name="password"
+                            [(ngModel)]="loginData.password"
+                            placeholder="Votre mot de passe"
+                            autocomplete="current-password">
+
+                        <span>
+                            🔒
+                        </span>
+
+                    </div>
+
+
+                    <div class="login-options">
+
+                        <label class="remember">
+
+                            <input
+                                type="checkbox"
+                                name="remember"
+                                [(ngModel)]="rememberMe">
+
+                            <span>
+                                Se souvenir de moi
+                            </span>
+
+                        </label>
+
+                        <a>
+                            Mot de passe oublié ?
+                        </a>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="main-button"
+                        [disabled]="loading">
+
+                        @if (loading) {
+
+                            Connexion...
+
+                        } @else {
+
+                            🔒 &nbsp; Se connecter
+
+                        }
+
+                    </button>
+
+                    <div class="separator">
+                        <span></span>
+                        <small>ou</small>
+                        <span></span>
+                    </div>
+                    <button
+                        type="button"
+                        class="google-button">
+
+                        <strong>
+                            G
+                        </strong>
+
+                        Se connecter avec Google
+
+                    </button>
+
+
+                </form>
+
+
+                <div class="privacy">
+
+                    🔒
+
+                    Vos données sont sécurisées et confidentielles.
+
+                </div>
+
+            }
+
+
+            <!-- ========================= -->
+            <!-- REGISTER                    -->
+            <!-- ========================= -->
+
+            @else {
+
+                <h2>
+                    Créer mon compte
+                </h2>
+
+
+                <p class="switch-text">
+
+                    Vous avez déjà un compte ?
+
+                    <a (click)="showLogin()">
+                        Se connecter
+                    </a>
+
+                </p>
+
+
+                @if (errorMessage) {
+
+                    <div class="error-message">
+                        {{ errorMessage }}
+                    </div>
+
+                }
+
+
+                <form (ngSubmit)="register()">
+
+
+                    <!-- ROLE -->
+
+                    <label>
+                        Je suis...
+                    </label>
+
+
+                    <div class="role-selection">
+
+
+                        <button
+                            type="button"
+                            class="role-card"
+                            [class.selected]="selectedRole === 'patient'"
+                            (click)="selectRole('patient')">
+
+                            <div class="role-icon patient">
+                                👤
+                            </div>
+
+                            <strong>
+                                Patient
+                            </strong>
+
+                            <span>
+                                Je souhaite suivre mes crises
+                                et améliorer ma qualité de vie.
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="role-card neurologue"
+                            [class.selected]="selectedRole === 'neurologue'"
+                            (click)="selectRole('neurologue')">
+
+                            <div class="role-icon doctor">
+                                👨‍⚕️
+                            </div>
+
+                            <strong>
+                                Neurologue
+                            </strong>
+
+                            <span>
+                                Je souhaite accéder à mes patients
+                                et générer des rapports.
+                            </span>
+
+                        </button>
+
+
+                    </div>
+
+
+                    <!-- INFORMATIONS -->
+
+                    <div class="form-title">
+                        Informations personnelles
+                    </div>
+
+
+                    <div class="two-columns">
+
+                        <div>
+
+                            <label>
+                                Prénom
+                            </label>
+
+                            <input
+                                type="text"
+                                name="firstName"
+                                [(ngModel)]="registerData.firstName"
+                                placeholder="Votre prénom"
+                                autocomplete="given-name">
+
+                        </div>
+
+
+                        <div>
+
+                            <label>
+                                Nom
+                            </label>
+
+                            <input
+                                type="text"
+                                name="lastName"
+                                [(ngModel)]="registerData.lastName"
+                                placeholder="Votre nom"
+                                autocomplete="family-name">
+
+                        </div>
+
+                    </div>
+
+
+                    <label>
+                        Adresse e-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        name="registerEmail"
+                        [(ngModel)]="registerData.email"
+                        placeholder="Votre adresse e-mail"
+                        autocomplete="email">
+
+
+                    @if (selectedRole === 'patient') {
+
+                        <label>
+                            Date de naissance
+                        </label>
+
+                        <input
+                            type="date"
+                            name="birthDate"
+                            [(ngModel)]="registerData.birthDate">
+
+                    }
+                    @else {
+                         <label>
+                            Numéro RPPS
+                        </label>
+
+                        <input
+                            type="text"
+                            name="rppsNumber"
+                            [(ngModel)]="registerData.rpps"
+                            placeholder="Votre numéro RPPS"
+                            autocomplete="off">
+                    }
+
+                    <!-- MOT DE PASSE -->
+
+                    <div class="form-title">
+                        Informations de connexion
+                    </div>
+
+
+                    <label>
+                        Mot de passe
+                    </label>
+
+                    <input
+                        type="password"
+                        name="registerPassword"
+                        [(ngModel)]="registerData.password"
+                        placeholder="Créez un mot de passe sécurisé"
+                        autocomplete="new-password">
+
+
+                    <label>
+                        Confirmer le mot de passe
+                    </label>
+
+                    <input
+                        type="password"
+                        name="confirmPassword"
+                        [(ngModel)]="confirmPassword"
+                        placeholder="Confirmez votre mot de passe"
+                        autocomplete="new-password">
+
+
+                    <label class="terms">
+
+                        <input
+                            type="checkbox"
+                            required
+                            name="terms">
+
+                        <span>
+                            J'accepte les
+                            <a>Conditions d'utilisation</a>
+                            et la
+                            <a>Politique de confidentialité</a>
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="main-button"
+                        [disabled]="loading">
+
+                        @if (loading) {
+
+                            Création...
+
+                        } @else {
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="white"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M20 21a8 8 0 0 0-16 0"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+
+                            <span>Créer mon compte</span>
+
+
+                        }
+
+                    </button>
+
+
+                </form>
+
+
+                <div class="privacy">
+
+                    🛡️
+
+                    Vos données sont sécurisées et confidentielles.
+
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>

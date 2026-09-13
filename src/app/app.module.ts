@@ -42,6 +42,11 @@ import { ReportTriggersComponent } from './pages/reports/components/report-trigg
 import { ReportDistributionComponent } from './pages/reports/components/report-distribution/report-distribution.component';
 import { ReportResumeComponent } from './pages/reports/components/report-resume/report-resume.component';
 import { ReportShareComponent } from './pages/reports/components/report-share/report-share.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
+import { NeurologueDashboardComponent } from './pages/neurologue-dashboard/neurologue-dashboard.component';
+import { PatientDashboardComponent } from './pages/patient-dashboard/patient-dashboard.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +85,12 @@ import { ReportShareComponent } from './pages/reports/components/report-share/re
     ReportTriggersComponent,
     ReportDistributionComponent,
     ReportResumeComponent,
-    ReportShareComponent
+    ReportShareComponent,
+    LandingPageComponent,
+    VerifyEmailComponent,
+    NeurologueDashboardComponent,
+    PatientDashboardComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

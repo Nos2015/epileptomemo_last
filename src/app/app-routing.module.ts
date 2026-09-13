@@ -13,9 +13,23 @@ import { PatternbuilderComponent } from './pages/exercices/patternbuilder/patter
 import { CommonnameComponent } from './pages/exercices/commonname/commonname.component';
 import { NbacktrainingComponent } from './pages/exercices/nbacktraining/nbacktraining.component';
 import { ScattergoriesComponent } from './pages/exercices/scattergories/scattergories.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { AuthComponent } from './pages/auth/auth.component';
+import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
+import { PatientDashboardComponent } from './pages/patient-dashboard/patient-dashboard.component';
+import { NeurologueDashboardComponent } from './pages/neurologue-dashboard/neurologue-dashboard.component';
+import { RoleguardService } from './services/roleguard.service';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
+  {path:"landing", component:LandingPageComponent},
+  {path:"auth/register/patient", component:AuthComponent},
+  {path:"auth/register/neurologue", component:AuthComponent},
+  {path:"auth/login/patient", component:AuthComponent},
+  {path:"auth/login/neurologue", component:AuthComponent},
+  {path: 'patient', canActivate: [ RoleguardService ],data: {role: 'patient'},component: PatientDashboardComponent},
+  {path:"neurologue", canActivate: [ RoleguardService ], data: {role: 'neurologue'},component: NeurologueDashboardComponent},
+  {path:"verify-email", component:VerifyEmailComponent},
   {path:"exercices", component:ExercicesComponent},
   {path:"exercices/memorysequence", component:MemorysequenceComponent},
   {path:"exercices/visualpattern", component:VisualpatternComponent},
@@ -28,6 +42,7 @@ const routes: Routes = [
   {path:"stats", component:StatsComponent},
   {path:"reports", component:ReportsComponent},
   {path:"family", component:FamilyComponent},
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
