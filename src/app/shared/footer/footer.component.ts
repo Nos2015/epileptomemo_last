@@ -13,7 +13,7 @@ import { environment } from '../../../../environments/environments';
 })
 export class FooterComponent implements OnInit{
 
-  private url = `${environment.apiUrl}`;
+  /*private url = `${environment.apiUrl}`;
   emailForm = new FormGroup({
     email: new FormControl<string>('', [
       Validators.email,
@@ -147,6 +147,69 @@ export class FooterComponent implements OnInit{
 
   ok(){
     this.showPopup = false;
+  }*/
+readonly currentYear = new Date().getFullYear();
+currentLang = "";
+
+ constructor(
+      public translate: TranslateappService,
+      private elementRef: ElementRef,
+      private http: HttpClient,
+      public localStorageService:LocalstorageService
+  ){
+
+  }
+
+  ngOnInit(): void {
+    this.translate.comp$.subscribe(
+      () => {
+          this.changeLanguage();
+      }
+    );
+    this.changeLanguage();
+    this.checkLanguage();
+  }
+
+  changeLanguage(){
+    //changeLanguage when page is on front
+    /*if(this.elementRef.nativeElement.offsetParent != null) {
+      this.translate.translate.get(
+        [
+          'footer.title',
+          'footer.subTitle',
+          'enterEmail',
+          'joinWaitList',
+          'currentlyDev',
+          "errorSendMessage",
+          "errorSendMessage2",
+          "errorSendMessage3",
+          "successSendMessage",
+          'footer.socialtitle'
+        ]
+      )
+      .subscribe(translations => {
+        this.titleFooter = translations['footer.title'];
+        this.subTitleFooter = translations['footer.subTitle'];
+        this.enterEmail = translations['enterEmail'];
+        this.joinWaitList = translations['joinWaitList'];
+        this.currentlyDev = translations['currentlyDev'];
+        this.errorSendMessage = translations['errorSendMessage'];
+        this.errorSendMessage2 = translations['errorSendMessage2'];
+        this.errorSendMessage3 = translations['errorSendMessage3'];
+        this.successMessage = translations['successSendMessage'];
+        this.socialTitle = translations['footer.socialtitle'];
+      });
+    }*/
+  }
+
+  checkLanguage(){
+    let lang = localStorage.getItem("language");
+    if (lang == null || lang == "fr"){
+      this.currentLang = "fr";
+    }
+    else{
+      this.currentLang = "en";
+    }
   }
 }
 

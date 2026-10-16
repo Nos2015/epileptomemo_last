@@ -5,9 +5,9 @@
         <!-- ========================= -->
 
         <div class="intro">
-            <div class="logo">
+            <div class="logo" (click)="returnHome();">
                 <img class="brand-logo" src="assets/logo-epileptomemo-blue.png" alt="EpileptoMemo">
-                <div class="brand-name"> Epilepto </div>
+                <div class="brand-name brand-name-color"> Epilepto </div>
                 <div class="brand-name brand-name-color"> Memo </div>
             </div>
             @if (mode === 'login') {
@@ -405,7 +405,7 @@
                         <div>
 
                             <label>
-                                Prénom
+                                Prénom *
                             </label>
 
                             <input
@@ -421,7 +421,7 @@
                         <div>
 
                             <label>
-                                Nom
+                                Nom *
                             </label>
 
                             <input
@@ -437,7 +437,7 @@
 
 
                     <label>
-                        Adresse e-mail
+                        Adresse e-mail *
                     </label>
 
                     <input
@@ -451,7 +451,7 @@
                     @if (selectedRole === 'patient') {
 
                         <label>
-                            Date de naissance
+                            Date de naissance *
                         </label>
 
                         <input
@@ -481,7 +481,7 @@
 
 
                     <label>
-                        Mot de passe
+                        Mot de passe *
                     </label>
 
                     <input
@@ -493,7 +493,7 @@
 
 
                     <label>
-                        Confirmer le mot de passe
+                        Confirmer le mot de passe *
                     </label>
 
                     <input
@@ -509,6 +509,8 @@
                         <input
                             type="checkbox"
                             required
+                            [checked]="checked()"
+                            (change)="toggle()"
                             name="terms">
 
                         <span>
@@ -516,6 +518,7 @@
                             <a>Conditions d'utilisation</a>
                             et la
                             <a>Politique de confidentialité</a>
+                            *
                         </span>
 
                     </label>

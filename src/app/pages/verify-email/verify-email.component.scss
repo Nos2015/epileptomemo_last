@@ -1,0 +1,242 @@
+.verify-email-page{
+    min-height: 100vh;
+
+    padding: 35px 6%;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f4f8ff 0%,
+            #edf5ff 55%,
+            #e5f1ff 100%
+        );
+
+    position: relative;
+
+    overflow: hidden;
+
+    font-family: 'Inter', sans-serif;
+
+    background-image: url(/assets/landing_background.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.auth-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================= */
+/* LOGO */
+/* ============================= */
+
+.logo {
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-title{
+    font-size: 30px;
+}
+
+.step-title, .intro-text{
+    text-align: center;
+}
+
+.brand-logo {
+    width: 72px;
+    height: 72px;
+}
+
+.brand-name{
+    font-family: "InterBold";
+    font-size: 40px;
+    color: black;
+    font-weight: 700;
+    font-style: italic;
+    margin-left: 10px;
+}
+
+.brand-name-color{
+    color: #1f5fc9;
+    margin-left: 0px;
+}
+
+.verification-card {
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.verification-description {
+    line-height: 1.6;
+}
+
+.verification-description strong {
+    display: block;
+    margin-top: 6px;
+
+    color: #3478f6;
+
+    word-break: break-word;
+}
+
+.code-inputs {
+    display: flex;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin: 24px 0 12px;
+}
+
+.code-inputs input {
+    width: 54px;
+    height: 64px;
+
+    padding: 0;
+
+    border: 1px solid #d9e0ec;
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    color: #182b57;
+
+    text-align: center;
+
+    font-size: 25px;
+    font-weight: 700;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.code-inputs input:focus {
+    border-color: #3478f6;
+
+    box-shadow:
+        0 0 0 3px rgba(52, 120, 246, 0.12);
+
+    transform: translateY(-1px);
+}
+
+.code-help {
+    margin: 0 0 24px;
+
+    color: #7b8798;
+
+    text-align: center;
+
+    font-size: 13px;
+}
+
+.resend-section {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 24px;
+
+    color: #7b8798;
+
+    font-size: 14px;
+}
+
+.resend-button {
+    border: 0;
+
+    padding: 5px 8px;
+
+    background: transparent;
+
+    color: #3478f6;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.resend-button:hover:not(:disabled) {
+    text-decoration: underline;
+}
+
+.resend-button:disabled {
+    opacity: 0.5;
+
+    cursor: default;
+}
+
+.feature{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.feature-text{
+    padding-left: 10px;
+    padding-right: 10px;
+    display:flex;
+}
+
+.feature-title{
+    font-weight: 600;
+}
+
+.auth-card{
+    padding-top: 30px;
+}
+
+.primary-button{
+    border: none;
+    height: 42px;
+    padding: 0 22px;
+    border-radius: 11px;
+    font-family: 'InterBold';
+    font-size: 12px;
+    cursor: pointer;
+    transition: .2s ease;
+    background: #3478f6;
+    color: white;
+}
+
+.primary-button:hover {
+    background: #2468e5;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+
+    .verification-card {
+        width: 100%;
+    }
+
+    .code-inputs {
+        gap: 7px;
+    }
+
+    .code-inputs input {
+        width: 45px;
+        height: 55px;
+
+        font-size: 22px;
+    }
+}

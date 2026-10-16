@@ -6,6 +6,8 @@
         "partnerMobile":"Votre allié",
         "partnerMobile2": "au quotidien"
     },
+    "login": "Connexion",
+    "createAccount": "Créer un compte",
     "memoryExercices":"Exercices de mémoire",
     "simpleCognitiveGames":"Jeux de réflexion simples",
     "seizureJournal":"Journal des crises",

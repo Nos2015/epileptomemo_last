@@ -37,29 +37,29 @@ export class RoleguardService implements CanActivate{
                 const user =
                     response.user;
 
+                if(user !=null){
+                    if (
+                        user.role === expectedRole
+                    ) {
 
-                if (
-                    user.role === expectedRole
-                ) {
+                        return true;
+                    }
 
-                    return true;
+                    if (
+                        user.role === 'patient'
+                    ) {
+
+                        this.router.navigate([
+                            '/patient'
+                        ]);
+
+                    } else {
+
+                        this.router.navigate([
+                            '/neurologue'
+                        ]);
+                    }
                 }
-
-                if (
-                    user.role === 'patient'
-                ) {
-
-                    this.router.navigate([
-                        '/patient'
-                    ]);
-
-                } else {
-
-                    this.router.navigate([
-                        '/neurologue'
-                    ]);
-                }
-
 
                 return false;
             }),

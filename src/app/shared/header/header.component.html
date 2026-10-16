@@ -9,23 +9,11 @@
     <p class="titleMobile">{{titleMobile}}</p>
   </div>
   <div id="menu">
-    <div (click)="goTo('exercices')">
-        <p class="menuItem">{{exercices}}</p>
-    </div>
-    <div (click)="goTo('journal')">
-        <p class="menuItem">{{journal}}</p>
-    </div>
-    <div (click)="goTo('reports')">
-        <p class="menuItem">{{reports}}</p>
-    </div>
-    <div (click)="goTo('stats')">
-        <p class="menuItem">{{stats}}</p>
-    </div>
-    <div (click)="goTo('family')">
-        <p class="menuItem">{{family}}</p>
-    </div>
-    <button class="button-widthHeader" (click)="goTo('footerComponent')">
-        <span>{{join}}</span>
+    <button class="button-widthHeader" (click)="goTo('/login')">
+        <span>{{login}}</span>
+    </button>
+    <button class="button-widthHeader" (click)="goTo('/create-account')">
+        <span>{{createAccount}}</span>
     </button>
     <div class="languageBox">
         <input type="checkbox" id="toggle-button-checkbox" (change)="setLanguage($event)" [checked]="isChecked">

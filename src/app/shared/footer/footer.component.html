@@ -1,14 +1,14 @@
-<div id="footer" style="background: url('assets/background_footer.png') no-repeat center / cover;">
+<!--div id="footer" style="background: url('assets/background_footer.png') no-repeat center / cover;">
     <div class="contentFooter">
         <p class="titleFooter">{{titleFooter}}</p>
         <p class="underTitleFooter">{{subTitleFooter}}</p>
-        <div class="inputbuttonwaitlist">
+        <div class="inputbuttonwaitlist"-->
             <!--form [formGroup]="emailForm"-->
-            <div>
+            <!--div>
                 <input class="form-control" matInput placeholder="{{enterEmail}}" [(ngModel)]="email">
-            <!--/form-->
-            </div>
-            <button class="button-width50" (click)="submitEmail()">
+            </form>
+            </div-->
+            <!--button class="button-width50" (click)="submitEmail()">
                 <span>{{joinWaitList}}</span>
             </button>
             <div id="footline">
@@ -33,5 +33,42 @@
     [titleContent]="''"
     [content]="errorMessage!=''? errorMessage : successMessage"
     [titleButton1]="'OK'"
-    ></app-popup>
+    ></app-popup-->
+
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- Logo EpileptoMemo -->
+    <a class="footer-brand" routerLink="/" aria-label="EpileptoMemo - Accueil">
+      <img
+        src="assets/logo-epileptomemo-blue.png"
+        alt=""
+        class="footer-logo"
+      />
+      <span class="footer-brand-name">EpileptoMemo</span>
+    </a>
+
+    <!-- Liens légaux et contact -->
+    <nav class="footer-links" aria-label="Liens de pied de page">
+        <a class="logoSocial" href="https://www.linkedin.com/company/epileptomemo/" target="_blank" aria-hidden="true">
+            <img src="/assets/linkedin.png" alt="Linkedin" class="logoSocial" />
+        </a>
+        <span class="footer-separator" aria-hidden="true"></span>
+        <a class="logoSocial" href="https://www.instagram.com/epileptomemo2026/" target="_blank" aria-hidden="true">
+            <img src="/assets/instagram.png" alt="Instagram" class="logoSocial" />
+        </a>
+        <span class="footer-separator" aria-hidden="true"></span>
+        <a class="logoSocial" href="https://www.facebook.com/profile.php?id=61591554571003" target="_blank" aria-hidden="true">
+            <img src="/assets/facebook.png" alt="Facebook" class="logoSocial" />
+        </a>
+        <span class="footer-separator" aria-hidden="true"></span>
+      <a routerLink="/mentions-legales">Mentions légales</a>
+      <span class="footer-separator" aria-hidden="true"></span>
+      <a routerLink="/confidentialite">Confidentialité</a>
+      <span class="footer-separator" aria-hidden="true"></span>
+      <a routerLink="/contact">Contact</a>
+    </nav>
+
+  </div>
+</footer>
 

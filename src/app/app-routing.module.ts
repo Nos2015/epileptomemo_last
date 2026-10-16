@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeClientComponent } from './pages/home-client/home-client.component';
 import { ExercicesComponent } from './pages/exercices/exercices.component';
 import { JournalComponent } from './pages/journal/journal.component';
 import { StatsComponent } from './pages/stats/stats.component';
@@ -19,17 +19,22 @@ import { VerifyEmailComponent } from './pages/verify-email/verify-email.componen
 import { PatientDashboardComponent } from './pages/patient-dashboard/patient-dashboard.component';
 import { NeurologueDashboardComponent } from './pages/neurologue-dashboard/neurologue-dashboard.component';
 import { RoleguardService } from './services/roleguard.service';
+import { HomeComponent } from './pages/home/home.component';
+import { MentionsLegalesComponent } from './shared/mentions-legales/mentions-legales.component';
+import { ConfidentialiteComponent } from './shared/confidentialite/confidentialite.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
+  {path:"client", component:HomeClientComponent},
   {path:"landing", component:LandingPageComponent},
   {path:"auth/register/patient", component:AuthComponent},
   {path:"auth/register/neurologue", component:AuthComponent},
+  {path:"auth/verify-email", component:VerifyEmailComponent},
+  {path:"auth/resend-verification-code", component:VerifyEmailComponent},
   {path:"auth/login/patient", component:AuthComponent},
   {path:"auth/login/neurologue", component:AuthComponent},
   {path: 'patient', canActivate: [ RoleguardService ],data: {role: 'patient'},component: PatientDashboardComponent},
   {path:"neurologue", canActivate: [ RoleguardService ], data: {role: 'neurologue'},component: NeurologueDashboardComponent},
-  {path:"verify-email", component:VerifyEmailComponent},
   {path:"exercices", component:ExercicesComponent},
   {path:"exercices/memorysequence", component:MemorysequenceComponent},
   {path:"exercices/visualpattern", component:VisualpatternComponent},
@@ -42,6 +47,8 @@ const routes: Routes = [
   {path:"stats", component:StatsComponent},
   {path:"reports", component:ReportsComponent},
   {path:"family", component:FamilyComponent},
+  {path:"mentions-legales", component:MentionsLegalesComponent},
+  {path:"confidentialite", component:ConfidentialiteComponent},
   {path: '**', redirectTo: ''}
 ];
 

@@ -1,136 +1,238 @@
-<div id="introduction">
-    <div>
-        <p class="title-indrodution" [innerHTML]="homeTitle"></p>
-        <p class="title-indrodution title-introduction-small" [innerHTML]="homeSubTitle"></p>
-    </div>
-    <div class="mobile">
-        <img *ngIf="language=='fr'" src="/assets/mobile_fr.png" alt="Epileptomemo Mobile" />
-        <img *ngIf="language=='en'" src="/assets/mobile.png" alt="Epileptomemo Mobile" />
-    </div>
-</div>
-<div class="cta-slider">
-    <div class="cta-slider-bloc" (click)="goTo('exercices')">
-        <img class="cta-slider-bloc-image cta-shadow" src="/assets/memoryexercices.png"/>
-        <p class="title-cta-slider">{{memoryExercices}}</p>
-        <p class="title-cta-slider-under">{{simpleCognitiveGames}}</p>
-    </div>
-    <div class="cta-slider-bloc" (click)="goTo('journal')">
-        <img class="cta-slider-bloc-image cta-shadow" src="/assets/seizurejournal.png"/>
-        <p class="title-cta-slider">{{seizureJournal}}</p>
-        <p class="title-cta-slider-under">{{logSeizureEasily}}</p>
-    </div>
-    <div class="cta-slider-bloc" (click)="goTo('reports')">
-        <img class="cta-slider-bloc-image cta-shadow" src="/assets/neurologistexports.png"/>
-        <p class="title-cta-slider">{{neurologistReports}}</p>
-        <p class="title-cta-slider-under">{{exportHealthData}}</p>
-    </div>
-    <div class="cta-slider-bloc" (click)="goTo('stats')">
-        <img class="cta-slider-bloc-image cta-shadow" src="/assets/stats.png"/>
-        <p class="title-cta-slider">{{statistics}}</p>
-        <p class="title-cta-slider-under">{{medicalCare}}</p>
-    </div>
-    <div class="cta-slider-bloc" (click)="goTo('family')">
-        <img class="cta-slider-bloc-image cta-shadow" src="/assets/familysupport.png"/>
-        <p class="title-cta-slider">{{familySupport}}</p>
-        <p class="title-cta-slider-under">{{keepLoveOneInformed}}</p>
-    </div>
-</div>
-<div id="mobileHome">
-    <div id="introductionMobile">
-        <div class="hero-wrapper">
-            <section class="hero-section">
-                <div class="hero-left">
-                    <div class="hero-badge" (click)="goTo('footerComponent')">
-                    💙 <span class="partnerMobile">{{homeTitleMobile}}</span>
-                    </div>
-                    <h1 class="hero-title">
-                        {{homePartnerMobile}}
-                        <span>{{homePartnerMobile2}}</span>
-                    </h1>
-                    <p class="hero-subtitle" [innerHTML]="homeSubTitle">
-                    </p>
-                </div>
-                <svg
-                    class="hero-svg-wave"
-                    viewBox="0 0 1440 320"
-                    preserveAspectRatio="none"
-                    >
-                    <path 
-                    fill="#f1f4fc"
-                    d="
-                    M0,240
-                    C400,180 800,300 1200,220
-                    C1320,200 1400,210 1440,240
-                    L1440,320
-                    L0,320
-                    Z
-                    ">
-                    </path>
-                </svg>
-            </section>
+<main class="home-page">
+  <!-- HERO -->
+  <section class="home-hero">
+    <div class="home-container hero-grid">
+      <div class="hero-copy">
+        <span class="hero-kicker">
+          Votre espace de suivi au quotidien
+        </span>
+        <h1>
+          Mieux vivre avec
+          <span>l’épilepsie.</span>
+        </h1>
+        <p class="hero-text">
+          EpileptoMemo est un espace pensé pour vous aider à
+          suivre votre quotidien, comprendre votre évolution
+          et mieux échanger avec votre neurologue.
+        </p>
+        <div class="hero-actions">
+          <button type="button" class="btn btn-primary" (click)="goToRegister()">
+            Créer mon compte <span aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="scrollToFeatures()">
+            <span class="play-icon" aria-hidden="true">▶</span>
+            Découvrir EpileptoMemo
+          </button>
         </div>
+        <button type="button" class="discover-link" (click)="scrollToFeatures()">
+          <span aria-hidden="true">↓</span>
+          Découvrir plus
+        </button>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-blob hero-blob-one"></div>
+        <div class="hero-blob hero-blob-two"></div>
+        <img
+          src="../../../assets/home-dashboard-mockup.png"
+          alt="Aperçu du tableau de bord EpileptoMemo"
+          class="dashboard-mockup">
+      </div>
     </div>
-    <div id="menu">
-        <div class="elementMenu" 
-        (touchstart)="onTouchStart($event)"
-        (touchmove)="onTouchMove($event)"
-        (touchend)="onTouchEnd($event,'exercices')"
-        >
-            <div class="elementMenuContent">
-                <div class="elementMenuContentElementsText">
-                    <p class="title-cta-slider elementMenuContentText">{{memoryExercices}}</p>
-                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{simpleCognitiveGames}}</p>
-                </div>
+  </section>
+
+  <!-- 3 BENEFICES -->
+  <section class="intro-section">
+    <div class="home-container">
+      <div class="section-heading">
+        <h2>Votre épilepsie. Votre suivi. Votre espace.</h2>
+        <p>
+          EpileptoMemo rassemble au même endroit les informations
+          importantes de votre quotidien pour vous aider à mieux
+          suivre votre épilepsie.
+        </p>
+      </div>
+      <div class="benefits-grid">
+        <article class="benefit">
+          <span class="round-icon blue-icon">
+            <fa-icon [icon]="faBrain"></fa-icon>
+          </span>
+          <div>
+            <h3>Comprendre</h3>
+            <p>Suivez l’évolution de vos crises et de vos symptômes.</p>
+          </div>
+        </article>
+        <article class="benefit">
+          <span class="round-icon blue-icon">
+            <fa-icon [icon]="faCalendarCheck"></fa-icon>
+          </span>
+          <div>
+            <h3>Organiser</h3>
+            <p>Gardez vos informations importantes au même endroit.</p>
+          </div>
+        </article>
+        <article class="benefit">
+          <span class="round-icon blue-icon">
+            <fa-icon [icon]="faShareNodes"></fa-icon>
+          </span>
+          <div>
+            <h3>Partager</h3>
+            <p>Préparez plus facilement vos échanges avec votre neurologue.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATIENT / NEUROLOGUE -->
+  <section class="audience-section">
+    <div class="home-container">
+      <div class="section-heading">
+        <h2>EpileptoMemo pour chacun</h2>
+      </div>
+      <div class="audience-grid">
+        <article class="audience-card audience-card-client">
+          <div class="audience-top">
+             <span class="audience-icon client-icon">
+              <fa-icon [icon]="faUser"></fa-icon>
+            </span>
+            <div>
+              <h3>Vous vivez avec l’épilepsie</h3>
+              <p>
+                Un espace personnel pour suivre vos crises,
+                vos traitements et votre évolution au quotidien.
+              </p>
             </div>
-            <img class="cta-slider-bloc-image cta-shadow" src="/assets/memoryexercicesmobile.png"/>
-        </div>
-        <div class="elementMenu"  
-        (touchstart)="onTouchStart($event)"
-        (touchmove)="onTouchMove($event)"
-        (touchend)="onTouchEnd($event,'journal')">
-            <div class="elementMenuContent">
-                <div class="elementMenuContentElementsText">
-                    <p class="title-cta-slider elementMenuContentText">{{seizureJournal}}</p>
-                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{logSeizureEasily}}</p>
-                </div>
+          </div>
+          <ul>
+            <div class="audience-list"> 
+              <div>
+                <li>Exercices de mémoire</li>
+                <li>Journal des crises</li>
+                <li>Rapports pour votre neurologue</li>
+                <li>Statistiques</li>
+                <li>Aide à la famille</li>
+              </div>
+               <img
+                src="../../../assets/home_client.png"
+                class="audience-image">
             </div>
-            <img class="cta-slider-bloc-image cta-shadow" src="/assets/seizurejournalmobile.png"/>
-        </div>
-        <div class="elementMenu" 
-        (touchstart)="onTouchStart($event)"
-        (touchmove)="onTouchMove($event)"
-        (touchend)="onTouchEnd($event,'reports')">
-            <div class="elementMenuContent">
-                <div class="elementMenuContentElementsText">
-                    <p class="title-cta-slider elementMenuContentText">{{neurologistReports}}</p>
-                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{exportHealthData}}</p>
-                </div>
+          </ul>
+          <button type="button" class="audience-button" (click)="goToRegister()">
+            Créer un compte patient <span>→</span>
+          </button>
+        </article>
+        <article class="audience-card audience-card-doctor">
+          <div class="audience-top">
+            <span class="audience-icon doctor-icon">
+              <fa-icon [icon]="faUserDoctor"></fa-icon>
+            </span>
+            <div>
+              <h3>Vous êtes neurologue</h3>
+              <p>
+                Un espace professionnel pour retrouver les informations
+                que vos patients choisissent de partager avec vous.
+              </p>
             </div>
-            <img class="cta-slider-bloc-image cta-shadow" src="/assets/neurologistexportsmobile.png"/>
-        </div>
-        <div class="elementMenu" 
-        (touchstart)="onTouchStart($event)"
-        (touchmove)="onTouchMove($event)"
-        (touchend)="onTouchEnd($event,'stats')">
-            <div class="elementMenuContent">
-                <div class="elementMenuContentElementsText">
-                    <p class="title-cta-slider elementMenuContentText">{{statistics}}</p>
-                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{medicalCare}}</p>
-                </div>
+          </div>
+          <ul>
+            <div class="audience-list">
+              <div>
+                <li>Informations patient</li>
+                <li>Historique partagé</li>
+                <li>Évolution</li>
+                <li>Rapports</li>
+                <li>Suivi</li>
+              </div>
+              <img
+              src="../../../assets/home_doctor.png"
+              class="audience-image">
             </div>
-            <img class="cta-slider-bloc-image cta-shadow" src="/assets/statsmobile.png"/>
-        </div>
-        <div class="elementMenu" 
-        (touchstart)="onTouchStart($event)"
-        (touchmove)="onTouchMove($event)"
-        (touchend)="onTouchEnd($event,'family')">
-            <div class="elementMenuContent">
-                <div class="elementMenuContentElementsText">
-                    <p class="title-cta-slider elementMenuContentText">{{familySupport}}</p>
-                    <p class="title-cta-slider-under elementMenuContentTextUnder">{{keepLoveOneInformed}}</p>
-                </div>
-            </div>
-            <img class="cta-slider-bloc-image cta-shadow" src="/assets/familysupportmobile.png"/>
-        </div>
+          </ul>
+          <button type="button" class="audience-button audience-button-doctor" (click)="goToNeurologueRegister()">
+            Créer un compte professionnel <span>→</span>
+          </button>
+          <p class="security-note">
+            <span aria-hidden="true">🔒</span>
+            Les comptes professionnels font l’objet d’une vérification manuelle.
+          </p>
+        </article>
+      </div>
     </div>
-</div>
+  </section>
+
+  <!-- FONCTIONNALITES -->
+  <section class="features-section" id="home-features">
+    <div class="home-container">
+      <div class="section-heading">
+        <h2>Un espace pensé autour de votre quotidien</h2>
+      </div>
+      <div class="features-grid">
+        <div class="cta-slider-bloc">
+          <img src="/assets/memoryexercices.png" class="cta-slider-bloc-image cta-shadow">
+          <p class="title-cta-slider">Exercices de mémoire</p>
+          <p class="title-cta-slider-under">Jeux de réflexion simples</p>
+        </div>
+        <div class="cta-slider-bloc">
+          <img src="/assets/seizurejournal.png" class="cta-slider-bloc-image cta-shadow">
+          <p class="title-cta-slider">Journal des crises</p>
+          <p class="title-cta-slider-under">Enregistrez facilement vos crises</p>
+        </div>
+        <div class="cta-slider-bloc">
+          <img src="/assets/neurologistexports.png" class="cta-slider-bloc-image cta-shadow">
+          <p class="title-cta-slider">Rapport des neurologues</p>
+          <p class="title-cta-slider-under">Exportez vos données de santé</p>
+        </div>
+        <div class="cta-slider-bloc">
+          <img src="/assets/stats.png" class="cta-slider-bloc-image cta-shadow">
+          <p class="title-cta-slider">Statistiques</p>
+          <p class="title-cta-slider-under">Améliorez vos soins médicaux</p>
+        </div>
+        <div class="cta-slider-bloc">
+          <img src="/assets/familysupport.png" class="cta-slider-bloc-image cta-shadow">
+          <p class="title-cta-slider">Aide à la famille</p>
+          <p class="title-cta-slider-under">Tenez vos proches informés</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE + MESSAGE -->
+  <section class="life-section">
+    <div class="home-container life-grid">
+      <img
+        src="../../../assets/home-lifestyle.jpg"
+        alt="Personne profitant d’un moment calme"
+        class="life-image">
+      <div class="life-copy">
+        <h2>Parce que l’épilepsie ne s’arrête pas au moment de la crise.</h2>
+        <p>
+          Fatigue, mémoire, traitements, rendez-vous, symptômes,
+          évolution… Vivre avec l’épilepsie, c’est aussi gérer
+          tout ce qui l’entoure.
+        </p>
+        <p>
+          EpileptoMemo a été imaginé pour réunir ces informations
+          dans un espace simple, accessible et pensé pour le quotidien.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-background"></div>
+    <div class="home-container cta-content">
+      <h2>Prêt à commencer ?</h2>
+      <p>
+        Créez votre espace EpileptoMemo et commencez à suivre votre quotidien.
+      </p>
+      <button type="button" class="btn cta-button" (click)="goToRegister()">
+        Créer mon compte <span>→</span>
+      </button>
+      <p class="login-question">
+        Vous avez déjà un compte ?
+        <button type="button" (click)="goToLogin()">Se connecter</button>
+      </p>
+    </div>
+  </section>
+</main>

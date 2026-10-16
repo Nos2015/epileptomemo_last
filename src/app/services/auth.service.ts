@@ -19,7 +19,11 @@ interface AuthResponse {
 
     success: boolean;
 
-    user: User;
+    message?: string;
+
+    user?: User;
+
+    requiresEmailVerification?: boolean;
 }
 
 @Injectable({
@@ -57,15 +61,18 @@ export class AuthService {
 
           tap(response => {
 
-              this.currentUser =
-                  response.user;
+              if (response.user) {
+
+                    this.currentUser =
+                        response.user;
+            }
           })
       );
   }
 
-  register(data: any) {
+  register(data: any) : Observable<AuthResponse>{
 
-      return this.http.post(
+      return this.http.post<AuthResponse>(
           `${this.api}/register`,
           data,
           {
@@ -77,9 +84,9 @@ export class AuthService {
   verifyEmail(
         email: string,
         code: string
-    ) {
+    ) : Observable<AuthResponse> {
 
-      return this.http.post(
+      return this.http.post<AuthResponse>(
           `${this.api}/verify-email`,
           {
               email,
@@ -88,46 +95,102 @@ export class AuthService {
           {
               withCredentials: true
           }
-      );
+        ).pipe(
+
+            tap(response => {
+
+                /*
+                 * Pour un patient, le serveur crée
+                 * maintenant directement la session
+                 * après validation du code.
+                 */
+
+                if (response.user) {
+
+                    this.currentUser =
+                        response.user;
+                }
+
+            })
+
+        );
   }
 
-  me() {
+    // =====================================================
+    // RENVOI DU CODE
+    // =====================================================
 
-      return this.http.get<any>(
-          `${this.api}/me`,
-          {
-              withCredentials: true
-          }
-      ).pipe(
+    resendVerificationCode(
+        email: string
+    ): Observable<AuthResponse> {
 
-          tap(response => {
+        return this.http.post<AuthResponse>(
+            `${this.api}/resend-verification-code`,
+            {
+                email
+            },
+            {
+                withCredentials: true
+            }
+        );
+    }
 
-              this.currentUser =
-                  response.user;
-          })
-      );
-  }
 
-  logout() {
+    // =====================================================
+    // UTILISATEUR CONNECTÉ
+    // =====================================================
 
-      return this.http.post(
-          `${this.api}/logout`,
-          {},
-          {
-              withCredentials: true
-          }
-      ).pipe(
+    me(): Observable<AuthResponse> {
 
-          tap(() => {
+        return this.http.get<AuthResponse>(
+            `${this.api}/me`,
+            {
+                withCredentials: true
+            }
+        ).pipe(
 
-              this.currentUser =
-                  null;
-          })
-      );
-  }
+            tap(response => {
 
-  get user(): User | null {
+                if (response.user) {
 
-      return this.currentUser;
-  }
+                    this.currentUser =
+                        response.user;
+                }
+
+            })
+
+        );
+    }
+
+    // =====================================================
+    // DÉCONNEXION
+    // =====================================================
+
+    logout() {
+
+        return this.http.post(
+            `${this.api}/logout`,
+            {},
+            {
+                withCredentials: true
+            }
+        ).pipe(
+
+            tap(() => {
+
+                this.currentUser =
+                    null;
+            })
+
+        );
+    }
+
+    // =====================================================
+    // GETTER
+    // =====================================================
+
+    get user(): User | null {
+
+        return this.currentUser;
+    }
 }

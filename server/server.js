@@ -258,9 +258,11 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 
-const { config } = require("dotenv");
+require('dotenv').config();
 
 const sqlite3 = require('sqlite3').verbose();
+const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 
 const app = express();
@@ -269,12 +271,14 @@ app.use(express.json());
 const PORT = process.env.PORT || 3001;
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
     res.header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, PATCH, OPTIONS");
-    res.header("Access-Control-Allow-Headers", "*");;
-    res.header("Access-Control-Request-Headers", "*");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");;
+    //res.header("Access-Control-Request-Headers", "*");
     res.header("Access-Control-Allow-Credentials", "true");
-
+    if(req.method === "OPTIONS"){
+        return res.status(200).end();
+    }
     // Pass to next layer of middleware
     next(); // Requête autorisée
 });
@@ -436,7 +440,7 @@ db.serialize(() => {
  * --------------------------------------------------
  */
 
-const transporter = nodemailer.createTransport({
+/*const transporter = nodemailer.createTransport({
 
     host: process.env.SMTP_HOST,
 
@@ -456,8 +460,51 @@ const transporter = nodemailer.createTransport({
 
         refreshToken: process.env.SMTP_REFRESH_TOKEN
     }
+});*/
+console.log("host = "+process.env.SMTP_HOST);
+console.log("port = "+process.env.SMTP_PORT);
+console.log("user = "+process.env.SMTP_USER);
+console.log("pass = "+process.env.SMTP_PASS);
+
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST||"smtp.gmail.com",
+  port: process.env.SMTP_PORT||465,
+  //secure: false, // OBLIGATOIRE pour le port 587
+  secure: Number(process.env.SMTP_PORT) === 465,
+  auth: {
+    user: process.env.SMTP_USER||"epileptomemo@gmail.com",
+    pass: process.env.SMTP_PASS // /!\ LIRE L'ÉTAPE 2 CI-DESSOUS
+  },
+  /*tls: {
+    // Évite le blocage si votre réseau local/antivirus interfère
+    rejectUnauthorized: false 
+  }*/
 });
 
+
+function dbGet(sql, params = []) {
+    return new Promise((resolve, reject) => {
+        db.get(sql, params, (err, row) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(row);
+            }
+        });
+    });
+}
+
+function dbRun(sql, params = []) {
+    return new Promise((resolve, reject) => {
+        db.run(sql, params, function (err) {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(this);
+            }
+        });
+    });
+}
 
 /*
  * --------------------------------------------------
@@ -484,9 +531,9 @@ function generateToken() {
 
 function generateCode() {
 
-    return Math.floor(
-        100000 + Math.random() * 900000
-    ).toString();
+    return crypto
+        .randomInt(100000, 1000000)
+        .toString();
 }
 
 
@@ -722,6 +769,7 @@ app.post('/api/auth/register', async (req, res) => {
       updtesoon= "Nous vous tiendrons au courant très bientôt.";
       epileptoteam = "L'équipe EpileptoMemo";
     }*/
+   console.log("register called");
 
     try {
 
@@ -811,7 +859,7 @@ app.post('/api/auth/register', async (req, res) => {
 
 
                 if (existing) {
-
+                    console.log("❌ Un compte existe déjà avec cet email");
                     return res.status(409).json({
                         success: false,
                         message:
@@ -819,152 +867,163 @@ app.post('/api/auth/register', async (req, res) => {
                     });
                 }
 
-
-                const passwordHash =
-                    await bcrypt.hash(
+                try {
+                    await transporter.verify();
+                     console.log('SMTP server is ready to take messages');
+                     const passwordHash =
+                     await bcrypt.hash(
                         password,
                         12
                     );
 
 
-                const status =
-                    role === 'patient'
-                        ? 'pending'
-                        : 'pending_verification';
+                    const status =
+                        role === 'patient'
+                            ? 'pending'
+                            : 'pending_verification';
 
 
-                db.run(
-                    `
-                    INSERT INTO users (
+                    db.run(
+                        `
+                        INSERT INTO users (
 
-                        email,
-                        password_hash,
-                        first_name,
-                        last_name,
-                        role,
-                        birth_date,
-                        rpps,
-                        account_status
+                            email,
+                            password_hash,
+                            first_name,
+                            last_name,
+                            role,
+                            birth_date,
+                            rpps,
+                            account_status
 
-                    )
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-                    `,
+                        )
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                        `,
 
-                    [
-                        normalizedEmail,
-                        passwordHash,
-                        firstName.trim(),
-                        lastName.trim(),
-                        role,
-                        birthDate || null,
-                        role === 'neurologue'
-                            ? rpps.trim()
-                            : null,
-                        status
-                    ],
+                        [
+                            normalizedEmail,
+                            passwordHash,
+                            firstName.trim(),
+                            lastName.trim(),
+                            role,
+                            birthDate || null,
+                            role === 'neurologue'
+                                ? rpps.trim()
+                                : null,
+                            status
+                        ],
 
-                    async function(err) {
+                        async function(err) {
 
-                        if (err) {
+                            if (err) {
 
-                            console.error(err);
+                                console.error(err);
 
-                            return res.status(500).json({
+                                return res.status(500).json({
+                                    message:
+                                        'Impossible de créer le compte'
+                                });
+                            }
+
+
+                            const userId =
+                                this.lastID;
+
+
+                            /*
+                            * Code de confirmation email
+                            */
+
+                            const code =
+                                generateCode();
+
+                            const codeHash =
+                                hashCode(code);
+
+
+                            db.run(
+                                `
+                                INSERT INTO verification_codes (
+
+                                    user_id,
+                                    code_hash,
+                                    type,
+                                    expires_at
+
+                                )
+                                VALUES (
+                                    ?,
+                                    ?,
+                                    'email',
+                                    datetime('now', '+15 minutes')
+                                )
+                                `,
+                                [
+                                    userId,
+                                    codeHash
+                                ]
+                            );
+
+
+                            await transporter.sendMail({
+
+                                from:
+                                    `"EpileptoMemo" <${process.env.SMTP_USER}>`,
+
+                                to:
+                                    normalizedEmail,
+
+                                subject:
+                                    'Votre code EpileptoMemo',
+
+                                html: `
+                                    <div style="font-family:Arial">
+
+                                        <h2>
+                                            Bienvenue sur EpileptoMemo
+                                        </h2>
+
+                                        <p>
+                                            Votre code de validation :
+                                        </p>
+
+                                        <h1>
+                                            ${code}
+                                        </h1>
+
+                                        <p>
+                                            Ce code est valable
+                                            pendant 15 minutes.
+                                        </p>
+
+                                    </div>
+                                `
+                            });
+
+
+                            return res.status(201).json({
+
+                                success: true,
+
                                 message:
-                                    'Impossible de créer le compte'
+                                    'Compte créé. Vérifiez votre email.',
+
+                                requiresEmailVerification:
+                                    true,
+
+                                role
                             });
                         }
+                    );
 
-
-                        const userId =
-                            this.lastID;
-
-
-                        /*
-                         * Code de confirmation email
-                         */
-
-                        const code =
-                            generateCode();
-
-                        const codeHash =
-                            hashCode(code);
-
-
-                        db.run(
-                            `
-                            INSERT INTO verification_codes (
-
-                                user_id,
-                                code_hash,
-                                type,
-                                expires_at
-
-                            )
-                            VALUES (
-                                ?,
-                                ?,
-                                'email',
-                                datetime('now', '+15 minutes')
-                            )
-                            `,
-                            [
-                                userId,
-                                codeHash
-                            ]
-                        );
-
-
-                        await transporter.sendMail({
-
-                            from:
-                                `"EpileptoMemo" <${process.env.SMTP_USER}>`,
-
-                            to:
-                                normalizedEmail,
-
-                            subject:
-                                'Votre code EpileptoMemo',
-
-                            html: `
-                                <div style="font-family:Arial">
-
-                                    <h2>
-                                        Bienvenue sur EpileptoMemo
-                                    </h2>
-
-                                    <p>
-                                        Votre code de validation :
-                                    </p>
-
-                                    <h1>
-                                        ${code}
-                                    </h1>
-
-                                    <p>
-                                        Ce code est valable
-                                        pendant 15 minutes.
-                                    </p>
-
-                                </div>
-                            `
-                        });
-
-
-                        return res.status(201).json({
-
-                            success: true,
-
-                            message:
-                                'Compte créé. Vérifiez votre email.',
-
-                            requiresEmailVerification:
-                                true,
-
-                            role
-                        });
-                    }
-                );
+                } catch (error) {
+                    console.error('SMTP connection error:', error);
+                    return res.status(500).json({
+                        message:
+                            'Impossible de créer le compte'
+                    });
+                }
+                
             }
         );
 
@@ -981,155 +1040,912 @@ app.post('/api/auth/register', async (req, res) => {
 
 /*
  * --------------------------------------------------
+ * SEND VERIFICATION EMAIL
+ * --------------------------------------------------
+ */
+
+async function sendVerificationEmail(
+    email,
+    firstName,
+    code
+) {
+
+    await transporter.sendMail({
+
+        from: `"EpileptoMemo" <${process.env.SMTP_USER}>`,
+
+        to: email,
+
+        subject:
+            'Votre code de validation EpileptoMemo',
+
+        html: `
+            <div style="
+                font-family:Arial,sans-serif;
+                max-width:600px;
+                margin:auto;
+                color:#182B57;
+            ">
+
+                <h2>
+                    Bienvenue sur EpileptoMemo 💙
+                </h2>
+
+                <p>
+                    Bonjour ${escapeHtml(firstName)},
+                </p>
+
+                <p>
+                    Voici votre code de validation :
+                </p>
+
+                <div style="
+                    font-size:32px;
+                    font-weight:bold;
+                    letter-spacing:8px;
+                    padding:20px 0;
+                    color:#3478F6;
+                ">
+                    ${code}
+                </div>
+
+                <p>
+                    Ce code est valable pendant
+                    <strong>15 minutes</strong>.
+                </p>
+
+                <p>
+                    Si vous n'êtes pas à l'origine
+                    de cette inscription, vous pouvez
+                    ignorer cet e-mail.
+                </p>
+
+            </div>
+        `
+    });
+}
+
+/*
+ * --------------------------------------------------
  * VERIFY EMAIL
  * --------------------------------------------------
  */
 
-app.post(
-    '/api/auth/verify-email',
-    (req, res) => {
+app.post('/api/auth/verify-email', async (req, res) => {
 
-        const {
-            email,
-            code
-        } = req.body;
+    try {
+
+        const email = req.body.email
+            ?.trim()
+            .toLowerCase();
+
+        const code = String(req.body.code || '')
+            .trim();
+
+        console.log('--------------------------------');
+        console.log('VERIFY EMAIL');
+        console.log('email reçu :', email);
+        console.log('code reçu  :', code);
+        console.log('--------------------------------');
 
 
-        if (!email || !code) {
+        // --------------------------------------------------
+        // VALIDATION
+        // --------------------------------------------------
+
+        if (!email || !/^\d{6}$/.test(code)) {
+
+            console.log('Email ou code invalide');
 
             return res.status(400).json({
-                message:
-                    'Email et code obligatoires'
+                success: false,
+                message: 'Code de vérification invalide.'
             });
         }
 
 
-        db.get(
+        // --------------------------------------------------
+        // RECHERCHE UTILISATEUR
+        // --------------------------------------------------
+
+        const user = await dbGet(
             `
-            SELECT *
+            SELECT
+                id,
+                email,
+                first_name,
+                last_name,
+                role,
+                email_verified,
+                account_status
             FROM users
             WHERE email = ?
             `,
+            [email]
+        );
+
+
+        console.log('USER TROUVÉ :', user);
+
+
+        if (!user) {
+
+            console.log('❌ Utilisateur introuvable');
+
+            return res.status(400).json({
+                success: false,
+                message: 'Code de vérification invalide ou expiré.'
+            });
+        }
+
+
+        console.log('user.id =', user.id);
+        console.log('user.email =', user.email);
+        console.log('user.email_verified =', user.email_verified);
+
+
+        // --------------------------------------------------
+        // EMAIL DÉJÀ VÉRIFIÉ
+        // --------------------------------------------------
+
+        if (user.email_verified === 1) {
+
+            return res.status(400).json({
+                success: false,
+                message: 'Cette adresse e-mail est déjà vérifiée.'
+            });
+        }
+
+
+        // --------------------------------------------------
+        // RECHERCHE DU CODE
+        // --------------------------------------------------
+
+        const verification = await dbGet(
+            `
+            SELECT
+                id,
+                code_hash,
+                expires_at,
+                attempts,
+                created_at
+            FROM verification_codes
+            WHERE user_id = ?
+              AND type = 'email'
+            ORDER BY created_at DESC
+            LIMIT 1
+            `,
+            [user.id]
+        );
+
+
+        console.log('VERIFICATION TROUVÉE :', verification);
+
+
+        if (!verification) {
+
+            console.log('❌ Aucun code trouvé');
+
+            return res.status(400).json({
+                success: false,
+                message: 'Aucun code de vérification valide.'
+            });
+        }
+
+
+        console.log('Code hash DB :', verification.code_hash);
+        console.log('Expiration   :', verification.expires_at);
+        console.log('Tentatives   :', verification.attempts);
+
+
+        // --------------------------------------------------
+        // EXPIRATION
+        // --------------------------------------------------
+
+        const expired = await dbGet(
+            `
+            SELECT
+                datetime('now') >= datetime(?) AS expired
+            `,
+            [verification.expires_at]
+        );
+
+
+        console.log('EXPIRÉ :', expired);
+
+
+        if (expired.expired === 1) {
+
+            await dbRun(
+                `
+                DELETE FROM verification_codes
+                WHERE id = ?
+                `,
+                [verification.id]
+            );
+
+            return res.status(400).json({
+                success: false,
+                message: 'Ce code a expiré. Demandez un nouveau code.'
+            });
+        }
+
+
+        // --------------------------------------------------
+        // MAXIMUM 5 TENTATIVES
+        // --------------------------------------------------
+
+        if (verification.attempts >= 5) {
+
+            await dbRun(
+                `
+                DELETE FROM verification_codes
+                WHERE id = ?
+                `,
+                [verification.id]
+            );
+
+            return res.status(429).json({
+                success: false,
+                message: 'Trop de tentatives. Demandez un nouveau code.'
+            });
+        }
+
+
+        // --------------------------------------------------
+        // COMPARAISON DU CODE
+        // --------------------------------------------------
+
+        const submittedHash = hashCode(code);
+
+        console.log('Hash reçu :', submittedHash);
+        console.log('Hash DB   :', verification.code_hash);
+
+
+        if (submittedHash !== verification.code_hash) {
+
+            console.log('❌ CODE INCORRECT');
+
+            await dbRun(
+                `
+                UPDATE verification_codes
+                SET attempts = attempts + 1
+                WHERE id = ?
+                `,
+                [verification.id]
+            );
+
+            return res.status(400).json({
+                success: false,
+                message: 'Code incorrect.'
+            });
+        }
+
+
+        // --------------------------------------------------
+        // CODE CORRECT
+        // --------------------------------------------------
+
+        console.log('✅ CODE CORRECT');
+
+
+        // Le code ne peut plus être réutilisé
+        await dbRun(
+            `
+            DELETE FROM verification_codes
+            WHERE id = ?
+            `,
+            [verification.id]
+        );
+
+
+        // --------------------------------------------------
+        // ACTIVATION DU COMPTE
+        // --------------------------------------------------
+
+        const newStatus =
+            user.role === 'patient'
+                ? 'active'
+                : 'pending_verification';
+
+
+        await dbRun(
+            `
+            UPDATE users
+            SET
+                email_verified = 1,
+                account_status = ?
+            WHERE id = ?
+            `,
             [
-                email.trim().toLowerCase()
-            ],
-
-            (err, user) => {
-
-                if (err || !user) {
-
-                    return res.status(400).json({
-                        message:
-                            'Code invalide'
-                    });
-                }
+                newStatus,
+                user.id
+            ]
+        );
 
 
-                db.get(
+        // --------------------------------------------------
+        // SESSION PATIENT
+        // --------------------------------------------------
+
+        if (user.role === 'patient') {
+
+            const token = generateToken();
+
+            const tokenHash = hashToken(token);
+
+
+            await dbRun(
+                `
+                INSERT INTO sessions (
+                    token_hash,
+                    user_id,
+                    expires_at
+                )
+                VALUES (
+                    ?,
+                    ?,
+                    datetime('now', '+7 days')
+                )
+                `,
+                [
+                    tokenHash,
+                    user.id
+                ]
+            );
+
+
+            setSessionCookie(res, token);
+        }
+
+
+        // --------------------------------------------------
+        // RÉPONSE
+        // --------------------------------------------------
+
+        return res.json({
+
+            success: true,
+
+            message:
+                user.role === 'patient'
+                    ? 'Adresse e-mail vérifiée.'
+                    : 'Adresse e-mail vérifiée. Votre compte doit maintenant être validé professionnellement.',
+
+            user: {
+
+                id: user.id,
+
+                email: user.email,
+
+                firstName: user.first_name,
+
+                lastName: user.last_name,
+
+                role: user.role
+            }
+        });
+
+
+    } catch (error) {
+
+        console.error(
+            'verify-email error:',
+            error
+        );
+
+        return res.status(500).json({
+
+            success: false,
+
+            message:
+                'Une erreur interne est survenue.'
+        });
+    }
+});
+
+/*
+ * --------------------------------------------------
+ * OLD VERIFY EMAIL
+ * --------------------------------------------------
+*/
+
+/*app.post(
+    '/api/auth/verify-email',
+    async (req, res) => {
+
+        try {
+
+            const email =
+                req.body.email
+                    ?.trim()
+                    .toLowerCase();
+            console.log("email: ", email);
+            const code =
+                String(req.body.code || '')
+                    .trim();
+            console.log("code: ", code);
+
+            if (!email || !/^\d{6}$/.test(code)) {
+                console.log("Invalid email or code");
+                return res.status(400).json({
+                    success: false,
+                    message:
+                        'Code de vérification invalide.'
+                });
+            }
+            
+            const request= "SELECT id,email,first_name,last_name,role,email_verified,account_status FROM users WHERE email = '"+email+"'";
+            console.log("request: ", request);
+
+            const user = await db.get(
+               "SELECT id,email,first_name,last_name,role,email_verified,account_status FROM users WHERE email = 'jeanchristophemorin@gmail.com'"
+            );
+            
+            if(user == undefined || user == null){
+                console.log("User not exist");
+            }
+            else{
+                console.log("user: ", user);
+                console.log("user.email: ", user.email);
+                console.log("user.email_verified: ", user.email_verified);
+            }
+
+            if (!user) {
+
+                console.log("User not found");
+                return res.status(400).json({
+                    success: false,
+                    message:
+                        'Code de vérification invalide ou expiré.'
+                });
+            }
+
+
+            if (user.email_verified === 1) {
+                console.log("Email already verified");
+                return res.status(400).json({
+                    success: false,
+                    message:
+                        'Cette adresse e-mail est déjà vérifiée.'
+                });
+            }
+
+            console.log("user id = "+user.id);
+
+            const verification =
+                await db.run(
                     `
-                    SELECT *
+                    SELECT
+                        id,
+                        code_hash,
+                        expires_at,
+                        attempts
                     FROM verification_codes
-
                     WHERE user_id = ?
-
-                    AND type = 'email'
-
+                      AND type = 'email'
                     ORDER BY created_at DESC
-
                     LIMIT 1
                     `,
-                    [user.id],
-
-                    (err, verification) => {
-
-                        if (
-                            err ||
-                            !verification
-                        ) {
-
-                            return res.status(400).json({
-                                message:
-                                    'Code invalide'
-                            });
-                        }
+                    [user.id]
+            );
 
 
-                        if (
-                            new Date(
-                                verification.expires_at
-                            ) < new Date()
-                        ) {
+            if (!verification) {
+                console.log("No verification code found");
+                return res.status(400).json({
+                    success: false,
+                    message:
+                        'Aucun code de vérification valide.'
+                });
+            }
 
-                            return res.status(400).json({
-                                message:
-                                    'Code expiré'
-                            });
-                        }
+            console.log("verification: ", verification.code_hash, verification.expires_at, verification.attempts);
+            
+            Le serveur vérifie lui-même
+            l'expiration.
+        
 
-
-                        const valid =
-                            hashCode(code) ===
-                            verification.code_hash;
-
-
-                        if (!valid) {
-
-                            return res.status(400).json({
-                                message:
-                                    'Code incorrect'
-                            });
-                        }
+            const expired =
+                await db.run(
+                    `
+                    SELECT
+                        datetime('now') >= datetime(?) AS expired
+                    `,
+                    [verification.expires_at]
+                );
 
 
-                        db.run(
-                            `
-                            UPDATE users
+            if (expired.expired === 1) {
+                console.log("Verification code expired");
+                await db.run(
+                    `
+                    DELETE FROM verification_codes
+                    WHERE id = ?
+                    `,
+                    [verification.id]
+                );
 
-                            SET
-                                email_verified = 1,
-
-                                account_status =
-                                    CASE
-
-                                    WHEN role = 'patient'
-                                    THEN 'active'
-
-                                    ELSE 'pending_verification'
-
-                                    END
-
-                            WHERE id = ?
-                            `,
-                            [user.id],
-
-                            () => {
-
-                                db.run(
-                                    `
-                                    DELETE FROM
-                                    verification_codes
-
-                                    WHERE id = ?
-                                    `,
-                                    [verification.id]
-                                );
+                return res.status(400).json({
+                    success: false,
+                    message:
+                        'Ce code a expiré. Demandez un nouveau code.'
+                });
+            }
 
 
-                                res.json({
+            Maximum 5 essais.
+            
 
-                                    success: true,
+            if (verification.attempts >= 5) {
+                console.log("Too many attempts");
+                await db.run(
+                    `
+                    DELETE FROM verification_codes
+                    WHERE id = ?
+                    `,
+                    [verification.id]
+                );
 
-                                    message:
-                                        user.role === 'patient'
-                                            ? 'Compte activé'
-                                            : 'Email vérifié. Votre compte professionnel doit maintenant être validé.'
-                                });
-                            }
-                        );
-                    }
+                return res.status(429).json({
+                    success: false,
+                    message:
+                        'Trop de tentatives. Demandez un nouveau code.'
+                });
+            }
+
+
+            const submittedHash =
+                hashCode(code);
+
+
+            if (
+                submittedHash !==
+                verification.code_hash
+            ) {
+                console.log("sumittedHash: ", submittedHash);
+                console.log("verification.code_hash: ", verification.code_hash);
+                console.log("Incorrect code");
+                await db.run(
+                    `
+                    UPDATE verification_codes
+                    SET attempts = attempts + 1
+                    WHERE id = ?
+                    `,
+                    [verification.id]
+                );
+
+                return res.status(400).json({
+                    success: false,
+                    message:
+                        'Code incorrect.'
+                });
+            }
+
+
+            Le code est correct.
+            On le consomme immédiatement.
+            
+
+            await db.run(
+                `
+                DELETE FROM verification_codes
+                WHERE id = ?
+                `,
+                [verification.id]
+            );
+
+
+            Activation du compte.
+            
+
+            const newStatus =
+                user.role === 'patient'
+                    ? 'active'
+                    : 'pending_verification';
+
+
+            await db.run(
+                `
+                UPDATE users
+                SET
+                    email_verified = 1,
+                    account_status = ?
+                WHERE id = ?
+                `,
+                [
+                    newStatus,
+                    user.id
+                ]
+            );
+
+
+            
+             * Patient :
+             * création immédiate de session.
+             *
+             * Neurologue :
+             * pas de session tant que la
+             * validation professionnelle
+             * n'est pas terminée.
+             *
+
+            if (user.role === 'patient') {
+
+                const token =
+                    generateToken();
+
+                const tokenHash =
+                    hashToken(token);
+
+
+                await db.run(
+                    `
+                    INSERT INTO sessions (
+                        token_hash,
+                        user_id,
+                        expires_at
+                    )
+                    VALUES (
+                        ?,
+                        ?,
+                        datetime('now', '+7 days')
+                    )
+                    `,
+                    [
+                        tokenHash,
+                        user.id
+                    ]
+                );
+
+
+                setSessionCookie(
+                    res,
+                    token
                 );
             }
-        );
+
+
+            return res.json({
+
+                success: true,
+
+                message:
+                    user.role === 'patient'
+                        ? 'Adresse e-mail vérifiée.'
+                        : 'Adresse e-mail vérifiée. Votre compte doit maintenant être validé professionnellement.',
+
+                user: {
+
+                    id: user.id,
+
+                    email: user.email,
+
+                    firstName:
+                        user.first_name,
+
+                    lastName:
+                        user.last_name,
+
+                    role: user.role
+                }
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                'verify-email error:',
+                error
+            );
+
+            return res.status(500).json({
+
+                success: false,
+
+                message:
+                    'Une erreur interne est survenue.'
+            });
+        }
+    }
+);*/
+
+/**
+ * --------------------------------------------------
+ * RESEND CODE EMAIL
+ * --------------------------------------------------
+ */
+app.post(
+    '/api/auth/resend-verification-code',
+    async (req, res) => {
+
+        try {
+
+            const email =
+                req.body.email
+                    ?.trim()
+                    .toLowerCase();
+
+
+            if (!email) {
+
+                return res.status(400).json({
+                    success: false,
+                    message:
+                        'Adresse e-mail obligatoire.'
+                });
+            }
+
+
+            const user =
+                await db.get(
+                    `
+                    SELECT
+                        id,
+                        email,
+                        first_name,
+                        email_verified,
+                        account_status
+                    FROM users
+                    WHERE email = ?
+                    `,
+                    [email]
+                );
+
+
+            /*
+             * Ne pas révéler si un compte
+             * existe ou non.
+             */
+
+            if (!user) {
+
+                return res.json({
+                    success: true,
+                    message:
+                        'Si cette adresse correspond à un compte en attente, un nouveau code sera envoyé.'
+                });
+            }
+
+
+            if (user.email_verified === 1) {
+
+                return res.status(400).json({
+                    success: false,
+                    message:
+                        'Cette adresse e-mail est déjà vérifiée.'
+                });
+            }
+
+
+            /*
+             * Vérification d'un éventuel
+             * code envoyé très récemment.
+             */
+
+            const recentCode =
+                await db.get(
+                    `
+                    SELECT
+                        id,
+                        created_at
+                    FROM verification_codes
+                    WHERE user_id = ?
+                      AND type = 'email'
+                    ORDER BY created_at DESC
+                    LIMIT 1
+                    `,
+                    [user.id]
+                );
+
+
+            if (recentCode) {
+
+                const tooSoon =
+                    await db.get(
+                        `
+                        SELECT
+                            datetime('now')
+                            <
+                            datetime(
+                                ?,
+                                '+60 seconds'
+                            ) AS too_soon
+                        `,
+                        [recentCode.created_at]
+                    );
+
+
+                if (tooSoon.too_soon === 1) {
+
+                    return res.status(429).json({
+
+                        success: false,
+
+                        message:
+                            'Veuillez patienter environ une minute avant de demander un nouveau code.'
+                    });
+                }
+            }
+
+
+            /*
+             * Tous les anciens codes
+             * deviennent invalides.
+             */
+
+            await db.run(
+                `
+                DELETE FROM verification_codes
+                WHERE user_id = ?
+                  AND type = 'email'
+                `,
+                [user.id]
+            );
+
+
+            const code =
+                generateCode();
+
+            const codeHash =
+                hashCode(code);
+
+
+            await db.run(
+                `
+                INSERT INTO verification_codes (
+                    user_id,
+                    code_hash,
+                    type,
+                    expires_at,
+                    attempts
+                )
+                VALUES (
+                    ?,
+                    ?,
+                    'email',
+                    datetime('now', '+15 minutes'),
+                    0
+                )
+                `,
+                [
+                    user.id,
+                    codeHash
+                ]
+            );
+
+
+            await sendVerificationEmail(
+                user.email,
+                user.first_name,
+                code
+            );
+
+
+            return res.json({
+
+                success: true,
+
+                message:
+                    'Un nouveau code vient de vous être envoyé.'
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                'resend-verification-code error:',
+                error
+            );
+
+            return res.status(500).json({
+
+                success: false,
+
+                message:
+                    'Impossible de renvoyer le code.'
+            });
+        }
     }
 );
 

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, model, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -44,14 +44,18 @@ export class AuthComponent implements OnInit {
     errorMessage = '';
     successMessage = '';
 
+    checked = model.required<boolean>();
+
     constructor(
         private authService: AuthService,
         private router: Router,
-        public appComponent: AppComponent
+        public appComponent: AppComponent,
+        private location: Location
     ) {}
 
     ngOnInit(): void {
         console.log('AuthComponent initialized');
+        window.scroll(0,0);
         this.appComponent.setHome(false);
         this.appComponent.setLanding(true);
         this.appComponent.setStartGame(true);
@@ -71,6 +75,7 @@ export class AuthComponent implements OnInit {
         if (url.includes('neurologue')) {
             this.selectRole('neurologue');
         }
+        this.checked.set(false);
     }
 
     showLogin(): void {
@@ -94,6 +99,13 @@ export class AuthComponent implements OnInit {
         this.selectedRole = role;
 
         this.registerData.role = role;
+
+        if(role == 'patient'){
+            this.location.replaceState('/auth/register/patient');
+        }
+        else{
+            this.location.replaceState('/auth/register/neurologue');
+        }
     }
 
     login(): void {
@@ -162,9 +174,13 @@ export class AuthComponent implements OnInit {
 
     }
 
+    toggle() {
+        this.checked.set(!this.checked());
+    }
+
     register(): void {
 
-        /*this.errorMessage = '';
+        this.errorMessage = '';
         this.successMessage = '';
 
         if (
@@ -173,16 +189,17 @@ export class AuthComponent implements OnInit {
             !this.registerData.email ||
             !this.registerData.password
         ) {
-
+            window.scroll(0,0);
             this.errorMessage =
-                'Veuillez remplir tous les champs obligatoires.';
+                'Veuillez remplir tous les champs obligatoires. *';
 
             return;
         }
 
         if (this.registerData.role === 'patient' &&
             !this.registerData.birthDate) {
-
+            
+            window.scroll(0,0);
             this.errorMessage =
                 'Votre date de naissance est nécessaire pour personnaliser votre espace.';
 
@@ -190,81 +207,88 @@ export class AuthComponent implements OnInit {
         }
 
         if (this.registerData.password !== this.confirmPassword) {
-
+            window.scroll(0,0);
             this.errorMessage =
                 'Les mots de passe ne correspondent pas.';
 
             return;
         }
 
-        if (this.registerData.password.length < 8) {
+        if (this.registerData.password.length < 10) {
+            window.scroll(0, 0);
 
             this.errorMessage =
-                'Le mot de passe doit contenir au moins 8 caractères.';
+                'Le mot de passe doit contenir au moins 10 caractères.';
+
+            return;
+        }
+
+        if(this.checked() === false) {
+            window.scroll(0,0);
+            this.errorMessage =
+                'Vous devez accepter les conditions d\'utilisation et la politique de confidentialité pour créer un compte.';
 
             return;
         }
 
         this.loading = true;
 
-        this.authService.register(this.registerData)
-            .subscribe({
+       this.authService.register(this.registerData)
+        .subscribe({
 
-                next: response => {
+            next: response => {
 
-                    this.loading = false;
+                this.loading = false;
 
-                    if (!response.success) {
+                console.log('Registration response:', response);
 
-                        this.errorMessage =
-                            response.message ||
-                            'Impossible de créer votre compte.';
+                if (!response.success) {
+                    window.scroll(0,0);
+                    this.errorMessage =
+                        response.message ||
+                        'Impossible de créer votre compte.';
 
-                        return;
-                    }
-
-                    this.successMessage =
-                        'Votre compte a été créé. Vous pouvez maintenant vous connecter.';
-
-                    this.mode = 'login';
-
-                    this.loginData.email =
-                        this.registerData.email;
-
-                    this.loginData.password = '';
-
-                    this.registerData = {
-                        firstName: '',
-                        lastName: '',
-                        email: '',
-                        birthDate: '',
-                        password: '',
-                        role: 'patient'
-                    };
-
-                    this.confirmPassword = '';
-
-                },
-
-                error: error => {
-
-                    this.loading = false;
-
-                    if (error.status === 409) {
-
-                        this.errorMessage =
-                            'Cette adresse e-mail est déjà utilisée.';
-
-                    } else {
-
-                        this.errorMessage =
-                            'Une erreur est survenue lors de la création du compte.';
-
-                    }
-
+                    return;
                 }
 
-            });*/
+                if (response.requiresEmailVerification) {
 
+                    this.router.navigate(
+                        ['/auth/verify-email'],
+                        {
+                            queryParams: {
+                                email: this.registerData.email
+                            }
+                        }
+                    );
+
+                    return;
+                }
+
+                this.successMessage =
+                    'Votre compte a été créé avec succès.';
+            },
+
+            error: error => {
+
+                this.loading = false;
+                window.scroll(0,0);
+                if (error.status === 409) {
+    
+                    this.errorMessage =
+                        'Cette adresse e-mail est déjà utilisée.';
+
+                    return;
+                }
+
+                this.errorMessage =
+                    error.error?.message ||
+                    'Impossible de créer votre compte.';
+            }
+        });
+    }
+
+    returnHome(): void {
+        this.router.navigate(['/']);
     }
 }

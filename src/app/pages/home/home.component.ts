@@ -4,35 +4,26 @@ import { Router } from '@angular/router';
 import { TranslateappService } from '../../services/translateapp.service';
 import { LocalstorageService } from '../../services/localstorage.service';
 
+import {
+  faUser,
+  faBrain,
+  faCalendarCheck,
+  faShareNodes,
+  faHeartPulse,
+  faUserDoctor,
+  faPills,
+  faBookMedical,
+  faChartColumn,
+  faFileMedical
+} from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-home',
   standalone: false,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-
 export class HomeComponent implements OnInit{
-
-  homeTitle = "";
-  homeSubTitle = "";
-  homeTitleMobile = "";
-  homePartnerMobile = "";
-  homePartnerMobile2 = "";
-  memoryExercices = "";
-  simpleCognitiveGames = "";
-  seizureJournal = "";
-  logSeizureEasily = "";
-  neurologistReports = "";
-  exportHealthData ="";
-  statistics = "";
-  medicalCare = "";
-  familySupport = "";
-  keepLoveOneInformed = "";
-  language = "fr";
-  source = "home";
-  el: any;
-  private touchMoved = false;
-
   constructor(
       public appComponent : AppComponent,
       private router : Router,
@@ -43,8 +34,21 @@ export class HomeComponent implements OnInit{
 
   }
 
+faUser = faUser;
+faBrain = faBrain;
+faCalendarCheck = faCalendarCheck;
+faShareNodes = faShareNodes;
+faHeartPulse = faHeartPulse;
+faUserDoctor = faUserDoctor;
+faPills = faPills;
+faBookMedical = faBookMedical;
+faChartColumn = faChartColumn;
+faFileMedical = faFileMedical;
+
   ngOnInit(): void {
     this.appComponent.setHome(true);
+    this.appComponent.setLanding(false);
+    this.appComponent.setStartGame(false);
     this.translate.comp$.subscribe(
       () => {
           this.changeLanguage();
@@ -53,13 +57,9 @@ export class HomeComponent implements OnInit{
     this.changeLanguage();
   }
 
-  ngAfterViewInit(){
-    this.appComponent.changeTitleMobileHeader();
-  }
-
   changeLanguage(){
     //changeLanguage when page is on front
-    if(this.elementRef.nativeElement.offsetParent != null) {
+    /*if(this.elementRef.nativeElement.offsetParent != null) {
       this.translate.translate.get(
         [
           'home.title',
@@ -99,73 +99,25 @@ export class HomeComponent implements OnInit{
       });
 
       this.setSourcePage();
-    }
+    }*/
   }
 
-  changeLanguageQuestionsIfStart(){
-    let lang = localStorage.getItem("language");
-    if (lang == null){
-      this.language = "fr";
-    }
-    else{
-      this.language = lang;
-    }
+  goToRegister(): void {
+    this.router.navigate(['/auth/register/patient']);
   }
 
-  setSourcePage(){
-    this.localStorage.setSourcePage(this.source);
+  goToLogin(): void {
+    this.router.navigate(['/login']);
   }
 
-  goTo(route:string){
-    if(route === "footerComponent"){
-      this.appComponent.scrollToFooterElement();
-    }
-    else{
-      //this.initElementMenu();
-      window.scroll(0,0);
-      this.router.navigate([route]);
-    }
+  goToNeurologueRegister(): void {
+    this.router.navigate(['/auth/register/neurologue']);
   }
 
-  onTouchStart(event: TouchEvent) {
-
-    this.touchMoved = false;
-
-    (event.currentTarget as HTMLElement)
-      .classList.add('hovered');
-
-  }
-
-  onTouchMove(event: TouchEvent) {
-
-    this.touchMoved = true;
-
-    (event.currentTarget as HTMLElement)
-      .classList.remove('hovered');
-
-  }
-
-  onTouchEnd(
-    event: TouchEvent,
-    page:string
-  ) {
-
-    const target =
-      event.currentTarget as HTMLElement;
-
-    target.classList.remove('hovered');
-
-    if(this.touchMoved){
-      return;
-    }
-
-    setTimeout(() => {
-
-      target.classList.remove('hovered');
-
-      this.goTo(page);
-
-    }, 140);
-
+  scrollToFeatures(): void {
+    document.getElementById('home-features')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
   }
 }

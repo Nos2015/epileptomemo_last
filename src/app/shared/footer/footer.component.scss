@@ -1,4 +1,4 @@
-#footer{
+/*#footer{
     min-height: 300px;
     width: 100%;
     background-color: #f7f7fe;
@@ -99,4 +99,136 @@
     .titleFooter{
         font-size: 20px;
     }
+}*/
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.site-footer {
+  width: 100%;
+  background: linear-gradient(
+    110deg,
+    #f7faff 0%,
+    #ffffff 48%,
+    #f4f8ff 100%
+  );
+  border-top: 1px solid #e5edfa;
+}
+
+.footer-container {
+  font-family: "InterBold";
+  width: min(100% - 64px, 1440px);
+  min-height: 74px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+/* Identité visuelle */
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  color: #0753a8;
+  text-decoration: none;
+}
+
+.footer-logo {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.footer-brand-name {
+  font-size: 15px;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: -0.4px;
+  white-space: nowrap;
+}
+
+/* Navigation */
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.footer-links a {
+  color: #53709c;
+  font-size: 11px;
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 180ms ease;
+}
+
+.footer-links a:hover {
+  color: #1680f8;
+}
+
+.footer-links a:focus-visible,
+.footer-brand:focus-visible {
+  outline: 2px solid #3478f6;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.footer-separator {
+  width: 1px;
+  height: 13px;
+  background: #d8e4f6;
+}
+
+.logoSocial{
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+/* Tablettes et mobiles */
+@media (max-width: 600px) {
+  .footer-container {
+    width: calc(100% - 32px);
+    min-height: auto;
+    padding: 22px 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .footer-brand {
+    justify-content: center;
+  }
+
+  .footer-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer-links {
+    gap: 10px;
+  }
+
+  .footer-separator {
+    height: 11px;
+  }
+
+  .footer-links a {
+    font-size: 11px;
+  }
 }

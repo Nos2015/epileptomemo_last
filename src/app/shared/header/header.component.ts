@@ -13,20 +13,11 @@ export class HeaderComponent implements OnInit{
   @Input()sidebarActive = false;
   @Output()toggleSidebar = new EventEmitter();
 
-  exercices = "";
-  journal = "";
-  reports = "";
-  stats = "";
-  family = "";
-  join = "";
+  login = "";
+  createAccount = "";
   isChecked = false;
 
   titleMobile = "";
-  titleMobileExercices = "";
-  titleMobileJournal = "";
-  titleMobileStatistics = "";
-  titleMobileReports = "";
-  titleMobileFamily = "";
 
   constructor(
       private router : Router,
@@ -54,20 +45,11 @@ export class HeaderComponent implements OnInit{
     if (this.router.url === '/'){
       this.titleMobile = "EpileptoMemo";
     }
-    else if (this.router.url === '/exercices'){
-      this.titleMobile = this.titleMobileExercices;
+    else if (this.router.url === '/login'){
+      this.titleMobile = this.login;
     }
-    else if (this.router.url === '/stats'){
-      this.titleMobile = this.titleMobileStatistics;
-    }
-    else if (this.router.url === '/family'){
-      this.titleMobile = this.titleMobileFamily;
-    }
-    else if (this.router.url === '/reports'){
-      this.titleMobile = this.titleMobileReports;
-    }
-    else if (this.router.url === '/journal'){
-      this.titleMobile = this.titleMobileJournal;
+    else if (this.router.url === '/createAccount'){
+      this.titleMobile = this.createAccount;
     }
   }
 
@@ -76,31 +58,13 @@ export class HeaderComponent implements OnInit{
     if(this.elementRef.nativeElement.offsetParent != null) {
       this.translate.translate.get(
         [
-          'exercices',
-          'journal',
-          'reports',
-          'stats',
-          'family',
-          'join',
-          'pages.exercices.titleMobile',
-          'pages.family.titleMobile',
-          'pages.statistics.titleMobile',
-          'pages.reports.titleMobile',
-          'pages.journal.titleMobile',
+          'login',
+          'createAccount',
         ]
       )
       .subscribe(translations => {
-        this.exercices = translations['exercices'];
-        this.journal = translations['journal'];
-        this.reports = translations['reports'];
-        this.stats = translations['stats'];
-        this.family = translations['family'];
-        this.join = translations['join'];
-        this.titleMobileFamily = translations['pages.family.titleMobile'];
-        this.titleMobileExercices = translations['pages.exercices.titleMobile'];
-        this.titleMobileJournal = translations['pages.journal.titleMobile'];
-        this.titleMobileReports = translations['pages.reports.titleMobile'];
-        this.titleMobileStatistics = translations['pages.statistics.titleMobile'];
+        this.login = translations['login'];
+        this.createAccount = translations['createAccount'];
         this.setTitleHeader();
       });
     }

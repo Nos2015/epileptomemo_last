@@ -6,6 +6,8 @@
         "partnerMobile":"Your everyday",
          "partnerMobile2": "partner"
     },
+    "login": "Login",
+    "createAccount": "Create Account",
     "memoryExercices":"Memory Exercices",
     "simpleCognitiveGames":"Simple cognitive games",
     "seizureJournal":"Seizure Journal",

@@ -1,1 +1,243 @@
-<p>verify-email works!</p>
+<div class="verify-email-page">
+
+    <div class="auth-content">
+
+        <!-- ========================= -->
+        <!-- PARTIE GAUCHE              -->
+        <!-- ========================= -->
+
+        <div class="intro">
+
+            <div class="logo">
+
+                <img
+                    class="brand-logo"
+                    src="assets/logo-epileptomemo-blue.png"
+                    alt="EpileptoMemo">
+
+                <div class="brand-name">
+                    Epilepto
+                </div>
+
+                <div class="brand-name brand-name-color">
+                    Memo
+                </div>
+
+            </div>
+
+            <h1 class="step-title">
+                Encore une petite étape !
+            </h1>
+
+            <p class="intro-text">
+                Vérifiez votre adresse e-mail pour
+                activer votre compte EpileptoMemo.
+            </p>
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <div class="feature-icon blue">
+                        ✉️
+                    </div>
+
+                    <div class="feature-text">
+
+                        <div class="feature-title">
+                            Vérifiez votre e-mail.&nbsp;
+                        </div>
+
+                        <span>
+                            Nous avons envoyé un code de
+                            vérification à votre adresse.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon green">
+                        🔐
+                    </div>
+
+                    <div class="feature-text">
+
+                        <div class="feature-title">
+                            Votre compte est protégé.&nbsp;
+                        </div>
+
+                        <span>
+                            Cette étape confirme que
+                            l'adresse e-mail vous appartient.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon purple">
+                        🧠
+                    </div>
+
+                    <div class="feature-text">
+
+                        <div class="feature-title">
+                            Votre espace vous attend.&nbsp;
+                        </div>
+
+                        <span>
+                            Une fois vérifié, vous pourrez
+                            accéder à votre tableau de bord.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- FORMULAIRE                 -->
+        <!-- ========================= -->
+
+        <div class="auth-card verification-card">
+
+            <h2>
+                Vérifier mon adresse e-mail
+            </h2>
+
+            <p class="switch-text verification-description">
+
+                Nous avons envoyé un code à
+
+                <strong>
+                    {{ email }}
+                </strong>
+
+            </p>
+
+
+            @if (successMessage) {
+
+                <div class="success-message">
+                    {{ successMessage }}
+                </div>
+
+            }
+
+
+            @if (errorMessage) {
+
+                <div class="error-message">
+                    {{ errorMessage }}
+                </div>
+
+            }
+
+
+            <form (ngSubmit)="verify()">
+
+                <label>
+                    Code de vérification
+                </label>
+
+                <div
+                    class="code-inputs"
+                    (paste)="onPaste($event)">
+
+                    @for (
+                        digit of code;
+                        track $index
+                    ) {
+
+                        <input
+                            [id]="'verification-code-' + $index"
+                            type="text"
+                            inputmode="numeric"
+                            maxlength="1"
+                            autocomplete="one-time-code"
+                            [value]="code[$index]"
+                            (input)="onCodeInput($event, $index)"
+                            (keydown)="onKeyDown($event, $index)"
+                            [attr.aria-label]="'Chiffre ' + ($index + 1)">
+
+                    }
+
+                </div>
+
+
+                <p class="code-help">
+                    Le code est valable pendant 15 minutes.
+                </p>
+
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                    [disabled]="loading">
+
+                    @if (loading) {
+
+                        Vérification...
+
+                    } @else {
+
+                        ✓ &nbsp; Vérifier mon compte
+
+                    }
+
+                </button>
+
+            </form>
+
+
+            <div class="resend-section">
+
+                <span>
+                    Vous n'avez pas reçu le code ?
+                </span>
+
+                <button
+                    type="button"
+                    class="resend-button"
+                    [disabled]="resending"
+                    (click)="resendCode()">
+
+                    @if (resending) {
+
+                        Envoi...
+
+                    } @else {
+
+                        Renvoyer le code
+
+                    }
+
+                </button>
+
+            </div>
+
+
+            <div class="privacy">
+
+                🔒
+
+                Vos données sont sécurisées et confidentielles.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateappService } from '../../services/translateapp.service';
+import { AppComponent } from '../../app.component';
 
 
 @Component({
@@ -21,11 +22,16 @@ export class DashboardComponent implements OnInit{
   treatmentMessage = "";
 
   constructor(
+              public appComponent: AppComponent,
               public translate: TranslateappService,
               private elementRef: ElementRef,
   ){}
 
   ngOnInit(): void {
+    //need to check if connected or not
+    this.appComponent.setHome(true);
+    this.appComponent.setLanding(false);
+    this.appComponent.setStartGame(false);
     this.translate.comp$.subscribe(
       () => {
           this.changeLanguage();

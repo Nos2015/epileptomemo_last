@@ -7,6 +7,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { HomeComponent } from './pages/home/home.component';
+import { HomeClientComponent } from './pages/home-client/home-client.component';
 import { ExercicesComponent } from './pages/exercices/exercices.component';
 import { FamilyComponent } from './pages/family/family.component';
 import { JournalComponent } from './pages/journal/journal.component';
@@ -47,6 +48,9 @@ import { VerifyEmailComponent } from './pages/verify-email/verify-email.componen
 import { NeurologueDashboardComponent } from './pages/neurologue-dashboard/neurologue-dashboard.component';
 import { PatientDashboardComponent } from './pages/patient-dashboard/patient-dashboard.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ConfidentialiteComponent } from './shared/confidentialite/confidentialite.component';
+import { MentionsLegalesComponent } from './shared/mentions-legales/mentions-legales.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +59,7 @@ import { AuthComponent } from './pages/auth/auth.component';
     FooterComponent,
     SidebarComponent,
     HomeComponent,
+    HomeClientComponent,
     ExercicesComponent,
     FamilyComponent,
     JournalComponent,
@@ -90,7 +95,9 @@ import { AuthComponent } from './pages/auth/auth.component';
     VerifyEmailComponent,
     NeurologueDashboardComponent,
     PatientDashboardComponent,
-    AuthComponent
+    AuthComponent,
+    MentionsLegalesComponent,
+    ConfidentialiteComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +107,8 @@ import { AuthComponent } from './pages/auth/auth.component';
     }),
     FormsModule,
     ReactiveFormsModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    FontAwesomeModule
   ],
   providers: [
     provideHttpClient(),
